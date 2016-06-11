@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7c45a33f-9ddb-4a2d-a4ba-dde01755abdb" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:2466/YatMingService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="YatMingService.disco" MetadataType="Disco" ID="54e9ac48-9a70-45ff-8dbe-6c249e2357ae" SourceId="1" SourceUrl="http://localhost:2466/YatMingService.svc?disco" />
+    <MetadataFile FileName="YatMingService.wsdl" MetadataType="Wsdl" ID="aa6c641b-a2e7-4988-b152-3564a3954191" SourceId="1" SourceUrl="http://localhost:2466/YatMingService.svc?wsdl" />
+    <MetadataFile FileName="YatMingService.xsd" MetadataType="Schema" ID="564fd3b8-a79e-40ed-8fe4-8e567bfd6853" SourceId="1" SourceUrl="http://localhost:2466/YatMingService.svc?xsd=xsd0" />
+    <MetadataFile FileName="YatMingService1.xsd" MetadataType="Schema" ID="52a6dee0-7a4b-4b6f-8d5a-02103c099d88" SourceId="1" SourceUrl="http://localhost:2466/YatMingService.svc?xsd=xsd1" />
+    <MetadataFile FileName="YatMingService2.xsd" MetadataType="Schema" ID="611ae18f-7711-4cd8-a8f4-dee41aabb46a" SourceId="1" SourceUrl="http://localhost:2466/YatMingService.svc?xsd=xsd2" />
+    <MetadataFile FileName="YatMingService3.xsd" MetadataType="Schema" ID="9a2386e9-5b1d-4b65-a79d-53e4795b49f2" SourceId="1" SourceUrl="http://localhost:2466/YatMingService.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

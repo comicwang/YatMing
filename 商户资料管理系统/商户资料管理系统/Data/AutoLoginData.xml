@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LoginRoot>
+  <Login id="alipay.020leader.com">username;password;submit</Login>
+  <Login id="mp.weixin.qq.com">account;pwd;loginBt</Login>
+  <Login id="fuwu.alipay.com">J-input-user;password_rsainput;J-login-btn</Login>
+</LoginRoot>

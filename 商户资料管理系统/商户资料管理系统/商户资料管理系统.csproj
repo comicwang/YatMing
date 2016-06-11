@@ -1,0 +1,511 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D06D64FD-0AD6-45D5-A6C8-2D3E337E48B2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>商户资料管理系统</RootNamespace>
+    <AssemblyName>商户资料管理系统</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>发布\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>11.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IrisSkin2, Version=2006.3.22.45, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\IrisSkin2.dll</HintPath>
+    </Reference>
+    <Reference Include="LayeredSkin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=afd022ec866c66cc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\LayeredSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\AccountHelper.cs" />
+    <Compile Include="Common\IconsExtention.cs" />
+    <Compile Include="Common\IOHelper.cs" />
+    <Compile Include="Common\NotifyHelper.cs" />
+    <Compile Include="Common\RichTextBoxPrintHelper.cs" />
+    <Compile Include="Common\SetExToolTip.cs" />
+    <Compile Include="Common\SkinHelper.cs" />
+    <Compile Include="Controls\DataManageControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DataManageControl.Designer.cs">
+      <DependentUpon>DataManageControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UploadControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UploadControl.Designer.cs">
+      <DependentUpon>UploadControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ContextMenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ContextMenuForm.designer.cs">
+      <DependentUpon>ContextMenuForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\CustomColors.cs" />
+    <Compile Include="Common\GeneralUtil.cs" />
+    <Compile Include="Controls\OfficeColorPicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\OfficeColorPicker.designer.cs">
+      <DependentUpon>OfficeColorPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RichTextBoxEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\SelectableColor.cs" />
+    <Compile Include="Controls\ToolStripColorPicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ToolStripFontComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ToolStripFontSizeComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\FormDataInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormDataInfo.Designer.cs">
+      <DependentUpon>FormDataInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormDataInfoEx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormDataInfoEx.Designer.cs">
+      <DependentUpon>FormDataInfoEx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormEmploeeInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormEmploeeInfo.Designer.cs">
+      <DependentUpon>FormEmploeeInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormLink.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormLink.Designer.cs">
+      <DependentUpon>FormLink.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormAboutUs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAboutUs.Designer.cs">
+      <DependentUpon>FormAboutUs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\AutoLoginDataHelper.cs" />
+    <Compile Include="Common\CommomHelper.cs" />
+    <Compile Include="Common\ServiceProvider.cs" />
+    <Compile Include="Common\TreeNodeHelper.cs" />
+    <Compile Include="Forms\FormAutoLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAutoLogin.Designer.cs">
+      <DependentUpon>FormAutoLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormMerchantType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormMerchantType.Designer.cs">
+      <DependentUpon>FormMerchantType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormPlatform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormPlatform.Designer.cs">
+      <DependentUpon>FormPlatform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormPromotionDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormPromotionDetail.Designer.cs">
+      <DependentUpon>FormPromotionDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MapControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MapControl.Designer.cs">
+      <DependentUpon>MapControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PictureStreamBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\PictureStreamBox.Designer.cs">
+      <DependentUpon>PictureStreamBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormLogin.designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormRegist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormRegist.Designer.cs">
+      <DependentUpon>FormRegist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormSearchData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSearchData.Designer.cs">
+      <DependentUpon>FormSearchData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormView.Designer.cs">
+      <DependentUpon>FormView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RichBoxControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\RichBoxControl.Designer.cs">
+      <DependentUpon>RichBoxControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SearchTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SearchTextBox.Designer.cs">
+      <DependentUpon>SearchTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\YatServer\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WarningBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\WarningBox.Designer.cs">
+      <DependentUpon>WarningBox.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Controls\DataManageControl.resx">
+      <DependentUpon>DataManageControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UploadControl.resx">
+      <DependentUpon>UploadControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ContextMenuForm.resx">
+      <DependentUpon>ContextMenuForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\OfficeColorPicker.resx">
+      <DependentUpon>OfficeColorPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ToolStripColorPicker.resx">
+      <DependentUpon>ToolStripColorPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormDataInfo.resx">
+      <DependentUpon>FormDataInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormDataInfoEx.resx">
+      <DependentUpon>FormDataInfoEx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormEmploeeInfo.resx">
+      <DependentUpon>FormEmploeeInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormLink.resx">
+      <DependentUpon>FormLink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormAboutUs.resx">
+      <DependentUpon>FormAboutUs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormAutoLogin.resx">
+      <DependentUpon>FormAutoLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormMerchantType.resx">
+      <DependentUpon>FormMerchantType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormPlatform.resx">
+      <DependentUpon>FormPlatform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormPromotionDetail.resx">
+      <DependentUpon>FormPromotionDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MapControl.resx">
+      <DependentUpon>MapControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormRegist.resx">
+      <DependentUpon>FormRegist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSearchData.resx">
+      <DependentUpon>FormSearchData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormView.resx">
+      <DependentUpon>FormView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\RichBoxControl.resx">
+      <DependentUpon>RichBoxControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\WarningBox.resx">
+      <DependentUpon>WarningBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Service References\YatServer\YatMingService.wsdl" />
+    <None Include="Service References\YatServer\YatMingService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\YatServer\YatMingService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\YatServer\YatMingService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\YatServer\YatMingService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\YatServer\商户资料管理系统.YatServer.TBaseInfoDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\YatServer\商户资料管理系统.YatServer.TCheckDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\YatServer\商户资料管理系统.YatServer.TContractDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\YatServer\商户资料管理系统.YatServer.TDataInfoDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\YatServer\商户资料管理系统.YatServer.TDetailInfoDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\YatServer\商户资料管理系统.YatServer.TEmployeeDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\YatServer\商户资料管理系统.YatServer.THardwareDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\YatServer\商户资料管理系统.YatServer.TLoginDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\YatServer\商户资料管理系统.YatServer.TMerchantTypeDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\YatServer\商户资料管理系统.YatServer.TPackageDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\YatServer\商户资料管理系统.YatServer.TPlatformDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\YatServer\商户资料管理系统.YatServer.TPriceDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\YatServer\商户资料管理系统.YatServer.TPromotionDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\YatServer\商户资料管理系统.YatServer.TServerDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\YatServer\商户资料管理系统.YatServer.TShopDataDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\YatServer\商户资料管理系统.YatServer.TSubmitDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\YatServer\商户资料管理系统.YatServer.TTrainDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\YatServer\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\YatServer\YatMingService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\YatServer\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\YatServer\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\YatServer\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\upload.png" />
+    <None Include="Resources\wait.gif" />
+    <None Include="Resources\up.png" />
+    <None Include="Resources\注册.jpg" />
+    <None Include="Resources\woman.png" />
+    <None Include="Resources\yezi3.png" />
+    <None Include="Resources\yezi2.png" />
+    <None Include="Resources\sun2.png" />
+    <Content Include="11.ico" />
+    <Content Include="Data\AutoLoginData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\GoogleMap.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\Unlink.png" />
+    <None Include="Resources\Underline.png" />
+    <None Include="Resources\cancel.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\default.png" />
+    <None Include="Resources\Bold.png" />
+    <None Include="Resources\Cut.png" />
+    <None Include="Resources\Italic.png" />
+    <None Include="Resources\JustifyCenter.png" />
+    <None Include="Resources\JustifyLeft.png" />
+    <None Include="Resources\JustifyRight.png" />
+    <None Include="Resources\CreateLink.png" />
+    <None Include="Resources\full_screen.png" />
+    <None Include="Resources\background.png" />
+    <None Include="Resources\InsertImage.png" />
+    <None Include="Resources\clear.png" />
+    <None Include="Resources\clearAll.png" />
+    <None Include="Resources\forecolor.png" />
+    <None Include="Resources\close0.png" />
+    <None Include="Resources\close1.png" />
+    <None Include="Resources\cloud.png" />
+    <None Include="Resources\loginbody.png" />
+    <None Include="Resources\mini0.png" />
+    <None Include="Resources\mini1.png" />
+    <None Include="Resources\man.png" />
+    <None Include="Resources\bgImage.png" />
+    <None Include="Resources\download.png" />
+    <None Include="Resources\downloading.png" />
+    <None Include="Resources\pouse.png" />
+    <None Include="Resources\11.jpg" />
+    <None Include="Resources\22.jpg" />
+    <None Include="Resources\down.png" />
+    <None Include="Resources\main.ico" />
+    <None Include="Resources\blank.ico" />
+    <None Include="Resources\folderNew.png" />
+    <None Include="Resources\dustbin.png" />
+    <None Include="Resources\MoveTo.png" />
+    <None Include="Resources\return.png" />
+    <None Include="Resources\forword.png" />
+    <None Include="Resources\refresh.png" />
+    <None Include="Resources\folder.png" />
+    <Content Include="Resources\search.png" />
+    <None Include="Resources\close.png" />
+    <None Include="Resources\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
