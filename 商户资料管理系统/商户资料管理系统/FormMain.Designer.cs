@@ -176,18 +176,6 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.dgvDataInfo = new System.Windows.Forms.DataGridView();
-            this.MetaDataId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataInfoDownload = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.DataInfoView = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.DataInfoEdit = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.DataInfoDelete = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.DownloadTimes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UploadPeople = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LastModifyTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsbAddDataInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbSearchData = new System.Windows.Forms.ToolStripMenuItem();
@@ -239,8 +227,6 @@
             this.panel9.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            this.tabPage7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDataInfo)).BeginInit();
             this.contextMenuStrip3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -787,7 +773,7 @@
             this.panel2.Controls.Add(this.grpPlatfrom);
             this.panel2.Controls.Add(this.grpPromotion);
             this.panel2.Controls.Add(this.grpDetail);
-            this.panel2.Location = new System.Drawing.Point(-189, -1);
+            this.panel2.Location = new System.Drawing.Point(-197, -1);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(600, 734);
             this.panel2.TabIndex = 0;
@@ -1715,137 +1701,12 @@
             // tabPage7
             // 
             this.tabPage7.BackColor = System.Drawing.Color.Snow;
-            this.tabPage7.Controls.Add(this.dgvDataInfo);
             this.tabPage7.Location = new System.Drawing.Point(4, 25);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage7.Size = new System.Drawing.Size(647, 506);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "资料文件";
-            // 
-            // dgvDataInfo
-            // 
-            this.dgvDataInfo.AllowUserToAddRows = false;
-            this.dgvDataInfo.AllowUserToDeleteRows = false;
-            this.dgvDataInfo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvDataInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MetaDataId,
-            this.DataInfoDownload,
-            this.DataInfoView,
-            this.DataInfoEdit,
-            this.DataInfoDelete,
-            this.DownloadTimes,
-            this.DataName,
-            this.UploadPeople,
-            this.CreateTime,
-            this.LastModifyTime,
-            this.DataDescription});
-            this.dgvDataInfo.ContextMenuStrip = this.contextMenuStrip3;
-            this.dgvDataInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDataInfo.Location = new System.Drawing.Point(3, 3);
-            this.dgvDataInfo.MultiSelect = false;
-            this.dgvDataInfo.Name = "dgvDataInfo";
-            this.dgvDataInfo.RowHeadersVisible = false;
-            this.dgvDataInfo.RowTemplate.Height = 23;
-            this.dgvDataInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDataInfo.Size = new System.Drawing.Size(641, 500);
-            this.dgvDataInfo.TabIndex = 4;
-            this.dgvDataInfo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDataInfo_CellContentClick);
-            // 
-            // MetaDataId
-            // 
-            this.MetaDataId.Frozen = true;
-            this.MetaDataId.HeaderText = "资料ID";
-            this.MetaDataId.Name = "MetaDataId";
-            this.MetaDataId.Visible = false;
-            // 
-            // DataInfoDownload
-            // 
-            this.DataInfoDownload.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.DataInfoDownload.Frozen = true;
-            this.DataInfoDownload.HeaderText = "下载";
-            this.DataInfoDownload.Name = "DataInfoDownload";
-            this.DataInfoDownload.Width = 50;
-            // 
-            // DataInfoView
-            // 
-            this.DataInfoView.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.DataInfoView.Frozen = true;
-            this.DataInfoView.HeaderText = "查看";
-            this.DataInfoView.Name = "DataInfoView";
-            this.DataInfoView.Width = 50;
-            // 
-            // DataInfoEdit
-            // 
-            this.DataInfoEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.DataInfoEdit.Frozen = true;
-            this.DataInfoEdit.HeaderText = "编辑";
-            this.DataInfoEdit.Name = "DataInfoEdit";
-            this.DataInfoEdit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataInfoEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.DataInfoEdit.Width = 60;
-            // 
-            // DataInfoDelete
-            // 
-            this.DataInfoDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.DataInfoDelete.Frozen = true;
-            this.DataInfoDelete.HeaderText = "删除";
-            this.DataInfoDelete.Name = "DataInfoDelete";
-            this.DataInfoDelete.Width = 50;
-            // 
-            // DownloadTimes
-            // 
-            this.DownloadTimes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.DownloadTimes.FillWeight = 50F;
-            this.DownloadTimes.Frozen = true;
-            this.DownloadTimes.HeaderText = "下载次数";
-            this.DownloadTimes.Name = "DownloadTimes";
-            this.DownloadTimes.Width = 80;
-            // 
-            // DataName
-            // 
-            this.DataName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.DataName.FillWeight = 120F;
-            this.DataName.Frozen = true;
-            this.DataName.HeaderText = "资料名称";
-            this.DataName.Name = "DataName";
-            this.DataName.Width = 91;
-            // 
-            // UploadPeople
-            // 
-            this.UploadPeople.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.UploadPeople.FillWeight = 50F;
-            this.UploadPeople.Frozen = true;
-            this.UploadPeople.HeaderText = "上传人";
-            this.UploadPeople.Name = "UploadPeople";
-            this.UploadPeople.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.UploadPeople.Width = 91;
-            // 
-            // CreateTime
-            // 
-            this.CreateTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.CreateTime.FillWeight = 120F;
-            this.CreateTime.Frozen = true;
-            this.CreateTime.HeaderText = "创建时间";
-            this.CreateTime.Name = "CreateTime";
-            this.CreateTime.Width = 120;
-            // 
-            // LastModifyTime
-            // 
-            this.LastModifyTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.LastModifyTime.DividerWidth = 2;
-            this.LastModifyTime.FillWeight = 130F;
-            this.LastModifyTime.Frozen = true;
-            this.LastModifyTime.HeaderText = "上次修改时间";
-            this.LastModifyTime.Name = "LastModifyTime";
-            this.LastModifyTime.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.LastModifyTime.Width = 130;
-            // 
-            // DataDescription
-            // 
-            this.DataDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DataDescription.HeaderText = "资料描述";
-            this.DataDescription.Name = "DataDescription";
             // 
             // contextMenuStrip3
             // 
@@ -1855,27 +1716,6 @@
             this.tsbAddMoreData});
             this.contextMenuStrip3.Name = "contextMenuStrip1";
             this.contextMenuStrip3.Size = new System.Drawing.Size(145, 70);
-            // 
-            // tsbAddDataInfo
-            // 
-            this.tsbAddDataInfo.Name = "tsbAddDataInfo";
-            this.tsbAddDataInfo.Size = new System.Drawing.Size(144, 22);
-            this.tsbAddDataInfo.Text = "新增(&A)";
-            this.tsbAddDataInfo.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // tsbSearchData
-            // 
-            this.tsbSearchData.Name = "tsbSearchData";
-            this.tsbSearchData.Size = new System.Drawing.Size(144, 22);
-            this.tsbSearchData.Text = "查询(&S)";
-            this.tsbSearchData.Click += new System.EventHandler(this.tsbSearchData_Click);
-            // 
-            // tsbAddMoreData
-            // 
-            this.tsbAddMoreData.Name = "tsbAddMoreData";
-            this.tsbAddMoreData.Size = new System.Drawing.Size(144, 22);
-            this.tsbAddMoreData.Text = "批量新增(&M)";
-            this.tsbAddMoreData.Click += new System.EventHandler(this.tsbAddMoreData_Click);
             // 
             // warningBox1
             // 
@@ -1917,20 +1757,6 @@
             this.tmTime.Enabled = true;
             this.tmTime.Interval = 1000;
             this.tmTime.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // backgroundWorker4
-            // 
-            this.backgroundWorker4.WorkerReportsProgress = true;
-            this.backgroundWorker4.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker4_DoWork);
-            this.backgroundWorker4.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker4_ProgressChanged);
-            this.backgroundWorker4.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker4_RunWorkerCompleted);
-            // 
-            // backgroundWorker5
-            // 
-            this.backgroundWorker5.WorkerReportsProgress = true;
-            this.backgroundWorker5.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker5_DoWork);
-            this.backgroundWorker5.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker5_ProgressChanged);
-            this.backgroundWorker5.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker5_RunWorkerCompleted);
             // 
             // tmBlink
             // 
@@ -2002,8 +1828,6 @@
             this.groupBox1.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            this.tabPage7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDataInfo)).EndInit();
             this.contextMenuStrip3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -2156,23 +1980,11 @@
         private System.Windows.Forms.Label label13;
         private PictureStreamBox pictureStreamBox1;
         private System.Windows.Forms.TabPage tabPage7;
-        private System.Windows.Forms.DataGridView dgvDataInfo;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip3;
         private System.Windows.Forms.ToolStripMenuItem tsbAddDataInfo;
         private System.Windows.Forms.ToolStripStatusLabel tslTimer;
         private System.Windows.Forms.Timer tmTime;
         private System.Windows.Forms.ToolStripStatusLabel tslUser;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MetaDataId;
-        private System.Windows.Forms.DataGridViewLinkColumn DataInfoDownload;
-        private System.Windows.Forms.DataGridViewLinkColumn DataInfoView;
-        private System.Windows.Forms.DataGridViewLinkColumn DataInfoEdit;
-        private System.Windows.Forms.DataGridViewLinkColumn DataInfoDelete;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DownloadTimes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UploadPeople;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreateTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LastModifyTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataDescription;
         private System.ComponentModel.BackgroundWorker backgroundWorker4;
         private System.ComponentModel.BackgroundWorker backgroundWorker5;
         private System.Windows.Forms.ToolStripMenuItem tsbSearchData;

@@ -42,7 +42,7 @@ namespace 商户资料管理系统
                 //System.Diagnostics.Process.Start("iexplore.exe", "http://" + dns + "/index.html?name=" + dto.DataName); 
                 panel1.Visible = false;
 
-                webBrowser1.Navigate(dns + "/index.html?name=" + dto.DataName);
+                webBrowser1.Navigate(dns + "/index.html?name=" + dto.MetaDataId + Path.GetExtension(dto.DataName));
 
             }
             else

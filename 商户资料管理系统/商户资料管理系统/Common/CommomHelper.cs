@@ -45,5 +45,14 @@ namespace 商户资料管理系统.Common
              }
              return result;
         }
+
+        public static double ParseMB(string b)
+        {
+            double result=0;
+            bool success = double.TryParse(b, out result);
+            if (success)
+                result = Math.Round(result / 1024 / 1024, 2);
+            return result;
+        }
     }
 }

@@ -85,12 +85,14 @@
     <Compile Include="Controls\DataManageControl.Designer.cs">
       <DependentUpon>DataManageControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ListViewItemEx.cs" />
     <Compile Include="Controls\UploadControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\UploadControl.Designer.cs">
       <DependentUpon>UploadControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\CommonData.cs" />
     <Compile Include="Forms\ContextMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -474,6 +476,7 @@
     <None Include="Resources\forword.png" />
     <None Include="Resources\refresh.png" />
     <None Include="Resources\folder.png" />
+    <None Include="Resources\retry.png" />
     <Content Include="Resources\search.png" />
     <None Include="Resources\close.png" />
     <None Include="Resources\edit.png" />

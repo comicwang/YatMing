@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using 商户资料管理系统.Common;
 using 商户资料管理系统.YatServer;
 using 商户资料管理系统.Properties;
+using System.IO;
 
 namespace 商户资料管理系统
 {
@@ -18,21 +19,15 @@ namespace 商户资料管理系统
         private string _baseInfoId = string.Empty;
         private string _currentId = string.Empty;
         private string _oldText = string.Empty;
-        private ProgressBar _pb = null;
-    
+       
         public DataManageControl()
         {
             InitializeComponent();
         }
 
-        public WarningBox warningBox1 { get; set; }
-
-        public string uploadPeople { get; set; }
-
         public void InitializeContent(string id)
         {
             _baseInfoId = id;
-            //初始化界面
             IniliazeListView(null);
         }
 
@@ -60,19 +55,19 @@ namespace 商户资料管理系统
 
         private void CreateViewItem(TDataInfoDTO dto)
         {
-            ListViewItem lvi = new ListViewItem();
+            ListViewItemEx lvi = new ListViewItemEx();
+            lvi.ItemData = dto;
             lvi.Text = dto.DataName;
-            lvi.Tag = dto;
             if (dto.IsForlder == false)
             {
                 string[] arrtempFileName = dto.DataName.Split(new char[] { '.' });
                 string tempFileExtension = "." + arrtempFileName[arrtempFileName.Length - 1];
-                //get imageindex from imagelist according to the file extension  
                 if (!imageList1.Images.Keys.Contains(tempFileExtension))
                     imageList1.Images.Add(tempFileExtension, IconsExtention.IconFromExtension(tempFileExtension, IconsExtention.SystemIconSize.Large));
                 lvi.ImageIndex = imageList1.Images.Keys.IndexOf(tempFileExtension);
-                lvi.ToolTipText = string.Format("文件名称:{0}\r\n文件大小:{1}\r\n上传时间:{2}\r\n上传人:{3}\r\n修改时间:{4}\r\n下载次数:{5}\r\n文件描述:{6}", dto.DataName, dto.FileSize, dto.CreateTime, dto.UploadPeople, dto.LastModifyTime, dto.DownloadTimes, dto.DataDescription);
+                lvi.ToolTipText = string.Format("文件名称:{0}\r\n文件大小:{1}M\r\n上传时间:{2}\r\n上传人:{3}\r\n修改时间:{4}\r\n下载次数:{5}\r\n文件描述:{6}", dto.DataName,CommomHelper.ParseMB(dto.FileSize), dto.CreateTime, dto.UploadPeople, dto.LastModifyTime, dto.DownloadTimes, dto.DataDescription);
                 LvDataContent.Items.Add(lvi);
+                lvi.SetOtherControl();
             }
             else
             {
@@ -84,10 +79,10 @@ namespace 商户资料管理系统
             }
         }
 
-        private void UpdateViewItem(TDataInfoDTO dto, ListViewItem lvi)
+        private void UpdateViewItem(TDataInfoDTO dto, ListViewItemEx lvi)
         {
             lvi.Text = dto.DataName;
-            lvi.Tag = dto;
+            lvi.ItemData = dto;
             if (dto.IsForlder == false)
             {
                 string[] arrtempFileName = dto.DataName.Split(new char[] { '.' });
@@ -125,7 +120,7 @@ namespace 商户资料管理系统
             dto.BaseInfoId = _baseInfoId;
             dto.CreateTime = DateTime.Now;
             dto.DataName = "新建文件夹";
-            dto.UploadPeople = uploadPeople;
+            dto.UploadPeople = CommonData.LoginInfo.EmployeeName;
             dto.IsForlder = true;
             dto.DownloadTimes = 0;
             dto.LastModifyTime = DateTime.Now;
@@ -143,7 +138,7 @@ namespace 商户资料管理系统
             {
                 foreach (ListViewItem item in LvDataContent.SelectedItems)
                 {
-                    TDataInfoDTO dto = item.Tag as TDataInfoDTO;
+                    TDataInfoDTO dto = (item as ListViewItemEx).ItemData;
                     //删除文件夹
                     if (dto.IsForlder)
                     {
@@ -158,56 +153,28 @@ namespace 商户资料管理系统
             }
         }
 
+        private void tsbMoveTo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #region 下载
+
         private void tsbDownload_Click(object sender, EventArgs e)
         {
-
+             ListView.SelectedListViewItemCollection lstSelected = LvDataContent.SelectedItems;
+             if (lstSelected.Count > 0)
+             {
+                 foreach (ListViewItem item in lstSelected)
+                 {
+                     ListViewItemEx ctr = item as ListViewItemEx;
+                     if (!ctr.ItemData.IsForlder)
+                         ctr.DownLoadFile();
+                 }
+             }
         }
 
-        private void tsbUpload_Click(object sender, EventArgs e)
-        {
-            //新增
-            FormDataInfo form = new FormDataInfo();
-            form.DataInfo = new TDataInfoDTO() { BaseInfoId = _baseInfoId, UploadPeople = uploadPeople };
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                TDataInfoDTO temp = form.DataInfo;
-                //大文件分布上传
-                if (temp.DataContent.Length > 40960000 * 21)  //800M
-                {
-                    warningBox1.ShowMessage("超过最大上传文件限制！", MessageType.Error, 3000, Color.Red);
-                    return;
-                }
-                TDataInfoDTO dto = new TDataInfoDTO()
-                {
-                    BaseInfoId = temp.BaseInfoId,
-                    CreateTime = temp.CreateTime,
-                    DataContent = new byte[0],
-                    DataDescription = temp.DataDescription,
-                    DataName = temp.DataName,
-                    DownloadTimes = temp.DownloadTimes,
-                    LastModifyTime = temp.LastModifyTime,
-                    MetaDataId = temp.MetaDataId,
-                    UploadPeople = temp.UploadPeople,
-                    FileSize = temp.FileSize,
-                    ParentId = _currentId,
-                    IsForlder = false
-                };
-                bool success = _client.TDataInfoAdd(dto);
-                if (success)
-                {
-                    CreateViewItem(dto);
-                    ListViewItem item = LvDataContent.Items[LvDataContent.Items.Count - 1];
-                    Rectangle rct = item.Bounds;
-                    _pb = new ProgressBar();
-                    _pb.Height = 10;
-                 //   _pb.BackColor=Color.FromArgb(
-                    _pb.Width = rct.Width;
-                    _pb.Location = new Point(rct.Left, rct.Top + (rct.Height - _pb.Height) / 2);
-                    LvDataContent.Controls.Add(_pb);
-                    backgroundWorker4.RunWorkerAsync(new object[] { temp.DataContent, temp.MetaDataId });
-                }
-            }
-        }
+        #endregion
 
         #region 编辑
 
@@ -219,12 +186,13 @@ namespace 商户资料管理系统
                 e.CancelEdit = true;
                 return;
             }
-            TDataInfoDTO dto = LvDataContent.Items[e.Item].Tag as TDataInfoDTO;
+            TDataInfoDTO dto = (LvDataContent.Items[e.Item] as ListViewItemEx).ItemData;
             dto.DataName = newText;
             dto.LastModifyTime = DateTime.Now;
+            dto.ParentId = dto.ParentId == null ? string.Empty : dto.ParentId;
             bool success = _client.TDataInfoUpdate(dto);
             if (success)
-                UpdateViewItem(dto, LvDataContent.Items[e.Item]);
+                UpdateViewItem(dto, LvDataContent.Items[e.Item] as ListViewItemEx);
         }
 
         private void LvDataContent_BeforeLabelEdit(object sender, LabelEditEventArgs e)
@@ -277,16 +245,16 @@ namespace 商户资料管理系统
         /// <param name="e"></param>
         private void listView1_DragDrop(object sender, DragEventArgs e)
         {
-            ListViewItem draggedItem = (ListViewItem)e.Data.GetData(typeof(ListViewItem));
+            ListViewItemEx draggedItem = (ListViewItemEx)e.Data.GetData(typeof(ListViewItemEx));
             Point ptScreen = new Point(e.X, e.Y);
             Point pt = LvDataContent.PointToClient(ptScreen);
-            ListViewItem TargetItem = LvDataContent.GetItemAt(pt.X, pt.Y);//拖动的项将放置于该项之前   
+            ListViewItemEx TargetItem = LvDataContent.GetItemAt(pt.X, pt.Y) as ListViewItemEx;//拖动的项将放置于该项之前   
             if (null == TargetItem)
                 return;
-            TDataInfoDTO targetDto = TargetItem.Tag as TDataInfoDTO;
+            TDataInfoDTO targetDto = TargetItem.ItemData;
             if (targetDto.IsForlder)
             {
-                TDataInfoDTO sourceDTO = draggedItem.Tag as TDataInfoDTO;
+                TDataInfoDTO sourceDTO = draggedItem.ItemData;
                 sourceDTO.ParentId = targetDto.MetaDataId;
                 bool success= _client.TDataInfoUpdate(sourceDTO);
                 if (success)
@@ -296,64 +264,42 @@ namespace 商户资料管理系统
             }
             else
             {
-                LvDataContent.Items.Insert(TargetItem.Index, (ListViewItem)draggedItem.Clone());
+                LvDataContent.Items.Insert(TargetItem.Index, (ListViewItemEx)draggedItem.Clone());
                 LvDataContent.Items.Remove(draggedItem);
             }           
         }
 
         #endregion
 
-        private void backgroundWorker4_DoWork(object sender, DoWorkEventArgs e)
-        {
-            object[] arg = e.Argument as object[];
-            byte[] total = arg[0] as byte[];
-            string id = arg[1].ToString();
-            byte[] buffer = new byte[4096000]; //4M
-            int percent = total.Length / buffer.Length;
-            for (long index = 0; index < percent; index++)
-            {
-                buffer = total.Skip((int)index * buffer.Length).Take(buffer.Length).ToArray();
-                bool result = _client.TDataInfoUploadFile(buffer, id, (int)(index * buffer.Length / 40960000));
-                if (result == false)
-                {
-                    e.Result = false;
-                    return;
-                }
-                backgroundWorker4.ReportProgress((int)((index + 1) * buffer.Length * 100 / total.Length));
-            }
-            int left = total.Length % buffer.Length;
-            if (left > 0)
-            {
-                byte[] leftBuffer = total.Skip(percent * buffer.Length).Take(left).ToArray();
-                bool result = _client.TDataInfoUploadFile(leftBuffer, id, total.Length / 40960000);
-                if (result == false)
-                {
-                    e.Result = false;
-                    return;
-                }
-                backgroundWorker4.ReportProgress(100);
+        #region 上传
 
+        private void tsbUpload_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "所有文件|*.*";
+            dialog.Multiselect = true;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                Array.ForEach(dialog.FileNames, t => {
+                    ListViewItemEx ctr = new ListViewItemEx(_baseInfoId);
+                    ctr.Text = Path.GetFileName(t);
+                    string tempFileExtension = Path.GetExtension(t);
+                    //get imageindex from imagelist according to the file extension  
+                    if (!imageList1.Images.Keys.Contains(tempFileExtension))
+                        imageList1.Images.Add(tempFileExtension, IconsExtention.IconFromExtension(tempFileExtension, IconsExtention.SystemIconSize.Large));
+                    ctr.ImageIndex = imageList1.Images.Keys.IndexOf(tempFileExtension);
+
+                    LvDataContent.Items.Add(ctr);
+                    ctr.SetOtherControl();
+
+                    ctr.UploadFile(t);
+                });            
             }
-            e.Result = true;
         }
 
-        private void backgroundWorker4_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            int index = e.ProgressPercentage;
-            _pb.Value = index;
-           // warningBox1.ShowMessage(string.Format("当前上传百分比{0}%", index), MessageType.Info);
-        }
+        #endregion
 
-        private void backgroundWorker4_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if ((bool)e.Result)
-            {
-                warningBox1.ShowMessage("上传完成", MessageType.Info, 2000);
-                LvDataContent.Controls.Remove(_pb);
-            }
-            else
-                warningBox1.ShowMessage("上传失败", MessageType.Info, 2000, Color.Red);
-        }
+        #region 打开
 
         private void LvDataContent_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -361,7 +307,7 @@ namespace 商户资料管理系统
             {
                 if (LvDataContent.SelectedItems.Count == 1)
                 {
-                    TDataInfoDTO dto = LvDataContent.SelectedItems[0].Tag as TDataInfoDTO;
+                    TDataInfoDTO dto = (LvDataContent.SelectedItems[0] as ListViewItemEx).ItemData;
                     if (dto.IsForlder)
                     {
                         IniliazeListView(dto.MetaDataId);
@@ -376,5 +322,26 @@ namespace 商户资料管理系统
                 }
             }
         }
+
+        #endregion
+
+        #region 搜索
+
+        private void searchTextBox1_OnSearch(object sender, SearchEventArgs e)
+        {
+            TDataInfoDTO[] result = null;
+
+            if (string.IsNullOrEmpty(e.SearchText))
+                result = _client.TDataInGetByForginKey(_baseInfoId);
+            else
+                result = _client.TDataInQuery(false, DateTime.Now, DateTime.Now, e.SearchText, _baseInfoId);
+            LvDataContent.Items.Clear();
+            Array.ForEach(result, t =>
+            {
+                CreateViewItem(t);
+            });
+        }
+
+        #endregion
     }
 }

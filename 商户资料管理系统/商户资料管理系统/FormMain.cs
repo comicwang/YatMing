@@ -47,22 +47,13 @@ namespace 商户资料管理系统
         public FormMain(FormLogin loginForm)
             : this()
         {
-           
             _loginForm = loginForm;
             this.BindNotify(tmBlink);
             this.BindSkin(tsbSkin);
-            _dataMangeControl = new DataManageControl();            
+            _dataMangeControl = new DataManageControl();
             _dataMangeControl.Dock = DockStyle.Fill;
-            tabPage5.Controls.Add(_dataMangeControl);
-        }
-
-        
-
-        #region 换肤
-
-
-
-        #endregion
+            tabPage7.Controls.Add(_dataMangeControl);
+        }   
 
         #region 热键注册
 
@@ -108,7 +99,7 @@ namespace 商户资料管理系统
             {
                 if (m.WParam.ToInt32() == 101)
                 {
-                    tsbSearchData_Click(null, null);
+                    //tsbSearchData_Click(null, null);
                 }
                 else if (m.WParam.ToInt32() == 102)
                 {
@@ -223,15 +214,13 @@ namespace 商户资料管理系统
             CallOparateHander(btnDelete, false);
             CallOparateHander(btnCancel, false);
             SetEnable(false);
-          
             if (_employee != null)
             {
+                CommonData.LoginInfo = _employee;
                 tslUser.Image = _employee.EmployeeSex == "男" ? Resources.man : Resources.woman;
                 tslUser.Text = _employee.EmployeeName;
                 tslUser.SetTips(new FormEmploeeInfo(_employee));
             }
-            _dataMangeControl.uploadPeople = _employee.EmployeeName;
-            _dataMangeControl.warningBox1 = warningBox1;
 
             label1.Visible = false;
         }
@@ -244,8 +233,7 @@ namespace 商户资料管理系统
         private void FormMain_Load(object sender, EventArgs e)
         {
             try
-            {
-               
+            {               
                 label1.Visible = true;
                 backgroundWorker1.RunWorkerAsync();
                 tmTime.Start();
@@ -488,8 +476,8 @@ namespace 商户资料管理系统
                 //设置开店资料信息
                 ShopDataDTO = result[3] as TShopDataDTO;
                 //设置资料信息
-                dgvDataInfo.Rows.Clear();
-                Array.ForEach(result[4] as TDataInfoDTO[], t => { AddOtherData(t); });
+              //  dgvDataInfo.Rows.Clear();
+              //  Array.ForEach(result[4] as TDataInfoDTO[], t => { AddOtherData(t); });
             }
         }
 
@@ -952,187 +940,187 @@ namespace 商户资料管理系统
 
         #endregion
 
-        #region 资料信息
+        //#region 资料信息
 
-        /// <summary>
-        /// 新增资料文件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void toolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-           //新增
-            FormDataInfo form = new FormDataInfo();
-            form.DataInfo = new TDataInfoDTO() { BaseInfoId = BaseInfo.BaseInfoId, UploadPeople = _employee.EmployeeName };
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                TDataInfoDTO temp = form.DataInfo;
-                //大文件分布上传
-                if (temp.DataContent.Length > 40960000 * 21)  //800M
-                {
-                    warningBox1.ShowMessage("超过最大上传文件限制！", MessageType.Error, 3000, Color.Red);
-                    return;
-                }
-                TDataInfoDTO dto = new TDataInfoDTO()
-                {
-                    BaseInfoId = temp.BaseInfoId,
-                    CreateTime = temp.CreateTime,
-                    DataContent = new byte[0],
-                    DataDescription = temp.DataDescription,
-                    DataName = temp.DataName,
-                    DownloadTimes = temp.DownloadTimes,
-                    LastModifyTime = temp.LastModifyTime,
-                    MetaDataId = temp.MetaDataId,
-                    UploadPeople = temp.UploadPeople,
-                    FileSize = temp.FileSize
-                };
-                bool success = _client.TDataInfoAdd(dto);
-                if (success)
-                {
-                    backgroundWorker4.RunWorkerAsync(new object[] { temp.DataContent, temp.MetaDataId });
-                    AddOtherData(dto);
-                }
-            }
-        }
+        ///// <summary>
+        ///// 新增资料文件
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        //{
+        //   //新增
+        //    FormDataInfo form = new FormDataInfo();
+        //    form.DataInfo = new TDataInfoDTO() { BaseInfoId = BaseInfo.BaseInfoId, UploadPeople = _employee.EmployeeName };
+        //    if (form.ShowDialog() == DialogResult.OK)
+        //    {
+        //        TDataInfoDTO temp = form.DataInfo;
+        //        //大文件分布上传
+        //        if (temp.DataContent.Length > 40960000 * 21)  //800M
+        //        {
+        //            warningBox1.ShowMessage("超过最大上传文件限制！", MessageType.Error, 3000, Color.Red);
+        //            return;
+        //        }
+        //        TDataInfoDTO dto = new TDataInfoDTO()
+        //        {
+        //            BaseInfoId = temp.BaseInfoId,
+        //            CreateTime = temp.CreateTime,
+        //            DataContent = new byte[0],
+        //            DataDescription = temp.DataDescription,
+        //            DataName = temp.DataName,
+        //            DownloadTimes = temp.DownloadTimes,
+        //            LastModifyTime = temp.LastModifyTime,
+        //            MetaDataId = temp.MetaDataId,
+        //            UploadPeople = temp.UploadPeople,
+        //            FileSize = temp.FileSize
+        //        };
+        //        bool success = _client.TDataInfoAdd(dto);
+        //        if (success)
+        //        {
+        //            backgroundWorker4.RunWorkerAsync(new object[] { temp.DataContent, temp.MetaDataId });
+        //            AddOtherData(dto);
+        //        }
+        //    }
+        //}
 
-        /// <summary>
-        /// 资料文件操作
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void dgvDataInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0)
-                return;
-            string metaId=dgvDataInfo[MetaDataId.Index, e.RowIndex].Value.ToString();
-            //查看
-            if (e.ColumnIndex == DataInfoView.Index)
-            {
-                //FormDataInfo form = new FormDataInfo();
-                //form.DataInfo = GetOtherDataInfo(e.RowIndex);
-                //form.ShowDialog();
-                FormView view = new FormView();
-                view.Show();
-                view.View(metaId);
-            }
-            //删除
-            else if (e.ColumnIndex == DataInfoDelete.Index)
-            {
-                if (DialogResult.Yes == MessageBox.Show("是否删除本条信息？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk))
-                {
-                    bool success = _client.TDataInfoDelete(metaId);
-                    if (success)
-                    {
-                        dgvDataInfo.Rows.RemoveAt(e.RowIndex);
-                    }
-                }
-            }
-            //下载
-            else if (e.ColumnIndex == DataInfoDownload.Index)
-            {
-                SaveFileDialog dialog = new SaveFileDialog();
-                dialog.Filter = "所有文件|*.*";
-                TDataInfoDTO dto = _client.TDataInfoQueryById(metaId);
-                dialog.FileName = dto.DataName;
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    if (backgroundWorker5.IsBusy == false)
-                        backgroundWorker5.RunWorkerAsync(new object[] { dto, dialog.FileName });
-                }
-            }
-            //编辑
-            else if (e.ColumnIndex == DataInfoEdit.Index)
-            {
-                TDataInfoDTO result = _client.TDataInfoQueryById(metaId);
-                if (result == null)
-                    return;
-                FormDataInfo form = new FormDataInfo();
-                form.DataInfo = result;
-                if (form.ShowDialog() == DialogResult.OK)
-                {
-                    bool success = _client.TDataInfoUpdate(form.DataInfo);
-                    if (success)
-                    {
-                        UpdateOtherDataRow(form.DataInfo, e.RowIndex);
-                    }
-                }
-            }
-        }
+        ///// <summary>
+        ///// 资料文件操作
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void dgvDataInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    if (e.RowIndex < 0)
+        //        return;
+        //    string metaId=dgvDataInfo[MetaDataId.Index, e.RowIndex].Value.ToString();
+        //    //查看
+        //    if (e.ColumnIndex == DataInfoView.Index)
+        //    {
+        //        //FormDataInfo form = new FormDataInfo();
+        //        //form.DataInfo = GetOtherDataInfo(e.RowIndex);
+        //        //form.ShowDialog();
+        //        FormView view = new FormView();
+        //        view.Show();
+        //        view.View(metaId);
+        //    }
+        //    //删除
+        //    else if (e.ColumnIndex == DataInfoDelete.Index)
+        //    {
+        //        if (DialogResult.Yes == MessageBox.Show("是否删除本条信息？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk))
+        //        {
+        //            bool success = _client.TDataInfoDelete(metaId);
+        //            if (success)
+        //            {
+        //                dgvDataInfo.Rows.RemoveAt(e.RowIndex);
+        //            }
+        //        }
+        //    }
+        //    //下载
+        //    else if (e.ColumnIndex == DataInfoDownload.Index)
+        //    {
+        //        SaveFileDialog dialog = new SaveFileDialog();
+        //        dialog.Filter = "所有文件|*.*";
+        //        TDataInfoDTO dto = _client.TDataInfoQueryById(metaId);
+        //        dialog.FileName = dto.DataName;
+        //        if (dialog.ShowDialog() == DialogResult.OK)
+        //        {
+        //            if (backgroundWorker5.IsBusy == false)
+        //                backgroundWorker5.RunWorkerAsync(new object[] { dto, dialog.FileName });
+        //        }
+        //    }
+        //    //编辑
+        //    else if (e.ColumnIndex == DataInfoEdit.Index)
+        //    {
+        //        TDataInfoDTO result = _client.TDataInfoQueryById(metaId);
+        //        if (result == null)
+        //            return;
+        //        FormDataInfo form = new FormDataInfo();
+        //        form.DataInfo = result;
+        //        if (form.ShowDialog() == DialogResult.OK)
+        //        {
+        //            bool success = _client.TDataInfoUpdate(form.DataInfo);
+        //            if (success)
+        //            {
+        //                UpdateOtherDataRow(form.DataInfo, e.RowIndex);
+        //            }
+        //        }
+        //    }
+        //}
 
-        /// <summary>
-        /// 新增资料文件行
-        /// </summary>
-        /// <param name="dto"></param>
-        private void AddOtherData(TDataInfoDTO dto)
-        {
-            int index = dgvDataInfo.Rows.Add();
-            UpdateOtherDataRow(dto, index);
-        }
+        ///// <summary>
+        ///// 新增资料文件行
+        ///// </summary>
+        ///// <param name="dto"></param>
+        //private void AddOtherData(TDataInfoDTO dto)
+        //{
+        //    int index = dgvDataInfo.Rows.Add();
+        //    UpdateOtherDataRow(dto, index);
+        //}
 
-        /// <summary>
-        /// 更新资料文件行
-        /// </summary>
-        /// <param name="dto"></param>
-        /// <param name="index"></param>
-        private void UpdateOtherDataRow(TDataInfoDTO dto, int index)
-        {
-            dgvDataInfo[MetaDataId.Index, index].Value = dto.MetaDataId;
-            dgvDataInfo[DataName.Index, index].Value = dto.DataName;
-            dgvDataInfo[CreateTime.Index, index].Value = CommomHelper.ParseDateTime(dto.CreateTime); ;
-            dgvDataInfo[LastModifyTime.Index, index].Value = CommomHelper.ParseDateTime(dto.LastModifyTime);
-            dgvDataInfo[DataDescription.Index, index].Value = dto.DataDescription;
-            dgvDataInfo[UploadPeople.Index, index].Value = dto.UploadPeople;
-            dgvDataInfo[DownloadTimes.Index, index].Value = dto.DownloadTimes;
-            dgvDataInfo[DataInfoDelete.Index, index].Value = "删除";
-            dgvDataInfo[DataInfoEdit.Index, index].Value = "编辑";
-            dgvDataInfo[DataInfoView.Index, index].Value = "预览";
-            dgvDataInfo[DataInfoDownload.Index, index].Value = "下载";
-        }
+        ///// <summary>
+        ///// 更新资料文件行
+        ///// </summary>
+        ///// <param name="dto"></param>
+        ///// <param name="index"></param>
+        //private void UpdateOtherDataRow(TDataInfoDTO dto, int index)
+        //{
+        //    dgvDataInfo[MetaDataId.Index, index].Value = dto.MetaDataId;
+        //    dgvDataInfo[DataName.Index, index].Value = dto.DataName;
+        //    dgvDataInfo[CreateTime.Index, index].Value = CommomHelper.ParseDateTime(dto.CreateTime); ;
+        //    dgvDataInfo[LastModifyTime.Index, index].Value = CommomHelper.ParseDateTime(dto.LastModifyTime);
+        //    dgvDataInfo[DataDescription.Index, index].Value = dto.DataDescription;
+        //    dgvDataInfo[UploadPeople.Index, index].Value = dto.UploadPeople;
+        //    dgvDataInfo[DownloadTimes.Index, index].Value = dto.DownloadTimes;
+        //    dgvDataInfo[DataInfoDelete.Index, index].Value = "删除";
+        //    dgvDataInfo[DataInfoEdit.Index, index].Value = "编辑";
+        //    dgvDataInfo[DataInfoView.Index, index].Value = "预览";
+        //    dgvDataInfo[DataInfoDownload.Index, index].Value = "下载";
+        //}
 
-        /// <summary>
-        /// 根据行数返回资料信息
-        /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
-        private TDataInfoDTO GetOtherDataInfo(int index)
-        {
-            TDataInfoDTO result = new TDataInfoDTO();
-            result.BaseInfoId = BaseInfo.BaseInfoId;
-            result.MetaDataId = dgvDataInfo[MetaDataId.Index, index].Value.ToString();
-            result.DataName = dgvDataInfo[DataName.Index, index].Value.ToString();
-            result.CreateTime = CommomHelper.ParseDateTime(dgvDataInfo[CreateTime.Index, index].Value);
-            result.LastModifyTime = CommomHelper.ParseDateTime(dgvDataInfo[LastModifyTime.Index, index].Value);
-            result.DataDescription = dgvDataInfo[DataDescription.Index, index].Value.ToString();
-            result.UploadPeople = dgvDataInfo[UploadPeople.Index, index].Value.ToString();
-            result.DownloadTimes = CommomHelper.IntGetter(dgvDataInfo[DownloadTimes.Index, index].Value.ToString());
-            return result;
-        }
+        ///// <summary>
+        ///// 根据行数返回资料信息
+        ///// </summary>
+        ///// <param name="index"></param>
+        ///// <returns></returns>
+        //private TDataInfoDTO GetOtherDataInfo(int index)
+        //{
+        //    TDataInfoDTO result = new TDataInfoDTO();
+        //    result.BaseInfoId = BaseInfo.BaseInfoId;
+        //    result.MetaDataId = dgvDataInfo[MetaDataId.Index, index].Value.ToString();
+        //    result.DataName = dgvDataInfo[DataName.Index, index].Value.ToString();
+        //    result.CreateTime = CommomHelper.ParseDateTime(dgvDataInfo[CreateTime.Index, index].Value);
+        //    result.LastModifyTime = CommomHelper.ParseDateTime(dgvDataInfo[LastModifyTime.Index, index].Value);
+        //    result.DataDescription = dgvDataInfo[DataDescription.Index, index].Value.ToString();
+        //    result.UploadPeople = dgvDataInfo[UploadPeople.Index, index].Value.ToString();
+        //    result.DownloadTimes = CommomHelper.IntGetter(dgvDataInfo[DownloadTimes.Index, index].Value.ToString());
+        //    return result;
+        //}
 
-        /// <summary>
-        /// 搜索资料文件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void tsbSearchData_Click(object sender, EventArgs e)
-        {
-            FormSearchData form = new FormSearchData();
-            if (DialogResult.OK == form.ShowDialog())
-            {
-                TDataInfoDTO[] result = null;
+        ///// <summary>
+        ///// 搜索资料文件
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void tsbSearchData_Click(object sender, EventArgs e)
+        //{
+        //    FormSearchData form = new FormSearchData();
+        //    if (DialogResult.OK == form.ShowDialog())
+        //    {
+        //        TDataInfoDTO[] result = null;
 
-                if (form.LimitTime == false && string.IsNullOrEmpty(form.Keyword))
-                    result = _client.TDataInGetByForginKey(BaseInfo.BaseInfoId);
-                else
-                    result = _client.TDataInQuery(form.LimitTime, form.StartTime, form.EndTime, form.Keyword, BaseInfo.BaseInfoId);
-                dgvDataInfo.Rows.Clear();
-                Array.ForEach(result, t =>
-                {
-                    AddOtherData(t);
-                });
-            }
-        }
+        //        if (form.LimitTime == false && string.IsNullOrEmpty(form.Keyword))
+        //            result = _client.TDataInGetByForginKey(BaseInfo.BaseInfoId);
+        //        else
+        //            result = _client.TDataInQuery(form.LimitTime, form.StartTime, form.EndTime, form.Keyword, BaseInfo.BaseInfoId);
+        //        dgvDataInfo.Rows.Clear();
+        //        Array.ForEach(result, t =>
+        //        {
+        //            AddOtherData(t);
+        //        });
+        //    }
+        //}
 
-        #endregion
+        //#endregion
 
         #endregion
 
@@ -1241,7 +1229,7 @@ namespace 商户资料管理系统
             DetailInfo = null;
             ShopDataDTO = null;
             dgvPlatform.Rows.Clear();
-            dgvDataInfo.Rows.Clear();
+            //dgvDataInfo.Rows.Clear();
         }
 
         #endregion
@@ -1255,132 +1243,132 @@ namespace 商户资料管理系统
 
         #endregion
 
-        #region 文件上传
+        //#region 文件上传
 
-        private void backgroundWorker4_DoWork(object sender, DoWorkEventArgs e)
-        {
-            object[] arg = e.Argument as object[];
-            byte[] total = arg[0] as byte[];
-            string id = arg[1].ToString();
-            byte[] buffer = new byte[4096000]; //4M
-            int percent = total.Length / buffer.Length;
-            for (long index = 0; index < percent; index++)
-            {
-                buffer = total.Skip((int)index * buffer.Length).Take(buffer.Length).ToArray();
-                bool result = _client.TDataInfoUploadFile(buffer, id, (int)(index * buffer.Length / 40960000));
-                if (result == false)
-                {
-                    e.Result = false;
-                    return;
-                }
-                backgroundWorker4.ReportProgress((int)((index + 1) * buffer.Length * 100 / total.Length));
-            }
-            int left = total.Length % buffer.Length;
-            if (left > 0)
-            {
-                byte[] leftBuffer = total.Skip(percent * buffer.Length).Take(left).ToArray();
-                bool result = _client.TDataInfoUploadFile(leftBuffer, id, total.Length / 40960000);
-                if (result == false)
-                {
-                    e.Result = false;
-                    return;
-                }
-                backgroundWorker4.ReportProgress(100);
+        //private void backgroundWorker4_DoWork(object sender, DoWorkEventArgs e)
+        //{
+        //    object[] arg = e.Argument as object[];
+        //    byte[] total = arg[0] as byte[];
+        //    string id = arg[1].ToString();
+        //    byte[] buffer = new byte[4096000]; //4M
+        //    int percent = total.Length / buffer.Length;
+        //    for (long index = 0; index < percent; index++)
+        //    {
+        //        buffer = total.Skip((int)index * buffer.Length).Take(buffer.Length).ToArray();
+        //        bool result = _client.TDataInfoUploadFile(buffer, id, (int)(index * buffer.Length / 40960000));
+        //        if (result == false)
+        //        {
+        //            e.Result = false;
+        //            return;
+        //        }
+        //        backgroundWorker4.ReportProgress((int)((index + 1) * buffer.Length * 100 / total.Length));
+        //    }
+        //    int left = total.Length % buffer.Length;
+        //    if (left > 0)
+        //    {
+        //        byte[] leftBuffer = total.Skip(percent * buffer.Length).Take(left).ToArray();
+        //        bool result = _client.TDataInfoUploadFile(leftBuffer, id, total.Length / 40960000);
+        //        if (result == false)
+        //        {
+        //            e.Result = false;
+        //            return;
+        //        }
+        //        backgroundWorker4.ReportProgress(100);
 
-            }
-            e.Result = true;
-        }
+        //    }
+        //    e.Result = true;
+        //}
 
-        private void backgroundWorker4_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            int index = e.ProgressPercentage;
-            warningBox1.ShowMessage(string.Format("当前上传百分比{0}%", index), MessageType.Info);
-        }
+        //private void backgroundWorker4_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        //{
+        //    int index = e.ProgressPercentage;
+        //    warningBox1.ShowMessage(string.Format("当前上传百分比{0}%", index), MessageType.Info);
+        //}
 
-        private void backgroundWorker4_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if ((bool)e.Result)
-                warningBox1.ShowMessage("上传完成", MessageType.Info, 2000);
-            else
-                warningBox1.ShowMessage("上传失败", MessageType.Info, 2000, Color.Red);
-        }
+        //private void backgroundWorker4_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        //{
+        //    if ((bool)e.Result)
+        //        warningBox1.ShowMessage("上传完成", MessageType.Info, 2000);
+        //    else
+        //        warningBox1.ShowMessage("上传失败", MessageType.Info, 2000, Color.Red);
+        //}
 
-        private void tsbAddMoreData_Click(object sender, EventArgs e)
-        {
-            FormDataInfoEx form = new FormDataInfoEx(BaseInfo.BaseInfoId, _employee.EmployeeName);
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                backgroundWorker2.RunWorkerAsync(BaseInfo.BaseInfoId);
-            }
-        }
+        //private void tsbAddMoreData_Click(object sender, EventArgs e)
+        //{
+        //    FormDataInfoEx form = new FormDataInfoEx(BaseInfo.BaseInfoId, _employee.EmployeeName);
+        //    if (form.ShowDialog() == DialogResult.OK)
+        //    {
+        //        backgroundWorker2.RunWorkerAsync(BaseInfo.BaseInfoId);
+        //    }
+        //}
 
-        #endregion
+        //#endregion
 
-        #region 文件下载
+        //#region 文件下载
 
-        private void backgroundWorker5_DoWork(object sender, DoWorkEventArgs e)
-        {
-            try
-            {
-                object[] obj = e.Argument as object[];
-                TDataInfoDTO dto = obj[0] as TDataInfoDTO;
-                long totalSize = long.Parse(dto.FileSize);
-                if (dto == null)
-                {
-                    e.Result = null;
-                    return;
-                }
+        //private void backgroundWorker5_DoWork(object sender, DoWorkEventArgs e)
+        //{
+        //    try
+        //    {
+        //        object[] obj = e.Argument as object[];
+        //        TDataInfoDTO dto = obj[0] as TDataInfoDTO;
+        //        long totalSize = long.Parse(dto.FileSize);
+        //        if (dto == null)
+        //        {
+        //            e.Result = null;
+        //            return;
+        //        }
 
-                long total = 0;
-                byte[] buffer = null;
-                bool success = true;
-                while (success)
-                {
-                    using (FileStream stream = new FileStream(obj[1].ToString(), FileMode.Append))
-                    {
-                        success = _client.TDataInfoDownloadFile(out buffer, total, dto.MetaDataId);
-                        if (success == false)
-                        {
-                            break;
-                        }
-                        total += buffer.Length;
-                        backgroundWorker5.ReportProgress((int)(total * 100 / totalSize));
-                        stream.Write(buffer, 0, buffer.Length);
-                    }
-                }
-                e.Result = dto;
-            }
-            catch (Exception)
-            {
-                e.Result = null;
-            }
-        }
+        //        long total = 0;
+        //        byte[] buffer = null;
+        //        bool success = true;
+        //        while (success)
+        //        {
+        //            using (FileStream stream = new FileStream(obj[1].ToString(), FileMode.Append))
+        //            {
+        //                success = _client.TDataInfoDownloadFile(out buffer, total, dto.MetaDataId);
+        //                if (success == false)
+        //                {
+        //                    break;
+        //                }
+        //                total += buffer.Length;
+        //                backgroundWorker5.ReportProgress((int)(total * 100 / totalSize));
+        //                stream.Write(buffer, 0, buffer.Length);
+        //            }
+        //        }
+        //        e.Result = dto;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        e.Result = null;
+        //    }
+        //}
 
-        private void backgroundWorker5_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            int index = e.ProgressPercentage;
-            warningBox1.ShowMessage(string.Format("当前下载百分比{0}%", index), MessageType.Info);
-        }
+        //private void backgroundWorker5_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        //{
+        //    int index = e.ProgressPercentage;
+        //    warningBox1.ShowMessage(string.Format("当前下载百分比{0}%", index), MessageType.Info);
+        //}
 
-        private void backgroundWorker5_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            TDataInfoDTO dto = (TDataInfoDTO)e.Result;
-            if (dto != null)
-            {
-                //下载次数+1
-                dto.DownloadTimes = dto.DownloadTimes.Value + 1;
-                bool success = _client.TDataInfoUpdate(dto);
-                if (success)
-                {
-                    UpdateOtherDataRow(dto, dgvDataInfo.SelectedRows[0].Index);
-                    warningBox1.ShowMessage("下载完成", MessageType.Info, 2000);
-                }             
-            }
-            else
-                warningBox1.ShowMessage("下载失败", MessageType.Info, 2000, Color.Red);
-        }
+        //private void backgroundWorker5_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        //{
+        //    TDataInfoDTO dto = (TDataInfoDTO)e.Result;
+        //    if (dto != null)
+        //    {
+        //        //下载次数+1
+        //        dto.DownloadTimes = dto.DownloadTimes.Value + 1;
+        //        bool success = _client.TDataInfoUpdate(dto);
+        //        if (success)
+        //        {
+        //            UpdateOtherDataRow(dto, dgvDataInfo.SelectedRows[0].Index);
+        //            warningBox1.ShowMessage("下载完成", MessageType.Info, 2000);
+        //        }             
+        //    }
+        //    else
+        //        warningBox1.ShowMessage("下载失败", MessageType.Info, 2000, Color.Red);
+        //}
 
-        #endregion
+        //#endregion
     }
 
     public class OparateEventArgs : EventArgs

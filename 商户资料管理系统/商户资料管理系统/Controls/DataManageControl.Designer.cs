@@ -41,7 +41,6 @@
             this.tsbMoveTo = new System.Windows.Forms.ToolStripButton();
             this.LvDataContent = new System.Windows.Forms.ListView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.backgroundWorker4 = new System.ComponentModel.BackgroundWorker();
             this.searchTextBox1 = new 商户资料管理系统.SearchTextBox();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -90,7 +89,7 @@
             this.tsbRefresh.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.tsbRefresh.Name = "tsbRefresh";
             this.tsbRefresh.Size = new System.Drawing.Size(31, 38);
-            this.tsbRefresh.Text = "上传";
+            this.tsbRefresh.Text = "刷新";
             this.tsbRefresh.Click += new System.EventHandler(this.tsbRefresh_Click);
             // 
             // toolStripSeparator1
@@ -160,6 +159,8 @@
             this.tsbMoveTo.Name = "tsbMoveTo";
             this.tsbMoveTo.Size = new System.Drawing.Size(79, 35);
             this.tsbMoveTo.Text = "移动到";
+            this.tsbMoveTo.Visible = false;
+            this.tsbMoveTo.Click += new System.EventHandler(this.tsbMoveTo_Click);
             // 
             // LvDataContent
             // 
@@ -168,7 +169,6 @@
             this.LvDataContent.LabelEdit = true;
             this.LvDataContent.LargeImageList = this.imageList1;
             this.LvDataContent.Location = new System.Drawing.Point(0, 38);
-            this.LvDataContent.MultiSelect = false;
             this.LvDataContent.Name = "LvDataContent";
             this.LvDataContent.ShowItemToolTips = true;
             this.LvDataContent.Size = new System.Drawing.Size(688, 331);
@@ -189,13 +189,6 @@
             this.imageList1.ImageSize = new System.Drawing.Size(64, 64);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // backgroundWorker4
-            // 
-            this.backgroundWorker4.WorkerReportsProgress = true;
-            this.backgroundWorker4.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker4_DoWork);
-            this.backgroundWorker4.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker4_ProgressChanged);
-            this.backgroundWorker4.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker4_RunWorkerCompleted);
-            // 
             // searchTextBox1
             // 
             this.searchTextBox1.ForeColor = System.Drawing.Color.Gray;
@@ -206,6 +199,7 @@
             this.searchTextBox1.Size = new System.Drawing.Size(153, 21);
             this.searchTextBox1.TabIndex = 1;
             this.searchTextBox1.Text = "搜索商户文件";
+            this.searchTextBox1.OnSearch += new 商户资料管理系统.SearchTextBox.OnSearchHander(this.searchTextBox1_OnSearch);
             // 
             // DataManageControl
             // 
@@ -237,6 +231,5 @@
         private SearchTextBox searchTextBox1;
         private System.Windows.Forms.ListView LvDataContent;
         private System.Windows.Forms.ImageList imageList1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker4;
     }
 }

@@ -86,3 +86,6 @@ F:\BaiduYunDownload\商户资料管理系统\商户资料管理系统\obj\Debug\
 F:\BaiduYunDownload\商户资料管理系统\商户资料管理系统\obj\Debug\商户资料管理系统.pdb
 F:\BaiduYunDownload\商户资料管理系统\商户资料管理系统\obj\Debug\商户资料管理系统.DataManageControl.resources
 C:\Users\Administrator\Desktop\商户资料管理系统\商户资料管理系统\obj\Debug\商户资料管理系统.DataManageControl.resources
+C:\Users\Administrator\Documents\GitHub\YatMing\商户资料管理系统\bin\商户资料管理系统.exe.config
+C:\Users\Administrator\Documents\GitHub\YatMing\商户资料管理系统\商户资料管理系统\obj\Debug\商户资料管理系统.exe
+C:\Users\Administrator\Documents\GitHub\YatMing\商户资料管理系统\商户资料管理系统\obj\Debug\商户资料管理系统.pdb

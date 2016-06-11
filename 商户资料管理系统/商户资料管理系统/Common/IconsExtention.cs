@@ -324,8 +324,15 @@ namespace 商户资料管理系统
             //extracts the icon from the file.  
             ExtractIconEx(IconPath[0],
                 Convert.ToInt16(IconPath[1]), Large, Small, 1);
-            return size == SystemIconSize.Large ?
-                Icon.FromHandle(Large[0]) : Icon.FromHandle(Small[0]);
+            try
+            {
+                return size == SystemIconSize.Large ?
+                    Icon.FromHandle(Large[0]) : Icon.FromHandle(Small[0]);
+            }
+            catch (Exception)
+            {
+                return new Icon(IconPath[0].Replace("\"", ""));
+            }
         }
 
         public static Icon IconFromExtensionShell(string extension, SystemIconSize size)
