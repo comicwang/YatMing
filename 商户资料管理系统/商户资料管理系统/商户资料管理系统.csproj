@@ -420,6 +420,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\switch.png" />
     <None Include="Resources\upload.png" />
     <None Include="Resources\wait.gif" />
     <None Include="Resources\up.png" />
@@ -477,6 +478,8 @@
     <None Include="Resources\refresh.png" />
     <None Include="Resources\folder.png" />
     <None Include="Resources\retry.png" />
+    <None Include="Resources\off.png" />
+    <None Include="Resources\on.png" />
     <Content Include="Resources\search.png" />
     <None Include="Resources\close.png" />
     <None Include="Resources\edit.png" />

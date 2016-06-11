@@ -20,6 +20,7 @@ namespace 商户资料管理系统
         private YatMingServiceClient _client = ServiceProvider.Clent;
         private bool _isAdd = false;
         private bool _worned = false;
+        private bool _openSkin = true;
         //图标可用事件
         private delegate void CanOparateChanged(object sender, OparateEventArgs e);
         private event CanOparateChanged OnCanOparateChanged;
@@ -1242,6 +1243,24 @@ namespace 商户资料管理系统
         }
 
         #endregion
+
+        private void tsbOpenSkin_Click(object sender, EventArgs e)
+        {
+            _openSkin = !_openSkin;
+            if (_openSkin)
+            {
+                tsbOpenSkin.Image = Resources.on;
+                tsbOpenSkin.ToolTipText = "关闭皮肤";
+                this.BindSkin(tsbSkin);
+            }
+            else
+            {
+                tsbOpenSkin.Image = Resources.off;
+                tsbOpenSkin.ToolTipText = "打开皮肤";
+                this.ClearBind(tsbSkin);
+            }
+            this.Refresh();
+        }
 
         //#region 文件上传
 

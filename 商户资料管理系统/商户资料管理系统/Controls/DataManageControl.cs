@@ -19,14 +19,16 @@ namespace 商户资料管理系统
         private string _baseInfoId = string.Empty;
         private string _currentId = string.Empty;
         private string _oldText = string.Empty;
-       
+
         public DataManageControl()
         {
-            InitializeComponent();
+            InitializeComponent();          
         }
 
         public void InitializeContent(string id)
         {
+            LvDataContent.InsertionMark.Color = Color.Red;
+            LvDataContent.ListViewItemSorter = new ListViewIndexComparer();
             _baseInfoId = id;
             IniliazeListView(null);
         }
@@ -36,7 +38,7 @@ namespace 商户资料管理系统
             TDataInfoDTO[] allResult = null;
             LvDataContent.Items.Clear();
             _currentId = pid;
-            //跟节点
+            //根节点
             if (string.IsNullOrWhiteSpace(pid))
             {
                 allResult = _client.TDataInGetByForginKey(_baseInfoId).Where(t => string.IsNullOrWhiteSpace(t.ParentId)).ToArray();
@@ -45,15 +47,17 @@ namespace 商户资料管理系统
             else
             {
                 tsbReturn.Enabled = true;
-                allResult = _client.TDataInGetByParentKey(pid);              
+                allResult = _client.TDataInGetByParentKey(pid);
             }
             Array.ForEach(allResult, d =>
             {
-                CreateViewItem(d);
+                CreateViewItem(d, LvDataContent.Items.Count);
             });
         }
 
-        private void CreateViewItem(TDataInfoDTO dto)
+        #region 操作Listview
+
+        private void CreateViewItem(TDataInfoDTO dto,int index)
         {
             ListViewItemEx lvi = new ListViewItemEx();
             lvi.ItemData = dto;
@@ -65,8 +69,8 @@ namespace 商户资料管理系统
                 if (!imageList1.Images.Keys.Contains(tempFileExtension))
                     imageList1.Images.Add(tempFileExtension, IconsExtention.IconFromExtension(tempFileExtension, IconsExtention.SystemIconSize.Large));
                 lvi.ImageIndex = imageList1.Images.Keys.IndexOf(tempFileExtension);
-                lvi.ToolTipText = string.Format("文件名称:{0}\r\n文件大小:{1}M\r\n上传时间:{2}\r\n上传人:{3}\r\n修改时间:{4}\r\n下载次数:{5}\r\n文件描述:{6}", dto.DataName,CommomHelper.ParseMB(dto.FileSize), dto.CreateTime, dto.UploadPeople, dto.LastModifyTime, dto.DownloadTimes, dto.DataDescription);
-                LvDataContent.Items.Add(lvi);
+                lvi.ToolTipText = string.Format("文件名称:{0}\r\n文件大小:{1}M\r\n上传时间:{2}\r\n上传人:{3}\r\n修改时间:{4}\r\n下载次数:{5}\r\n文件描述:{6}", dto.DataName, CommomHelper.ParseMB(dto.FileSize), dto.CreateTime, dto.UploadPeople, dto.LastModifyTime, dto.DownloadTimes, dto.DataDescription);
+                LvDataContent.Items.Insert(index,lvi);
                 lvi.SetOtherControl();
             }
             else
@@ -75,7 +79,7 @@ namespace 商户资料管理系统
                     imageList1.Images.Add("Folder", Resources.folder);
                 lvi.ImageIndex = imageList1.Images.Keys.IndexOf("Folder");
                 string.Format("文件名称:{0}\r\n上传时间:{1}\r\n上传人:{2}\r\n修改时间:{3}\r\n文件描述:{4}", dto.DataName, dto.CreateTime, dto.UploadPeople, dto.LastModifyTime, dto.DataDescription);
-                LvDataContent.Items.Add(lvi);
+                LvDataContent.Items.Insert(index, lvi);
             }
         }
 
@@ -101,6 +105,8 @@ namespace 商户资料管理系统
                 string.Format("文件名称:{0}\r\n上传时间:{1}\r\n上传人:{2}\r\n修改时间:{3}\r\n文件描述:{4}", dto.DataName, dto.CreateTime, dto.UploadPeople, dto.LastModifyTime, dto.DataDescription);
             }
         }
+
+        #endregion
 
         private void tsbReturn_Click(object sender, EventArgs e)
         {
@@ -128,7 +134,7 @@ namespace 商户资料管理系统
             dto.ParentId = _currentId;
             bool result = _client.TDataInfoAdd(dto);
             if (result)
-                CreateViewItem(dto);
+                CreateViewItem(dto, LvDataContent.Items.Count);
         }
 
         private void tsbDelete_Click(object sender, EventArgs e)
@@ -162,16 +168,16 @@ namespace 商户资料管理系统
 
         private void tsbDownload_Click(object sender, EventArgs e)
         {
-             ListView.SelectedListViewItemCollection lstSelected = LvDataContent.SelectedItems;
-             if (lstSelected.Count > 0)
-             {
-                 foreach (ListViewItem item in lstSelected)
-                 {
-                     ListViewItemEx ctr = item as ListViewItemEx;
-                     if (!ctr.ItemData.IsForlder)
-                         ctr.DownLoadFile();
-                 }
-             }
+            ListView.SelectedListViewItemCollection lstSelected = LvDataContent.SelectedItems;
+            if (lstSelected.Count > 0)
+            {
+                foreach (ListViewItem item in lstSelected)
+                {
+                    ListViewItemEx ctr = item as ListViewItemEx;
+                    if (!ctr.ItemData.IsForlder)
+                        ctr.DownLoadFile();
+                }
+            }
         }
 
         #endregion
@@ -211,7 +217,15 @@ namespace 商户资料管理系统
         /// <param name="e"></param>
         private void listView1_ItemDrag(object sender, ItemDragEventArgs e)
         {
-            LvDataContent.DoDragDrop(e.Item, DragDropEffects.Move);
+            Dictionary<ListViewItemEx, int> itemsCopy = new Dictionary<ListViewItemEx, int>();
+            foreach (ListViewItemEx item in LvDataContent.SelectedItems)
+                itemsCopy.Add(item, item.Index);
+            LvDataContent.DoDragDrop(itemsCopy, DragDropEffects.Move);
+        }
+
+        private void LvDataContent_DragLeave(object sender, EventArgs e)
+        {
+            LvDataContent.InsertionMark.Index = -1;
         }
 
         /// <summary>
@@ -221,7 +235,11 @@ namespace 商户资料管理系统
         /// <param name="e"></param>
         private void listView1_DragEnter(object sender, DragEventArgs e)
         {
-            e.Effect = DragDropEffects.Move;
+            e.Effect = e.AllowedEffect;
+            //if (e.AllowedEffect == DragDropEffects.Move)
+            //    e.Effect = DragDropEffects.Move;
+            //else
+            //    e.Effect = DragDropEffects.Copy;
         }
 
         /// <summary>
@@ -231,11 +249,24 @@ namespace 商户资料管理系统
         /// <param name="e"></param>
         private void listView1_DragOver(object sender, DragEventArgs e)
         {
-            Point ptScreen = new Point(e.X, e.Y);
-            Point pt = LvDataContent.PointToClient(ptScreen);
-            ListViewItem item = LvDataContent.GetItemAt(pt.X, pt.Y);
-            if (item != null)
-                item.Selected = true;
+            // 获得鼠标坐标
+            Point point = LvDataContent.PointToClient(new Point(e.X, e.Y));
+            // 返回离鼠标最近的项目的索引
+            int index = LvDataContent.InsertionMark.NearestIndex(point);
+            // 确定光标不在拖拽项目上
+            if (index > -1)
+            {
+                Rectangle itemBounds = LvDataContent.GetItemRect(index);
+                if (point.X > itemBounds.Left + (itemBounds.Width / 2))
+                {
+                    LvDataContent.InsertionMark.AppearsAfterItem = true;
+                }
+                else
+                {
+                    LvDataContent.InsertionMark.AppearsAfterItem = false;
+                }
+            }
+            LvDataContent.InsertionMark.Index = index;
         }
 
         /// <summary>
@@ -245,28 +276,67 @@ namespace 商户资料管理系统
         /// <param name="e"></param>
         private void listView1_DragDrop(object sender, DragEventArgs e)
         {
-            ListViewItemEx draggedItem = (ListViewItemEx)e.Data.GetData(typeof(ListViewItemEx));
-            Point ptScreen = new Point(e.X, e.Y);
-            Point pt = LvDataContent.PointToClient(ptScreen);
-            ListViewItemEx TargetItem = LvDataContent.GetItemAt(pt.X, pt.Y) as ListViewItemEx;//拖动的项将放置于该项之前   
-            if (null == TargetItem)
-                return;
-            TDataInfoDTO targetDto = TargetItem.ItemData;
-            if (targetDto.IsForlder)
+            // 返回插入标记的索引值  
+            int index = LvDataContent.InsertionMark.Index;
+            // 如果插入标记不可见，则退出.  
+            if (index == -1)
             {
-                TDataInfoDTO sourceDTO = draggedItem.ItemData;
-                sourceDTO.ParentId = targetDto.MetaDataId;
-                bool success= _client.TDataInfoUpdate(sourceDTO);
-                if (success)
+                return;
+            }
+            // 如果插入标记在项目的右面，使目标索引值加一  
+            if (LvDataContent.InsertionMark.AppearsAfterItem && index < LvDataContent.Items.Count - 1 && (LvDataContent.Items[index] as ListViewItemEx).ItemData.IsForlder == false)
+            {
+                index++;
+            }
+            ListViewItemEx target = LvDataContent.Items[index] as ListViewItemEx;
+            //移动项
+            if (e.Effect == DragDropEffects.Move)
+            {
+                // 返回拖拽项  
+                Dictionary<ListViewItemEx, int> items = (Dictionary<ListViewItemEx, int>)e.Data.GetData(typeof(Dictionary<ListViewItemEx, int>));
+                foreach (var item in items)
                 {
-                    LvDataContent.Items.Remove(draggedItem);
+                    if (target.ItemData.IsForlder == false)
+                    {
+                        CreateViewItem(item.Key.ItemData, index);
+                        LvDataContent.Items.Remove(item.Key);
+                        if (item.Value >= index) index++;
+                    }
+                    else
+                    {
+                        TDataInfoDTO sourceDTO = item.Key.ItemData;
+                        sourceDTO.ParentId = target.ItemData.MetaDataId;
+                        bool success = _client.TDataInfoUpdate(sourceDTO);
+                        if (success)
+                        {
+                            LvDataContent.Items.Remove(item.Key);
+                        }
+                    }
                 }
             }
-            else
+            else if (e.Effect == (DragDropEffects.Copy | DragDropEffects.Link | DragDropEffects.Move))
             {
-                LvDataContent.Items.Insert(TargetItem.Index, (ListViewItemEx)draggedItem.Clone());
-                LvDataContent.Items.Remove(draggedItem);
-            }           
+                if (target.ItemData.IsForlder)
+                {
+                    IniliazeListView(target.ItemData.MetaDataId);
+                }
+                //上传文件
+                string[] result = e.Data.GetData(DataFormats.FileDrop) as string[];
+                Array.ForEach(result, t =>
+                {
+
+                    ListViewItemEx ctr = new ListViewItemEx(_baseInfoId);
+                    ctr.Text = Path.GetFileName(t);
+                    string tempFileExtension = Path.GetExtension(t); 
+                    if (!imageList1.Images.Keys.Contains(tempFileExtension))
+                        imageList1.Images.Add(tempFileExtension, IconsExtention.IconFromExtension(tempFileExtension, IconsExtention.SystemIconSize.Large));
+                    ctr.ImageIndex = imageList1.Images.Keys.IndexOf(tempFileExtension);
+                    LvDataContent.Items.Add(ctr);
+                    ctr.SetOtherControl();
+                    ctr.UploadFile(t, _currentId);
+                });
+            }
+
         }
 
         #endregion
@@ -280,7 +350,8 @@ namespace 商户资料管理系统
             dialog.Multiselect = true;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                Array.ForEach(dialog.FileNames, t => {
+                Array.ForEach(dialog.FileNames, t =>
+                {
                     ListViewItemEx ctr = new ListViewItemEx(_baseInfoId);
                     ctr.Text = Path.GetFileName(t);
                     string tempFileExtension = Path.GetExtension(t);
@@ -291,9 +362,8 @@ namespace 商户资料管理系统
 
                     LvDataContent.Items.Add(ctr);
                     ctr.SetOtherControl();
-
-                    ctr.UploadFile(t);
-                });            
+                    ctr.UploadFile(t, _currentId);
+                });
             }
         }
 
@@ -338,10 +408,19 @@ namespace 商户资料管理系统
             LvDataContent.Items.Clear();
             Array.ForEach(result, t =>
             {
-                CreateViewItem(t);
+                CreateViewItem(t, LvDataContent.Items.Count);
             });
         }
 
         #endregion
+
     }
+    public class ListViewIndexComparer : System.Collections.IComparer
+    {
+        public int Compare(object x, object y)
+        {
+            return ((ListViewItem)x).Index - ((ListViewItem)y).Index;
+        }
+    }
+
 }

@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.stsTimer = new System.Windows.Forms.StatusStrip();
             this.tslTimer = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsbOpenSkin = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsbSkin = new System.Windows.Forms.ToolStripDropDownButton();
             this.tslUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -176,12 +177,12 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.warningBox1 = new 商户资料管理系统.WarningBox();
+            this.splitter1 = new System.Windows.Forms.Splitter();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsbAddDataInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbSearchData = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbAddMoreData = new System.Windows.Forms.ToolStripMenuItem();
-            this.warningBox1 = new 商户资料管理系统.WarningBox();
-            this.splitter1 = new System.Windows.Forms.Splitter();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker3 = new System.ComponentModel.BackgroundWorker();
@@ -234,6 +235,7 @@
             // 
             this.stsTimer.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tslTimer,
+            this.tsbOpenSkin,
             this.tsbSkin,
             this.tslUser});
             this.stsTimer.Location = new System.Drawing.Point(0, 577);
@@ -244,15 +246,26 @@
             // tslTimer
             // 
             this.tslTimer.Name = "tslTimer";
-            this.tslTimer.Size = new System.Drawing.Size(928, 18);
+            this.tslTimer.Size = new System.Drawing.Size(881, 18);
             this.tslTimer.Spring = true;
             this.tslTimer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tsbOpenSkin
+            // 
+            this.tsbOpenSkin.AutoToolTip = true;
+            this.tsbOpenSkin.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbOpenSkin.Image = global::商户资料管理系统.Properties.Resources.on;
+            this.tsbOpenSkin.Name = "tsbOpenSkin";
+            this.tsbOpenSkin.Size = new System.Drawing.Size(16, 18);
+            this.tsbOpenSkin.Text = "开启皮肤";
+            this.tsbOpenSkin.ToolTipText = "开启皮肤";
+            this.tsbOpenSkin.Click += new System.EventHandler(this.tsbOpenSkin_Click);
             // 
             // tsbSkin
             // 
             this.tsbSkin.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.tsbSkin.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbSkin.Image = ((System.Drawing.Image)(resources.GetObject("tsbSkin.Image")));
+            this.tsbSkin.Image = global::商户资料管理系统.Properties.Resources.on;
             this.tsbSkin.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSkin.Name = "tsbSkin";
             this.tsbSkin.Size = new System.Drawing.Size(49, 21);
@@ -749,7 +762,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(647, 506);
+            this.tabPage2.Size = new System.Drawing.Size(647, 492);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "商户详细信息";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -764,7 +777,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(641, 500);
+            this.panel1.Size = new System.Drawing.Size(641, 486);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -773,7 +786,7 @@
             this.panel2.Controls.Add(this.grpPlatfrom);
             this.panel2.Controls.Add(this.grpPromotion);
             this.panel2.Controls.Add(this.grpDetail);
-            this.panel2.Location = new System.Drawing.Point(-197, -1);
+            this.panel2.Location = new System.Drawing.Point(-237, -1);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(600, 734);
             this.panel2.TabIndex = 0;
@@ -1024,7 +1037,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(647, 506);
+            this.tabPage3.Size = new System.Drawing.Size(647, 492);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "开店资料信息";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1037,7 +1050,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(641, 500);
+            this.panel4.Size = new System.Drawing.Size(641, 486);
             this.panel4.TabIndex = 0;
             this.panel4.SizeChanged += new System.EventHandler(this.panel4_SizeChanged);
             // 
@@ -1673,7 +1686,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(647, 506);
+            this.tabPage4.Size = new System.Drawing.Size(647, 492);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "合同信息";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1683,7 +1696,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(647, 506);
+            this.tabPage5.Size = new System.Drawing.Size(647, 492);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "服务信息";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1693,7 +1706,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 25);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(647, 506);
+            this.tabPage6.Size = new System.Drawing.Size(647, 492);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "费用信息";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1704,18 +1717,9 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 25);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(647, 506);
+            this.tabPage7.Size = new System.Drawing.Size(647, 492);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "资料文件";
-            // 
-            // contextMenuStrip3
-            // 
-            this.contextMenuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbAddDataInfo,
-            this.tsbSearchData,
-            this.tsbAddMoreData});
-            this.contextMenuStrip3.Name = "contextMenuStrip1";
-            this.contextMenuStrip3.Size = new System.Drawing.Size(145, 70);
             // 
             // warningBox1
             // 
@@ -1736,6 +1740,30 @@
             this.splitter1.Size = new System.Drawing.Size(3, 577);
             this.splitter1.TabIndex = 0;
             this.splitter1.TabStop = false;
+            // 
+            // contextMenuStrip3
+            // 
+            this.contextMenuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbAddDataInfo,
+            this.tsbSearchData,
+            this.tsbAddMoreData});
+            this.contextMenuStrip3.Name = "contextMenuStrip1";
+            this.contextMenuStrip3.Size = new System.Drawing.Size(69, 70);
+            // 
+            // tsbAddDataInfo
+            // 
+            this.tsbAddDataInfo.Name = "tsbAddDataInfo";
+            this.tsbAddDataInfo.Size = new System.Drawing.Size(68, 22);
+            // 
+            // tsbSearchData
+            // 
+            this.tsbSearchData.Name = "tsbSearchData";
+            this.tsbSearchData.Size = new System.Drawing.Size(68, 22);
+            // 
+            // tsbAddMoreData
+            // 
+            this.tsbAddMoreData.Name = "tsbAddMoreData";
+            this.tsbAddMoreData.Size = new System.Drawing.Size(68, 22);
             // 
             // backgroundWorker1
             // 
@@ -1995,6 +2023,7 @@
         private System.Windows.Forms.ToolStripDropDownButton tsbSkin;
         private System.Windows.Forms.Panel pnlWait;
         private System.Windows.Forms.PictureBox picWait;
+        private System.Windows.Forms.ToolStripStatusLabel tsbOpenSkin;
     }
 }
 

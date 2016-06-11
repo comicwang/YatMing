@@ -164,7 +164,9 @@
             // 
             // LvDataContent
             // 
+            this.LvDataContent.AllowColumnReorder = true;
             this.LvDataContent.AllowDrop = true;
+            this.LvDataContent.AutoArrange = false;
             this.LvDataContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LvDataContent.LabelEdit = true;
             this.LvDataContent.LargeImageList = this.imageList1;
@@ -181,6 +183,7 @@
             this.LvDataContent.DragDrop += new System.Windows.Forms.DragEventHandler(this.listView1_DragDrop);
             this.LvDataContent.DragEnter += new System.Windows.Forms.DragEventHandler(this.listView1_DragEnter);
             this.LvDataContent.DragOver += new System.Windows.Forms.DragEventHandler(this.listView1_DragOver);
+            this.LvDataContent.DragLeave += new System.EventHandler(this.LvDataContent_DragLeave);
             this.LvDataContent.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.LvDataContent_MouseDoubleClick);
             // 
             // imageList1
@@ -192,7 +195,7 @@
             // searchTextBox1
             // 
             this.searchTextBox1.ForeColor = System.Drawing.Color.Gray;
-            this.searchTextBox1.Location = new System.Drawing.Point(532, 9);
+            this.searchTextBox1.Location = new System.Drawing.Point(411, 10);
             this.searchTextBox1.Name = "searchTextBox1";
             this.searchTextBox1.PresetText = "搜索商户文件";
             this.searchTextBox1.SearchImage = ((System.Drawing.Image)(resources.GetObject("searchTextBox1.SearchImage")));

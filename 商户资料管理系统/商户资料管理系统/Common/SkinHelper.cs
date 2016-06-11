@@ -51,6 +51,12 @@ namespace 商户资料管理系统
             _btn.Text = skinName;
         }
 
+        public static void ClearBind(this FormMain form, ToolStripDropDownButton btn)
+        {
+            btn.DropDownItems.Clear();
+            _skin.Dispose();
+        }
+
         private static void btn_Click(object sender, EventArgs e)
         {
             ToolStripItem item = sender as ToolStripItem;
