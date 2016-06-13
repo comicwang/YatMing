@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Windows.Forms;
 using 商户资料管理系统.Properties;
+using 商户资料管理系统.YatServer;
 
 namespace 商户资料管理系统.Common
 {
     public class CommomHelper
     {
+        private static YatMingServiceClient _client = ServiceProvider.Clent;
+
         public static string GuidGetter(object obj)
         {
             return obj == null ? Guid.NewGuid().ToString() : obj.ToString();
@@ -24,8 +28,8 @@ namespace 商户资料管理系统.Common
 
         public static int IntGetter(string obj)
         {
-            int result=0;
-            bool success= int.TryParse(obj, out result);
+            int result = 0;
+            bool success = int.TryParse(obj, out result);
             return result;
         }
 
@@ -43,17 +47,17 @@ namespace 商户资料管理系统.Common
 
         public static DateTime ParseDateTime(object obj)
         {
-             DateTime result=DateTime.MinValue;
-             if (obj != null)
-             {
-                 bool success = DateTime.TryParse(obj.ToString(), out result);
-             }
-             return result;
+            DateTime result = DateTime.MinValue;
+            if (obj != null)
+            {
+                bool success = DateTime.TryParse(obj.ToString(), out result);
+            }
+            return result;
         }
 
         public static double ParseMB(string b)
         {
-            double result=0;
+            double result = 0;
             bool success = double.TryParse(b, out result);
             if (success)
                 result = Math.Round(result / 1024 / 1024, 2);
@@ -98,20 +102,139 @@ namespace 商户资料管理系统.Common
             return partImg;
         }
 
-        public static void AddImageIndex(string fileExtention,ImageList lstImg)
+        private static bool ThumbnailCallback()
+        {
+            return false;
+        }
+
+        private static Image GetReducedImage(Image ResourceImage, int Width, int Height)
         {
             try
             {
+                Image ReducedImage;
+
+                Image.GetThumbnailImageAbort callb = new Image.GetThumbnailImageAbort(ThumbnailCallback);
+
+                ReducedImage = ResourceImage.GetThumbnailImage(Width, Height, callb, IntPtr.Zero);
+                ResourceImage.Dispose();
+                return ReducedImage;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public static int GetImageIndex(TDataInfoDTO dto, ImageList lstImg)
+        {
+            string fileExtention = Path.GetExtension(dto.DataName);
+            string keyword = fileExtention;            
+            try
+            {
                 if (!lstImg.Images.Keys.Contains(fileExtention))
-                    lstImg.Images.Add(fileExtention, IconsExtention.IconFromExtension(fileExtention, IconsExtention.SystemIconSize.Large));
+                {
+                    //图片文件，寻找图片缩略图
+                    if (fileExtention.ToLower().EndsWith(".png") || fileExtention.ToLower().EndsWith(".bmp") || fileExtention.ToLower().EndsWith(".jpeg") || fileExtention.ToLower().EndsWith(".jpg"))
+                    {
+                        keyword = dto.MetaDataId;
+                        Image targetImg = null;
+                        string tempDir = Path.Combine(System.Environment.GetEnvironmentVariable("TEMP"), "64");
+                        if (!Directory.Exists(tempDir))
+                        {
+                            Directory.CreateDirectory(tempDir);
+                        }
+                        string tempPath = Path.Combine(tempDir, dto.MetaDataId + ".jpeg");
+                        if (!File.Exists(tempPath))
+                        {
+                            //下载缩略图
+                            string temp = Path.Combine(System.Environment.GetEnvironmentVariable("TEMP"), dto.MetaDataId + fileExtention);
+                            long total = 0;
+                            byte[] buffer = null;
+                            bool success = true;
+                            while (success)
+                            {
+                                using (FileStream stream = new FileStream(temp, FileMode.Append))
+                                {
+                                    success = _client.TDataInfoDownloadFile(out buffer, total, dto.MetaDataId);
+                                    if (success == false)
+                                    {
+                                        break;
+                                    }
+                                    total += buffer.Length;
+                                    stream.Write(buffer, 0, buffer.Length);
+                                }
+                            }
+                            Image sourceImg = Image.FromFile(temp);
+                            targetImg = GetReducedImage(sourceImg, 64, 64);
+                            targetImg.Save(tempPath, ImageFormat.Jpeg);
+                            File.Delete(temp);
+                        }
+                        else
+                        {
+                            targetImg = Image.FromFile(tempPath);
+                        }
+                        lstImg.Images.Add(keyword, targetImg);
+                    }
+                    else
+                    {
+                        keyword = fileExtention;
+                        lstImg.Images.Add(keyword, IconsExtention.IconFromExtension(fileExtention, IconsExtention.SystemIconSize.Large));
+                    }
+                }
+
             }
             catch (Exception)
             {
                 if (fileExtention.EndsWith(".exe"))
                 {
-                    lstImg.Images.Add(".exe", Resources.exe);
+                    keyword = fileExtention;
+                    lstImg.Images.Add(keyword, Resources.exe);
                 }
             }
+            return lstImg.Images.IndexOfKey(keyword);
+        }
+
+        public static int GetImageIndex(string filePath,string id ,ImageList lstImg)
+        {
+            string fileExtention = Path.GetExtension(filePath);
+            string keyword = fileExtention;
+            try
+            {
+                if (!lstImg.Images.Keys.Contains(fileExtention))
+                {
+                    //图片文件，寻找图片缩略图
+                    if (fileExtention.ToLower().EndsWith(".png") || fileExtention.ToLower().EndsWith(".bmp") || fileExtention.ToLower().EndsWith(".jpeg") || fileExtention.ToLower().EndsWith(".jpg"))
+                    {
+                        keyword = id;
+                        Image targetImg = null;
+                        string tempDir = Path.Combine(System.Environment.GetEnvironmentVariable("TEMP"), "64");
+                        if (!Directory.Exists(tempDir))
+                        {
+                            Directory.CreateDirectory(tempDir);
+                        }
+                        string tempPath = Path.Combine(tempDir, id + ".jpeg");
+                        Image sourceImg = Image.FromFile(filePath);
+                        targetImg = GetReducedImage(sourceImg, 64, 64);
+                        targetImg.Save(tempPath, ImageFormat.Jpeg);
+                        lstImg.Images.Add(keyword, targetImg);
+                    }
+                    else
+                    {
+                        keyword = fileExtention;
+                        lstImg.Images.Add(keyword, IconsExtention.IconFromExtension(fileExtention, IconsExtention.SystemIconSize.Large));
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+                if (fileExtention.EndsWith(".exe"))
+                {
+                    keyword = fileExtention;
+                    lstImg.Images.Add(keyword, Resources.exe);
+                }
+            }
+            return lstImg.Images.IndexOfKey(keyword);
         }
     }
 }

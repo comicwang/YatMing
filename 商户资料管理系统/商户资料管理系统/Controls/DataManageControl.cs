@@ -63,10 +63,8 @@ namespace 商户资料管理系统
             lvi.ItemData = dto;
             lvi.Text = dto.DataName;
             if (dto.IsForlder == false)
-            {
-                string tempFileExtension = Path.GetExtension(dto.DataName);
-                CommomHelper.AddImageIndex(tempFileExtension, imageList1);
-                lvi.ImageIndex = imageList1.Images.Keys.IndexOf(tempFileExtension);
+            {               
+                lvi.ImageIndex = CommomHelper.GetImageIndex(dto, imageList1);
                 lvi.ToolTipText = string.Format("文件名称:{0}\r\n文件大小:{1}M\r\n上传时间:{2}\r\n上传人:{3}\r\n修改时间:{4}\r\n下载次数:{5}\r\n文件描述:{6}", dto.DataName, CommomHelper.ParseMB(dto.FileSize), dto.CreateTime, dto.UploadPeople, dto.LastModifyTime, dto.DownloadTimes, dto.DataDescription);
                 LvDataContent.Items.Insert(index,lvi);
                 lvi.SetOtherControl();
@@ -88,7 +86,7 @@ namespace 商户资料管理系统
             if (dto.IsForlder == false)
             {
                 string tempFileExtension = Path.GetExtension(dto.DataName);
-                CommomHelper.AddImageIndex(tempFileExtension, imageList1);
+                CommomHelper.GetImageIndex(dto, imageList1);
                 lvi.ImageIndex = imageList1.Images.Keys.IndexOf(tempFileExtension);
                 lvi.ToolTipText = string.Format("文件名称:{0}\r\n文件大小:{1}\r\n上传时间:{2}\r\n上传人:{3}\r\n修改时间:{4}\r\n下载次数:{5}\r\n文件描述:{6}", dto.DataName, dto.FileSize, dto.CreateTime, dto.UploadPeople, dto.LastModifyTime, dto.DownloadTimes, dto.DataDescription);
             }
@@ -323,11 +321,11 @@ namespace 商户资料管理系统
                     ListViewItemEx ctr = new ListViewItemEx(_baseInfoId);
                     ctr.Text = Path.GetFileName(t);
                     string tempFileExtension = Path.GetExtension(t);
-                    CommomHelper.AddImageIndex(tempFileExtension, imageList1);
-                    ctr.ImageIndex = imageList1.Images.Keys.IndexOf(tempFileExtension);
+                   // CommomHelper.GetImageIndex(ctr.ItemData, imageList1);
+                   // ctr.ImageIndex = imageList1.Images.Keys.IndexOf(tempFileExtension);
                     LvDataContent.Items.Add(ctr);
                     ctr.SetOtherControl();
-                    ctr.UploadFile(t, _currentId);
+                    ctr.UploadFile(t, _currentId,imageList1);
                 });
             }
 
@@ -349,12 +347,9 @@ namespace 商户资料管理系统
                     ListViewItemEx ctr = new ListViewItemEx(_baseInfoId);
                     ctr.Text = Path.GetFileName(t);
                     string tempFileExtension = Path.GetExtension(t);
-                    CommomHelper.AddImageIndex(tempFileExtension, imageList1);
-                    ctr.ImageIndex = imageList1.Images.Keys.IndexOf(tempFileExtension);
-
                     LvDataContent.Items.Add(ctr);
                     ctr.SetOtherControl();
-                    ctr.UploadFile(t, _currentId);
+                    ctr.UploadFile(t, _currentId, imageList1);
                 });
             }
         }

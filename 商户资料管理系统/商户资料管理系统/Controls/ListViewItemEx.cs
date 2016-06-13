@@ -184,7 +184,7 @@ namespace 商户资料管理系统
 
         public TDataInfoDTO ItemData { get; set; }
 
-        public void UploadFile(string filePath,string parentId)
+        public void UploadFile(string filePath,string parentId,ImageList lstImage)
         {
             _saveHistory = filePath;
             try
@@ -205,7 +205,7 @@ namespace 商户资料管理系统
                 if (success && !_bgwork.IsBusy)
                 {
                     this.ToolTipText = string.Format("文件名称:{0}\r\n文件大小:{1}M\r\n上传时间:{2}\r\n上传人:{3}\r\n修改时间:{4}\r\n下载次数:{5}\r\n文件描述:{6}", uploadDTO.DataName,CommomHelper.ParseMB(uploadDTO.FileSize), uploadDTO.CreateTime, uploadDTO.UploadPeople, uploadDTO.LastModifyTime, uploadDTO.DownloadTimes, uploadDTO.DataDescription);
-
+                    this.ImageIndex = CommomHelper.GetImageIndex(filePath, uploadDTO.MetaDataId, lstImage);
                     ItemData = uploadDTO;
                     byte[] buffer = IOHelper.GetStreamBuffer(filePath);
                     OpareteType = OpareteTypeEnum.Upload;
