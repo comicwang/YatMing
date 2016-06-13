@@ -5,6 +5,8 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Windows.Forms;
+using 商户资料管理系统.Properties;
 
 namespace 商户资料管理系统.Common
 {
@@ -94,6 +96,22 @@ namespace 商户资料管理系统.Common
             graphics.DrawImage(originalImg, destRect, origRect, System.Drawing.GraphicsUnit.Pixel);
 
             return partImg;
+        }
+
+        public static void AddImageIndex(string fileExtention,ImageList lstImg)
+        {
+            try
+            {
+                if (!lstImg.Images.Keys.Contains(fileExtention))
+                    lstImg.Images.Add(fileExtention, IconsExtention.IconFromExtension(fileExtention, IconsExtention.SystemIconSize.Large));
+            }
+            catch (Exception)
+            {
+                if (fileExtention.EndsWith(".exe"))
+                {
+                    lstImg.Images.Add(".exe", Resources.exe);
+                }
+            }
         }
     }
 }

@@ -480,6 +480,7 @@
     <None Include="Resources\retry.png" />
     <None Include="Resources\off.png" />
     <None Include="Resources\on.png" />
+    <None Include="Resources\exe.png" />
     <Content Include="Resources\search.png" />
     <None Include="Resources\close.png" />
     <None Include="Resources\edit.png" />

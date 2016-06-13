@@ -64,10 +64,8 @@ namespace 商户资料管理系统
             lvi.Text = dto.DataName;
             if (dto.IsForlder == false)
             {
-                string[] arrtempFileName = dto.DataName.Split(new char[] { '.' });
-                string tempFileExtension = "." + arrtempFileName[arrtempFileName.Length - 1];
-                if (!imageList1.Images.Keys.Contains(tempFileExtension))
-                    imageList1.Images.Add(tempFileExtension, IconsExtention.IconFromExtension(tempFileExtension, IconsExtention.SystemIconSize.Large));
+                string tempFileExtension = Path.GetExtension(dto.DataName);
+                CommomHelper.AddImageIndex(tempFileExtension, imageList1);
                 lvi.ImageIndex = imageList1.Images.Keys.IndexOf(tempFileExtension);
                 lvi.ToolTipText = string.Format("文件名称:{0}\r\n文件大小:{1}M\r\n上传时间:{2}\r\n上传人:{3}\r\n修改时间:{4}\r\n下载次数:{5}\r\n文件描述:{6}", dto.DataName, CommomHelper.ParseMB(dto.FileSize), dto.CreateTime, dto.UploadPeople, dto.LastModifyTime, dto.DownloadTimes, dto.DataDescription);
                 LvDataContent.Items.Insert(index,lvi);
@@ -89,11 +87,8 @@ namespace 商户资料管理系统
             lvi.ItemData = dto;
             if (dto.IsForlder == false)
             {
-                string[] arrtempFileName = dto.DataName.Split(new char[] { '.' });
-                string tempFileExtension = "." + arrtempFileName[arrtempFileName.Length - 1];
-                //get imageindex from imagelist according to the file extension  
-                if (!imageList1.Images.Keys.Contains(tempFileExtension))
-                    imageList1.Images.Add(tempFileExtension, IconsExtention.IconFromExtension(tempFileExtension, IconsExtention.SystemIconSize.Large));
+                string tempFileExtension = Path.GetExtension(dto.DataName);
+                CommomHelper.AddImageIndex(tempFileExtension, imageList1);
                 lvi.ImageIndex = imageList1.Images.Keys.IndexOf(tempFileExtension);
                 lvi.ToolTipText = string.Format("文件名称:{0}\r\n文件大小:{1}\r\n上传时间:{2}\r\n上传人:{3}\r\n修改时间:{4}\r\n下载次数:{5}\r\n文件描述:{6}", dto.DataName, dto.FileSize, dto.CreateTime, dto.UploadPeople, dto.LastModifyTime, dto.DownloadTimes, dto.DataDescription);
             }
@@ -327,9 +322,8 @@ namespace 商户资料管理系统
 
                     ListViewItemEx ctr = new ListViewItemEx(_baseInfoId);
                     ctr.Text = Path.GetFileName(t);
-                    string tempFileExtension = Path.GetExtension(t); 
-                    if (!imageList1.Images.Keys.Contains(tempFileExtension))
-                        imageList1.Images.Add(tempFileExtension, IconsExtention.IconFromExtension(tempFileExtension, IconsExtention.SystemIconSize.Large));
+                    string tempFileExtension = Path.GetExtension(t);
+                    CommomHelper.AddImageIndex(tempFileExtension, imageList1);
                     ctr.ImageIndex = imageList1.Images.Keys.IndexOf(tempFileExtension);
                     LvDataContent.Items.Add(ctr);
                     ctr.SetOtherControl();
@@ -355,9 +349,7 @@ namespace 商户资料管理系统
                     ListViewItemEx ctr = new ListViewItemEx(_baseInfoId);
                     ctr.Text = Path.GetFileName(t);
                     string tempFileExtension = Path.GetExtension(t);
-                    //get imageindex from imagelist according to the file extension  
-                    if (!imageList1.Images.Keys.Contains(tempFileExtension))
-                        imageList1.Images.Add(tempFileExtension, IconsExtention.IconFromExtension(tempFileExtension, IconsExtention.SystemIconSize.Large));
+                    CommomHelper.AddImageIndex(tempFileExtension, imageList1);
                     ctr.ImageIndex = imageList1.Images.Keys.IndexOf(tempFileExtension);
 
                     LvDataContent.Items.Add(ctr);
