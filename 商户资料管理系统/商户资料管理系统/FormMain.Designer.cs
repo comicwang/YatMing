@@ -56,7 +56,6 @@
             this.帮助LToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.pnlWait = new System.Windows.Forms.Panel();
-            this.picWait = new System.Windows.Forms.PictureBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -190,6 +189,7 @@
             this.backgroundWorker4 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker5 = new System.ComponentModel.BackgroundWorker();
             this.tmBlink = new System.Windows.Forms.Timer(this.components);
+            this.picWait = new System.Windows.Forms.Label();
             this.stsTimer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -198,7 +198,6 @@
             this.contextMenuStrip4.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.pnlWait.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picWait)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -246,7 +245,7 @@
             // tslTimer
             // 
             this.tslTimer.Name = "tslTimer";
-            this.tslTimer.Size = new System.Drawing.Size(881, 18);
+            this.tslTimer.Size = new System.Drawing.Size(912, 18);
             this.tslTimer.Spring = true;
             this.tslTimer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -511,16 +510,6 @@
             this.pnlWait.Visible = false;
             this.pnlWait.SizeChanged += new System.EventHandler(this.pnlWait_SizeChanged);
             // 
-            // picWait
-            // 
-            this.picWait.Image = global::商户资料管理系统.Properties.Resources.wait;
-            this.picWait.Location = new System.Drawing.Point(299, 211);
-            this.picWait.Name = "picWait";
-            this.picWait.Size = new System.Drawing.Size(100, 100);
-            this.picWait.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picWait.TabIndex = 0;
-            this.picWait.TabStop = false;
-            // 
             // tabControl1
             // 
             this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
@@ -762,7 +751,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(647, 492);
+            this.tabPage2.Size = new System.Drawing.Size(647, 506);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "商户详细信息";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -777,7 +766,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(641, 486);
+            this.panel1.Size = new System.Drawing.Size(641, 500);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -786,7 +775,7 @@
             this.panel2.Controls.Add(this.grpPlatfrom);
             this.panel2.Controls.Add(this.grpPromotion);
             this.panel2.Controls.Add(this.grpDetail);
-            this.panel2.Location = new System.Drawing.Point(-237, -1);
+            this.panel2.Location = new System.Drawing.Point(-253, -1);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(600, 734);
             this.panel2.TabIndex = 0;
@@ -1037,7 +1026,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(647, 492);
+            this.tabPage3.Size = new System.Drawing.Size(647, 506);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "开店资料信息";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1050,7 +1039,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(641, 486);
+            this.panel4.Size = new System.Drawing.Size(641, 500);
             this.panel4.TabIndex = 0;
             this.panel4.SizeChanged += new System.EventHandler(this.panel4_SizeChanged);
             // 
@@ -1686,7 +1675,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(647, 492);
+            this.tabPage4.Size = new System.Drawing.Size(647, 506);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "合同信息";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1696,7 +1685,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(647, 492);
+            this.tabPage5.Size = new System.Drawing.Size(647, 506);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "服务信息";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1706,7 +1695,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 25);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(647, 492);
+            this.tabPage6.Size = new System.Drawing.Size(647, 506);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "费用信息";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1717,7 +1706,7 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 25);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(647, 492);
+            this.tabPage7.Size = new System.Drawing.Size(647, 506);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "资料文件";
             // 
@@ -1790,6 +1779,15 @@
             // 
             this.tmBlink.Interval = 500;
             // 
+            // picWait
+            // 
+            this.picWait.AutoSize = true;
+            this.picWait.Location = new System.Drawing.Point(325, 257);
+            this.picWait.Name = "picWait";
+            this.picWait.Size = new System.Drawing.Size(59, 12);
+            this.picWait.TabIndex = 0;
+            this.picWait.Text = "加载中...";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1817,7 +1815,7 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.pnlWait.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picWait)).EndInit();
+            this.pnlWait.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -2022,8 +2020,8 @@
         private System.Windows.Forms.Timer tmBlink;
         private System.Windows.Forms.ToolStripDropDownButton tsbSkin;
         private System.Windows.Forms.Panel pnlWait;
-        private System.Windows.Forms.PictureBox picWait;
         private System.Windows.Forms.ToolStripStatusLabel tsbOpenSkin;
+        private System.Windows.Forms.Label picWait;
     }
 }
 

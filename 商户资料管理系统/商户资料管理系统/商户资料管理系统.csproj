@@ -420,6 +420,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\selected.png" />
     <None Include="Resources\switch.png" />
     <None Include="Resources\upload.png" />
     <None Include="Resources\wait.gif" />
@@ -481,6 +482,7 @@
     <None Include="Resources\off.png" />
     <None Include="Resources\on.png" />
     <None Include="Resources\exe.png" />
+    <None Include="Resources\empty.png" />
     <Content Include="Resources\search.png" />
     <None Include="Resources\close.png" />
     <None Include="Resources\edit.png" />

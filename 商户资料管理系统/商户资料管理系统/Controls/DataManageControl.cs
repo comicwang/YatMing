@@ -10,6 +10,7 @@ using 商户资料管理系统.Common;
 using 商户资料管理系统.YatServer;
 using 商户资料管理系统.Properties;
 using System.IO;
+using System.Collections;
 
 namespace 商户资料管理系统
 {
@@ -19,20 +20,33 @@ namespace 商户资料管理系统
         private string _baseInfoId = string.Empty;
         private string _currentId = string.Empty;
         private string _oldText = string.Empty;
-
+        private ToolStripMenuItem _selectedItem = null;
+        private bool _des = false;
+       
         public DataManageControl()
         {
-            InitializeComponent();          
+            InitializeComponent();
+            _selectedItem = tsmNameSort;
+            LvDataContent.ListViewItemSorter = new ListViewNameComparer();
         }
 
+        #region 初始化
+
+        /// <summary>
+        /// 初始化控件
+        /// </summary>
+        /// <param name="id">控件对应的商户Id</param>
         public void InitializeContent(string id)
         {
-            LvDataContent.InsertionMark.Color = Color.Red;
-            LvDataContent.ListViewItemSorter = new ListViewIndexComparer();
+            LvDataContent.InsertionMark.Color = Color.Red;           
             _baseInfoId = id;
             IniliazeListView(null);
         }
 
+        /// <summary>
+        /// 初始化ListView
+        /// </summary>
+        /// <param name="pid">父节点（为空就是根节点）</param>
         private void IniliazeListView(string pid)
         {
             TDataInfoDTO[] allResult = null;
@@ -54,6 +68,8 @@ namespace 商户资料管理系统
                 CreateViewItem(d, LvDataContent.Items.Count);
             });
         }
+
+        #endregion
 
         #region 操作Listview
 
@@ -86,8 +102,7 @@ namespace 商户资料管理系统
             if (dto.IsForlder == false)
             {
                 string tempFileExtension = Path.GetExtension(dto.DataName);
-                CommomHelper.GetImageIndex(dto, imageList1);
-                lvi.ImageIndex = imageList1.Images.Keys.IndexOf(tempFileExtension);
+                lvi.ImageIndex = CommomHelper.GetImageIndex(dto, imageList1);
                 lvi.ToolTipText = string.Format("文件名称:{0}\r\n文件大小:{1}\r\n上传时间:{2}\r\n上传人:{3}\r\n修改时间:{4}\r\n下载次数:{5}\r\n文件描述:{6}", dto.DataName, dto.FileSize, dto.CreateTime, dto.UploadPeople, dto.LastModifyTime, dto.DownloadTimes, dto.DataDescription);
             }
             else
@@ -101,6 +116,13 @@ namespace 商户资料管理系统
 
         #endregion
 
+        #region Menu操作
+
+        /// <summary>
+        /// 返回
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbReturn_Click(object sender, EventArgs e)
         {
             TDataInfoDTO dto = _client.TDataInfoQueryById(_currentId);
@@ -108,11 +130,26 @@ namespace 商户资料管理系统
             IniliazeListView(parentId);
         }
 
+        /// <summary>
+        /// 刷新
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbRefresh_Click(object sender, EventArgs e)
         {
             IniliazeListView(_currentId);
         }
 
+        private void tsmRefresh_Click(object sender, EventArgs e)
+        {
+            IniliazeListView(_currentId);
+        }
+
+        /// <summary>
+        /// 新建文件夹
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbNewForlder_Click(object sender, EventArgs e)
         {
             TDataInfoDTO dto = new TDataInfoDTO();
@@ -130,6 +167,16 @@ namespace 商户资料管理系统
                 CreateViewItem(dto, LvDataContent.Items.Count);
         }
 
+        private void tsmNewForlder_Click(object sender, EventArgs e)
+        {
+            tsbNewForlder_Click(sender, e);
+        }
+
+        /// <summary>
+        /// 删除文件或者文件夹
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbDelete_Click(object sender, EventArgs e)
         {
             ListView.SelectedListViewItemCollection lstSelected = LvDataContent.SelectedItems;
@@ -152,10 +199,22 @@ namespace 商户资料管理系统
             }
         }
 
+        private void tsmDelete_Click(object sender, EventArgs e)
+        {
+            tsbDelete_Click(sender, e);
+        }
+
+        /// <summary>
+        /// 移动到
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbMoveTo_Click(object sender, EventArgs e)
         {
 
         }
+
+        #endregion
 
         #region 下载
 
@@ -173,9 +232,19 @@ namespace 商户资料管理系统
             }
         }
 
+        private void tsmDownload_Click(object sender, EventArgs e)
+        {
+            tsbDownload_Click(sender, e);
+        }
+
         #endregion
 
         #region 编辑
+
+        private void tsmModify_Click(object sender, EventArgs e)
+        {
+            LvDataContent.SelectedItems[0].BeginEdit();
+        }
 
         private void LvDataContent_AfterLabelEdit(object sender, LabelEditEventArgs e)
         {
@@ -354,6 +423,11 @@ namespace 商户资料管理系统
             }
         }
 
+        private void tsmUpload_Click(object sender, EventArgs e)
+        {
+            tsbUpload_Click(sender, e);
+        }
+
         #endregion
 
         #region 打开
@@ -380,6 +454,22 @@ namespace 商户资料管理系统
             }
         }
 
+        private void tsmOpen_Click(object sender, EventArgs e)
+        {
+            TDataInfoDTO dto = (LvDataContent.SelectedItems[0] as ListViewItemEx).ItemData;
+            if (dto.IsForlder)
+            {
+                IniliazeListView(dto.MetaDataId);
+            }
+            else
+            {
+                //打开
+                FormView view = new FormView();
+                view.Show();
+                view.View(dto.MetaDataId);
+            }
+        }
+
         #endregion
 
         #region 搜索
@@ -401,13 +491,240 @@ namespace 商户资料管理系统
 
         #endregion
 
+        #region 控件菜单状态控制
+
+        private void LvDataContent_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bool result = LvDataContent.SelectedItems.Count > 0;
+            tsbDelete.Enabled = result;
+            tsbDownload.Visible = result;
+            tsmDelete.Visible = result;
+            tsmDownload.Visible = result;
+            tsmOpen.Visible = result;
+            tsmModify.Visible = result;
+            tsmUpload.Visible = !result;
+            tsmSort.Visible = !result;
+            tsmRefresh.Visible = !result;
+            tsmNewForlder.Visible = !result;
+
+            bool temp = LvDataContent.SelectedItems.Count == 1;
+            tsmModify.Enabled = temp;
+            tsmOpen.Enabled = temp;
+        }
+
+        #endregion
+
+        #region 排序
+
+        private void tsmNameSort_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem tsm = sender as ToolStripMenuItem;
+            if (_selectedItem.Name != tsm.Name)
+            {
+                _selectedItem.Image = Resources.empty;
+                LvDataContent.ListViewItemSorter = new ListViewNameComparer();
+                tsm.Image = Resources.selected;
+                _selectedItem = tsm;
+            }
+            else
+            {
+                if(!_des)
+                    LvDataContent.ListViewItemSorter = new ListViewNameComparerDes();
+                else
+                    LvDataContent.ListViewItemSorter = new ListViewNameComparer();
+                _des = !_des;
+            }
+        }
+
+        private void tsmTypeSort_Click(object sender, EventArgs e)
+        {
+             ToolStripMenuItem tsm = sender as ToolStripMenuItem;
+             if (_selectedItem.Name != tsm.Name)
+             {
+                 _selectedItem.Image = Resources.empty;
+                 LvDataContent.ListViewItemSorter = new ListViewTypeComparer();
+                 tsm.Image = Resources.selected;
+                 _selectedItem = tsm;
+             }
+             else
+             {
+                 if (!_des)
+                     LvDataContent.ListViewItemSorter = new ListViewTypeComparerDes();
+                 else
+                     LvDataContent.ListViewItemSorter = new ListViewTypeComparer();
+                 _des = !_des;
+             }
+        }
+
+        private void tsbNumSort_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem tsm = sender as ToolStripMenuItem;
+            if (_selectedItem.Name != tsm.Name)
+            {
+                _selectedItem.Image = Resources.empty;
+                LvDataContent.ListViewItemSorter = new ListViewSizeComparer();
+                tsm.Image = Resources.selected;
+                _selectedItem = tsm;
+            }
+            else
+            {
+                if (!_des)
+                    LvDataContent.ListViewItemSorter = new ListViewSizeComparerDes();
+                else
+                    LvDataContent.ListViewItemSorter = new ListViewSizeComparer();
+                _des = !_des;
+            }
+        }
+
+        private void tsbModifySort_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem tsm = sender as ToolStripMenuItem;
+            if (_selectedItem.Name != tsm.Name)
+            {
+                _selectedItem.Image = Resources.empty;
+                LvDataContent.ListViewItemSorter = new ListViewModifyComparer();
+                tsm.Image = Resources.selected;
+                _selectedItem = tsm;
+            }
+            else
+            {
+                if (!_des)
+                    LvDataContent.ListViewItemSorter = new ListViewModifyComparerDes();
+                else
+                    LvDataContent.ListViewItemSorter = new ListViewModifyComparer();
+                _des = !_des;
+            }
+        }
+
+        #endregion
+
     }
-    public class ListViewIndexComparer : System.Collections.IComparer
+
+    #region Sort Class Ascending
+
+    public class ListViewNameComparer : IComparer
     {
         public int Compare(object x, object y)
         {
-            return ((ListViewItem)x).Index - ((ListViewItem)y).Index;
+            ListViewItemEx x1 = (ListViewItemEx)x;
+            ListViewItemEx y1 = (ListViewItemEx)y;
+            if (x1.ItemData.IsForlder)
+                return -1;
+            else if (y1.ItemData.IsForlder)
+                return 1;
+            else
+                return string.CompareOrdinal(x1.ItemData.DataName, y1.ItemData.DataName);
         }
     }
 
+    public class ListViewTypeComparer : IComparer
+    {
+        public int Compare(object x, object y)
+        {
+            ListViewItemEx x1 = (ListViewItemEx)x;
+            ListViewItemEx y1 = (ListViewItemEx)y;
+            if (x1.ItemData.IsForlder)
+                return -1;
+            else if (y1.ItemData.IsForlder)
+                return 1;
+            else
+                return string.CompareOrdinal(Path.GetExtension(x1.ItemData.DataName).Remove(0, 1), Path.GetExtension(y1.ItemData.DataName).Remove(0, 1));
+        }
+    }
+
+    public class ListViewModifyComparer : IComparer
+    {
+        public int Compare(object x, object y)
+        {
+            ListViewItemEx x1 = (ListViewItemEx)x;
+            ListViewItemEx y1 = (ListViewItemEx)y;
+            if (x1.ItemData.IsForlder)
+                return -1;
+            else if (y1.ItemData.IsForlder)
+                return 1;
+            else
+                return DateTime.Compare(x1.ItemData.LastModifyTime.Value, y1.ItemData.LastModifyTime.Value);
+        }
+    }
+
+    public class ListViewSizeComparer : IComparer
+    {
+        public int Compare(object x, object y)
+        {
+            ListViewItemEx x1 = (ListViewItemEx)x;
+            ListViewItemEx y1 = (ListViewItemEx)y;
+            if (x1.ItemData.IsForlder)
+                return -1;
+            else if (y1.ItemData.IsForlder)
+                return 1;
+            else
+                return (int)(CommomHelper.ParseMB(x1.ItemData.FileSize) - CommomHelper.ParseMB(y1.ItemData.FileSize));
+        }
+    }
+
+    #endregion
+
+    #region Sort Class Descending
+
+    public class ListViewNameComparerDes : IComparer
+    {
+        public int Compare(object x, object y)
+        {
+            ListViewItemEx y1 = (ListViewItemEx)x;
+            ListViewItemEx x1 = (ListViewItemEx)y;
+            if (x1.ItemData.IsForlder)
+                return -1;
+            else if (y1.ItemData.IsForlder)
+                return 1;
+            else
+                return string.CompareOrdinal(x1.ItemData.DataName, y1.ItemData.DataName);
+        }
+    }
+
+    public class ListViewTypeComparerDes : IComparer
+    {
+        public int Compare(object x, object y)
+        {
+            ListViewItemEx y1 = (ListViewItemEx)x;
+            ListViewItemEx x1 = (ListViewItemEx)y;
+            if (x1.ItemData.IsForlder)
+                return -1;
+            else if (y1.ItemData.IsForlder)
+                return 1;
+            else
+                return string.CompareOrdinal(Path.GetExtension(x1.ItemData.DataName).Remove(0, 1), Path.GetExtension(y1.ItemData.DataName).Remove(0, 1));
+        }
+    }
+
+    public class ListViewModifyComparerDes : IComparer
+    {
+        public int Compare(object x, object y)
+        {
+            ListViewItemEx y1 = (ListViewItemEx)x;
+            ListViewItemEx x1 = (ListViewItemEx)y;
+            if (x1.ItemData.IsForlder)
+                return -1;
+            else if (y1.ItemData.IsForlder)
+                return 1;
+            else
+                return DateTime.Compare(x1.ItemData.LastModifyTime.Value, y1.ItemData.LastModifyTime.Value);
+        }
+    }
+
+    public class ListViewSizeComparerDes : IComparer
+    {
+        public int Compare(object x, object y)
+        {
+            ListViewItemEx y1 = (ListViewItemEx)x;
+            ListViewItemEx x1 = (ListViewItemEx)y;
+            if (x1.ItemData.IsForlder)
+                return -1;
+            else if (y1.ItemData.IsForlder)
+                return 1;
+            else
+                return (int)(CommomHelper.ParseMB(x1.ItemData.FileSize) - CommomHelper.ParseMB(y1.ItemData.FileSize));
+        }
+    }
+
+    #endregion
 }

@@ -167,7 +167,7 @@ namespace 商户资料管理系统.Common
                             Image sourceImg = Image.FromFile(temp);
                             targetImg = GetReducedImage(sourceImg, 64, 64);
                             targetImg.Save(tempPath, ImageFormat.Jpeg);
-                            File.Delete(temp);
+                           // File.Delete(temp);
                         }
                         else
                         {
