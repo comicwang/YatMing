@@ -53,7 +53,7 @@ namespace 商户资料管理系统
 
         public void SetOtherControl()
         {
-            Rectangle rct = this.Bounds;
+            Rectangle rct = this.Bounds;           
             _pb = new ProgressBar();
             _pb.Height = 10;
             _pb.Width = rct.Width;
@@ -186,6 +186,7 @@ namespace 商户资料管理系统
 
         public void UploadFile(string filePath,string parentId,ImageList lstImage)
         {
+            SetOtherControl();
             _saveHistory = filePath;
             try
             {
@@ -225,6 +226,7 @@ namespace 商户资料管理系统
             dialog.FileName = ItemData.DataName;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
+                SetOtherControl();
                 if (_bgwork.IsBusy == false)
                 {
                     OpareteType = OpareteTypeEnum.Download;

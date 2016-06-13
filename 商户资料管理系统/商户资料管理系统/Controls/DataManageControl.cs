@@ -73,17 +73,17 @@ namespace 商户资料管理系统
 
         #region 操作Listview
 
-        private void CreateViewItem(TDataInfoDTO dto,int index)
+        private void CreateViewItem(TDataInfoDTO dto, int index, bool edit = false)
         {
             ListViewItemEx lvi = new ListViewItemEx();
             lvi.ItemData = dto;
             lvi.Text = dto.DataName;
             if (dto.IsForlder == false)
-            {               
+            {
                 lvi.ImageIndex = CommomHelper.GetImageIndex(dto, imageList1);
                 lvi.ToolTipText = string.Format("文件名称:{0}\r\n文件大小:{1}M\r\n上传时间:{2}\r\n上传人:{3}\r\n修改时间:{4}\r\n下载次数:{5}\r\n文件描述:{6}", dto.DataName, CommomHelper.ParseMB(dto.FileSize), dto.CreateTime, dto.UploadPeople, dto.LastModifyTime, dto.DownloadTimes, dto.DataDescription);
-                LvDataContent.Items.Insert(index,lvi);
-                lvi.SetOtherControl();
+                LvDataContent.Items.Insert(index, lvi);
+                //lvi.SetOtherControl();
             }
             else
             {
@@ -93,6 +93,8 @@ namespace 商户资料管理系统
                 string.Format("文件名称:{0}\r\n上传时间:{1}\r\n上传人:{2}\r\n修改时间:{3}\r\n文件描述:{4}", dto.DataName, dto.CreateTime, dto.UploadPeople, dto.LastModifyTime, dto.DataDescription);
                 LvDataContent.Items.Insert(index, lvi);
             }
+            if (edit)
+                lvi.BeginEdit();
         }
 
         private void UpdateViewItem(TDataInfoDTO dto, ListViewItemEx lvi)
@@ -164,7 +166,10 @@ namespace 商户资料管理系统
             dto.ParentId = _currentId;
             bool result = _client.TDataInfoAdd(dto);
             if (result)
-                CreateViewItem(dto, LvDataContent.Items.Count);
+            {
+                CreateViewItem(dto, LvDataContent.Items.Count,true);
+                //LvDataContent.Items[LvDataContent.Items.Count - 1].BeginEdit();
+            }
         }
 
         private void tsmNewForlder_Click(object sender, EventArgs e)
@@ -393,7 +398,7 @@ namespace 商户资料管理系统
                    // CommomHelper.GetImageIndex(ctr.ItemData, imageList1);
                    // ctr.ImageIndex = imageList1.Images.Keys.IndexOf(tempFileExtension);
                     LvDataContent.Items.Add(ctr);
-                    ctr.SetOtherControl();
+                    //ctr.SetOtherControl();
                     ctr.UploadFile(t, _currentId,imageList1);
                 });
             }
@@ -417,7 +422,7 @@ namespace 商户资料管理系统
                     ctr.Text = Path.GetFileName(t);
                     string tempFileExtension = Path.GetExtension(t);
                     LvDataContent.Items.Add(ctr);
-                    ctr.SetOtherControl();
+                   // ctr.SetOtherControl();
                     ctr.UploadFile(t, _currentId, imageList1);
                 });
             }
@@ -497,7 +502,7 @@ namespace 商户资料管理系统
         {
             bool result = LvDataContent.SelectedItems.Count > 0;
             tsbDelete.Enabled = result;
-            tsbDownload.Visible = result;
+            tsbDownload.Enabled = result;
             tsmDelete.Visible = result;
             tsmDownload.Visible = result;
             tsmOpen.Visible = result;
@@ -608,6 +613,8 @@ namespace 商户资料管理系统
         {
             ListViewItemEx x1 = (ListViewItemEx)x;
             ListViewItemEx y1 = (ListViewItemEx)y;
+            if (x1.ItemData == null || y1.ItemData == null)
+                return 1;
             if (x1.ItemData.IsForlder)
                 return -1;
             else if (y1.ItemData.IsForlder)
@@ -623,6 +630,8 @@ namespace 商户资料管理系统
         {
             ListViewItemEx x1 = (ListViewItemEx)x;
             ListViewItemEx y1 = (ListViewItemEx)y;
+            if (x1.ItemData == null || y1.ItemData == null)
+                return 1;
             if (x1.ItemData.IsForlder)
                 return -1;
             else if (y1.ItemData.IsForlder)
@@ -638,6 +647,8 @@ namespace 商户资料管理系统
         {
             ListViewItemEx x1 = (ListViewItemEx)x;
             ListViewItemEx y1 = (ListViewItemEx)y;
+            if (x1.ItemData == null || y1.ItemData == null)
+                return 1;
             if (x1.ItemData.IsForlder)
                 return -1;
             else if (y1.ItemData.IsForlder)
@@ -653,6 +664,8 @@ namespace 商户资料管理系统
         {
             ListViewItemEx x1 = (ListViewItemEx)x;
             ListViewItemEx y1 = (ListViewItemEx)y;
+            if (x1.ItemData == null || y1.ItemData == null)
+                return 1;
             if (x1.ItemData.IsForlder)
                 return -1;
             else if (y1.ItemData.IsForlder)
@@ -672,6 +685,8 @@ namespace 商户资料管理系统
         {
             ListViewItemEx y1 = (ListViewItemEx)x;
             ListViewItemEx x1 = (ListViewItemEx)y;
+            if (x1.ItemData == null || y1.ItemData == null)
+                return 1;
             if (x1.ItemData.IsForlder)
                 return -1;
             else if (y1.ItemData.IsForlder)
@@ -687,6 +702,8 @@ namespace 商户资料管理系统
         {
             ListViewItemEx y1 = (ListViewItemEx)x;
             ListViewItemEx x1 = (ListViewItemEx)y;
+            if (x1.ItemData == null || y1.ItemData == null)
+                return 1;
             if (x1.ItemData.IsForlder)
                 return -1;
             else if (y1.ItemData.IsForlder)
@@ -702,6 +719,8 @@ namespace 商户资料管理系统
         {
             ListViewItemEx y1 = (ListViewItemEx)x;
             ListViewItemEx x1 = (ListViewItemEx)y;
+            if (x1.ItemData == null || y1.ItemData == null)
+                return 1;
             if (x1.ItemData.IsForlder)
                 return -1;
             else if (y1.ItemData.IsForlder)
@@ -717,6 +736,8 @@ namespace 商户资料管理系统
         {
             ListViewItemEx y1 = (ListViewItemEx)x;
             ListViewItemEx x1 = (ListViewItemEx)y;
+            if (x1.ItemData == null || y1.ItemData == null)
+                return 1;
             if (x1.ItemData.IsForlder)
                 return -1;
             else if (y1.ItemData.IsForlder)
