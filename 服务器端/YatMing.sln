@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTelluro.Explorer.YatMing.Infrastructure.Context", "iTelluro.Explorer.YatMing.Infrastructure.Context\iTelluro.Explorer.YatMing.Infrastructure.Context.csproj", "{D1E96B81-244D-41DE-A3AA-4B9D17CCFBF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTelluro.Explorer.YatMing.Domain.Entities", "iTelluro.Explorer.YatMing.Domain.Entities\iTelluro.Explorer.YatMing.Domain.Entities.csproj", "{8DC15ECB-66EB-4F36-9B5D-C5513F2EBDC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTelluro.Explorer.YatMing.Domain.Context", "iTelluro.Explorer.YatMing.Domain.Context\iTelluro.Explorer.YatMing.Domain.Context.csproj", "{9CC0BFFD-8033-4A4C-90A4-42FA2A723F30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTelluro.Explorer.YatMing.Application.DTO", "iTelluro.Explorer.YatMing.Application.DTO\iTelluro.Explorer.YatMing.Application.DTO.csproj", "{C83DC803-B337-4383-BAA2-DFFDC5F5E560}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTelluro.Explorer.YatMing.Application", "iTelluro.Explorer.YatMing.Application\iTelluro.Explorer.YatMing.Application.csproj", "{66A5323F-80EA-4F10-A632-D96CEA728C3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTelluro.Explorer.YatMing.IApplication", "iTelluro.Explorer.YatMing.IApplication\iTelluro.Explorer.YatMing.IApplication.csproj", "{DAB374E5-C47B-480E-84E1-CFC330DDB7D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTelluro.Explorer.YatMing.Service", "iTelluro.Explorer.YatMing.Service\iTelluro.Explorer.YatMing.Service.csproj", "{55FF4991-F468-46B5-A046-34B55D16CD16}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D1E96B81-244D-41DE-A3AA-4B9D17CCFBF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1E96B81-244D-41DE-A3AA-4B9D17CCFBF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1E96B81-244D-41DE-A3AA-4B9D17CCFBF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1E96B81-244D-41DE-A3AA-4B9D17CCFBF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DC15ECB-66EB-4F36-9B5D-C5513F2EBDC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DC15ECB-66EB-4F36-9B5D-C5513F2EBDC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DC15ECB-66EB-4F36-9B5D-C5513F2EBDC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DC15ECB-66EB-4F36-9B5D-C5513F2EBDC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CC0BFFD-8033-4A4C-90A4-42FA2A723F30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CC0BFFD-8033-4A4C-90A4-42FA2A723F30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CC0BFFD-8033-4A4C-90A4-42FA2A723F30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CC0BFFD-8033-4A4C-90A4-42FA2A723F30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C83DC803-B337-4383-BAA2-DFFDC5F5E560}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C83DC803-B337-4383-BAA2-DFFDC5F5E560}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C83DC803-B337-4383-BAA2-DFFDC5F5E560}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C83DC803-B337-4383-BAA2-DFFDC5F5E560}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66A5323F-80EA-4F10-A632-D96CEA728C3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66A5323F-80EA-4F10-A632-D96CEA728C3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66A5323F-80EA-4F10-A632-D96CEA728C3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66A5323F-80EA-4F10-A632-D96CEA728C3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAB374E5-C47B-480E-84E1-CFC330DDB7D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAB374E5-C47B-480E-84E1-CFC330DDB7D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAB374E5-C47B-480E-84E1-CFC330DDB7D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAB374E5-C47B-480E-84E1-CFC330DDB7D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55FF4991-F468-46B5-A046-34B55D16CD16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55FF4991-F468-46B5-A046-34B55D16CD16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55FF4991-F468-46B5-A046-34B55D16CD16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55FF4991-F468-46B5-A046-34B55D16CD16}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <LastUsedBuildConfiguration>Debug</LastUsedBuildConfiguration>
+    <LastUsedPlatform>Any CPU</LastUsedPlatform>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/AutoMapper.dll">
+      <publishTime>05/08/2016 08:16:55</publishTime>
+    </File>
+    <File Include="bin/AutoMapper.Net4.dll">
+      <publishTime>05/08/2016 08:16:55</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>05/08/2016 08:16:55</publishTime>
+    </File>
+    <File Include="bin/iTelluro.Explorer.Application.CodeFirst.Seedwork.dll">
+      <publishTime>05/08/2016 08:16:55</publishTime>
+    </File>
+    <File Include="bin/iTelluro.Explorer.Domain.CodeFirst.Seedwork.dll">
+      <publishTime>05/08/2016 08:16:55</publishTime>
+    </File>
+    <File Include="bin/iTelluro.Explorer.Infrastruct.CodeFirst.Seedwork.dll">
+      <publishTime>05/08/2016 08:16:55</publishTime>
+    </File>
+    <File Include="bin/iTelluro.Explorer.Infrastructure.CrossCutting.dll">
+      <publishTime>05/08/2016 08:16:55</publishTime>
+    </File>
+    <File Include="bin/iTelluro.Explorer.Infrastructure.CrossCutting.NetFramework.dll">
+      <publishTime>05/08/2016 08:16:55</publishTime>
+    </File>
+    <File Include="bin/iTelluro.Explorer.YatMing.Application.dll">
+      <publishTime>06/11/2016 08:07:05</publishTime>
+    </File>
+    <File Include="bin/iTelluro.Explorer.YatMing.Application.DTO.dll">
+      <publishTime>06/11/2016 08:07:03</publishTime>
+    </File>
+    <File Include="bin/iTelluro.Explorer.YatMing.Application.DTO.pdb">
+      <publishTime>06/11/2016 08:07:03</publishTime>
+    </File>
+    <File Include="bin/iTelluro.Explorer.YatMing.Application.pdb">
+      <publishTime>06/11/2016 08:07:05</publishTime>
+    </File>
+    <File Include="bin/iTelluro.Explorer.YatMing.Domain.Context.dll">
+      <publishTime>06/11/2016 08:07:03</publishTime>
+    </File>
+    <File Include="bin/iTelluro.Explorer.YatMing.Domain.Context.pdb">
+      <publishTime>06/11/2016 08:07:03</publishTime>
+    </File>
+    <File Include="bin/iTelluro.Explorer.YatMing.Domain.Entities.dll">
+      <publishTime>06/11/2016 08:07:02</publishTime>
+    </File>
+    <File Include="bin/iTelluro.Explorer.YatMing.Domain.Entities.pdb">
+      <publishTime>06/11/2016 08:07:01</publishTime>
+    </File>
+    <File Include="bin/iTelluro.Explorer.YatMing.IApplication.dll">
+      <publishTime>06/11/2016 08:07:04</publishTime>
+    </File>
+    <File Include="bin/iTelluro.Explorer.YatMing.IApplication.pdb">
+      <publishTime>06/11/2016 08:07:04</publishTime>
+    </File>
+    <File Include="bin/iTelluro.Explorer.YatMing.Infrastructure.Context.dll">
+      <publishTime>06/11/2016 08:07:04</publishTime>
+    </File>
+    <File Include="bin/iTelluro.Explorer.YatMing.Infrastructure.Context.pdb">
+      <publishTime>06/11/2016 08:07:04</publishTime>
+    </File>
+    <File Include="bin/iTelluro.Explorer.YatMing.Service.dll">
+      <publishTime>06/11/2016 08:07:06</publishTime>
+    </File>
+    <File Include="bin/iTelluro.Explorer.YatMing.Service.pdb">
+      <publishTime>06/11/2016 08:07:06</publishTime>
+    </File>
+    <File Include="bin/iTelluro.SSO.Common.dll">
+      <publishTime>05/08/2016 08:16:55</publishTime>
+    </File>
+    <File Include="bin/iTelluro.SSO.dll">
+      <publishTime>05/08/2016 08:16:55</publishTime>
+    </File>
+    <File Include="bin/iTelluro.SSO.WebServices.dll">
+      <publishTime>05/08/2016 08:16:55</publishTime>
+    </File>
+    <File Include="bin/iTelluro.SYS.Entity.dll">
+      <publishTime>05/08/2016 08:16:55</publishTime>
+    </File>
+    <File Include="bin/iTelluro.Utility.dll">
+      <publishTime>05/08/2016 08:16:55</publishTime>
+    </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>05/08/2016 08:16:55</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.Unity.dll">
+      <publishTime>05/08/2016 08:16:55</publishTime>
+    </File>
+    <File Include="css/video-js.min.css">
+      <publishTime>06/06/2016 08:54:13</publishTime>
+    </File>
+    <File Include="index.html">
+      <publishTime>06/07/2016 11:42:15</publishTime>
+    </File>
+    <File Include="jquery-2.1.4/jquery.js">
+      <publishTime>06/06/2016 17:23:07</publishTime>
+    </File>
+    <File Include="jquery-2.1.4/jquery.min.js">
+      <publishTime>06/06/2016 17:23:07</publishTime>
+    </File>
+    <File Include="js/video.min.js">
+      <publishTime>06/06/2016 08:54:13</publishTime>
+    </File>
+    <File Include="Sys/商户资料管理系统.exe">
+      <publishTime>06/03/2016 14:30:37</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>06/11/2016 08:07:29</publishTime>
+    </File>
+    <File Include="YatMingService.svc">
+      <publishTime>05/11/2016 21:20:06</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9CC0BFFD-8033-4A4C-90A4-42FA2A723F30}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>iTelluro.Explorer.YatMing.Domain.Context</RootNamespace>
+    <AssemblyName>iTelluro.Explorer.YatMing.Domain.Context</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="iTelluro.Explorer.Domain.CodeFirst.Seedwork">
+      <HintPath>D:\Entity2CodeModel\iTelluro.Explorer.Domain.CodeFirst.Seedwork.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TBaseInfo\ITBaseInfoRepository.cs" />
+    <Compile Include="TCheck\ITCheckRepository.cs" />
+    <Compile Include="TContract\ITContractRepository.cs" />
+    <Compile Include="TDataInfo\ITDataInfoRepository.cs" />
+    <Compile Include="TDetailInfo\ITDetailInfoRepository.cs" />
+    <Compile Include="TEmployee\ITEmployeeRepository.cs" />
+    <Compile Include="THardware\ITHardwareRepository.cs" />
+    <Compile Include="TLogin\ITLoginRepository.cs" />
+    <Compile Include="TMerchantType\ITMerchantTypeRepository.cs" />
+    <Compile Include="TPackage\ITPackageRepository.cs" />
+    <Compile Include="TPlatform\ITPlatformRepository.cs" />
+    <Compile Include="TPrice\ITPriceRepository.cs" />
+    <Compile Include="TPromotion\ITPromotionRepository.cs" />
+    <Compile Include="TServer\ITServerRepository.cs" />
+    <Compile Include="TShopData\ITShopDataRepository.cs" />
+    <Compile Include="TSubmit\ITSubmitRepository.cs" />
+    <Compile Include="TTrain\ITTrainRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\iTelluro.Explorer.YatMing.Domain.Entities\iTelluro.Explorer.YatMing.Domain.Entities.csproj">
+      <Project>{8DC15ECB-66EB-4F36-9B5D-C5513F2EBDC0}</Project>
+      <Name>iTelluro.Explorer.YatMing.Domain.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

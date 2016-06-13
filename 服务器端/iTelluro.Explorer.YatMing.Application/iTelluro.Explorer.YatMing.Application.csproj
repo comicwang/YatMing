@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{66A5323F-80EA-4F10-A632-D96CEA728C3A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>iTelluro.Explorer.YatMing.Application</RootNamespace>
+    <AssemblyName>iTelluro.Explorer.YatMing.Application</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="iTelluro.Explorer.Application.CodeFirst.Seedwork">
+      <HintPath>D:\Entity2CodeModel\iTelluro.Explorer.Application.CodeFirst.Seedwork.dll</HintPath>
+    </Reference>
+    <Reference Include="iTelluro.Explorer.Domain.CodeFirst.Seedwork">
+      <HintPath>D:\Entity2CodeModel\iTelluro.Explorer.Domain.CodeFirst.Seedwork.dll</HintPath>
+    </Reference>
+    <Reference Include="iTelluro.Explorer.Infrastruct.CodeFirst.Seedwork">
+      <HintPath>D:\Entity2CodeModel\iTelluro.Explorer.Infrastruct.CodeFirst.Seedwork.dll</HintPath>
+    </Reference>
+    <Reference Include="iTelluro.Explorer.Infrastructure.CrossCutting">
+      <HintPath>D:\Entity2CodeModel\iTelluro.Explorer.Infrastructure.CrossCutting.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TBaseInfoApp.cs" />
+    <Compile Include="TCheckApp.cs" />
+    <Compile Include="TContractApp.cs" />
+    <Compile Include="TDataInfoApp.cs" />
+    <Compile Include="TDetailInfoApp.cs" />
+    <Compile Include="TEmployeeApp.cs" />
+    <Compile Include="THardwareApp.cs" />
+    <Compile Include="TLoginApp.cs" />
+    <Compile Include="TMerchantTypeApp.cs" />
+    <Compile Include="TPackageApp.cs" />
+    <Compile Include="TPlatformApp.cs" />
+    <Compile Include="TPriceApp.cs" />
+    <Compile Include="TPromotionApp.cs" />
+    <Compile Include="TServerApp.cs" />
+    <Compile Include="TShopDataApp.cs" />
+    <Compile Include="TSubmitApp.cs" />
+    <Compile Include="TTrainApp.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\iTelluro.Explorer.YatMing.Application.DTO\iTelluro.Explorer.YatMing.Application.DTO.csproj">
+      <Project>{C83DC803-B337-4383-BAA2-DFFDC5F5E560}</Project>
+      <Name>iTelluro.Explorer.YatMing.Application.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\iTelluro.Explorer.YatMing.Domain.Context\iTelluro.Explorer.YatMing.Domain.Context.csproj">
+      <Project>{9CC0BFFD-8033-4A4C-90A4-42FA2A723F30}</Project>
+      <Name>iTelluro.Explorer.YatMing.Domain.Context</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\iTelluro.Explorer.YatMing.Domain.Entities\iTelluro.Explorer.YatMing.Domain.Entities.csproj">
+      <Project>{8DC15ECB-66EB-4F36-9B5D-C5513F2EBDC0}</Project>
+      <Name>iTelluro.Explorer.YatMing.Domain.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\iTelluro.Explorer.YatMing.IApplication\iTelluro.Explorer.YatMing.IApplication.csproj">
+      <Project>{DAB374E5-C47B-480E-84E1-CFC330DDB7D3}</Project>
+      <Name>iTelluro.Explorer.YatMing.IApplication</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

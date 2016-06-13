@@ -1,0 +1,50 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+<title>Video.js | HTML5 Video Player</title>
+<link href="css/video-js.min.css" rel="stylesheet">
+<script src="js/video.min.js"></script>
+   <script>
+    <!--支持播放flv -->
+    videojs.options.flash.swf = "video-js.swf";
+  </script>
+</head>
+<body>
+
+<video id="myVideo" class="video-js vjs-default-skin" style="margin:0 auto" controls preload="none" width="640" height="400"
+      poster="http://video-js.zencoder.com/oceans-clip.png"
+      data-setup="{}" autoplay="autoplay">
+    <source id="mySource"/>
+</video>
+    <script>
+        function GetRequest() {
+            var url = location.search;    
+            var theRequest = new Object();
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for (var i = 0; i < strs.length; i++) {
+                    theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                }
+            }
+            return theRequest;
+        }
+        function InitiliazeVideo() {
+            var Request = GetRequest();
+            var src = document.getElementById("mySource");
+            var name = Request["name"];
+            src.src = "vedios/" + name;
+            var arr = name.split('.');
+            arr = arr[arr.length - 1];
+            src.type = "video/" + arr;
+            var myPlayer = videojs('myVideo');
+            myPlayer.requestFullscreen();
+        }
+        InitiliazeVideo();
+
+    </script>
+</body>
+</html>
