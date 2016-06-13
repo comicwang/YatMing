@@ -515,6 +515,12 @@ namespace 商户资料管理系统
             bool temp = LvDataContent.SelectedItems.Count == 1;
             tsmModify.Enabled = temp;
             tsmOpen.Enabled = temp;
+            //文件夹去除下载
+            if (temp && (LvDataContent.SelectedItems[0] as ListViewItemEx).ItemData.IsForlder)
+            {
+                tsmDownload.Visible = false;
+                tsbDownload.Enabled = false;
+            }
         }
 
         #endregion
