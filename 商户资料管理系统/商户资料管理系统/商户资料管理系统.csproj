@@ -85,6 +85,9 @@
     <Compile Include="Controls\DataManageControl.Designer.cs">
       <DependentUpon>DataManageControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ListviewEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\ListViewItemEx.cs" />
     <Compile Include="Controls\UploadControl.cs">
       <SubType>UserControl</SubType>

@@ -82,6 +82,10 @@ namespace 商户资料管理系统
             {
                 lvi.ImageIndex = CommomHelper.GetImageIndex(dto, imageList1);
                 lvi.ToolTipText = string.Format("文件名称:{0}\r\n文件大小:{1}M\r\n上传时间:{2}\r\n上传人:{3}\r\n修改时间:{4}\r\n下载次数:{5}\r\n文件描述:{6}", dto.DataName, CommomHelper.ParseMB(dto.FileSize), dto.CreateTime, dto.UploadPeople, dto.LastModifyTime, dto.DownloadTimes, dto.DataDescription);
+                lvi.SubItems.Add(dto.DataName);
+                lvi.SubItems.Add(dto.FileSize);
+                lvi.SubItems.Add(dto.LastModifyTime.Value.ToString());
+                lvi.SubItems.Add(dto.UploadPeople);
                 LvDataContent.Items.Insert(index, lvi);
                 //lvi.SetOtherControl();
             }
@@ -91,6 +95,10 @@ namespace 商户资料管理系统
                     imageList1.Images.Add("Folder", Resources.folder);
                 lvi.ImageIndex = imageList1.Images.Keys.IndexOf("Folder");
                 string.Format("文件名称:{0}\r\n上传时间:{1}\r\n上传人:{2}\r\n修改时间:{3}\r\n文件描述:{4}", dto.DataName, dto.CreateTime, dto.UploadPeople, dto.LastModifyTime, dto.DataDescription);
+                lvi.SubItems.Add(dto.DataName);
+                lvi.SubItems.Add(dto.FileSize);
+                lvi.SubItems.Add(dto.LastModifyTime.Value.ToString());
+                lvi.SubItems.Add(dto.UploadPeople);
                 LvDataContent.Items.Insert(index, lvi);
             }
             if (edit)
@@ -609,6 +617,23 @@ namespace 商户资料管理系统
 
         #endregion
 
+        #region 查看
+
+        private void tsmViewIcon_Click(object sender, EventArgs e)
+        {
+            LvDataContent.View = View.LargeIcon;
+            tsmViewIcon.Image = Resources.selected;
+            tsmViewDetail.Image = Resources.empty;
+        }
+
+        private void tsmViewDetail_Click(object sender, EventArgs e)
+        {
+            LvDataContent.View = View.Details;
+            tsmViewDetail.Image = Resources.selected;
+            tsmViewIcon.Image = Resources.empty;
+        }
+
+        #endregion
     }
 
     #region Sort Class Ascending

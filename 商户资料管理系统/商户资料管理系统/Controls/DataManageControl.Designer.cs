@@ -39,8 +39,9 @@
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
             this.tsbNewForlder = new System.Windows.Forms.ToolStripButton();
             this.tsbMoveTo = new System.Windows.Forms.ToolStripButton();
-            this.LvDataContent = new System.Windows.Forms.ListView();
             this.ctmContent = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmUpload = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmSort = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmNameSort = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmTypeSort = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,13 +49,20 @@
             this.tsbModifySort = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmRefresh = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmModify = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmNewForlder = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmDownload = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmUpload = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.tsmOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmView = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmViewDetail = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmViewIcon = new System.Windows.Forms.ToolStripMenuItem();
+            this.LvDataContent = new 商户资料管理系统.ListviewEx();
+            this.colHeadName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colHeadSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colHeadModify = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colHeadUploadBy = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.searchTextBox1 = new 商户资料管理系统.SearchTextBox();
-            this.tsmNewForlder = new System.Windows.Forms.ToolStripMenuItem();
+            this.colHeadIcon = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip1.SuspendLayout();
             this.ctmContent.SuspendLayout();
             this.SuspendLayout();
@@ -178,11 +186,158 @@
             this.tsbMoveTo.Visible = false;
             this.tsbMoveTo.Click += new System.EventHandler(this.tsbMoveTo_Click);
             // 
+            // ctmContent
+            // 
+            this.ctmContent.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmOpen,
+            this.tsmUpload,
+            this.tsmView,
+            this.tsmSort,
+            this.tsmRefresh,
+            this.tsmModify,
+            this.tsmNewForlder,
+            this.tsmDownload,
+            this.tsmDelete});
+            this.ctmContent.Name = "ctmContent";
+            this.ctmContent.Size = new System.Drawing.Size(155, 202);
+            // 
+            // tsmOpen
+            // 
+            this.tsmOpen.Name = "tsmOpen";
+            this.tsmOpen.Size = new System.Drawing.Size(154, 22);
+            this.tsmOpen.Text = "打开(&O)";
+            this.tsmOpen.Visible = false;
+            this.tsmOpen.Click += new System.EventHandler(this.tsmOpen_Click);
+            // 
+            // tsmUpload
+            // 
+            this.tsmUpload.Image = global::商户资料管理系统.Properties.Resources.upload;
+            this.tsmUpload.Name = "tsmUpload";
+            this.tsmUpload.Size = new System.Drawing.Size(154, 22);
+            this.tsmUpload.Text = "上传(&U)";
+            this.tsmUpload.Click += new System.EventHandler(this.tsmUpload_Click);
+            // 
+            // tsmSort
+            // 
+            this.tsmSort.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmNameSort,
+            this.tsmTypeSort,
+            this.tsbNumSort,
+            this.tsbModifySort});
+            this.tsmSort.Name = "tsmSort";
+            this.tsmSort.Size = new System.Drawing.Size(154, 22);
+            this.tsmSort.Text = "排序(&S)";
+            // 
+            // tsmNameSort
+            // 
+            this.tsmNameSort.Image = global::商户资料管理系统.Properties.Resources.selected;
+            this.tsmNameSort.Name = "tsmNameSort";
+            this.tsmNameSort.Size = new System.Drawing.Size(124, 22);
+            this.tsmNameSort.Text = "文件名称";
+            this.tsmNameSort.Click += new System.EventHandler(this.tsmNameSort_Click);
+            // 
+            // tsmTypeSort
+            // 
+            this.tsmTypeSort.Name = "tsmTypeSort";
+            this.tsmTypeSort.Size = new System.Drawing.Size(124, 22);
+            this.tsmTypeSort.Text = "文件类型";
+            this.tsmTypeSort.Click += new System.EventHandler(this.tsmTypeSort_Click);
+            // 
+            // tsbNumSort
+            // 
+            this.tsbNumSort.Name = "tsbNumSort";
+            this.tsbNumSort.Size = new System.Drawing.Size(124, 22);
+            this.tsbNumSort.Text = "文件大小";
+            this.tsbNumSort.Click += new System.EventHandler(this.tsbNumSort_Click);
+            // 
+            // tsbModifySort
+            // 
+            this.tsbModifySort.Name = "tsbModifySort";
+            this.tsbModifySort.Size = new System.Drawing.Size(124, 22);
+            this.tsbModifySort.Text = "修改时间";
+            this.tsbModifySort.Click += new System.EventHandler(this.tsbModifySort_Click);
+            // 
+            // tsmRefresh
+            // 
+            this.tsmRefresh.Name = "tsmRefresh";
+            this.tsmRefresh.Size = new System.Drawing.Size(154, 22);
+            this.tsmRefresh.Text = "刷新(&R)";
+            this.tsmRefresh.Click += new System.EventHandler(this.tsmRefresh_Click);
+            // 
+            // tsmModify
+            // 
+            this.tsmModify.Name = "tsmModify";
+            this.tsmModify.Size = new System.Drawing.Size(154, 22);
+            this.tsmModify.Text = "重命名";
+            this.tsmModify.Visible = false;
+            this.tsmModify.Click += new System.EventHandler(this.tsmModify_Click);
+            // 
+            // tsmNewForlder
+            // 
+            this.tsmNewForlder.Name = "tsmNewForlder";
+            this.tsmNewForlder.Size = new System.Drawing.Size(154, 22);
+            this.tsmNewForlder.Text = "新建文件夹(&N)";
+            this.tsmNewForlder.Click += new System.EventHandler(this.tsmNewForlder_Click);
+            // 
+            // tsmDownload
+            // 
+            this.tsmDownload.Image = global::商户资料管理系统.Properties.Resources.download;
+            this.tsmDownload.Name = "tsmDownload";
+            this.tsmDownload.Size = new System.Drawing.Size(154, 22);
+            this.tsmDownload.Text = "下载(&L)";
+            this.tsmDownload.Visible = false;
+            this.tsmDownload.Click += new System.EventHandler(this.tsmDownload_Click);
+            // 
+            // tsmDelete
+            // 
+            this.tsmDelete.Image = global::商户资料管理系统.Properties.Resources.delete;
+            this.tsmDelete.Name = "tsmDelete";
+            this.tsmDelete.Size = new System.Drawing.Size(154, 22);
+            this.tsmDelete.Text = "删除(&D)";
+            this.tsmDelete.Visible = false;
+            this.tsmDelete.Click += new System.EventHandler(this.tsmDelete_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(64, 64);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // tsmView
+            // 
+            this.tsmView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmViewIcon,
+            this.tsmViewDetail});
+            this.tsmView.Name = "tsmView";
+            this.tsmView.Size = new System.Drawing.Size(154, 22);
+            this.tsmView.Text = "查看(&V)";
+            // 
+            // tsmViewDetail
+            // 
+            this.tsmViewDetail.Name = "tsmViewDetail";
+            this.tsmViewDetail.Size = new System.Drawing.Size(152, 22);
+            this.tsmViewDetail.Text = "详情";
+            this.tsmViewDetail.Click += new System.EventHandler(this.tsmViewDetail_Click);
+            // 
+            // tsmViewIcon
+            // 
+            this.tsmViewIcon.Image = global::商户资料管理系统.Properties.Resources.selected;
+            this.tsmViewIcon.Name = "tsmViewIcon";
+            this.tsmViewIcon.Size = new System.Drawing.Size(152, 22);
+            this.tsmViewIcon.Text = "图标";
+            this.tsmViewIcon.Click += new System.EventHandler(this.tsmViewIcon_Click);
+            // 
             // LvDataContent
             // 
             this.LvDataContent.AllowColumnReorder = true;
             this.LvDataContent.AllowDrop = true;
             this.LvDataContent.AutoArrange = false;
+            this.LvDataContent.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colHeadIcon,
+            this.colHeadName,
+            this.colHeadSize,
+            this.colHeadModify,
+            this.colHeadUploadBy});
             this.LvDataContent.ContextMenuStrip = this.ctmContent;
             this.LvDataContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LvDataContent.LabelEdit = true;
@@ -204,114 +359,25 @@
             this.LvDataContent.DragLeave += new System.EventHandler(this.LvDataContent_DragLeave);
             this.LvDataContent.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.LvDataContent_MouseDoubleClick);
             // 
-            // ctmContent
+            // colHeadName
             // 
-            this.ctmContent.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmOpen,
-            this.tsmUpload,
-            this.tsmSort,
-            this.tsmRefresh,
-            this.tsmModify,
-            this.tsmNewForlder,
-            this.tsmDownload,
-            this.tsmDelete});
-            this.ctmContent.Name = "ctmContent";
-            this.ctmContent.Size = new System.Drawing.Size(155, 202);
+            this.colHeadName.DisplayIndex = 0;
+            this.colHeadName.Text = "名称";
             // 
-            // tsmSort
+            // colHeadSize
             // 
-            this.tsmSort.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmNameSort,
-            this.tsmTypeSort,
-            this.tsbNumSort,
-            this.tsbModifySort});
-            this.tsmSort.Name = "tsmSort";
-            this.tsmSort.Size = new System.Drawing.Size(154, 22);
-            this.tsmSort.Text = "排序(&S)";
+            this.colHeadSize.DisplayIndex = 1;
+            this.colHeadSize.Text = "文件大小";
             // 
-            // tsmNameSort
+            // colHeadModify
             // 
-            this.tsmNameSort.Image = global::商户资料管理系统.Properties.Resources.selected;
-            this.tsmNameSort.Name = "tsmNameSort";
-            this.tsmNameSort.Size = new System.Drawing.Size(152, 22);
-            this.tsmNameSort.Text = "文件名称";
-            this.tsmNameSort.Click += new System.EventHandler(this.tsmNameSort_Click);
+            this.colHeadModify.DisplayIndex = 2;
+            this.colHeadModify.Text = "修改时间";
             // 
-            // tsmTypeSort
+            // colHeadUploadBy
             // 
-            this.tsmTypeSort.Name = "tsmTypeSort";
-            this.tsmTypeSort.Size = new System.Drawing.Size(152, 22);
-            this.tsmTypeSort.Text = "文件类型";
-            this.tsmTypeSort.Click += new System.EventHandler(this.tsmTypeSort_Click);
-            // 
-            // tsbNumSort
-            // 
-            this.tsbNumSort.Name = "tsbNumSort";
-            this.tsbNumSort.Size = new System.Drawing.Size(152, 22);
-            this.tsbNumSort.Text = "文件大小";
-            this.tsbNumSort.Click += new System.EventHandler(this.tsbNumSort_Click);
-            // 
-            // tsbModifySort
-            // 
-            this.tsbModifySort.Name = "tsbModifySort";
-            this.tsbModifySort.Size = new System.Drawing.Size(152, 22);
-            this.tsbModifySort.Text = "修改时间";
-            this.tsbModifySort.Click += new System.EventHandler(this.tsbModifySort_Click);
-            // 
-            // tsmRefresh
-            // 
-            this.tsmRefresh.Name = "tsmRefresh";
-            this.tsmRefresh.Size = new System.Drawing.Size(154, 22);
-            this.tsmRefresh.Text = "刷新(&R)";
-            this.tsmRefresh.Click += new System.EventHandler(this.tsmRefresh_Click);
-            // 
-            // tsmModify
-            // 
-            this.tsmModify.Name = "tsmModify";
-            this.tsmModify.Size = new System.Drawing.Size(154, 22);
-            this.tsmModify.Text = "重命名";
-            this.tsmModify.Visible = false;
-            this.tsmModify.Click += new System.EventHandler(this.tsmModify_Click);
-            // 
-            // tsmDownload
-            // 
-            this.tsmDownload.Image = global::商户资料管理系统.Properties.Resources.download;
-            this.tsmDownload.Name = "tsmDownload";
-            this.tsmDownload.Size = new System.Drawing.Size(154, 22);
-            this.tsmDownload.Text = "下载(&L)";
-            this.tsmDownload.Visible = false;
-            this.tsmDownload.Click += new System.EventHandler(this.tsmDownload_Click);
-            // 
-            // tsmUpload
-            // 
-            this.tsmUpload.Image = global::商户资料管理系统.Properties.Resources.upload;
-            this.tsmUpload.Name = "tsmUpload";
-            this.tsmUpload.Size = new System.Drawing.Size(154, 22);
-            this.tsmUpload.Text = "上传(&U)";
-            this.tsmUpload.Click += new System.EventHandler(this.tsmUpload_Click);
-            // 
-            // tsmDelete
-            // 
-            this.tsmDelete.Image = global::商户资料管理系统.Properties.Resources.delete;
-            this.tsmDelete.Name = "tsmDelete";
-            this.tsmDelete.Size = new System.Drawing.Size(154, 22);
-            this.tsmDelete.Text = "删除(&D)";
-            this.tsmDelete.Visible = false;
-            this.tsmDelete.Click += new System.EventHandler(this.tsmDelete_Click);
-            // 
-            // imageList1
-            // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(64, 64);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // tsmOpen
-            // 
-            this.tsmOpen.Name = "tsmOpen";
-            this.tsmOpen.Size = new System.Drawing.Size(154, 22);
-            this.tsmOpen.Text = "打开(&O)";
-            this.tsmOpen.Visible = false;
-            this.tsmOpen.Click += new System.EventHandler(this.tsmOpen_Click);
+            this.colHeadUploadBy.DisplayIndex = 3;
+            this.colHeadUploadBy.Text = "上传人";
             // 
             // searchTextBox1
             // 
@@ -325,12 +391,10 @@
             this.searchTextBox1.Text = "搜索商户文件";
             this.searchTextBox1.OnSearch += new 商户资料管理系统.SearchTextBox.OnSearchHander(this.searchTextBox1_OnSearch);
             // 
-            // tsmNewForlder
+            // colHeadIcon
             // 
-            this.tsmNewForlder.Name = "tsmNewForlder";
-            this.tsmNewForlder.Size = new System.Drawing.Size(154, 22);
-            this.tsmNewForlder.Text = "新建文件夹(&N)";
-            this.tsmNewForlder.Click += new System.EventHandler(this.tsmNewForlder_Click);
+            this.colHeadIcon.DisplayIndex = 4;
+            this.colHeadIcon.Text = "图标";
             // 
             // DataManageControl
             // 
@@ -361,7 +425,7 @@
         private System.Windows.Forms.ToolStripButton tsbRefresh;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private SearchTextBox searchTextBox1;
-        private System.Windows.Forms.ListView LvDataContent;
+        private ListviewEx LvDataContent;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ContextMenuStrip ctmContent;
         private System.Windows.Forms.ToolStripMenuItem tsmSort;
@@ -376,5 +440,13 @@
         private System.Windows.Forms.ToolStripMenuItem tsmDelete;
         private System.Windows.Forms.ToolStripMenuItem tsmOpen;
         private System.Windows.Forms.ToolStripMenuItem tsmNewForlder;
+        private System.Windows.Forms.ColumnHeader colHeadName;
+        private System.Windows.Forms.ColumnHeader colHeadSize;
+        private System.Windows.Forms.ColumnHeader colHeadModify;
+        private System.Windows.Forms.ColumnHeader colHeadUploadBy;
+        private System.Windows.Forms.ToolStripMenuItem tsmView;
+        private System.Windows.Forms.ToolStripMenuItem tsmViewIcon;
+        private System.Windows.Forms.ToolStripMenuItem tsmViewDetail;
+        private System.Windows.Forms.ColumnHeader colHeadIcon;
     }
 }
