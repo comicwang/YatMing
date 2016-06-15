@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+<title>HTML5 Image Viewer</title> 
+</head>
+<body id="imgbd">
+<img id="imgsource" src="" alt="my image" />
+    <script type="text/javascript">
+        function MouseWheelHandler(e) {
+            // cross-browser wheel delta   
+            var e = window.event || e; // old IE support   
+            var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+            var myimage = document.getElementById("imgsource");
+            myimage.style.width = Math.max(50, Math.min(800, myimage.width + (30 * delta))) + "px";
+            return false;
+        }
+
+        function GetRequest() {
+            var url = location.search;
+            var theRequest = new Object();
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for (var i = 0; i < strs.length; i++) {
+                    theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                }
+            }
+            return theRequest;
+        }
+
+        function InitiliazeImage() {
+            var mybody = document.getElementById("imgbd");
+            if (mybody.addEventListener) {
+                // IE9, Chrome, Safari, Opera   
+                mybody.addEventListener("mousewheel", MouseWheelHandler, false);
+                // Firefox   
+                mybody.addEventListener("DOMMouseScroll", MouseWheelHandler, false);
+            }
+                // IE 6/7/8   
+            else mybody.attachEvent("onmousewheel", MouseWheelHandler);
+
+            var Request = GetRequest();
+            var name = Request["name"];
+            var myimage = document.getElementById("imgsource");
+            myimage.src = "vedios/" + name;
+        }
+        InitiliazeImage();
+</script>
+</body>
+</html>
+

@@ -107,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\video-js.min.css" />
+    <Content Include="imgviewer.html" />
     <Content Include="index.html" />
     <Content Include="jquery-2.1.4\jquery.js" />
     <Content Include="jquery-2.1.4\jquery.min.js" />

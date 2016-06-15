@@ -61,7 +61,7 @@ namespace iTelluro.Explorer.YatMing.Application
                 SqlParameter id2 = new SqlParameter("@MetaDataId", SqlDbType.Char);
                 id2.Value = metaId;
                 string name = _repository.ExecuteQuery<string>(sqlselect1, new DbParameter[] { id2 }).FirstOrDefault();
-                if (name.ToLower().EndsWith("mp4") || name.ToLower().EndsWith("ogg") || name.ToLower().EndsWith("webm") || name.ToLower().EndsWith("flv"))
+                if (name.ToLower().EndsWith("mp4") || name.ToLower().EndsWith("ogg") || name.ToLower().EndsWith("webm") || name.ToLower().EndsWith("flv") || name.ToLower().EndsWith("txt") || name.ToLower().EndsWith("jpg") || name.ToLower().EndsWith("png") || name.ToLower().EndsWith("jpeg") || name.ToLower().EndsWith("bmp"))
                     WriteFile(metaId + Path.GetExtension(name), buffer);
 
                 string contentName = index == 0 ? "DataContent" : "DataContent" + index;
@@ -156,7 +156,7 @@ namespace iTelluro.Explorer.YatMing.Application
                 SqlParameter id2 = new SqlParameter("@MetaDataId", SqlDbType.Char);
                 id2.Value = guid;
                 string name = _repository.ExecuteQuery<string>(sqlselect1, new DbParameter[] { id2 }).FirstOrDefault();
-                if (name.ToLower().EndsWith("mp4") || name.ToLower().EndsWith("ogg") || name.ToLower().EndsWith("webm") || name.ToLower().EndsWith("flv"))
+                if (name.ToLower().EndsWith("mp4") || name.ToLower().EndsWith("ogg") || name.ToLower().EndsWith("webm") || name.ToLower().EndsWith("flv") || name.ToLower().EndsWith("txt") || name.ToLower().EndsWith("jpg") || name.ToLower().EndsWith("png") || name.ToLower().EndsWith("jpeg") || name.ToLower().EndsWith("bmp"))
                 {
                     string root = System.Configuration.ConfigurationManager.AppSettings["RootUrl"];
                     if (File.Exists(root + name + Path.GetExtension(name)))
