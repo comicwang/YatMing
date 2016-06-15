@@ -13,7 +13,7 @@ using 商户资料管理系统.YatServer;
 
 namespace 商户资料管理系统
 {
-    public class ListViewItemEx : ListViewItem
+    public class ListViewItemEx : ListViewItem, IDisposable
     {
         private ProgressBar _pb = null;
         private PictureBox _pbox = null;
@@ -26,58 +26,18 @@ namespace 商户资料管理系统
         public ListViewItemEx()
             : base()
         {
-          
-        }
-
-        public ListViewItemEx(string baseId)
-            :base()
-        {
-            _baseId = baseId;
-        }
-
-        private void pic_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (OpareteType == OpareteTypeEnum.Download)
-                    _bgwork.RunWorkerAsync(new object[] { _saveHistory });
-                else
-                    _bgwork.RunWorkerAsync(new object[] { IOHelper.GetStreamBuffer(_saveHistory), ItemData.MetaDataId });
-                _pbox.Visible = false;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        public void SetOtherControl()
-        {
-            Rectangle rct = this.Bounds;           
-            _pb = new ProgressBar();
-            _pb.Height = 10;
-            _pb.Width = rct.Width;
-            _pb.Location = new Point(rct.Left, rct.Top + (rct.Height - _pb.Height) / 2);
-            _pb.Visible = false;
-            this.ListView.Controls.Add(_pb);
-
-            _pbox = new PictureBox();
-            _pbox.Width = 15;
-            _pbox.Height = 15;
-            _pbox.Image = Resources.retry;
-            _pbox.Cursor = Cursors.Hand;
-            _pbox.Click += pic_Click;
-            _pbox.Visible = false;
-            _pbox.Location = new Point(rct.Left, rct.Top + (rct.Height - _pb.Height) / 2);
-            _pbox.SizeMode = PictureBoxSizeMode.Zoom;
-            this.ListView.Controls.Add(_pbox);
-
             _bgwork = new BackgroundWorker();
             _bgwork.WorkerReportsProgress = true;
             _bgwork.WorkerSupportsCancellation = true;
             _bgwork.DoWork += _bgwork_DoWork;
             _bgwork.RunWorkerCompleted += _bgwork_RunWorkerCompleted;
             _bgwork.ProgressChanged += _bgwork_ProgressChanged;
+        }
+
+        public ListViewItemEx(string baseId)
+            : this()
+        {
+            _baseId = baseId;
         }
 
         #region 后台事件
@@ -156,6 +116,8 @@ namespace 商户资料管理系统
                     long totalSize = long.Parse(ItemData.FileSize);
                     long total = 0;
                     byte[] buffer = null;
+                    if (File.Exists(obj[0].ToString()))
+                        File.Delete(obj[0].ToString());
                     bool success = true;
                     while (success)
                     {
@@ -182,11 +144,81 @@ namespace 商户资料管理系统
 
         #endregion
 
+        /// <summary>
+        /// 重试
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pic_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_bgwork.IsBusy)
+                    return;
+                if (OpareteType == OpareteTypeEnum.Download)
+                    _bgwork.RunWorkerAsync(new object[] { _saveHistory });
+                else
+                    _bgwork.RunWorkerAsync(new object[] { IOHelper.GetStreamBuffer(_saveHistory), ItemData.MetaDataId });
+                _pbox.Visible = false;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private void ShowProgressBar()
+        {
+            Rectangle rct = this.Bounds;
+            _pb = new ProgressBar();
+            _pb.Height = 10;
+            _pb.Width = rct.Width;
+            _pb.Location = new Point(rct.Left, rct.Top + (rct.Height - _pb.Height) / 2);
+            //_pb.Visible = false;
+            this.ListView.Controls.Add(_pb);
+        }
+
+        private void ShowError()
+        {
+            Rectangle rct = this.Bounds;
+            _pbox = new PictureBox();
+            _pbox.Width = 15;
+            _pbox.Height = 15;
+            _pbox.Image = Resources.retry;
+            _pbox.Cursor = Cursors.Hand;
+            _pbox.Click += pic_Click;
+           // _pbox.Visible = false;
+            _pbox.Location = new Point(rct.Left, rct.Top + (rct.Height - _pb.Height) / 2);
+            _pbox.SizeMode = PictureBoxSizeMode.Zoom;
+            this.ListView.Controls.Add(_pbox);
+        }
+
+        //public void SetOtherControl()
+        //{
+        //    Rectangle rct = this.Bounds;
+        //    _pb = new ProgressBar();
+        //    _pb.Height = 10;
+        //    _pb.Width = rct.Width;
+        //    _pb.Location = new Point(rct.Left, rct.Top + (rct.Height - _pb.Height) / 2);
+        //    _pb.Visible = false;
+        //    this.ListView.Controls.Add(_pb);
+
+        //    _pbox = new PictureBox();
+        //    _pbox.Width = 15;
+        //    _pbox.Height = 15;
+        //    _pbox.Image = Resources.retry;
+        //    _pbox.Cursor = Cursors.Hand;
+        //    _pbox.Click += pic_Click;
+        //    _pbox.Visible = false;
+        //    _pbox.Location = new Point(rct.Left, rct.Top + (rct.Height - _pb.Height) / 2);
+        //    _pbox.SizeMode = PictureBoxSizeMode.Zoom;
+        //    this.ListView.Controls.Add(_pbox);
+        //}
+
         public TDataInfoDTO ItemData { get; set; }
 
-        public void UploadFile(string filePath,string parentId,ImageList lstImage)
+        public void UploadFile(string filePath, string parentId, ImageList lstImage)
         {
-            SetOtherControl();
             _saveHistory = filePath;
             try
             {
@@ -205,7 +237,7 @@ namespace 商户资料管理系统
                 bool success = _client.TDataInfoAdd(uploadDTO);
                 if (success && !_bgwork.IsBusy)
                 {
-                    this.ToolTipText = string.Format("文件名称:{0}\r\n文件大小:{1}M\r\n上传时间:{2}\r\n上传人:{3}\r\n修改时间:{4}\r\n下载次数:{5}\r\n文件描述:{6}", uploadDTO.DataName,CommomHelper.ParseMB(uploadDTO.FileSize), uploadDTO.CreateTime, uploadDTO.UploadPeople, uploadDTO.LastModifyTime, uploadDTO.DownloadTimes, uploadDTO.DataDescription);
+                    this.ToolTipText = string.Format("文件名称:{0}\r\n文件大小:{1}M\r\n上传时间:{2}\r\n上传人:{3}\r\n修改时间:{4}\r\n下载次数:{5}\r\n文件描述:{6}", uploadDTO.DataName, CommomHelper.ParseMB(uploadDTO.FileSize), uploadDTO.CreateTime, uploadDTO.UploadPeople, uploadDTO.LastModifyTime, uploadDTO.DownloadTimes, uploadDTO.DataDescription);
                     this.SubItems.Add(uploadDTO.DataName);
                     this.SubItems.Add(uploadDTO.FileSize);
                     this.SubItems.Add(uploadDTO.LastModifyTime.Value.ToString());
@@ -214,6 +246,7 @@ namespace 商户资料管理系统
                     ItemData = uploadDTO;
                     byte[] buffer = IOHelper.GetStreamBuffer(filePath);
                     OpareteType = OpareteTypeEnum.Upload;
+                    ShowProgressBar();
                     _bgwork.RunWorkerAsync(new object[] { buffer, uploadDTO.MetaDataId });
                 }
             }
@@ -230,35 +263,51 @@ namespace 商户资料管理系统
             dialog.FileName = ItemData.DataName;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                SetOtherControl();
                 if (_bgwork.IsBusy == false)
                 {
                     OpareteType = OpareteTypeEnum.Download;
                     _saveHistory = dialog.FileName;
+                    ShowProgressBar();
                     _bgwork.RunWorkerAsync(new object[] { dialog.FileName });
                 }
             }
         }
 
+        /// <summary>
+        /// 当前操作类型
+        /// </summary>
         public OpareteTypeEnum OpareteType { get; private set; }
 
         public void Hide()
         {
-            _pb.Visible = false;
-            _pbox.Visible = false;
+            if (_pb != null)
+                _pb.Visible = false;
+            if (_pbox != null)
+                _pbox.Visible = false;
             if (_tip != null)
                 _tip.Dispose();
         }
 
         public void ReportError()
         {
-            _pb.ForeColor = Color.Red;
+            ShowError();
             _pbox.Visible = true;
-            _pb.Visible = false;
+            if (_pb != null)
+            {
+                _pb.ForeColor = Color.Red;
+                _pb.Visible = false;
+            }
             _tip = new ToolTip();
             _tip.SetToolTip(_pbox, "文件操作失败,可以尝试重新操作");
         }
 
+        public void Dispose()
+        {
+            _bgwork.Dispose();
+            _pb.Dispose();
+            _pbox.Dispose();
+            _tip.Dispose();
+        }
     }
 
     public enum OpareteTypeEnum

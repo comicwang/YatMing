@@ -26,7 +26,7 @@ namespace 商户资料管理系统
             TDataInfoDTO dto = _client.TDataInfoQueryById(dataId);
             Text = dto.DataName;
             //文件图片
-            if (dto.DataName.ToLower().EndsWith(".png") || dto.DataName.ToLower().EndsWith(".jpg") || dto.DataName.ToLower().EndsWith(".bmp") || dto.DataName.ToLower().EndsWith(".jpeg") || dto.DataName.ToLower().EndsWith(".doc") || dto.DataName.ToLower().EndsWith(".docx") || dto.DataName.ToLower().EndsWith(".ppt") || dto.DataName.ToLower().EndsWith(".pptx") || dto.DataName.ToLower().EndsWith(".xls"))
+            if (dto.DataName.ToLower().EndsWith(".doc") || dto.DataName.ToLower().EndsWith(".docx") || dto.DataName.ToLower().EndsWith(".ppt") || dto.DataName.ToLower().EndsWith(".pptx") || dto.DataName.ToLower().EndsWith(".xls"))
             {
                 string temp = Path.Combine(System.Environment.GetEnvironmentVariable("TEMP"), dto.MetaDataId + Path.GetExtension(dto.DataName));
                  if (File.Exists(temp))
@@ -41,7 +41,26 @@ namespace 商户资料管理系统
                          backgroundWorker1.RunWorkerAsync(new object[] { dto, temp });
                  }
             }
-           //视频
+            else if (dto.DataName.ToLower().EndsWith(".png") || dto.DataName.ToLower().EndsWith(".jpg") || dto.DataName.ToLower().EndsWith(".bmp") || dto.DataName.ToLower().EndsWith(".jpeg"))
+            {
+                string dns = _client.Endpoint.Address.Uri.AbsoluteUri;
+
+                dns = dns.Remove(dns.LastIndexOf('/'));
+                //System.Diagnostics.Process.Start("iexplore.exe", "http://" + dns + "/index.html?name=" + dto.DataName); 
+                panel1.Visible = false;
+
+                webBrowser1.Navigate(dns + "/imgviewer.html?name=" + dto.MetaDataId + Path.GetExtension(dto.DataName));
+            }
+            else if (dto.DataName.ToLower().EndsWith(".txt"))
+            {
+                string dns = _client.Endpoint.Address.Uri.AbsoluteUri;
+
+                dns = dns.Remove(dns.LastIndexOf('/'));
+                //System.Diagnostics.Process.Start("iexplore.exe", "http://" + dns + "/index.html?name=" + dto.DataName); 
+                panel1.Visible = false;
+                webBrowser1.Navigate(dns + "/vedios/" + dto.MetaDataId + Path.GetExtension(dto.DataName));
+            }
+            //视频
             else if (dto.DataName.ToLower().EndsWith("mp4") || dto.DataName.ToLower().EndsWith("ogg") || dto.DataName.ToLower().EndsWith("webm") || dto.DataName.ToLower().EndsWith("flv"))
             {
                 string dns = _client.Endpoint.Address.Uri.AbsoluteUri;
