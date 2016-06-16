@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoConvert", "DoConvert\DoConvert.csproj", "{1D25433D-C3CA-4F4E-B52E-4913E76D741A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication1", "WindowsFormsApplication1\WindowsFormsApplication1.csproj", "{1EBBF860-951A-4F9B-8F15-83E4515B800D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1D25433D-C3CA-4F4E-B52E-4913E76D741A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D25433D-C3CA-4F4E-B52E-4913E76D741A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D25433D-C3CA-4F4E-B52E-4913E76D741A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D25433D-C3CA-4F4E-B52E-4913E76D741A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EBBF860-951A-4F9B-8F15-83E4515B800D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EBBF860-951A-4F9B-8F15-83E4515B800D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EBBF860-951A-4F9B-8F15-83E4515B800D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EBBF860-951A-4F9B-8F15-83E4515B800D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
