@@ -50,7 +50,7 @@ namespace iTelluro.Explorer.YatMing.Infrastructure.Context
         }
         #endregion
 
-        #region IQueryableUnitOfWork 成员 duy新加
+        #region IQueryableUnitOfWork 成员
 
         /// <summary>
         /// 提交当前操作的结果

@@ -821,6 +821,19 @@ namespace iTelluro.Explorer.YatMing.Service
             }
         }
 
+        public void TDataInDoConvert(string metaId)
+        {
+            try
+            {
+                 _TDataInfoApp.DoConvert(metaId);
+            }
+            catch (Exception ex)
+            {
+                ILog log = LogManager.GetLogger("YatMingSerice-" + this.GetType().Name + "-" + MethodBase.GetCurrentMethod().Name);
+                log.Error(ex.Message);            
+            }
+        }
+
         #endregion
 
 

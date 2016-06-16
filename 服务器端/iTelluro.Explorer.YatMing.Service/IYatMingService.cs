@@ -309,6 +309,8 @@ namespace iTelluro.Explorer.YatMing.Service
         [OperationContract]
         List<TDataInfoDTO> TDataInQuery(bool limit, DateTime start, DateTime end, string keyword, string baseId);
 
+         [OperationContract]
+        void TDataInDoConvert(string metaId);
         #endregion
 
 

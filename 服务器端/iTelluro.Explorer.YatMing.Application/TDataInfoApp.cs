@@ -52,6 +52,19 @@ namespace iTelluro.Explorer.YatMing.Application
             }
         }
 
+        public void DoConvert(string metaId)
+        {
+            string sqlselect1 = "select DataName from T_DataInfo where MetaDataId=@MetaDataId";
+            SqlParameter id2 = new SqlParameter("@MetaDataId", SqlDbType.Char);
+            id2.Value = metaId;
+            string name = _repository.ExecuteQuery<string>(sqlselect1, new DbParameter[] { id2 }).FirstOrDefault();
+            string root = System.Configuration.ConfigurationManager.AppSettings["RootUrl"];
+            string path = Path.Combine(root, metaId + Path.GetExtension(name));
+
+            string toolPath = System.Configuration.ConfigurationManager.AppSettings["ToolPath"];
+            System.Diagnostics.Process.Start(toolPath, path);
+        }
+
         public bool UploadFile(byte[] buffer, string metaId, int index)
         {
             try
@@ -61,9 +74,10 @@ namespace iTelluro.Explorer.YatMing.Application
                 SqlParameter id2 = new SqlParameter("@MetaDataId", SqlDbType.Char);
                 id2.Value = metaId;
                 string name = _repository.ExecuteQuery<string>(sqlselect1, new DbParameter[] { id2 }).FirstOrDefault();
-                if (name.ToLower().EndsWith("mp4") || name.ToLower().EndsWith("ogg") || name.ToLower().EndsWith("webm") || name.ToLower().EndsWith("flv") || name.ToLower().EndsWith("txt") || name.ToLower().EndsWith("jpg") || name.ToLower().EndsWith("png") || name.ToLower().EndsWith("jpeg") || name.ToLower().EndsWith("bmp"))
+                if (name.ToLower().EndsWith("mp4") || name.ToLower().EndsWith("ogg") || name.ToLower().EndsWith("webm") || name.ToLower().EndsWith("flv") || name.ToLower().EndsWith("txt") || name.ToLower().EndsWith("jpg") || name.ToLower().EndsWith("png") || name.ToLower().EndsWith("jpeg") || name.ToLower().EndsWith("bmp") || name.ToLower().EndsWith(".doc") || name.ToLower().EndsWith(".docx") || name.ToLower().EndsWith(".ppt") || name.ToLower().EndsWith(".pptx") || name.ToLower().EndsWith(".xls"))
+                {
                     WriteFile(metaId + Path.GetExtension(name), buffer);
-
+                }
                 string contentName = index == 0 ? "DataContent" : "DataContent" + index;
                 string sql = string.Format("update T_DataInfo set {0}=@DataContent where MetaDataId=@MetaDataId", contentName);
                 List<SqlParameter> parameters = new List<SqlParameter>();
@@ -162,7 +176,21 @@ namespace iTelluro.Explorer.YatMing.Application
                     if (File.Exists(root + name + Path.GetExtension(name)))
                         File.Delete(root + name + Path.GetExtension(name));
                 }
-
+                else if (name.ToLower().EndsWith(".doc") || name.ToLower().EndsWith(".docx") || name.ToLower().EndsWith(".ppt") || name.ToLower().EndsWith(".pptx") || name.ToLower().EndsWith(".xls"))
+                {
+                    string root = System.Configuration.ConfigurationManager.AppSettings["RootUrl"];
+                    if (File.Exists(root + name + Path.GetExtension(name)))
+                        File.Delete(root + name + Path.GetExtension(name));
+                    string folder = System.Configuration.ConfigurationManager.AppSettings["FileFolder"];
+                    if(File.Exists(Path.Combine(folder,@"FlexPaper\swfs",guid+".swf")))
+                    {
+                        File.Delete(Path.Combine(folder, @"FlexPaper\swfs", guid + ".swf"));
+                    }
+                    if (File.Exists(Path.Combine(folder, @"FlexPaper\pdfs", guid + ".pdf")))
+                    {
+                        File.Delete(Path.Combine(folder, @"FlexPaper\pdfs", guid + ".pdf"));
+                    }
+                }
                 //  return _repository.Delete(guid) > 0;
 
                 string sql = "delete from T_DataInfo where MetaDataId=@MetaDataId";

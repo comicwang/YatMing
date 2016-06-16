@@ -107,10 +107,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\video-js.min.css" />
+    <Content Include="FlexPaper\FlexPaperViewer.html" />
+    <Content Include="FlexPaper\FlexPaperViewer.swf" />
+    <Content Include="FlexPaper\FlexPaperViewer_debug.html" />
+    <Content Include="FlexPaper\js\flexpaper_flash.js" />
+    <Content Include="FlexPaper\js\flexpaper_flash_debug.js" />
+    <Content Include="FlexPaper\js\jquery.js" />
+    <Content Include="FlexPaper\js\swfobject\expressInstall.swf" />
+    <Content Include="FlexPaper\js\swfobject\swfobject.js" />
+    <Content Include="FlexPaper\Paper.swf" />
+    <Content Include="FlexPaper\View.htm" />
     <Content Include="imgviewer.html" />
     <Content Include="index.html" />
-    <Content Include="jquery-2.1.4\jquery.js" />
-    <Content Include="jquery-2.1.4\jquery.min.js" />
     <Content Include="js\video.min.js" />
     <Content Include="Sys\商户资料管理系统.exe" />
     <Content Include="Web.config">
@@ -161,6 +169,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="FlexPaper\pdfs\" />
+    <Folder Include="FlexPaper\swfs\" />
     <Folder Include="vedios\" />
   </ItemGroup>
   <PropertyGroup>

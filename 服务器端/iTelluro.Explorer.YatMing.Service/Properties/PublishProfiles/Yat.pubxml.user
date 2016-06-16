@@ -8,8 +8,18 @@
     <LastUsedBuildConfiguration>Debug</LastUsedBuildConfiguration>
     <LastUsedPlatform>Any CPU</LastUsedPlatform>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>F:\IIS</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
+    <File Include="bin/Aspose.Cells.dll">
+      <publishTime>04/01/2011 15:12:56</publishTime>
+    </File>
+    <File Include="bin/Aspose.Slides.dll">
+      <publishTime>11/23/2014 13:38:19</publishTime>
+    </File>
+    <File Include="bin/Aspose.Words.dll">
+      <publishTime>02/01/2012 13:35:06</publishTime>
+    </File>
     <File Include="bin/AutoMapper.dll">
       <publishTime>05/08/2016 08:16:55</publishTime>
     </File>
@@ -35,46 +45,46 @@
       <publishTime>05/08/2016 08:16:55</publishTime>
     </File>
     <File Include="bin/iTelluro.Explorer.YatMing.Application.dll">
-      <publishTime>06/11/2016 08:07:05</publishTime>
+      <publishTime>06/16/2016 11:38:16</publishTime>
     </File>
     <File Include="bin/iTelluro.Explorer.YatMing.Application.DTO.dll">
-      <publishTime>06/11/2016 08:07:03</publishTime>
+      <publishTime>06/16/2016 11:38:12</publishTime>
     </File>
     <File Include="bin/iTelluro.Explorer.YatMing.Application.DTO.pdb">
-      <publishTime>06/11/2016 08:07:03</publishTime>
+      <publishTime>06/16/2016 11:38:12</publishTime>
     </File>
     <File Include="bin/iTelluro.Explorer.YatMing.Application.pdb">
-      <publishTime>06/11/2016 08:07:05</publishTime>
+      <publishTime>06/16/2016 11:38:16</publishTime>
     </File>
     <File Include="bin/iTelluro.Explorer.YatMing.Domain.Context.dll">
-      <publishTime>06/11/2016 08:07:03</publishTime>
+      <publishTime>06/16/2016 11:38:12</publishTime>
     </File>
     <File Include="bin/iTelluro.Explorer.YatMing.Domain.Context.pdb">
-      <publishTime>06/11/2016 08:07:03</publishTime>
+      <publishTime>06/16/2016 11:38:12</publishTime>
     </File>
     <File Include="bin/iTelluro.Explorer.YatMing.Domain.Entities.dll">
-      <publishTime>06/11/2016 08:07:02</publishTime>
+      <publishTime>06/16/2016 11:38:11</publishTime>
     </File>
     <File Include="bin/iTelluro.Explorer.YatMing.Domain.Entities.pdb">
-      <publishTime>06/11/2016 08:07:01</publishTime>
+      <publishTime>06/16/2016 11:38:10</publishTime>
     </File>
     <File Include="bin/iTelluro.Explorer.YatMing.IApplication.dll">
-      <publishTime>06/11/2016 08:07:04</publishTime>
+      <publishTime>06/16/2016 11:38:13</publishTime>
     </File>
     <File Include="bin/iTelluro.Explorer.YatMing.IApplication.pdb">
-      <publishTime>06/11/2016 08:07:04</publishTime>
+      <publishTime>06/16/2016 11:38:13</publishTime>
     </File>
     <File Include="bin/iTelluro.Explorer.YatMing.Infrastructure.Context.dll">
-      <publishTime>06/11/2016 08:07:04</publishTime>
+      <publishTime>06/16/2016 11:38:15</publishTime>
     </File>
     <File Include="bin/iTelluro.Explorer.YatMing.Infrastructure.Context.pdb">
-      <publishTime>06/11/2016 08:07:04</publishTime>
+      <publishTime>06/16/2016 11:38:14</publishTime>
     </File>
     <File Include="bin/iTelluro.Explorer.YatMing.Service.dll">
-      <publishTime>06/11/2016 08:07:06</publishTime>
+      <publishTime>06/16/2016 11:38:18</publishTime>
     </File>
     <File Include="bin/iTelluro.Explorer.YatMing.Service.pdb">
-      <publishTime>06/11/2016 08:07:06</publishTime>
+      <publishTime>06/16/2016 11:38:17</publishTime>
     </File>
     <File Include="bin/iTelluro.SSO.Common.dll">
       <publishTime>05/08/2016 08:16:55</publishTime>
@@ -100,6 +110,45 @@
     <File Include="css/video-js.min.css">
       <publishTime>06/06/2016 08:54:13</publishTime>
     </File>
+    <File Include="docviewer.html">
+      <publishTime>06/16/2016 09:15:25</publishTime>
+    </File>
+    <File Include="FlexPaper/FlexPaperViewer.html">
+      <publishTime>06/16/2016 09:25:59</publishTime>
+    </File>
+    <File Include="FlexPaper/FlexPaperViewer.swf">
+      <publishTime>06/16/2016 09:25:59</publishTime>
+    </File>
+    <File Include="FlexPaper/FlexPaperViewer_debug.html">
+      <publishTime>06/16/2016 09:25:59</publishTime>
+    </File>
+    <File Include="FlexPaper/js/flexpaper_flash.js">
+      <publishTime>06/16/2016 09:25:59</publishTime>
+    </File>
+    <File Include="FlexPaper/js/flexpaper_flash_debug.js">
+      <publishTime>06/16/2016 09:25:59</publishTime>
+    </File>
+    <File Include="FlexPaper/js/jquery.js">
+      <publishTime>06/16/2016 09:25:59</publishTime>
+    </File>
+    <File Include="FlexPaper/js/swfobject/expressInstall.swf">
+      <publishTime>06/16/2016 09:25:59</publishTime>
+    </File>
+    <File Include="FlexPaper/js/swfobject/swfobject.js">
+      <publishTime>06/16/2016 09:25:59</publishTime>
+    </File>
+    <File Include="FlexPaper/Paper.swf">
+      <publishTime>06/16/2016 09:25:59</publishTime>
+    </File>
+    <File Include="FlexPaper/Pdf2Swf.aspx">
+      <publishTime>06/16/2016 09:25:59</publishTime>
+    </File>
+    <File Include="FlexPaper/View.htm">
+      <publishTime>06/16/2016 10:59:02</publishTime>
+    </File>
+    <File Include="imgviewer.html">
+      <publishTime>06/15/2016 17:34:10</publishTime>
+    </File>
     <File Include="index.html">
       <publishTime>06/07/2016 11:42:15</publishTime>
     </File>
@@ -116,7 +165,7 @@
       <publishTime>06/03/2016 14:30:37</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/11/2016 08:07:29</publishTime>
+      <publishTime>06/16/2016 11:38:26</publishTime>
     </File>
     <File Include="YatMingService.svc">
       <publishTime>05/11/2016 21:20:06</publishTime>

@@ -55,5 +55,7 @@ namespace iTelluro.Explorer.YatMing.IApplication
         List<TDataInfoDTO> GetByParentKey(string key);
 
         List<TDataInfoDTO> Query(bool limit, DateTime start, DateTime end, string keyword, string baseId);
+
+        void DoConvert(string metaId);
     }
 }
