@@ -1,0 +1,1902 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="YatMingService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://192.168.0.144/YatMing/YatMingService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://192.168.0.144/YatMing/YatMingService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.168.0.144/YatMing/YatMingService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" />
+      <xsd:import schemaLocation="http://192.168.0.144/YatMing/YatMingService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IYatMingService_TServerUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:TServerUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TServerUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TServerUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TServerDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:TServerDelete" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TServerDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TServerDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TServerQueryById_InputMessage">
+    <wsdl:part name="parameters" element="tns:TServerQueryById" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TServerQueryById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TServerQueryByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TServerQueryAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:TServerQueryAll" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TServerQueryAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TServerQueryAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TTrainAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:TTrainAdd" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TTrainAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TTrainAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TTrainUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:TTrainUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TTrainUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TTrainUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TTrainDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:TTrainDelete" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TTrainDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TTrainDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TTrainQueryById_InputMessage">
+    <wsdl:part name="parameters" element="tns:TTrainQueryById" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TTrainQueryById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TTrainQueryByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TTrainQueryAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:TTrainQueryAll" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TTrainQueryAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TTrainQueryAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TEmployeeAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:TEmployeeAdd" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TEmployeeAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TEmployeeAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TEmployeeUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:TEmployeeUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TEmployeeUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TEmployeeUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TEmployeeDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:TEmployeeDelete" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TEmployeeDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TEmployeeDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TEmployeeQueryById_InputMessage">
+    <wsdl:part name="parameters" element="tns:TEmployeeQueryById" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TEmployeeQueryById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TEmployeeQueryByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TEmployeeQueryAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:TEmployeeQueryAll" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TEmployeeQueryAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TEmployeeQueryAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TLoginAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:TLoginAdd" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TLoginAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TLoginAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TLoginUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:TLoginUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TLoginUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TLoginUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TLoginDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:TLoginDelete" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TLoginDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TLoginDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TLoginQueryById_InputMessage">
+    <wsdl:part name="parameters" element="tns:TLoginQueryById" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TLoginQueryById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TLoginQueryByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TLoginQueryAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:TLoginQueryAll" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TLoginQueryAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TLoginQueryAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TLoginCheckLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:TLoginCheckLogin" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TLoginCheckLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TLoginCheckLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TLoginCheckAccountExits_InputMessage">
+    <wsdl:part name="parameters" element="tns:TLoginCheckAccountExits" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TLoginCheckAccountExits_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TLoginCheckAccountExitsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TLoginCheckUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:TLoginCheckUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TLoginCheckUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TLoginCheckUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TLoginUpdateSys_InputMessage">
+    <wsdl:part name="parameters" element="tns:TLoginUpdateSys" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TLoginUpdateSys_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TLoginUpdateSysResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TCheckAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:TCheckAdd" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TCheckAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TCheckAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TCheckUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:TCheckUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TCheckUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TCheckUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TCheckDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:TCheckDelete" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TCheckDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TCheckDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TCheckQueryById_InputMessage">
+    <wsdl:part name="parameters" element="tns:TCheckQueryById" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TCheckQueryById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TCheckQueryByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TCheckQueryAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:TCheckQueryAll" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TCheckQueryAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TCheckQueryAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TBaseInfoAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:TBaseInfoAdd" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TBaseInfoAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TBaseInfoAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TBaseInfoUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:TBaseInfoUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TBaseInfoUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TBaseInfoUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TBaseInfoDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:TBaseInfoDelete" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TBaseInfoDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TBaseInfoDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TBaseInfoQueryById_InputMessage">
+    <wsdl:part name="parameters" element="tns:TBaseInfoQueryById" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TBaseInfoQueryById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TBaseInfoQueryByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TBaseInfoQueryAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:TBaseInfoQueryAll" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TBaseInfoQueryAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TBaseInfoQueryAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TBaseInfoQueryByKeyword_InputMessage">
+    <wsdl:part name="parameters" element="tns:TBaseInfoQueryByKeyword" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TBaseInfoQueryByKeyword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TBaseInfoQueryByKeywordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TMerchantTypeAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:TMerchantTypeAdd" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TMerchantTypeAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TMerchantTypeAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TMerchantTypeUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:TMerchantTypeUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TMerchantTypeUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TMerchantTypeUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TMerchantTypeDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:TMerchantTypeDelete" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TMerchantTypeDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TMerchantTypeDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TMerchantTypeQueryById_InputMessage">
+    <wsdl:part name="parameters" element="tns:TMerchantTypeQueryById" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TMerchantTypeQueryById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TMerchantTypeQueryByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TMerchantTypeQueryAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:TMerchantTypeQueryAll" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TMerchantTypeQueryAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TMerchantTypeQueryAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TMerchantTypeGetByPid_InputMessage">
+    <wsdl:part name="parameters" element="tns:TMerchantTypeGetByPid" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TMerchantTypeGetByPid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TMerchantTypeGetByPidResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDetailInfoAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:TDetailInfoAdd" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDetailInfoAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TDetailInfoAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDetailInfoUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:TDetailInfoUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDetailInfoUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TDetailInfoUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDetailInfoDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:TDetailInfoDelete" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDetailInfoDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TDetailInfoDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDetailInfoQueryById_InputMessage">
+    <wsdl:part name="parameters" element="tns:TDetailInfoQueryById" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDetailInfoQueryById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TDetailInfoQueryByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDetailInfoQueryAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:TDetailInfoQueryAll" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDetailInfoQueryAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TDetailInfoQueryAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDetailInfoGetByForignKey_InputMessage">
+    <wsdl:part name="parameters" element="tns:TDetailInfoGetByForignKey" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDetailInfoGetByForignKey_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TDetailInfoGetByForignKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDataInfoAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:TDataInfoAdd" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDataInfoAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TDataInfoAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDataInfoUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:TDataInfoUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDataInfoUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TDataInfoUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDataInfoDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:TDataInfoDelete" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDataInfoDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TDataInfoDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDataInfoQueryById_InputMessage">
+    <wsdl:part name="parameters" element="tns:TDataInfoQueryById" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDataInfoQueryById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TDataInfoQueryByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDataInfoQueryAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:TDataInfoQueryAll" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDataInfoQueryAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TDataInfoQueryAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDataInfoUploadFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:TDataInfoUploadFile" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDataInfoUploadFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TDataInfoUploadFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDataInfoDownloadFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:TDataInfoDownloadFile" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDataInfoDownloadFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TDataInfoDownloadFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDataInGetByForginKey_InputMessage">
+    <wsdl:part name="parameters" element="tns:TDataInGetByForginKey" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDataInGetByForginKey_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TDataInGetByForginKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDataInGetByParentKey_InputMessage">
+    <wsdl:part name="parameters" element="tns:TDataInGetByParentKey" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDataInGetByParentKey_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TDataInGetByParentKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDataInQuery_InputMessage">
+    <wsdl:part name="parameters" element="tns:TDataInQuery" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDataInQuery_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TDataInQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDataInDoConvert_InputMessage">
+    <wsdl:part name="parameters" element="tns:TDataInDoConvert" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TDataInDoConvert_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TDataInDoConvertResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPromotionAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:TPromotionAdd" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPromotionAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TPromotionAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPromotionUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:TPromotionUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPromotionUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TPromotionUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPromotionDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:TPromotionDelete" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPromotionDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TPromotionDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPromotionQueryById_InputMessage">
+    <wsdl:part name="parameters" element="tns:TPromotionQueryById" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPromotionQueryById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TPromotionQueryByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPromotionQueryAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:TPromotionQueryAll" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPromotionQueryAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TPromotionQueryAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPlatformAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:TPlatformAdd" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPlatformAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TPlatformAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPlatformUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:TPlatformUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPlatformUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TPlatformUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPlatformDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:TPlatformDelete" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPlatformDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TPlatformDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPlatformQueryById_InputMessage">
+    <wsdl:part name="parameters" element="tns:TPlatformQueryById" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPlatformQueryById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TPlatformQueryByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPlatformQueryAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:TPlatformQueryAll" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPlatformQueryAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TPlatformQueryAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPlatformGetByForignKey_InputMessage">
+    <wsdl:part name="parameters" element="tns:TPlatformGetByForignKey" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPlatformGetByForignKey_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TPlatformGetByForignKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TShopDataAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:TShopDataAdd" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TShopDataAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TShopDataAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TShopDataUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:TShopDataUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TShopDataUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TShopDataUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TShopDataDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:TShopDataDelete" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TShopDataDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TShopDataDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TShopDataQueryById_InputMessage">
+    <wsdl:part name="parameters" element="tns:TShopDataQueryById" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TShopDataQueryById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TShopDataQueryByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TShopDataQueryAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:TShopDataQueryAll" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TShopDataQueryAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TShopDataQueryAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPriceAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:TPriceAdd" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPriceAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TPriceAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPriceUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:TPriceUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPriceUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TPriceUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPriceDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:TPriceDelete" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPriceDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TPriceDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPriceQueryById_InputMessage">
+    <wsdl:part name="parameters" element="tns:TPriceQueryById" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPriceQueryById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TPriceQueryByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPriceQueryAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:TPriceQueryAll" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPriceQueryAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TPriceQueryAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPackageAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:TPackageAdd" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPackageAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TPackageAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPackageUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:TPackageUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPackageUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TPackageUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPackageDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:TPackageDelete" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPackageDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TPackageDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPackageQueryById_InputMessage">
+    <wsdl:part name="parameters" element="tns:TPackageQueryById" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPackageQueryById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TPackageQueryByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPackageQueryAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:TPackageQueryAll" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TPackageQueryAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TPackageQueryAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_THardwareAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:THardwareAdd" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_THardwareAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:THardwareAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_THardwareUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:THardwareUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_THardwareUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:THardwareUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_THardwareDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:THardwareDelete" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_THardwareDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:THardwareDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_THardwareQueryById_InputMessage">
+    <wsdl:part name="parameters" element="tns:THardwareQueryById" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_THardwareQueryById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:THardwareQueryByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_THardwareQueryAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:THardwareQueryAll" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_THardwareQueryAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:THardwareQueryAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TContractAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:TContractAdd" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TContractAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TContractAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TContractUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:TContractUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TContractUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TContractUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TContractDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:TContractDelete" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TContractDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TContractDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TContractQueryById_InputMessage">
+    <wsdl:part name="parameters" element="tns:TContractQueryById" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TContractQueryById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TContractQueryByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TContractQueryAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:TContractQueryAll" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TContractQueryAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TContractQueryAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TSubmitAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:TSubmitAdd" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TSubmitAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TSubmitAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TSubmitUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:TSubmitUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TSubmitUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TSubmitUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TSubmitDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:TSubmitDelete" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TSubmitDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TSubmitDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TSubmitQueryById_InputMessage">
+    <wsdl:part name="parameters" element="tns:TSubmitQueryById" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TSubmitQueryById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TSubmitQueryByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TSubmitQueryAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:TSubmitQueryAll" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TSubmitQueryAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TSubmitQueryAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TServerAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:TServerAdd" />
+  </wsdl:message>
+  <wsdl:message name="IYatMingService_TServerAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TServerAddResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IYatMingService">
+    <wsdl:operation name="TServerUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TServerUpdate" message="tns:IYatMingService_TServerUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TServerUpdateResponse" message="tns:IYatMingService_TServerUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TServerDelete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TServerDelete" message="tns:IYatMingService_TServerDelete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TServerDeleteResponse" message="tns:IYatMingService_TServerDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TServerQueryById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TServerQueryById" message="tns:IYatMingService_TServerQueryById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TServerQueryByIdResponse" message="tns:IYatMingService_TServerQueryById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TServerQueryAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TServerQueryAll" message="tns:IYatMingService_TServerQueryAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TServerQueryAllResponse" message="tns:IYatMingService_TServerQueryAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TTrainAdd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TTrainAdd" message="tns:IYatMingService_TTrainAdd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TTrainAddResponse" message="tns:IYatMingService_TTrainAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TTrainUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TTrainUpdate" message="tns:IYatMingService_TTrainUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TTrainUpdateResponse" message="tns:IYatMingService_TTrainUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TTrainDelete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TTrainDelete" message="tns:IYatMingService_TTrainDelete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TTrainDeleteResponse" message="tns:IYatMingService_TTrainDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TTrainQueryById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TTrainQueryById" message="tns:IYatMingService_TTrainQueryById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TTrainQueryByIdResponse" message="tns:IYatMingService_TTrainQueryById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TTrainQueryAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TTrainQueryAll" message="tns:IYatMingService_TTrainQueryAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TTrainQueryAllResponse" message="tns:IYatMingService_TTrainQueryAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TEmployeeAdd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TEmployeeAdd" message="tns:IYatMingService_TEmployeeAdd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TEmployeeAddResponse" message="tns:IYatMingService_TEmployeeAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TEmployeeUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TEmployeeUpdate" message="tns:IYatMingService_TEmployeeUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TEmployeeUpdateResponse" message="tns:IYatMingService_TEmployeeUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TEmployeeDelete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TEmployeeDelete" message="tns:IYatMingService_TEmployeeDelete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TEmployeeDeleteResponse" message="tns:IYatMingService_TEmployeeDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TEmployeeQueryById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TEmployeeQueryById" message="tns:IYatMingService_TEmployeeQueryById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TEmployeeQueryByIdResponse" message="tns:IYatMingService_TEmployeeQueryById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TEmployeeQueryAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TEmployeeQueryAll" message="tns:IYatMingService_TEmployeeQueryAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TEmployeeQueryAllResponse" message="tns:IYatMingService_TEmployeeQueryAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TLoginAdd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TLoginAdd" message="tns:IYatMingService_TLoginAdd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TLoginAddResponse" message="tns:IYatMingService_TLoginAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TLoginUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TLoginUpdate" message="tns:IYatMingService_TLoginUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TLoginUpdateResponse" message="tns:IYatMingService_TLoginUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TLoginDelete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TLoginDelete" message="tns:IYatMingService_TLoginDelete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TLoginDeleteResponse" message="tns:IYatMingService_TLoginDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TLoginQueryById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TLoginQueryById" message="tns:IYatMingService_TLoginQueryById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TLoginQueryByIdResponse" message="tns:IYatMingService_TLoginQueryById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TLoginQueryAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TLoginQueryAll" message="tns:IYatMingService_TLoginQueryAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TLoginQueryAllResponse" message="tns:IYatMingService_TLoginQueryAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TLoginCheckLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TLoginCheckLogin" message="tns:IYatMingService_TLoginCheckLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TLoginCheckLoginResponse" message="tns:IYatMingService_TLoginCheckLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TLoginCheckAccountExits">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TLoginCheckAccountExits" message="tns:IYatMingService_TLoginCheckAccountExits_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TLoginCheckAccountExitsResponse" message="tns:IYatMingService_TLoginCheckAccountExits_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TLoginCheckUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TLoginCheckUpdate" message="tns:IYatMingService_TLoginCheckUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TLoginCheckUpdateResponse" message="tns:IYatMingService_TLoginCheckUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TLoginUpdateSys">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TLoginUpdateSys" message="tns:IYatMingService_TLoginUpdateSys_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TLoginUpdateSysResponse" message="tns:IYatMingService_TLoginUpdateSys_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TCheckAdd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TCheckAdd" message="tns:IYatMingService_TCheckAdd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TCheckAddResponse" message="tns:IYatMingService_TCheckAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TCheckUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TCheckUpdate" message="tns:IYatMingService_TCheckUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TCheckUpdateResponse" message="tns:IYatMingService_TCheckUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TCheckDelete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TCheckDelete" message="tns:IYatMingService_TCheckDelete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TCheckDeleteResponse" message="tns:IYatMingService_TCheckDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TCheckQueryById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TCheckQueryById" message="tns:IYatMingService_TCheckQueryById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TCheckQueryByIdResponse" message="tns:IYatMingService_TCheckQueryById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TCheckQueryAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TCheckQueryAll" message="tns:IYatMingService_TCheckQueryAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TCheckQueryAllResponse" message="tns:IYatMingService_TCheckQueryAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TBaseInfoAdd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TBaseInfoAdd" message="tns:IYatMingService_TBaseInfoAdd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TBaseInfoAddResponse" message="tns:IYatMingService_TBaseInfoAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TBaseInfoUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TBaseInfoUpdate" message="tns:IYatMingService_TBaseInfoUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TBaseInfoUpdateResponse" message="tns:IYatMingService_TBaseInfoUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TBaseInfoDelete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TBaseInfoDelete" message="tns:IYatMingService_TBaseInfoDelete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TBaseInfoDeleteResponse" message="tns:IYatMingService_TBaseInfoDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TBaseInfoQueryById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TBaseInfoQueryById" message="tns:IYatMingService_TBaseInfoQueryById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TBaseInfoQueryByIdResponse" message="tns:IYatMingService_TBaseInfoQueryById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TBaseInfoQueryAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TBaseInfoQueryAll" message="tns:IYatMingService_TBaseInfoQueryAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TBaseInfoQueryAllResponse" message="tns:IYatMingService_TBaseInfoQueryAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TBaseInfoQueryByKeyword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TBaseInfoQueryByKeyword" message="tns:IYatMingService_TBaseInfoQueryByKeyword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TBaseInfoQueryByKeywordResponse" message="tns:IYatMingService_TBaseInfoQueryByKeyword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TMerchantTypeAdd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TMerchantTypeAdd" message="tns:IYatMingService_TMerchantTypeAdd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TMerchantTypeAddResponse" message="tns:IYatMingService_TMerchantTypeAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TMerchantTypeUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TMerchantTypeUpdate" message="tns:IYatMingService_TMerchantTypeUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TMerchantTypeUpdateResponse" message="tns:IYatMingService_TMerchantTypeUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TMerchantTypeDelete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TMerchantTypeDelete" message="tns:IYatMingService_TMerchantTypeDelete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TMerchantTypeDeleteResponse" message="tns:IYatMingService_TMerchantTypeDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TMerchantTypeQueryById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TMerchantTypeQueryById" message="tns:IYatMingService_TMerchantTypeQueryById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TMerchantTypeQueryByIdResponse" message="tns:IYatMingService_TMerchantTypeQueryById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TMerchantTypeQueryAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TMerchantTypeQueryAll" message="tns:IYatMingService_TMerchantTypeQueryAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TMerchantTypeQueryAllResponse" message="tns:IYatMingService_TMerchantTypeQueryAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TMerchantTypeGetByPid">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TMerchantTypeGetByPid" message="tns:IYatMingService_TMerchantTypeGetByPid_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TMerchantTypeGetByPidResponse" message="tns:IYatMingService_TMerchantTypeGetByPid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TDetailInfoAdd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TDetailInfoAdd" message="tns:IYatMingService_TDetailInfoAdd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TDetailInfoAddResponse" message="tns:IYatMingService_TDetailInfoAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TDetailInfoUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TDetailInfoUpdate" message="tns:IYatMingService_TDetailInfoUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TDetailInfoUpdateResponse" message="tns:IYatMingService_TDetailInfoUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TDetailInfoDelete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TDetailInfoDelete" message="tns:IYatMingService_TDetailInfoDelete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TDetailInfoDeleteResponse" message="tns:IYatMingService_TDetailInfoDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TDetailInfoQueryById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TDetailInfoQueryById" message="tns:IYatMingService_TDetailInfoQueryById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TDetailInfoQueryByIdResponse" message="tns:IYatMingService_TDetailInfoQueryById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TDetailInfoQueryAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TDetailInfoQueryAll" message="tns:IYatMingService_TDetailInfoQueryAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TDetailInfoQueryAllResponse" message="tns:IYatMingService_TDetailInfoQueryAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TDetailInfoGetByForignKey">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TDetailInfoGetByForignKey" message="tns:IYatMingService_TDetailInfoGetByForignKey_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TDetailInfoGetByForignKeyResponse" message="tns:IYatMingService_TDetailInfoGetByForignKey_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TDataInfoAdd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TDataInfoAdd" message="tns:IYatMingService_TDataInfoAdd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TDataInfoAddResponse" message="tns:IYatMingService_TDataInfoAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TDataInfoUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TDataInfoUpdate" message="tns:IYatMingService_TDataInfoUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TDataInfoUpdateResponse" message="tns:IYatMingService_TDataInfoUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TDataInfoDelete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TDataInfoDelete" message="tns:IYatMingService_TDataInfoDelete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TDataInfoDeleteResponse" message="tns:IYatMingService_TDataInfoDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TDataInfoQueryById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TDataInfoQueryById" message="tns:IYatMingService_TDataInfoQueryById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TDataInfoQueryByIdResponse" message="tns:IYatMingService_TDataInfoQueryById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TDataInfoQueryAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TDataInfoQueryAll" message="tns:IYatMingService_TDataInfoQueryAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TDataInfoQueryAllResponse" message="tns:IYatMingService_TDataInfoQueryAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TDataInfoUploadFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TDataInfoUploadFile" message="tns:IYatMingService_TDataInfoUploadFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TDataInfoUploadFileResponse" message="tns:IYatMingService_TDataInfoUploadFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TDataInfoDownloadFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TDataInfoDownloadFile" message="tns:IYatMingService_TDataInfoDownloadFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TDataInfoDownloadFileResponse" message="tns:IYatMingService_TDataInfoDownloadFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TDataInGetByForginKey">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TDataInGetByForginKey" message="tns:IYatMingService_TDataInGetByForginKey_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TDataInGetByForginKeyResponse" message="tns:IYatMingService_TDataInGetByForginKey_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TDataInGetByParentKey">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TDataInGetByParentKey" message="tns:IYatMingService_TDataInGetByParentKey_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TDataInGetByParentKeyResponse" message="tns:IYatMingService_TDataInGetByParentKey_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TDataInQuery">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TDataInQuery" message="tns:IYatMingService_TDataInQuery_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TDataInQueryResponse" message="tns:IYatMingService_TDataInQuery_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TDataInDoConvert">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TDataInDoConvert" message="tns:IYatMingService_TDataInDoConvert_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TDataInDoConvertResponse" message="tns:IYatMingService_TDataInDoConvert_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TPromotionAdd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TPromotionAdd" message="tns:IYatMingService_TPromotionAdd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TPromotionAddResponse" message="tns:IYatMingService_TPromotionAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TPromotionUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TPromotionUpdate" message="tns:IYatMingService_TPromotionUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TPromotionUpdateResponse" message="tns:IYatMingService_TPromotionUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TPromotionDelete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TPromotionDelete" message="tns:IYatMingService_TPromotionDelete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TPromotionDeleteResponse" message="tns:IYatMingService_TPromotionDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TPromotionQueryById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TPromotionQueryById" message="tns:IYatMingService_TPromotionQueryById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TPromotionQueryByIdResponse" message="tns:IYatMingService_TPromotionQueryById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TPromotionQueryAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TPromotionQueryAll" message="tns:IYatMingService_TPromotionQueryAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TPromotionQueryAllResponse" message="tns:IYatMingService_TPromotionQueryAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TPlatformAdd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TPlatformAdd" message="tns:IYatMingService_TPlatformAdd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TPlatformAddResponse" message="tns:IYatMingService_TPlatformAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TPlatformUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TPlatformUpdate" message="tns:IYatMingService_TPlatformUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TPlatformUpdateResponse" message="tns:IYatMingService_TPlatformUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TPlatformDelete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TPlatformDelete" message="tns:IYatMingService_TPlatformDelete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TPlatformDeleteResponse" message="tns:IYatMingService_TPlatformDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TPlatformQueryById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TPlatformQueryById" message="tns:IYatMingService_TPlatformQueryById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TPlatformQueryByIdResponse" message="tns:IYatMingService_TPlatformQueryById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TPlatformQueryAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TPlatformQueryAll" message="tns:IYatMingService_TPlatformQueryAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TPlatformQueryAllResponse" message="tns:IYatMingService_TPlatformQueryAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TPlatformGetByForignKey">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TPlatformGetByForignKey" message="tns:IYatMingService_TPlatformGetByForignKey_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TPlatformGetByForignKeyResponse" message="tns:IYatMingService_TPlatformGetByForignKey_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TShopDataAdd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TShopDataAdd" message="tns:IYatMingService_TShopDataAdd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TShopDataAddResponse" message="tns:IYatMingService_TShopDataAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TShopDataUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TShopDataUpdate" message="tns:IYatMingService_TShopDataUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TShopDataUpdateResponse" message="tns:IYatMingService_TShopDataUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TShopDataDelete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TShopDataDelete" message="tns:IYatMingService_TShopDataDelete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TShopDataDeleteResponse" message="tns:IYatMingService_TShopDataDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TShopDataQueryById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TShopDataQueryById" message="tns:IYatMingService_TShopDataQueryById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TShopDataQueryByIdResponse" message="tns:IYatMingService_TShopDataQueryById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TShopDataQueryAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TShopDataQueryAll" message="tns:IYatMingService_TShopDataQueryAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TShopDataQueryAllResponse" message="tns:IYatMingService_TShopDataQueryAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TPriceAdd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TPriceAdd" message="tns:IYatMingService_TPriceAdd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TPriceAddResponse" message="tns:IYatMingService_TPriceAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TPriceUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TPriceUpdate" message="tns:IYatMingService_TPriceUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TPriceUpdateResponse" message="tns:IYatMingService_TPriceUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TPriceDelete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TPriceDelete" message="tns:IYatMingService_TPriceDelete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TPriceDeleteResponse" message="tns:IYatMingService_TPriceDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TPriceQueryById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TPriceQueryById" message="tns:IYatMingService_TPriceQueryById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TPriceQueryByIdResponse" message="tns:IYatMingService_TPriceQueryById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TPriceQueryAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TPriceQueryAll" message="tns:IYatMingService_TPriceQueryAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TPriceQueryAllResponse" message="tns:IYatMingService_TPriceQueryAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TPackageAdd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TPackageAdd" message="tns:IYatMingService_TPackageAdd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TPackageAddResponse" message="tns:IYatMingService_TPackageAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TPackageUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TPackageUpdate" message="tns:IYatMingService_TPackageUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TPackageUpdateResponse" message="tns:IYatMingService_TPackageUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TPackageDelete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TPackageDelete" message="tns:IYatMingService_TPackageDelete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TPackageDeleteResponse" message="tns:IYatMingService_TPackageDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TPackageQueryById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TPackageQueryById" message="tns:IYatMingService_TPackageQueryById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TPackageQueryByIdResponse" message="tns:IYatMingService_TPackageQueryById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TPackageQueryAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TPackageQueryAll" message="tns:IYatMingService_TPackageQueryAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TPackageQueryAllResponse" message="tns:IYatMingService_TPackageQueryAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="THardwareAdd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/THardwareAdd" message="tns:IYatMingService_THardwareAdd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/THardwareAddResponse" message="tns:IYatMingService_THardwareAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="THardwareUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/THardwareUpdate" message="tns:IYatMingService_THardwareUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/THardwareUpdateResponse" message="tns:IYatMingService_THardwareUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="THardwareDelete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/THardwareDelete" message="tns:IYatMingService_THardwareDelete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/THardwareDeleteResponse" message="tns:IYatMingService_THardwareDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="THardwareQueryById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/THardwareQueryById" message="tns:IYatMingService_THardwareQueryById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/THardwareQueryByIdResponse" message="tns:IYatMingService_THardwareQueryById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="THardwareQueryAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/THardwareQueryAll" message="tns:IYatMingService_THardwareQueryAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/THardwareQueryAllResponse" message="tns:IYatMingService_THardwareQueryAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TContractAdd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TContractAdd" message="tns:IYatMingService_TContractAdd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TContractAddResponse" message="tns:IYatMingService_TContractAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TContractUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TContractUpdate" message="tns:IYatMingService_TContractUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TContractUpdateResponse" message="tns:IYatMingService_TContractUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TContractDelete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TContractDelete" message="tns:IYatMingService_TContractDelete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TContractDeleteResponse" message="tns:IYatMingService_TContractDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TContractQueryById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TContractQueryById" message="tns:IYatMingService_TContractQueryById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TContractQueryByIdResponse" message="tns:IYatMingService_TContractQueryById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TContractQueryAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TContractQueryAll" message="tns:IYatMingService_TContractQueryAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TContractQueryAllResponse" message="tns:IYatMingService_TContractQueryAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TSubmitAdd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TSubmitAdd" message="tns:IYatMingService_TSubmitAdd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TSubmitAddResponse" message="tns:IYatMingService_TSubmitAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TSubmitUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TSubmitUpdate" message="tns:IYatMingService_TSubmitUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TSubmitUpdateResponse" message="tns:IYatMingService_TSubmitUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TSubmitDelete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TSubmitDelete" message="tns:IYatMingService_TSubmitDelete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TSubmitDeleteResponse" message="tns:IYatMingService_TSubmitDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TSubmitQueryById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TSubmitQueryById" message="tns:IYatMingService_TSubmitQueryById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TSubmitQueryByIdResponse" message="tns:IYatMingService_TSubmitQueryById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TSubmitQueryAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TSubmitQueryAll" message="tns:IYatMingService_TSubmitQueryAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TSubmitQueryAllResponse" message="tns:IYatMingService_TSubmitQueryAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TServerAdd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IYatMingService/TServerAdd" message="tns:IYatMingService_TServerAdd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IYatMingService/TServerAddResponse" message="tns:IYatMingService_TServerAdd_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IYatMingService" type="tns:IYatMingService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TServerUpdate">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TServerUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TServerDelete">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TServerDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TServerQueryById">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TServerQueryById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TServerQueryAll">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TServerQueryAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TTrainAdd">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TTrainAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TTrainUpdate">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TTrainUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TTrainDelete">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TTrainDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TTrainQueryById">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TTrainQueryById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TTrainQueryAll">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TTrainQueryAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TEmployeeAdd">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TEmployeeAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TEmployeeUpdate">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TEmployeeUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TEmployeeDelete">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TEmployeeDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TEmployeeQueryById">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TEmployeeQueryById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TEmployeeQueryAll">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TEmployeeQueryAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TLoginAdd">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TLoginAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TLoginUpdate">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TLoginUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TLoginDelete">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TLoginDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TLoginQueryById">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TLoginQueryById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TLoginQueryAll">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TLoginQueryAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TLoginCheckLogin">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TLoginCheckLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TLoginCheckAccountExits">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TLoginCheckAccountExits" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TLoginCheckUpdate">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TLoginCheckUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TLoginUpdateSys">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TLoginUpdateSys" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TCheckAdd">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TCheckAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TCheckUpdate">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TCheckUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TCheckDelete">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TCheckDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TCheckQueryById">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TCheckQueryById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TCheckQueryAll">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TCheckQueryAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TBaseInfoAdd">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TBaseInfoAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TBaseInfoUpdate">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TBaseInfoUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TBaseInfoDelete">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TBaseInfoDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TBaseInfoQueryById">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TBaseInfoQueryById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TBaseInfoQueryAll">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TBaseInfoQueryAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TBaseInfoQueryByKeyword">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TBaseInfoQueryByKeyword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TMerchantTypeAdd">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TMerchantTypeAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TMerchantTypeUpdate">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TMerchantTypeUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TMerchantTypeDelete">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TMerchantTypeDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TMerchantTypeQueryById">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TMerchantTypeQueryById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TMerchantTypeQueryAll">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TMerchantTypeQueryAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TMerchantTypeGetByPid">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TMerchantTypeGetByPid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TDetailInfoAdd">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TDetailInfoAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TDetailInfoUpdate">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TDetailInfoUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TDetailInfoDelete">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TDetailInfoDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TDetailInfoQueryById">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TDetailInfoQueryById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TDetailInfoQueryAll">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TDetailInfoQueryAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TDetailInfoGetByForignKey">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TDetailInfoGetByForignKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TDataInfoAdd">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TDataInfoAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TDataInfoUpdate">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TDataInfoUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TDataInfoDelete">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TDataInfoDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TDataInfoQueryById">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TDataInfoQueryById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TDataInfoQueryAll">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TDataInfoQueryAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TDataInfoUploadFile">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TDataInfoUploadFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TDataInfoDownloadFile">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TDataInfoDownloadFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TDataInGetByForginKey">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TDataInGetByForginKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TDataInGetByParentKey">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TDataInGetByParentKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TDataInQuery">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TDataInQuery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TDataInDoConvert">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TDataInDoConvert" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TPromotionAdd">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TPromotionAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TPromotionUpdate">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TPromotionUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TPromotionDelete">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TPromotionDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TPromotionQueryById">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TPromotionQueryById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TPromotionQueryAll">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TPromotionQueryAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TPlatformAdd">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TPlatformAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TPlatformUpdate">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TPlatformUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TPlatformDelete">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TPlatformDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TPlatformQueryById">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TPlatformQueryById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TPlatformQueryAll">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TPlatformQueryAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TPlatformGetByForignKey">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TPlatformGetByForignKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TShopDataAdd">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TShopDataAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TShopDataUpdate">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TShopDataUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TShopDataDelete">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TShopDataDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TShopDataQueryById">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TShopDataQueryById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TShopDataQueryAll">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TShopDataQueryAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TPriceAdd">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TPriceAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TPriceUpdate">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TPriceUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TPriceDelete">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TPriceDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TPriceQueryById">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TPriceQueryById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TPriceQueryAll">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TPriceQueryAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TPackageAdd">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TPackageAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TPackageUpdate">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TPackageUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TPackageDelete">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TPackageDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TPackageQueryById">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TPackageQueryById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TPackageQueryAll">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TPackageQueryAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="THardwareAdd">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/THardwareAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="THardwareUpdate">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/THardwareUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="THardwareDelete">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/THardwareDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="THardwareQueryById">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/THardwareQueryById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="THardwareQueryAll">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/THardwareQueryAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TContractAdd">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TContractAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TContractUpdate">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TContractUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TContractDelete">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TContractDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TContractQueryById">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TContractQueryById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TContractQueryAll">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TContractQueryAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TSubmitAdd">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TSubmitAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TSubmitUpdate">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TSubmitUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TSubmitDelete">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TSubmitDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TSubmitQueryById">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TSubmitQueryById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TSubmitQueryAll">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TSubmitQueryAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TServerAdd">
+      <soap:operation soapAction="http://tempuri.org/IYatMingService/TServerAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="YatMingService">
+    <wsdl:port name="BasicHttpBinding_IYatMingService" binding="tns:BasicHttpBinding_IYatMingService">
+      <soap:address location="http://192.168.0.144/YatMing/YatMingService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

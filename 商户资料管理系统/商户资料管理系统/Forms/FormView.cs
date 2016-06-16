@@ -28,35 +28,22 @@ namespace 商户资料管理系统
             //文件图片
             if (dto.DataName.ToLower().EndsWith(".doc") || dto.DataName.ToLower().EndsWith(".docx") || dto.DataName.ToLower().EndsWith(".ppt") || dto.DataName.ToLower().EndsWith(".pptx") || dto.DataName.ToLower().EndsWith(".xls"))
             {
-                string temp = Path.Combine(System.Environment.GetEnvironmentVariable("TEMP"), dto.MetaDataId + Path.GetExtension(dto.DataName));
-                 if (File.Exists(temp))
-                 {
-                     panel1.Visible = false;
-                     webBrowser1.Navigate(temp);
-                 }
-                 else
-                 {
-                     label1.Text = "文件加载中...";
-                     if (backgroundWorker1.IsBusy == false)
-                         backgroundWorker1.RunWorkerAsync(new object[] { dto, temp });
-                 }
+                string dns = _client.Endpoint.Address.Uri.AbsoluteUri;
+                dns = dns.Remove(dns.LastIndexOf('/'));
+                panel1.Visible = false;
+                webBrowser1.Navigate(dns + "/FlexPaper/View.htm?name=" + dto.MetaDataId);
             }
             else if (dto.DataName.ToLower().EndsWith(".png") || dto.DataName.ToLower().EndsWith(".jpg") || dto.DataName.ToLower().EndsWith(".bmp") || dto.DataName.ToLower().EndsWith(".jpeg"))
             {
                 string dns = _client.Endpoint.Address.Uri.AbsoluteUri;
-
                 dns = dns.Remove(dns.LastIndexOf('/'));
-                //System.Diagnostics.Process.Start("iexplore.exe", "http://" + dns + "/index.html?name=" + dto.DataName); 
                 panel1.Visible = false;
-
                 webBrowser1.Navigate(dns + "/imgviewer.html?name=" + dto.MetaDataId + Path.GetExtension(dto.DataName));
             }
             else if (dto.DataName.ToLower().EndsWith(".txt"))
             {
                 string dns = _client.Endpoint.Address.Uri.AbsoluteUri;
-
                 dns = dns.Remove(dns.LastIndexOf('/'));
-                //System.Diagnostics.Process.Start("iexplore.exe", "http://" + dns + "/index.html?name=" + dto.DataName); 
                 panel1.Visible = false;
                 webBrowser1.Navigate(dns + "/vedios/" + dto.MetaDataId + Path.GetExtension(dto.DataName));
             }
@@ -71,6 +58,21 @@ namespace 商户资料管理系统
 
                 webBrowser1.Navigate(dns + "/index.html?name=" + dto.MetaDataId + Path.GetExtension(dto.DataName));
 
+            }
+                //压缩文件
+            else if (dto.DataName.ToLower().EndsWith("zip") || dto.DataName.ToLower().EndsWith("rar"))
+            {
+                string path = Path.Combine(Path.GetTempPath(), dto.DataName);
+                if (File.Exists(path))
+                {
+                    System.Diagnostics.Process.Start(path);
+                    this.Close();
+                }
+                if (backgroundWorker1.IsBusy == false)
+                {
+                    panel1.Visible = true;
+                    backgroundWorker1.RunWorkerAsync(new object[] { dto, path });
+                }
             }
             else
             {
@@ -126,7 +128,10 @@ namespace 商户资料管理系统
         {
             panel1.Visible = false;
             if (e.Result != null)
-                webBrowser1.Navigate(e.Result.ToString());
+            {
+                System.Diagnostics.Process.Start(e.Result.ToString());
+                this.Close();
+            }
         }
 
         private void FormView_FormClosing(object sender, FormClosingEventArgs e)

@@ -42,6 +42,9 @@
             this.ctmContent = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmUpload = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmView = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmViewIcon = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmViewDetail = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmSort = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmNameSort = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmTypeSort = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,16 +56,13 @@
             this.tsmDownload = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.tsmView = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmViewDetail = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmViewIcon = new System.Windows.Forms.ToolStripMenuItem();
             this.LvDataContent = new 商户资料管理系统.ListviewEx();
+            this.colHeadIcon = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colHeadName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colHeadSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colHeadModify = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colHeadUploadBy = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.searchTextBox1 = new 商户资料管理系统.SearchTextBox();
-            this.colHeadIcon = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip1.SuspendLayout();
             this.ctmContent.SuspendLayout();
             this.SuspendLayout();
@@ -217,6 +217,30 @@
             this.tsmUpload.Text = "上传(&U)";
             this.tsmUpload.Click += new System.EventHandler(this.tsmUpload_Click);
             // 
+            // tsmView
+            // 
+            this.tsmView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmViewIcon,
+            this.tsmViewDetail});
+            this.tsmView.Name = "tsmView";
+            this.tsmView.Size = new System.Drawing.Size(154, 22);
+            this.tsmView.Text = "查看(&V)";
+            // 
+            // tsmViewIcon
+            // 
+            this.tsmViewIcon.Image = global::商户资料管理系统.Properties.Resources.selected;
+            this.tsmViewIcon.Name = "tsmViewIcon";
+            this.tsmViewIcon.Size = new System.Drawing.Size(100, 22);
+            this.tsmViewIcon.Text = "图标";
+            this.tsmViewIcon.Click += new System.EventHandler(this.tsmViewIcon_Click);
+            // 
+            // tsmViewDetail
+            // 
+            this.tsmViewDetail.Name = "tsmViewDetail";
+            this.tsmViewDetail.Size = new System.Drawing.Size(100, 22);
+            this.tsmViewDetail.Text = "详情";
+            this.tsmViewDetail.Click += new System.EventHandler(this.tsmViewDetail_Click);
+            // 
             // tsmSort
             // 
             this.tsmSort.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -299,33 +323,9 @@
             // 
             // imageList1
             // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(64, 64);
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // tsmView
-            // 
-            this.tsmView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmViewIcon,
-            this.tsmViewDetail});
-            this.tsmView.Name = "tsmView";
-            this.tsmView.Size = new System.Drawing.Size(154, 22);
-            this.tsmView.Text = "查看(&V)";
-            // 
-            // tsmViewDetail
-            // 
-            this.tsmViewDetail.Name = "tsmViewDetail";
-            this.tsmViewDetail.Size = new System.Drawing.Size(152, 22);
-            this.tsmViewDetail.Text = "详情";
-            this.tsmViewDetail.Click += new System.EventHandler(this.tsmViewDetail_Click);
-            // 
-            // tsmViewIcon
-            // 
-            this.tsmViewIcon.Image = global::商户资料管理系统.Properties.Resources.selected;
-            this.tsmViewIcon.Name = "tsmViewIcon";
-            this.tsmViewIcon.Size = new System.Drawing.Size(152, 22);
-            this.tsmViewIcon.Text = "图标";
-            this.tsmViewIcon.Click += new System.EventHandler(this.tsmViewIcon_Click);
+            this.imageList1.Images.SetKeyName(0, "fenxiao.jpg");
             // 
             // LvDataContent
             // 
@@ -359,6 +359,11 @@
             this.LvDataContent.DragLeave += new System.EventHandler(this.LvDataContent_DragLeave);
             this.LvDataContent.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.LvDataContent_MouseDoubleClick);
             // 
+            // colHeadIcon
+            // 
+            this.colHeadIcon.DisplayIndex = 4;
+            this.colHeadIcon.Text = "图标";
+            // 
             // colHeadName
             // 
             this.colHeadName.DisplayIndex = 0;
@@ -390,11 +395,6 @@
             this.searchTextBox1.TabIndex = 1;
             this.searchTextBox1.Text = "搜索商户文件";
             this.searchTextBox1.OnSearch += new 商户资料管理系统.SearchTextBox.OnSearchHander(this.searchTextBox1_OnSearch);
-            // 
-            // colHeadIcon
-            // 
-            this.colHeadIcon.DisplayIndex = 4;
-            this.colHeadIcon.Text = "图标";
             // 
             // DataManageControl
             // 

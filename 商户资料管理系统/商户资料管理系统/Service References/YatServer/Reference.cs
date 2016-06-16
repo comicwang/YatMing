@@ -3039,6 +3039,9 @@ namespace 商户资料管理系统.YatServer {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="YatServer.IYatMingService")]
     public interface IYatMingService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TServerUpdate", ReplyAction="http://tempuri.org/IYatMingService/TServerUpdateResponse")]
+        bool TServerUpdate(商户资料管理系统.YatServer.TServerDTO TServerDTO);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TServerDelete", ReplyAction="http://tempuri.org/IYatMingService/TServerDeleteResponse")]
         bool TServerDelete(string guid);
         
@@ -3204,6 +3207,9 @@ namespace 商户资料管理系统.YatServer {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TDataInQuery", ReplyAction="http://tempuri.org/IYatMingService/TDataInQueryResponse")]
         商户资料管理系统.YatServer.TDataInfoDTO[] TDataInQuery(bool limit, System.DateTime start, System.DateTime end, string keyword, string baseId);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TDataInDoConvert", ReplyAction="http://tempuri.org/IYatMingService/TDataInDoConvertResponse")]
+        void TDataInDoConvert(string metaId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TPromotionAdd", ReplyAction="http://tempuri.org/IYatMingService/TPromotionAddResponse")]
         bool TPromotionAdd(商户资料管理系统.YatServer.TPromotionDTO TPromotionDTO);
         
@@ -3329,9 +3335,6 @@ namespace 商户资料管理系统.YatServer {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TServerAdd", ReplyAction="http://tempuri.org/IYatMingService/TServerAddResponse")]
         bool TServerAdd(商户资料管理系统.YatServer.TServerDTO TServerDTO);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TServerUpdate", ReplyAction="http://tempuri.org/IYatMingService/TServerUpdateResponse")]
-        bool TServerUpdate(商户资料管理系统.YatServer.TServerDTO TServerDTO);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -3359,6 +3362,10 @@ namespace 商户资料管理系统.YatServer {
         
         public YatMingServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public bool TServerUpdate(商户资料管理系统.YatServer.TServerDTO TServerDTO) {
+            return base.Channel.TServerUpdate(TServerDTO);
         }
         
         public bool TServerDelete(string guid) {
@@ -3581,6 +3588,10 @@ namespace 商户资料管理系统.YatServer {
             return base.Channel.TDataInQuery(limit, start, end, keyword, baseId);
         }
         
+        public void TDataInDoConvert(string metaId) {
+            base.Channel.TDataInDoConvert(metaId);
+        }
+        
         public bool TPromotionAdd(商户资料管理系统.YatServer.TPromotionDTO TPromotionDTO) {
             return base.Channel.TPromotionAdd(TPromotionDTO);
         }
@@ -3747,10 +3758,6 @@ namespace 商户资料管理系统.YatServer {
         
         public bool TServerAdd(商户资料管理系统.YatServer.TServerDTO TServerDTO) {
             return base.Channel.TServerAdd(TServerDTO);
-        }
-        
-        public bool TServerUpdate(商户资料管理系统.YatServer.TServerDTO TServerDTO) {
-            return base.Channel.TServerUpdate(TServerDTO);
         }
     }
 }

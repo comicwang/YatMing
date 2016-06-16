@@ -38,7 +38,7 @@ namespace 商户资料管理系统
         /// <param name="id">控件对应的商户Id</param>
         public void InitializeContent(string id)
         {
-            LvDataContent.InsertionMark.Color = Color.Red;           
+            LvDataContent.InsertionMark.Color = Color.Red;
             _baseInfoId = id;
             IniliazeListView(null);
         }
@@ -67,6 +67,9 @@ namespace 商户资料管理系统
             {
                 CreateViewItem(d, LvDataContent.Items.Count);
             });
+
+            //设置菜单状态
+            LvDataContent_SelectedIndexChanged(null, null);
         }
 
         #endregion
@@ -113,7 +116,7 @@ namespace 商户资料管理系统
             {
                 string tempFileExtension = Path.GetExtension(dto.DataName);
                 lvi.ImageIndex = CommomHelper.GetImageIndex(dto, imageList1);
-                lvi.ToolTipText = string.Format("文件名称:{0}\r\n文件大小:{1}\r\n上传时间:{2}\r\n上传人:{3}\r\n修改时间:{4}\r\n下载次数:{5}\r\n文件描述:{6}", dto.DataName, dto.FileSize, dto.CreateTime, dto.UploadPeople, dto.LastModifyTime, dto.DownloadTimes, dto.DataDescription);
+                lvi.ToolTipText = string.Format("文件名称:{0}\r\n文件大小:{1}M\r\n上传时间:{2}\r\n上传人:{3}\r\n修改时间:{4}\r\n下载次数:{5}\r\n文件描述:{6}", dto.DataName,CommomHelper.ParseMB(dto.FileSize), dto.CreateTime, dto.UploadPeople, dto.LastModifyTime, dto.DownloadTimes, dto.DataDescription);
             }
             else
             {
@@ -397,16 +400,14 @@ namespace 商户资料管理系统
                 }
                 //上传文件
                 string[] result = e.Data.GetData(DataFormats.FileDrop) as string[];
+                LvDataContent.ListViewItemSorter = new ListViewIndexComparer();
                 Array.ForEach(result, t =>
                 {
 
                     ListViewItemEx ctr = new ListViewItemEx(_baseInfoId);
                     ctr.Text = Path.GetFileName(t);
-                    string tempFileExtension = Path.GetExtension(t);
-                   // CommomHelper.GetImageIndex(ctr.ItemData, imageList1);
-                   // ctr.ImageIndex = imageList1.Images.Keys.IndexOf(tempFileExtension);
+                    string tempFileExtension = Path.GetExtension(t);                 
                     LvDataContent.Items.Add(ctr);
-                    //ctr.SetOtherControl();
                     ctr.UploadFile(t, _currentId,imageList1);
                 });
             }
@@ -424,15 +425,16 @@ namespace 商户资料管理系统
             dialog.Multiselect = true;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
+                LvDataContent.ListViewItemSorter = new ListViewIndexComparer();
                 Array.ForEach(dialog.FileNames, t =>
                 {
                     ListViewItemEx ctr = new ListViewItemEx(_baseInfoId);
                     ctr.Text = Path.GetFileName(t);
                     string tempFileExtension = Path.GetExtension(t);
                     LvDataContent.Items.Add(ctr);
-                   // ctr.SetOtherControl();
                     ctr.UploadFile(t, _currentId, imageList1);
                 });
+                //tsmNameSort_Click(tsmNameSort, e);
             }
         }
 
@@ -637,6 +639,16 @@ namespace 商户资料管理系统
     }
 
     #region Sort Class Ascending
+
+    public class ListViewIndexComparer : IComparer
+    {
+        public int Compare(object x, object y)
+        {
+            ListViewItemEx x1 = (ListViewItemEx)x;
+            ListViewItemEx y1 = (ListViewItemEx)y;
+            return x1.Index - y1.Index;
+        }
+    }
 
     public class ListViewNameComparer : IComparer
     {

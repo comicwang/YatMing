@@ -336,17 +336,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Service References\YatServer\YatMingService.wsdl" />
-    <None Include="Service References\YatServer\YatMingService.xsd">
+    <None Include="Service References\YatServer\YatMingService1.wsdl" />
+    <None Include="Service References\YatServer\YatMingService4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\YatServer\YatMingService1.xsd">
+    <None Include="Service References\YatServer\YatMingService41.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\YatServer\YatMingService2.xsd">
+    <None Include="Service References\YatServer\YatMingService42.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\YatServer\YatMingService3.xsd">
+    <None Include="Service References\YatServer\YatMingService43.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\YatServer\商户资料管理系统.YatServer.TBaseInfoDTO.datasource">
@@ -408,9 +408,6 @@
     <WCFMetadataStorage Include="Service References\YatServer\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\YatServer\YatMingService.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\YatServer\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -423,6 +420,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\YatServer\YatMingService1.disco" />
     <None Include="Resources\selected.png" />
     <None Include="Resources\switch.png" />
     <None Include="Resources\upload.png" />

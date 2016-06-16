@@ -96,6 +96,9 @@ namespace 商户资料管理系统
                         _bgwork.ReportProgress(100);
 
                     }
+                    if (_saveHistory.ToLower().EndsWith(".doc") || _saveHistory.ToLower().EndsWith(".docx") || _saveHistory.ToLower().EndsWith(".ppt") || _saveHistory.ToLower().EndsWith(".pptx") || _saveHistory.ToLower().EndsWith(".xls"))
+                        _client.TDataInDoConvert(id);
+
                     e.Result = true;
                 }
                 catch (Exception)
@@ -133,6 +136,7 @@ namespace 商户资料管理系统
                             stream.Write(buffer, 0, buffer.Length);
                         }
                     }
+
                     e.Result = (total == totalSize);
                 }
                 catch (Exception)
@@ -180,6 +184,8 @@ namespace 商户资料管理系统
 
         private void ShowError()
         {
+            if (this.ListView == null)
+                return;
             Rectangle rct = this.Bounds;
             _pbox = new PictureBox();
             _pbox.Width = 15;
@@ -187,7 +193,6 @@ namespace 商户资料管理系统
             _pbox.Image = Resources.retry;
             _pbox.Cursor = Cursors.Hand;
             _pbox.Click += pic_Click;
-           // _pbox.Visible = false;
             _pbox.Location = new Point(rct.Left, rct.Top + (rct.Height - _pb.Height) / 2);
             _pbox.SizeMode = PictureBoxSizeMode.Zoom;
             this.ListView.Controls.Add(_pbox);
@@ -291,14 +296,17 @@ namespace 商户资料管理系统
         public void ReportError()
         {
             ShowError();
-            _pbox.Visible = true;
+            if (_pbox != null)
+            {
+                _pbox.Visible = true;
+                _tip = new ToolTip();
+                _tip.SetToolTip(_pbox, "文件操作失败,可以尝试重新操作");
+            }
             if (_pb != null)
             {
                 _pb.ForeColor = Color.Red;
                 _pb.Visible = false;
             }
-            _tip = new ToolTip();
-            _tip.SetToolTip(_pbox, "文件操作失败,可以尝试重新操作");
         }
 
         public void Dispose()
