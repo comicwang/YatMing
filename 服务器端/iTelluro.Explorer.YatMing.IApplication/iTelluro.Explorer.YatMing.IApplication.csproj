@@ -54,6 +54,7 @@
     <Compile Include="ITPlatformApp.cs" />
     <Compile Include="ITPriceApp.cs" />
     <Compile Include="ITPromotionApp.cs" />
+    <Compile Include="ITRecorderApp.cs" />
     <Compile Include="ITServerApp.cs" />
     <Compile Include="ITShopDataApp.cs" />
     <Compile Include="ITSubmitApp.cs" />

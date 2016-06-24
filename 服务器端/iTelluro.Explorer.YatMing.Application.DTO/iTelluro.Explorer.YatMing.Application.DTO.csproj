@@ -66,6 +66,7 @@
     <Compile Include="TPlatformDTO.cs" />
     <Compile Include="TPriceDTO.cs" />
     <Compile Include="TPromotionDTO.cs" />
+    <Compile Include="TRecorderDTO.cs" />
     <Compile Include="TServerDTO.cs" />
     <Compile Include="TShopDataDTO.cs" />
     <Compile Include="TSubmitDTO.cs" />

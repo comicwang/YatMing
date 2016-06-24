@@ -118,7 +118,8 @@ namespace iTelluro.Explorer.YatMing.Service.InstanceProviders
             _currentContainer.RegisterType<ITEmployeeRepository, TEmployeeRepository>();
             _currentContainer.RegisterType<ITEmployeeApp, TEmployeeApp>();
 
-
+            _currentContainer.RegisterType<ITRecorderRepository, TRecorderRepository>();
+            _currentContainer.RegisterType<ITRecorderApp, TRecorderApp>();
 
             _currentContainer.RegisterType<ITypeAdapterFactory, AutomapperTypeAdapterFactory>(new ContainerControlledLifetimeManager());
             _currentContainer.RegisterType<ICache, MemoryCache>(new ContainerControlledLifetimeManager());

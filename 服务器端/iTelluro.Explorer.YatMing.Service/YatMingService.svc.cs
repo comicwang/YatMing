@@ -1060,6 +1060,123 @@ namespace iTelluro.Explorer.YatMing.Service
 
         #endregion
 
+        #region TRecorder
+
+        /// <summary>
+        /// 属性注入TRecorderApp
+        /// </summary>
+        [Dependency]
+        public ITRecorderApp _TRecorderApp { get; set; }
+
+        /// <summary>
+        /// 新增一条TRecorder记录
+        /// </summary>
+        /// <param name="TRecorderDTO">TRecorder实体</param>
+        /// <returns>是否新增成功</returns>
+        public bool TRecorderAdd(TRecorderDTO TRecorderDTO)
+        {
+            try
+            {
+                return _TRecorderApp.Add(TRecorderDTO);
+            }
+            catch (Exception ex)
+            {
+                ILog log = LogManager.GetLogger("YatMingSerice-" + this.GetType().Name + "-" + MethodBase.GetCurrentMethod().Name);
+                log.Error(ex.Message);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 根据主键删除一条TRecorder记录
+        /// </summary>
+        /// <param name="guid">主键值</param>
+        /// <returns>是否删除成功</returns>
+        public bool TRecorderDelete(string guid)
+        {
+            try
+            {
+                return _TRecorderApp.Remove(guid);
+            }
+            catch (Exception ex)
+            {
+                ILog log = LogManager.GetLogger("YatMingSerice-" + this.GetType().Name + "-" + MethodBase.GetCurrentMethod().Name);
+                log.Error(ex.Message);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 更新一条TRecorder记录
+        /// </summary>
+        /// <param name="TRecorderDTO">TRecorder实体</param>
+        /// <returns>是否更新成功</returns>
+        public bool TRecorderUpdate(TRecorderDTO TRecorderDTO)
+        {
+            try
+            {
+                return _TRecorderApp.Update(TRecorderDTO);
+            }
+            catch (Exception ex)
+            {
+                ILog log = LogManager.GetLogger("YatMingSerice-" + this.GetType().Name + "-" + MethodBase.GetCurrentMethod().Name);
+                log.Error(ex.Message);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 根据主键查询一条TRecorder记录
+        /// </summary>
+        /// <param name="guid">主键值</param>
+        /// <returns>查询的实体结果</returns>
+        public TRecorderDTO TRecorderQueryById(string guid)
+        {
+            try
+            {
+                return _TRecorderApp.Get(guid);
+            }
+            catch (Exception ex)
+            {
+                ILog log = LogManager.GetLogger("YatMingSerice-" + this.GetType().Name + "-" + MethodBase.GetCurrentMethod().Name);
+                log.Error(ex.Message);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 查询所有的TRecorder记录
+        /// </summary>
+        /// <returns>所有的TRecorder结果集</returns>
+        public List<TRecorderDTO> TRecorderQueryAll()
+        {
+            try
+            {
+                return _TRecorderApp.GetAll();
+            }
+            catch (Exception ex)
+            {
+                ILog log = LogManager.GetLogger("YatMingSerice-" + this.GetType().Name + "-" + MethodBase.GetCurrentMethod().Name);
+                log.Error(ex.Message);
+                return null;
+            }
+        }
+
+        public List<TRecorderDTO> TRecorderGetByForignKey(string key)
+        {
+            try
+            {
+                return _TRecorderApp.GetByForignKey(key);
+            }
+            catch (Exception ex)
+            {
+                ILog log = LogManager.GetLogger("YatMingSerice-" + this.GetType().Name + "-" + MethodBase.GetCurrentMethod().Name);
+                log.Error(ex.Message);
+                return null;
+            }
+        }
+
+        #endregion
 
         #region TShopData
 

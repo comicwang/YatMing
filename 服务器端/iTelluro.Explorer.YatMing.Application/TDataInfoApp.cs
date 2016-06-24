@@ -215,7 +215,7 @@ namespace iTelluro.Explorer.YatMing.Application
             try
             {
                 string sql = "update T_DataInfo set ParentId=@ParentId,DataName=@DataName,LastModifyTime=@LastModifyTime,DataDescription=@DataDescription,DownloadTimes=@DownloadTimes where MetaDataId=@MetaDataId";
-                return _repository.ExecuteCommand(sql, new DbParameter[] { new SqlParameter("@DataName", dto.DataName), new SqlParameter("@ParentId", dto.ParentId), new SqlParameter("@LastModifyTime", dto.LastModifyTime), new SqlParameter("@DataDescription", dto.DataDescription == null ? string.Empty : dto.DataDescription), new SqlParameter("@DownloadTimes", dto.DownloadTimes), new SqlParameter("@MetaDataId", dto.MetaDataId) }) > 0;
+                return _repository.ExecuteCommand(sql, new DbParameter[] { new SqlParameter("@DataName", dto.DataName), new SqlParameter("@ParentId", dto.ParentId == null ? string.Empty : dto.ParentId), new SqlParameter("@LastModifyTime", dto.LastModifyTime), new SqlParameter("@DataDescription", dto.DataDescription == null ? string.Empty : dto.DataDescription), new SqlParameter("@DownloadTimes", dto.DownloadTimes), new SqlParameter("@MetaDataId", dto.MetaDataId) }) > 0;
             }
             catch (Exception ex)
             {

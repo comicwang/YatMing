@@ -32,18 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aspose.Cells">
-      <HintPath>bin\Debug\ASPOSEdll\Aspose.Cells.dll</HintPath>
-    </Reference>
-    <Reference Include="Aspose.Pdf">
-      <HintPath>bin\Debug\ASPOSEdll\Aspose.Pdf.dll</HintPath>
-    </Reference>
-    <Reference Include="Aspose.Slides">
-      <HintPath>bin\Debug\ASPOSEdll\Aspose.Slides.dll</HintPath>
-    </Reference>
-    <Reference Include="Aspose.Words">
-      <HintPath>bin\Debug\ASPOSEdll\Aspose.Words.dll</HintPath>
-    </Reference>
     <Reference Include="iTelluro.Explorer.Application.CodeFirst.Seedwork">
       <HintPath>D:\Entity2CodeModel\iTelluro.Explorer.Application.CodeFirst.Seedwork.dll</HintPath>
     </Reference>
@@ -67,7 +55,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OfficeParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TBaseInfoApp.cs" />
     <Compile Include="TCheckApp.cs" />
@@ -82,6 +69,7 @@
     <Compile Include="TPlatformApp.cs" />
     <Compile Include="TPriceApp.cs" />
     <Compile Include="TPromotionApp.cs" />
+    <Compile Include="TRecorderApp.cs" />
     <Compile Include="TServerApp.cs" />
     <Compile Include="TShopDataApp.cs" />
     <Compile Include="TSubmitApp.cs" />

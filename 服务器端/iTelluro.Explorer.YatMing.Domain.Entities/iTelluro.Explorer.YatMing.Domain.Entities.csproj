@@ -59,6 +59,7 @@
     <Compile Include="T_Platform.cs" />
     <Compile Include="T_Price.cs" />
     <Compile Include="T_Promotion.cs" />
+    <Compile Include="T_Recorder.cs" />
     <Compile Include="T_Server.cs" />
     <Compile Include="T_ShopData.cs" />
     <Compile Include="T_Submit.cs" />

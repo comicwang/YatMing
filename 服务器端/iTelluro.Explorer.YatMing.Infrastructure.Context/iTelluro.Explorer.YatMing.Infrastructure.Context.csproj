@@ -66,6 +66,7 @@
     <Compile Include="Map\T_PlatformMap.cs" />
     <Compile Include="Map\T_PriceMap.cs" />
     <Compile Include="Map\T_PromotionMap.cs" />
+    <Compile Include="Map\T_RecorderMap.cs" />
     <Compile Include="Map\T_ServerMap.cs" />
     <Compile Include="Map\T_ShopDataMap.cs" />
     <Compile Include="Map\T_SubmitMap.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Repository\TPlatformRepository.cs" />
     <Compile Include="Repository\TPriceRepository.cs" />
     <Compile Include="Repository\TPromotionRepository.cs" />
+    <Compile Include="Repository\TRecorderRepository.cs" />
     <Compile Include="Repository\TServerRepository.cs" />
     <Compile Include="Repository\TShopDataRepository.cs" />
     <Compile Include="Repository\TSubmitRepository.cs" />

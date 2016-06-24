@@ -58,6 +58,7 @@
     <Compile Include="TPlatform\ITPlatformRepository.cs" />
     <Compile Include="TPrice\ITPriceRepository.cs" />
     <Compile Include="TPromotion\ITPromotionRepository.cs" />
+    <Compile Include="TRecorder\ITRecorderRepository.cs" />
     <Compile Include="TServer\ITServerRepository.cs" />
     <Compile Include="TShopData\ITShopDataRepository.cs" />
     <Compile Include="TSubmit\ITSubmitRepository.cs" />

@@ -89,7 +89,7 @@ namespace iTelluro.Explorer.YatMing.Infrastructure.Context
 
             modelBuilder.Configurations.Add(new TEmployeeMap(DBSchema));
 
-
+            modelBuilder.Configurations.Add(new TRecorderMap(DBSchema));
 
             base.OnModelCreating(modelBuilder);
         }

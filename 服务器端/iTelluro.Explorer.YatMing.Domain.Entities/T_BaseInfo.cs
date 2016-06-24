@@ -22,6 +22,7 @@ namespace iTelluro.Explorer.YatMing.Domain.Entities
         public virtual ICollection<T_Promotion> TPromotions { get; set; } // T_Promotion.FK_T_Promotion_T_BaseInfo
         public virtual ICollection<T_Server> TServers { get; set; } // T_Server.FK_T_Server_T_BaseInfo
         public virtual T_Platform TPlatform { get; set; } // T_Platform.FK_T_Platform_T_BaseInfo
+        public virtual T_Recorder TRecorder { get; set; }
         public virtual T_MerchantType TMerchantType { get; set; } // FK_T_BaseInfo_T_MerchantType
         public virtual ICollection<T_DataInfo> TDataInfoes { get; set; } // T_DataInfo.FK_T_DataInfo_T_BaseInfo
         public T_BaseInfo()

@@ -107,9 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\video-js.min.css" />
-    <Content Include="FlexPaper\FlexPaperViewer.html" />
     <Content Include="FlexPaper\FlexPaperViewer.swf" />
-    <Content Include="FlexPaper\FlexPaperViewer_debug.html" />
     <Content Include="FlexPaper\js\flexpaper_flash.js" />
     <Content Include="FlexPaper\js\flexpaper_flash_debug.js" />
     <Content Include="FlexPaper\js\jquery.js" />

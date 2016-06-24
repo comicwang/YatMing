@@ -405,6 +405,51 @@ namespace iTelluro.Explorer.YatMing.Service
 
         #endregion
 
+        #region TRecorder
+
+        /// <summary>
+        /// 新增一条TRecorder记录
+        /// </summary>
+        /// <param name="TRecorderDTO">TRecorder实体</param>
+        /// <returns>是否新增成功</returns>
+        [OperationContract]
+        bool TRecorderAdd(TRecorderDTO TRecorderDTO);
+
+        /// <summary>
+        /// 更新一条TRecorder记录
+        /// </summary>
+        /// <param name="TRecorderDTO">TRecorder实体</param>
+        /// <returns>是否更新成功</returns>
+        [OperationContract]
+        bool TRecorderUpdate(TRecorderDTO TRecorderDTO);
+
+        /// <summary>
+        /// 根据主键删除一条TRecorder记录
+        /// </summary>
+        /// <param name="guid">主键值</param>
+        /// <returns>是否删除成功</returns>
+        [OperationContract]
+        bool TRecorderDelete(string guid);
+
+        /// <summary>
+        /// 根据主键查询一条TRecorder记录
+        /// </summary>
+        /// <param name="guid">主键值</param>
+        /// <returns>查询的结果</returns>
+        [OperationContract]
+        TRecorderDTO TRecorderQueryById(string guid);
+
+        /// <summary>
+        /// 查询TRecorder所有的记录
+        /// </summary>
+        /// <returns>TRecorder的所有记录集合</returns>
+        [OperationContract]
+        List<TRecorderDTO> TRecorderQueryAll();
+
+        [OperationContract]
+        List<TRecorderDTO> TRecorderGetByForignKey(string key);
+
+        #endregion
 
         #region TShopData
 

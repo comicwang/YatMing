@@ -78,7 +78,8 @@ namespace iTelluro.Explorer.YatMing.Application.DTO
             Mapper.CreateMap<T_Employee, TEmployeeDTO>();
             Mapper.CreateMap<TEmployeeDTO, T_Employee>();
 
-
+            Mapper.CreateMap<T_Recorder, TRecorderDTO>();
+            Mapper.CreateMap<TRecorderDTO, T_Recorder>();
 
         }
     }
