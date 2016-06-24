@@ -86,7 +86,7 @@ namespace 商户资料管理系统
                 lvi.ImageIndex = CommomHelper.GetImageIndex(dto, imageList1);
                 lvi.ToolTipText = string.Format("文件名称:{0}\r\n文件大小:{1}M\r\n上传时间:{2}\r\n上传人:{3}\r\n修改时间:{4}\r\n下载次数:{5}\r\n文件描述:{6}", dto.DataName, CommomHelper.ParseMB(dto.FileSize), dto.CreateTime, dto.UploadPeople, dto.LastModifyTime, dto.DownloadTimes, dto.DataDescription);
                 lvi.SubItems.Add(dto.DataName);
-                lvi.SubItems.Add(dto.FileSize);
+                lvi.SubItems.Add(CommomHelper.ParseMB(dto.FileSize) + "M");
                 lvi.SubItems.Add(dto.LastModifyTime.Value.ToString());
                 lvi.SubItems.Add(dto.UploadPeople);
                 LvDataContent.Items.Insert(index, lvi);
@@ -99,7 +99,7 @@ namespace 商户资料管理系统
                 lvi.ImageIndex = imageList1.Images.Keys.IndexOf("Folder");
                 string.Format("文件名称:{0}\r\n上传时间:{1}\r\n上传人:{2}\r\n修改时间:{3}\r\n文件描述:{4}", dto.DataName, dto.CreateTime, dto.UploadPeople, dto.LastModifyTime, dto.DataDescription);
                 lvi.SubItems.Add(dto.DataName);
-                lvi.SubItems.Add(dto.FileSize);
+                lvi.SubItems.Add(CommomHelper.ParseMB(dto.FileSize) + "M");
                 lvi.SubItems.Add(dto.LastModifyTime.Value.ToString());
                 lvi.SubItems.Add(dto.UploadPeople);
                 LvDataContent.Items.Insert(index, lvi);

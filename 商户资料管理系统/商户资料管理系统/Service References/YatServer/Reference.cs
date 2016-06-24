@@ -15,6 +15,148 @@ namespace 商户资料管理系统.YatServer {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TSubmitDTO", Namespace="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" +
+        "")]
+    [System.SerializableAttribute()]
+    public partial class TSubmitDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> HardwareField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> PlatformField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SubmitContentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> SubmitDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SubmitIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SubmitPeopleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> TrainField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> Hardware {
+            get {
+                return this.HardwareField;
+            }
+            set {
+                if ((this.HardwareField.Equals(value) != true)) {
+                    this.HardwareField = value;
+                    this.RaisePropertyChanged("Hardware");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> Platform {
+            get {
+                return this.PlatformField;
+            }
+            set {
+                if ((this.PlatformField.Equals(value) != true)) {
+                    this.PlatformField = value;
+                    this.RaisePropertyChanged("Platform");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SubmitContent {
+            get {
+                return this.SubmitContentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SubmitContentField, value) != true)) {
+                    this.SubmitContentField = value;
+                    this.RaisePropertyChanged("SubmitContent");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> SubmitDate {
+            get {
+                return this.SubmitDateField;
+            }
+            set {
+                if ((this.SubmitDateField.Equals(value) != true)) {
+                    this.SubmitDateField = value;
+                    this.RaisePropertyChanged("SubmitDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SubmitId {
+            get {
+                return this.SubmitIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SubmitIdField, value) != true)) {
+                    this.SubmitIdField = value;
+                    this.RaisePropertyChanged("SubmitId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SubmitPeople {
+            get {
+                return this.SubmitPeopleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SubmitPeopleField, value) != true)) {
+                    this.SubmitPeopleField = value;
+                    this.RaisePropertyChanged("SubmitPeople");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> Train {
+            get {
+                return this.TrainField;
+            }
+            set {
+                if ((this.TrainField.Equals(value) != true)) {
+                    this.TrainField = value;
+                    this.RaisePropertyChanged("Train");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="TServerDTO", Namespace="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" +
         "")]
     [System.SerializableAttribute()]
@@ -1929,6 +2071,116 @@ namespace 商户资料管理系统.YatServer {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TRecorderDTO", Namespace="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" +
+        "")]
+    [System.SerializableAttribute()]
+    public partial class TRecorderDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MerchartIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime PublishDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RecorderIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TitleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UrlField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MerchartId {
+            get {
+                return this.MerchartIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MerchartIdField, value) != true)) {
+                    this.MerchartIdField = value;
+                    this.RaisePropertyChanged("MerchartId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime PublishDate {
+            get {
+                return this.PublishDateField;
+            }
+            set {
+                if ((this.PublishDateField.Equals(value) != true)) {
+                    this.PublishDateField = value;
+                    this.RaisePropertyChanged("PublishDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RecorderId {
+            get {
+                return this.RecorderIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RecorderIdField, value) != true)) {
+                    this.RecorderIdField = value;
+                    this.RaisePropertyChanged("RecorderId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Title {
+            get {
+                return this.TitleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
+                    this.TitleField = value;
+                    this.RaisePropertyChanged("Title");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Url {
+            get {
+                return this.UrlField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UrlField, value) != true)) {
+                    this.UrlField = value;
+                    this.RaisePropertyChanged("Url");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="TShopDataDTO", Namespace="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" +
         "")]
     [System.SerializableAttribute()]
@@ -2893,151 +3145,27 @@ namespace 商户资料管理系统.YatServer {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TSubmitDTO", Namespace="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" +
-        "")]
-    [System.SerializableAttribute()]
-    public partial class TSubmitDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> HardwareField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> PlatformField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SubmitContentField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> SubmitDateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SubmitIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SubmitPeopleField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> TrainField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> Hardware {
-            get {
-                return this.HardwareField;
-            }
-            set {
-                if ((this.HardwareField.Equals(value) != true)) {
-                    this.HardwareField = value;
-                    this.RaisePropertyChanged("Hardware");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> Platform {
-            get {
-                return this.PlatformField;
-            }
-            set {
-                if ((this.PlatformField.Equals(value) != true)) {
-                    this.PlatformField = value;
-                    this.RaisePropertyChanged("Platform");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SubmitContent {
-            get {
-                return this.SubmitContentField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SubmitContentField, value) != true)) {
-                    this.SubmitContentField = value;
-                    this.RaisePropertyChanged("SubmitContent");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> SubmitDate {
-            get {
-                return this.SubmitDateField;
-            }
-            set {
-                if ((this.SubmitDateField.Equals(value) != true)) {
-                    this.SubmitDateField = value;
-                    this.RaisePropertyChanged("SubmitDate");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SubmitId {
-            get {
-                return this.SubmitIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SubmitIdField, value) != true)) {
-                    this.SubmitIdField = value;
-                    this.RaisePropertyChanged("SubmitId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SubmitPeople {
-            get {
-                return this.SubmitPeopleField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SubmitPeopleField, value) != true)) {
-                    this.SubmitPeopleField = value;
-                    this.RaisePropertyChanged("SubmitPeople");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> Train {
-            get {
-                return this.TrainField;
-            }
-            set {
-                if ((this.TrainField.Equals(value) != true)) {
-                    this.TrainField = value;
-                    this.RaisePropertyChanged("Train");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="YatServer.IYatMingService")]
     public interface IYatMingService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TSubmitAdd", ReplyAction="http://tempuri.org/IYatMingService/TSubmitAddResponse")]
+        bool TSubmitAdd(商户资料管理系统.YatServer.TSubmitDTO TSubmitDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TSubmitUpdate", ReplyAction="http://tempuri.org/IYatMingService/TSubmitUpdateResponse")]
+        bool TSubmitUpdate(商户资料管理系统.YatServer.TSubmitDTO TSubmitDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TSubmitDelete", ReplyAction="http://tempuri.org/IYatMingService/TSubmitDeleteResponse")]
+        bool TSubmitDelete(string guid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TSubmitQueryById", ReplyAction="http://tempuri.org/IYatMingService/TSubmitQueryByIdResponse")]
+        商户资料管理系统.YatServer.TSubmitDTO TSubmitQueryById(string guid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TSubmitQueryAll", ReplyAction="http://tempuri.org/IYatMingService/TSubmitQueryAllResponse")]
+        商户资料管理系统.YatServer.TSubmitDTO[] TSubmitQueryAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TServerAdd", ReplyAction="http://tempuri.org/IYatMingService/TServerAddResponse")]
+        bool TServerAdd(商户资料管理系统.YatServer.TServerDTO TServerDTO);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TServerUpdate", ReplyAction="http://tempuri.org/IYatMingService/TServerUpdateResponse")]
         bool TServerUpdate(商户资料管理系统.YatServer.TServerDTO TServerDTO);
@@ -3243,6 +3371,24 @@ namespace 商户资料管理系统.YatServer {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TPlatformGetByForignKey", ReplyAction="http://tempuri.org/IYatMingService/TPlatformGetByForignKeyResponse")]
         商户资料管理系统.YatServer.TPlatformDTO[] TPlatformGetByForignKey(string key);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TRecorderAdd", ReplyAction="http://tempuri.org/IYatMingService/TRecorderAddResponse")]
+        bool TRecorderAdd(商户资料管理系统.YatServer.TRecorderDTO TRecorderDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TRecorderUpdate", ReplyAction="http://tempuri.org/IYatMingService/TRecorderUpdateResponse")]
+        bool TRecorderUpdate(商户资料管理系统.YatServer.TRecorderDTO TRecorderDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TRecorderDelete", ReplyAction="http://tempuri.org/IYatMingService/TRecorderDeleteResponse")]
+        bool TRecorderDelete(string guid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TRecorderQueryById", ReplyAction="http://tempuri.org/IYatMingService/TRecorderQueryByIdResponse")]
+        商户资料管理系统.YatServer.TRecorderDTO TRecorderQueryById(string guid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TRecorderQueryAll", ReplyAction="http://tempuri.org/IYatMingService/TRecorderQueryAllResponse")]
+        商户资料管理系统.YatServer.TRecorderDTO[] TRecorderQueryAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TRecorderGetByForignKey", ReplyAction="http://tempuri.org/IYatMingService/TRecorderGetByForignKeyResponse")]
+        商户资料管理系统.YatServer.TRecorderDTO[] TRecorderGetByForignKey(string key);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TShopDataAdd", ReplyAction="http://tempuri.org/IYatMingService/TShopDataAddResponse")]
         bool TShopDataAdd(商户资料管理系统.YatServer.TShopDataDTO TShopDataDTO);
         
@@ -3317,24 +3463,6 @@ namespace 商户资料管理系统.YatServer {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TContractQueryAll", ReplyAction="http://tempuri.org/IYatMingService/TContractQueryAllResponse")]
         商户资料管理系统.YatServer.TContractDTO[] TContractQueryAll();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TSubmitAdd", ReplyAction="http://tempuri.org/IYatMingService/TSubmitAddResponse")]
-        bool TSubmitAdd(商户资料管理系统.YatServer.TSubmitDTO TSubmitDTO);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TSubmitUpdate", ReplyAction="http://tempuri.org/IYatMingService/TSubmitUpdateResponse")]
-        bool TSubmitUpdate(商户资料管理系统.YatServer.TSubmitDTO TSubmitDTO);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TSubmitDelete", ReplyAction="http://tempuri.org/IYatMingService/TSubmitDeleteResponse")]
-        bool TSubmitDelete(string guid);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TSubmitQueryById", ReplyAction="http://tempuri.org/IYatMingService/TSubmitQueryByIdResponse")]
-        商户资料管理系统.YatServer.TSubmitDTO TSubmitQueryById(string guid);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TSubmitQueryAll", ReplyAction="http://tempuri.org/IYatMingService/TSubmitQueryAllResponse")]
-        商户资料管理系统.YatServer.TSubmitDTO[] TSubmitQueryAll();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IYatMingService/TServerAdd", ReplyAction="http://tempuri.org/IYatMingService/TServerAddResponse")]
-        bool TServerAdd(商户资料管理系统.YatServer.TServerDTO TServerDTO);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -3362,6 +3490,30 @@ namespace 商户资料管理系统.YatServer {
         
         public YatMingServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public bool TSubmitAdd(商户资料管理系统.YatServer.TSubmitDTO TSubmitDTO) {
+            return base.Channel.TSubmitAdd(TSubmitDTO);
+        }
+        
+        public bool TSubmitUpdate(商户资料管理系统.YatServer.TSubmitDTO TSubmitDTO) {
+            return base.Channel.TSubmitUpdate(TSubmitDTO);
+        }
+        
+        public bool TSubmitDelete(string guid) {
+            return base.Channel.TSubmitDelete(guid);
+        }
+        
+        public 商户资料管理系统.YatServer.TSubmitDTO TSubmitQueryById(string guid) {
+            return base.Channel.TSubmitQueryById(guid);
+        }
+        
+        public 商户资料管理系统.YatServer.TSubmitDTO[] TSubmitQueryAll() {
+            return base.Channel.TSubmitQueryAll();
+        }
+        
+        public bool TServerAdd(商户资料管理系统.YatServer.TServerDTO TServerDTO) {
+            return base.Channel.TServerAdd(TServerDTO);
         }
         
         public bool TServerUpdate(商户资料管理系统.YatServer.TServerDTO TServerDTO) {
@@ -3636,6 +3788,30 @@ namespace 商户资料管理系统.YatServer {
             return base.Channel.TPlatformGetByForignKey(key);
         }
         
+        public bool TRecorderAdd(商户资料管理系统.YatServer.TRecorderDTO TRecorderDTO) {
+            return base.Channel.TRecorderAdd(TRecorderDTO);
+        }
+        
+        public bool TRecorderUpdate(商户资料管理系统.YatServer.TRecorderDTO TRecorderDTO) {
+            return base.Channel.TRecorderUpdate(TRecorderDTO);
+        }
+        
+        public bool TRecorderDelete(string guid) {
+            return base.Channel.TRecorderDelete(guid);
+        }
+        
+        public 商户资料管理系统.YatServer.TRecorderDTO TRecorderQueryById(string guid) {
+            return base.Channel.TRecorderQueryById(guid);
+        }
+        
+        public 商户资料管理系统.YatServer.TRecorderDTO[] TRecorderQueryAll() {
+            return base.Channel.TRecorderQueryAll();
+        }
+        
+        public 商户资料管理系统.YatServer.TRecorderDTO[] TRecorderGetByForignKey(string key) {
+            return base.Channel.TRecorderGetByForignKey(key);
+        }
+        
         public bool TShopDataAdd(商户资料管理系统.YatServer.TShopDataDTO TShopDataDTO) {
             return base.Channel.TShopDataAdd(TShopDataDTO);
         }
@@ -3734,30 +3910,6 @@ namespace 商户资料管理系统.YatServer {
         
         public 商户资料管理系统.YatServer.TContractDTO[] TContractQueryAll() {
             return base.Channel.TContractQueryAll();
-        }
-        
-        public bool TSubmitAdd(商户资料管理系统.YatServer.TSubmitDTO TSubmitDTO) {
-            return base.Channel.TSubmitAdd(TSubmitDTO);
-        }
-        
-        public bool TSubmitUpdate(商户资料管理系统.YatServer.TSubmitDTO TSubmitDTO) {
-            return base.Channel.TSubmitUpdate(TSubmitDTO);
-        }
-        
-        public bool TSubmitDelete(string guid) {
-            return base.Channel.TSubmitDelete(guid);
-        }
-        
-        public 商户资料管理系统.YatServer.TSubmitDTO TSubmitQueryById(string guid) {
-            return base.Channel.TSubmitQueryById(guid);
-        }
-        
-        public 商户资料管理系统.YatServer.TSubmitDTO[] TSubmitQueryAll() {
-            return base.Channel.TSubmitQueryAll();
-        }
-        
-        public bool TServerAdd(商户资料管理系统.YatServer.TServerDTO TServerDTO) {
-            return base.Channel.TServerAdd(TServerDTO);
         }
     }
 }

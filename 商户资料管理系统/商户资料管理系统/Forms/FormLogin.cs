@@ -133,7 +133,7 @@ namespace 商户资料管理系统
                 if (!result)
                 {
                     layeredLabel5.ForeColor = Color.Red;
-                    return;
+                    return; 
                 }
                 //保存账号信息
                 if (cbRemind.Checked)

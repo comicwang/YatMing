@@ -2,10 +2,92 @@
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://192.168.0.144/YatMing/YatMingService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" />
   <xs:import schemaLocation="http://192.168.0.144/YatMing/YatMingService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="TSubmitAdd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TSubmitDTO" nillable="true" type="q1:TSubmitDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TSubmitAddResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TSubmitAddResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TSubmitUpdate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TSubmitDTO" nillable="true" type="q2:TSubmitDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TSubmitUpdateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TSubmitUpdateResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TSubmitDelete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="guid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TSubmitDeleteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TSubmitDeleteResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TSubmitQueryById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="guid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TSubmitQueryByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TSubmitQueryByIdResult" nillable="true" type="q3:TSubmitDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TSubmitQueryAll">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TSubmitQueryAllResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TSubmitQueryAllResult" nillable="true" type="q4:ArrayOfTSubmitDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TServerAdd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TServerDTO" nillable="true" type="q5:TServerDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TServerAddResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TServerAddResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="TServerUpdate">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TServerDTO" nillable="true" type="q1:TServerDTO" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TServerDTO" nillable="true" type="q6:TServerDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -40,7 +122,7 @@
   <xs:element name="TServerQueryByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TServerQueryByIdResult" nillable="true" type="q2:TServerDTO" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TServerQueryByIdResult" nillable="true" type="q7:TServerDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -52,14 +134,14 @@
   <xs:element name="TServerQueryAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TServerQueryAllResult" nillable="true" type="q3:ArrayOfTServerDTO" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TServerQueryAllResult" nillable="true" type="q8:ArrayOfTServerDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="TTrainAdd">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TTrainDTO" nillable="true" type="q4:TTrainDTO" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TTrainDTO" nillable="true" type="q9:TTrainDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -73,7 +155,7 @@
   <xs:element name="TTrainUpdate">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TTrainDTO" nillable="true" type="q5:TTrainDTO" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TTrainDTO" nillable="true" type="q10:TTrainDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -108,7 +190,7 @@
   <xs:element name="TTrainQueryByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TTrainQueryByIdResult" nillable="true" type="q6:TTrainDTO" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TTrainQueryByIdResult" nillable="true" type="q11:TTrainDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -120,14 +202,14 @@
   <xs:element name="TTrainQueryAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TTrainQueryAllResult" nillable="true" type="q7:ArrayOfTTrainDTO" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TTrainQueryAllResult" nillable="true" type="q12:ArrayOfTTrainDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="TEmployeeAdd">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TEmployeeDTO" nillable="true" type="q8:TEmployeeDTO" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TEmployeeDTO" nillable="true" type="q13:TEmployeeDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -141,7 +223,7 @@
   <xs:element name="TEmployeeUpdate">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TEmployeeDTO" nillable="true" type="q9:TEmployeeDTO" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TEmployeeDTO" nillable="true" type="q14:TEmployeeDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -176,7 +258,7 @@
   <xs:element name="TEmployeeQueryByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TEmployeeQueryByIdResult" nillable="true" type="q10:TEmployeeDTO" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TEmployeeQueryByIdResult" nillable="true" type="q15:TEmployeeDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -188,14 +270,14 @@
   <xs:element name="TEmployeeQueryAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TEmployeeQueryAllResult" nillable="true" type="q11:ArrayOfTEmployeeDTO" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TEmployeeQueryAllResult" nillable="true" type="q16:ArrayOfTEmployeeDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="TLoginAdd">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TLoginDTO" nillable="true" type="q12:TLoginDTO" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TLoginDTO" nillable="true" type="q17:TLoginDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -209,7 +291,7 @@
   <xs:element name="TLoginUpdate">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TLoginDTO" nillable="true" type="q13:TLoginDTO" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TLoginDTO" nillable="true" type="q18:TLoginDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -244,7 +326,7 @@
   <xs:element name="TLoginQueryByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TLoginQueryByIdResult" nillable="true" type="q14:TLoginDTO" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TLoginQueryByIdResult" nillable="true" type="q19:TLoginDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -256,7 +338,7 @@
   <xs:element name="TLoginQueryAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TLoginQueryAllResult" nillable="true" type="q15:ArrayOfTLoginDTO" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TLoginQueryAllResult" nillable="true" type="q20:ArrayOfTLoginDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -273,7 +355,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="TLoginCheckLoginResult" type="xs:boolean" />
         <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="result" nillable="true" type="q16:TLoginDTO" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="result" nillable="true" type="q21:TLoginDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -314,16 +396,16 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="TLoginUpdateSysResult" type="xs:boolean" />
-        <xs:element xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="uploadFileLst" nillable="true" type="q17:ArrayOfstring" />
-        <xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="deleteFileLst" nillable="true" type="q18:ArrayOfstring" />
-        <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="fileContent" nillable="true" type="q19:ArrayOfbase64Binary" />
+        <xs:element xmlns:q22="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="uploadFileLst" nillable="true" type="q22:ArrayOfstring" />
+        <xs:element xmlns:q23="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="deleteFileLst" nillable="true" type="q23:ArrayOfstring" />
+        <xs:element xmlns:q24="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="fileContent" nillable="true" type="q24:ArrayOfbase64Binary" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="TCheckAdd">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TCheckDTO" nillable="true" type="q20:TCheckDTO" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TCheckDTO" nillable="true" type="q25:TCheckDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -337,7 +419,7 @@
   <xs:element name="TCheckUpdate">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TCheckDTO" nillable="true" type="q21:TCheckDTO" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TCheckDTO" nillable="true" type="q26:TCheckDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -372,7 +454,7 @@
   <xs:element name="TCheckQueryByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TCheckQueryByIdResult" nillable="true" type="q22:TCheckDTO" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TCheckQueryByIdResult" nillable="true" type="q27:TCheckDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -384,14 +466,14 @@
   <xs:element name="TCheckQueryAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TCheckQueryAllResult" nillable="true" type="q23:ArrayOfTCheckDTO" />
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TCheckQueryAllResult" nillable="true" type="q28:ArrayOfTCheckDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="TBaseInfoAdd">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TBaseInfoDTO" nillable="true" type="q24:TBaseInfoDTO" />
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TBaseInfoDTO" nillable="true" type="q29:TBaseInfoDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -405,7 +487,7 @@
   <xs:element name="TBaseInfoUpdate">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TBaseInfoDTO" nillable="true" type="q25:TBaseInfoDTO" />
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TBaseInfoDTO" nillable="true" type="q30:TBaseInfoDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -440,7 +522,7 @@
   <xs:element name="TBaseInfoQueryByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TBaseInfoQueryByIdResult" nillable="true" type="q26:TBaseInfoDTO" />
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TBaseInfoQueryByIdResult" nillable="true" type="q31:TBaseInfoDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -452,7 +534,7 @@
   <xs:element name="TBaseInfoQueryAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TBaseInfoQueryAllResult" nillable="true" type="q27:ArrayOfTBaseInfoDTO" />
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TBaseInfoQueryAllResult" nillable="true" type="q32:ArrayOfTBaseInfoDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -466,14 +548,14 @@
   <xs:element name="TBaseInfoQueryByKeywordResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TBaseInfoQueryByKeywordResult" nillable="true" type="q28:ArrayOfTBaseInfoDTO" />
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TBaseInfoQueryByKeywordResult" nillable="true" type="q33:ArrayOfTBaseInfoDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="TMerchantTypeAdd">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TMerchantTypeDTO" nillable="true" type="q29:TMerchantTypeDTO" />
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TMerchantTypeDTO" nillable="true" type="q34:TMerchantTypeDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -487,7 +569,7 @@
   <xs:element name="TMerchantTypeUpdate">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TMerchantTypeDTO" nillable="true" type="q30:TMerchantTypeDTO" />
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TMerchantTypeDTO" nillable="true" type="q35:TMerchantTypeDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -522,7 +604,7 @@
   <xs:element name="TMerchantTypeQueryByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TMerchantTypeQueryByIdResult" nillable="true" type="q31:TMerchantTypeDTO" />
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TMerchantTypeQueryByIdResult" nillable="true" type="q36:TMerchantTypeDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -534,7 +616,7 @@
   <xs:element name="TMerchantTypeQueryAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TMerchantTypeQueryAllResult" nillable="true" type="q32:ArrayOfTMerchantTypeDTO" />
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TMerchantTypeQueryAllResult" nillable="true" type="q37:ArrayOfTMerchantTypeDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -548,14 +630,14 @@
   <xs:element name="TMerchantTypeGetByPidResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TMerchantTypeGetByPidResult" nillable="true" type="q33:ArrayOfTMerchantTypeDTO" />
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TMerchantTypeGetByPidResult" nillable="true" type="q38:ArrayOfTMerchantTypeDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="TDetailInfoAdd">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TDetailInfoDTO" nillable="true" type="q34:TDetailInfoDTO" />
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TDetailInfoDTO" nillable="true" type="q39:TDetailInfoDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -569,7 +651,7 @@
   <xs:element name="TDetailInfoUpdate">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TDetailInfoDTO" nillable="true" type="q35:TDetailInfoDTO" />
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TDetailInfoDTO" nillable="true" type="q40:TDetailInfoDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -604,7 +686,7 @@
   <xs:element name="TDetailInfoQueryByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TDetailInfoQueryByIdResult" nillable="true" type="q36:TDetailInfoDTO" />
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TDetailInfoQueryByIdResult" nillable="true" type="q41:TDetailInfoDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -616,7 +698,7 @@
   <xs:element name="TDetailInfoQueryAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TDetailInfoQueryAllResult" nillable="true" type="q37:ArrayOfTDetailInfoDTO" />
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TDetailInfoQueryAllResult" nillable="true" type="q42:ArrayOfTDetailInfoDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -630,14 +712,14 @@
   <xs:element name="TDetailInfoGetByForignKeyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TDetailInfoGetByForignKeyResult" nillable="true" type="q38:TDetailInfoDTO" />
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TDetailInfoGetByForignKeyResult" nillable="true" type="q43:TDetailInfoDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="TDataInfoAdd">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TDataInfoDTO" nillable="true" type="q39:TDataInfoDTO" />
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TDataInfoDTO" nillable="true" type="q44:TDataInfoDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -651,7 +733,7 @@
   <xs:element name="TDataInfoUpdate">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TDataInfoDTO" nillable="true" type="q40:TDataInfoDTO" />
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TDataInfoDTO" nillable="true" type="q45:TDataInfoDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -686,7 +768,7 @@
   <xs:element name="TDataInfoQueryByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TDataInfoQueryByIdResult" nillable="true" type="q41:TDataInfoDTO" />
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TDataInfoQueryByIdResult" nillable="true" type="q46:TDataInfoDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -698,7 +780,7 @@
   <xs:element name="TDataInfoQueryAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TDataInfoQueryAllResult" nillable="true" type="q42:ArrayOfTDataInfoDTO" />
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TDataInfoQueryAllResult" nillable="true" type="q47:ArrayOfTDataInfoDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -744,7 +826,7 @@
   <xs:element name="TDataInGetByForginKeyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TDataInGetByForginKeyResult" nillable="true" type="q43:ArrayOfTDataInfoDTO" />
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TDataInGetByForginKeyResult" nillable="true" type="q48:ArrayOfTDataInfoDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -758,7 +840,7 @@
   <xs:element name="TDataInGetByParentKeyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TDataInGetByParentKeyResult" nillable="true" type="q44:ArrayOfTDataInfoDTO" />
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TDataInGetByParentKeyResult" nillable="true" type="q49:ArrayOfTDataInfoDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -776,7 +858,7 @@
   <xs:element name="TDataInQueryResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TDataInQueryResult" nillable="true" type="q45:ArrayOfTDataInfoDTO" />
+        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TDataInQueryResult" nillable="true" type="q50:ArrayOfTDataInfoDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -795,7 +877,7 @@
   <xs:element name="TPromotionAdd">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPromotionDTO" nillable="true" type="q46:TPromotionDTO" />
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPromotionDTO" nillable="true" type="q51:TPromotionDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -809,7 +891,7 @@
   <xs:element name="TPromotionUpdate">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPromotionDTO" nillable="true" type="q47:TPromotionDTO" />
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPromotionDTO" nillable="true" type="q52:TPromotionDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -844,7 +926,7 @@
   <xs:element name="TPromotionQueryByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPromotionQueryByIdResult" nillable="true" type="q48:TPromotionDTO" />
+        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPromotionQueryByIdResult" nillable="true" type="q53:TPromotionDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -856,14 +938,14 @@
   <xs:element name="TPromotionQueryAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPromotionQueryAllResult" nillable="true" type="q49:ArrayOfTPromotionDTO" />
+        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPromotionQueryAllResult" nillable="true" type="q54:ArrayOfTPromotionDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="TPlatformAdd">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPlatformDTO" nillable="true" type="q50:TPlatformDTO" />
+        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPlatformDTO" nillable="true" type="q55:TPlatformDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -877,7 +959,7 @@
   <xs:element name="TPlatformUpdate">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPlatformDTO" nillable="true" type="q51:TPlatformDTO" />
+        <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPlatformDTO" nillable="true" type="q56:TPlatformDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -912,7 +994,7 @@
   <xs:element name="TPlatformQueryByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPlatformQueryByIdResult" nillable="true" type="q52:TPlatformDTO" />
+        <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPlatformQueryByIdResult" nillable="true" type="q57:TPlatformDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -924,7 +1006,7 @@
   <xs:element name="TPlatformQueryAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPlatformQueryAllResult" nillable="true" type="q53:ArrayOfTPlatformDTO" />
+        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPlatformQueryAllResult" nillable="true" type="q58:ArrayOfTPlatformDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -938,14 +1020,96 @@
   <xs:element name="TPlatformGetByForignKeyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPlatformGetByForignKeyResult" nillable="true" type="q54:ArrayOfTPlatformDTO" />
+        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPlatformGetByForignKeyResult" nillable="true" type="q59:ArrayOfTPlatformDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TRecorderAdd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TRecorderDTO" nillable="true" type="q60:TRecorderDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TRecorderAddResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TRecorderAddResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TRecorderUpdate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TRecorderDTO" nillable="true" type="q61:TRecorderDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TRecorderUpdateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TRecorderUpdateResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TRecorderDelete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="guid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TRecorderDeleteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TRecorderDeleteResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TRecorderQueryById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="guid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TRecorderQueryByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TRecorderQueryByIdResult" nillable="true" type="q62:TRecorderDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TRecorderQueryAll">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TRecorderQueryAllResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q63="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TRecorderQueryAllResult" nillable="true" type="q63:ArrayOfTRecorderDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TRecorderGetByForignKey">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TRecorderGetByForignKeyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q64="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TRecorderGetByForignKeyResult" nillable="true" type="q64:ArrayOfTRecorderDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="TShopDataAdd">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TShopDataDTO" nillable="true" type="q55:TShopDataDTO" />
+        <xs:element xmlns:q65="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TShopDataDTO" nillable="true" type="q65:TShopDataDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -959,7 +1123,7 @@
   <xs:element name="TShopDataUpdate">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TShopDataDTO" nillable="true" type="q56:TShopDataDTO" />
+        <xs:element xmlns:q66="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TShopDataDTO" nillable="true" type="q66:TShopDataDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -994,7 +1158,7 @@
   <xs:element name="TShopDataQueryByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TShopDataQueryByIdResult" nillable="true" type="q57:TShopDataDTO" />
+        <xs:element xmlns:q67="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TShopDataQueryByIdResult" nillable="true" type="q67:TShopDataDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1006,14 +1170,14 @@
   <xs:element name="TShopDataQueryAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TShopDataQueryAllResult" nillable="true" type="q58:ArrayOfTShopDataDTO" />
+        <xs:element xmlns:q68="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TShopDataQueryAllResult" nillable="true" type="q68:ArrayOfTShopDataDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="TPriceAdd">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPriceDTO" nillable="true" type="q59:TPriceDTO" />
+        <xs:element xmlns:q69="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPriceDTO" nillable="true" type="q69:TPriceDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1027,7 +1191,7 @@
   <xs:element name="TPriceUpdate">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPriceDTO" nillable="true" type="q60:TPriceDTO" />
+        <xs:element xmlns:q70="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPriceDTO" nillable="true" type="q70:TPriceDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1062,7 +1226,7 @@
   <xs:element name="TPriceQueryByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPriceQueryByIdResult" nillable="true" type="q61:TPriceDTO" />
+        <xs:element xmlns:q71="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPriceQueryByIdResult" nillable="true" type="q71:TPriceDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1074,14 +1238,14 @@
   <xs:element name="TPriceQueryAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPriceQueryAllResult" nillable="true" type="q62:ArrayOfTPriceDTO" />
+        <xs:element xmlns:q72="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPriceQueryAllResult" nillable="true" type="q72:ArrayOfTPriceDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="TPackageAdd">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q63="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPackageDTO" nillable="true" type="q63:TPackageDTO" />
+        <xs:element xmlns:q73="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPackageDTO" nillable="true" type="q73:TPackageDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1095,7 +1259,7 @@
   <xs:element name="TPackageUpdate">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q64="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPackageDTO" nillable="true" type="q64:TPackageDTO" />
+        <xs:element xmlns:q74="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPackageDTO" nillable="true" type="q74:TPackageDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1130,7 +1294,7 @@
   <xs:element name="TPackageQueryByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q65="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPackageQueryByIdResult" nillable="true" type="q65:TPackageDTO" />
+        <xs:element xmlns:q75="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPackageQueryByIdResult" nillable="true" type="q75:TPackageDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1142,14 +1306,14 @@
   <xs:element name="TPackageQueryAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q66="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPackageQueryAllResult" nillable="true" type="q66:ArrayOfTPackageDTO" />
+        <xs:element xmlns:q76="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TPackageQueryAllResult" nillable="true" type="q76:ArrayOfTPackageDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="THardwareAdd">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q67="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="THardwareDTO" nillable="true" type="q67:THardwareDTO" />
+        <xs:element xmlns:q77="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="THardwareDTO" nillable="true" type="q77:THardwareDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1163,7 +1327,7 @@
   <xs:element name="THardwareUpdate">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q68="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="THardwareDTO" nillable="true" type="q68:THardwareDTO" />
+        <xs:element xmlns:q78="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="THardwareDTO" nillable="true" type="q78:THardwareDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1198,7 +1362,7 @@
   <xs:element name="THardwareQueryByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q69="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="THardwareQueryByIdResult" nillable="true" type="q69:THardwareDTO" />
+        <xs:element xmlns:q79="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="THardwareQueryByIdResult" nillable="true" type="q79:THardwareDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1210,14 +1374,14 @@
   <xs:element name="THardwareQueryAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q70="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="THardwareQueryAllResult" nillable="true" type="q70:ArrayOfTHardwareDTO" />
+        <xs:element xmlns:q80="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="THardwareQueryAllResult" nillable="true" type="q80:ArrayOfTHardwareDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="TContractAdd">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q71="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TContractDTO" nillable="true" type="q71:TContractDTO" />
+        <xs:element xmlns:q81="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TContractDTO" nillable="true" type="q81:TContractDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1231,7 +1395,7 @@
   <xs:element name="TContractUpdate">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q72="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TContractDTO" nillable="true" type="q72:TContractDTO" />
+        <xs:element xmlns:q82="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TContractDTO" nillable="true" type="q82:TContractDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1266,7 +1430,7 @@
   <xs:element name="TContractQueryByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q73="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TContractQueryByIdResult" nillable="true" type="q73:TContractDTO" />
+        <xs:element xmlns:q83="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TContractQueryByIdResult" nillable="true" type="q83:TContractDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1278,89 +1442,7 @@
   <xs:element name="TContractQueryAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q74="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TContractQueryAllResult" nillable="true" type="q74:ArrayOfTContractDTO" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TSubmitAdd">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q75="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TSubmitDTO" nillable="true" type="q75:TSubmitDTO" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TSubmitAddResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="TSubmitAddResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TSubmitUpdate">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q76="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TSubmitDTO" nillable="true" type="q76:TSubmitDTO" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TSubmitUpdateResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="TSubmitUpdateResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TSubmitDelete">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="guid" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TSubmitDeleteResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="TSubmitDeleteResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TSubmitQueryById">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="guid" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TSubmitQueryByIdResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q77="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TSubmitQueryByIdResult" nillable="true" type="q77:TSubmitDTO" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TSubmitQueryAll">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TSubmitQueryAllResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q78="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TSubmitQueryAllResult" nillable="true" type="q78:ArrayOfTSubmitDTO" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TServerAdd">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q79="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TServerDTO" nillable="true" type="q79:TServerDTO" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TServerAddResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="TServerAddResult" type="xs:boolean" />
+        <xs:element xmlns:q84="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" minOccurs="0" name="TContractQueryAllResult" nillable="true" type="q84:ArrayOfTContractDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

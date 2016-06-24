@@ -73,6 +73,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\AccountHelper.cs" />
+    <Compile Include="Common\ChineseCalender.cs" />
+    <Compile Include="Common\ChineseDate.cs" />
     <Compile Include="Common\IconsExtention.cs" />
     <Compile Include="Common\IOHelper.cs" />
     <Compile Include="Common\NotifyHelper.cs" />
@@ -96,6 +98,18 @@
       <DependentUpon>UploadControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\CommonData.cs" />
+    <Compile Include="Forms\FormRecorder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormRecorder.Designer.cs">
+      <DependentUpon>FormRecorder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormNotify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormNotify.Designer.cs">
+      <DependentUpon>FormNotify.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ContextMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -223,6 +237,12 @@
     <Compile Include="Forms\FormView.Designer.cs">
       <DependentUpon>FormView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\MessageRecorder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MessageRecorder.Designer.cs">
+      <DependentUpon>MessageRecorder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -258,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\UploadControl.resx">
       <DependentUpon>UploadControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormRecorder.resx">
+      <DependentUpon>FormRecorder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ContextMenuForm.resx">
       <DependentUpon>ContextMenuForm.cs</DependentUpon>
@@ -314,6 +337,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormView.resx">
       <DependentUpon>FormView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MessageRecorder.resx">
+      <DependentUpon>MessageRecorder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -386,6 +412,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\YatServer\商户资料管理系统.YatServer.TPromotionDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\YatServer\商户资料管理系统.YatServer.TRecorderDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\YatServer\商户资料管理系统.YatServer.TServerDTO.datasource">
@@ -484,6 +513,7 @@
     <None Include="Resources\on.png" />
     <None Include="Resources\exe.png" />
     <None Include="Resources\empty.png" />
+    <None Include="Resources\file_default.ico" />
     <Content Include="Resources\search.png" />
     <None Include="Resources\close.png" />
     <None Include="Resources\edit.png" />

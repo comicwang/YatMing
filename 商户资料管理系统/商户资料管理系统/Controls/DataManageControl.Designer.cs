@@ -368,21 +368,25 @@
             // 
             this.colHeadName.DisplayIndex = 0;
             this.colHeadName.Text = "名称";
+            this.colHeadName.Width = 450;
             // 
             // colHeadSize
             // 
             this.colHeadSize.DisplayIndex = 1;
             this.colHeadSize.Text = "文件大小";
+            this.colHeadSize.Width = 150;
             // 
             // colHeadModify
             // 
             this.colHeadModify.DisplayIndex = 2;
             this.colHeadModify.Text = "修改时间";
+            this.colHeadModify.Width = 200;
             // 
             // colHeadUploadBy
             // 
             this.colHeadUploadBy.DisplayIndex = 3;
             this.colHeadUploadBy.Text = "上传人";
+            this.colHeadUploadBy.Width = 80;
             // 
             // searchTextBox1
             // 

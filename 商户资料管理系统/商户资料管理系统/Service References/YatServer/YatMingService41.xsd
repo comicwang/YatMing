@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/iTelluro.Explorer.YatMing.Application.DTO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://192.168.0.144/YatMing/YatMingService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="TSubmitDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Hardware" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Platform" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SubmitContent" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubmitDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SubmitId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubmitPeople" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Train" nillable="true" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TSubmitDTO" nillable="true" type="tns:TSubmitDTO" />
+  <xs:complexType name="ArrayOfTSubmitDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TSubmitDTO" nillable="true" type="tns:TSubmitDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTSubmitDTO" nillable="true" type="tns:ArrayOfTSubmitDTO" />
   <xs:complexType name="TServerDTO">
     <xs:sequence>
       <xs:element minOccurs="0" name="MerchantId" nillable="true" type="xs:string" />
@@ -221,6 +239,22 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfTPlatformDTO" nillable="true" type="tns:ArrayOfTPlatformDTO" />
+  <xs:complexType name="TRecorderDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MerchartId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PublishDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RecorderId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Url" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TRecorderDTO" nillable="true" type="tns:TRecorderDTO" />
+  <xs:complexType name="ArrayOfTRecorderDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TRecorderDTO" nillable="true" type="tns:TRecorderDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTRecorderDTO" nillable="true" type="tns:ArrayOfTRecorderDTO" />
   <xs:complexType name="TShopDataDTO">
     <xs:sequence>
       <xs:element minOccurs="0" name="ActionInfo" nillable="true" type="xs:string" />
@@ -327,22 +361,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfTContractDTO" nillable="true" type="tns:ArrayOfTContractDTO" />
-  <xs:complexType name="TSubmitDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Hardware" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="Platform" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="SubmitContent" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SubmitDate" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="SubmitId" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SubmitPeople" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Train" nillable="true" type="xs:boolean" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="TSubmitDTO" nillable="true" type="tns:TSubmitDTO" />
-  <xs:complexType name="ArrayOfTSubmitDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="TSubmitDTO" nillable="true" type="tns:TSubmitDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfTSubmitDTO" nillable="true" type="tns:ArrayOfTSubmitDTO" />
 </xs:schema>

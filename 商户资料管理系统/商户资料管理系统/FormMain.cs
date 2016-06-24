@@ -39,6 +39,7 @@ namespace 商户资料管理系统
         private TEmployeeDTO _employee = null;
 
         private DataManageControl _dataMangeControl = null;
+        private MessageRecorder _recorderControl = null;
 
         public FormMain()
         {
@@ -51,9 +52,14 @@ namespace 商户资料管理系统
             _loginForm = loginForm;
             this.BindNotify(tmBlink);
             this.BindSkin(tsbSkin);
+
             _dataMangeControl = new DataManageControl();
             _dataMangeControl.Dock = DockStyle.Fill;
             tabPage7.Controls.Add(_dataMangeControl);
+
+            _recorderControl = new MessageRecorder();
+            _recorderControl.Dock = DockStyle.Fill;
+            tabPage4.Controls.Add(_recorderControl);
         }   
 
         #region 热键注册
@@ -426,6 +432,7 @@ namespace 商户资料管理系统
                     pnlWait.Visible = true;
                 }
                 _dataMangeControl.InitializeContent(e.Node.Tag.ToString());
+                _recorderControl.InitializeRecorder(e.Node.Tag.ToString());
 
             }
             catch (Exception ex)

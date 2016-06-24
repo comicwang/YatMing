@@ -56,6 +56,7 @@
             this.帮助LToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.pnlWait = new System.Windows.Forms.Panel();
+            this.picWait = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -189,7 +190,6 @@
             this.backgroundWorker4 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker5 = new System.ComponentModel.BackgroundWorker();
             this.tmBlink = new System.Windows.Forms.Timer(this.components);
-            this.picWait = new System.Windows.Forms.Label();
             this.stsTimer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -510,6 +510,15 @@
             this.pnlWait.Visible = false;
             this.pnlWait.SizeChanged += new System.EventHandler(this.pnlWait_SizeChanged);
             // 
+            // picWait
+            // 
+            this.picWait.AutoSize = true;
+            this.picWait.Location = new System.Drawing.Point(325, 257);
+            this.picWait.Name = "picWait";
+            this.picWait.Size = new System.Drawing.Size(59, 12);
+            this.picWait.TabIndex = 0;
+            this.picWait.Text = "加载中...";
+            // 
             // tabControl1
             // 
             this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
@@ -775,7 +784,7 @@
             this.panel2.Controls.Add(this.grpPlatfrom);
             this.panel2.Controls.Add(this.grpPromotion);
             this.panel2.Controls.Add(this.grpDetail);
-            this.panel2.Location = new System.Drawing.Point(-253, -1);
+            this.panel2.Location = new System.Drawing.Point(-261, -1);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(600, 734);
             this.panel2.TabIndex = 0;
@@ -1677,7 +1686,7 @@
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(647, 506);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "合同信息";
+            this.tabPage4.Text = "文章推送信息";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // tabPage5
@@ -1778,15 +1787,6 @@
             // tmBlink
             // 
             this.tmBlink.Interval = 500;
-            // 
-            // picWait
-            // 
-            this.picWait.AutoSize = true;
-            this.picWait.Location = new System.Drawing.Point(325, 257);
-            this.picWait.Name = "picWait";
-            this.picWait.Size = new System.Drawing.Size(59, 12);
-            this.picWait.TabIndex = 0;
-            this.picWait.Text = "加载中...";
             // 
             // FormMain
             // 

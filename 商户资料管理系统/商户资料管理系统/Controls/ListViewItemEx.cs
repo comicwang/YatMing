@@ -58,6 +58,15 @@ namespace 商户资料管理系统
             else
             {
                 Hide();
+                if (OpareteType == OpareteTypeEnum.Download)
+                {
+                    ItemData.DownloadTimes += 1;
+                    bool success = _client.TDataInfoUpdate(ItemData);
+                    if (success)
+                    {
+                        this.ToolTipText = string.Format("文件名称:{0}\r\n文件大小:{1}M\r\n上传时间:{2}\r\n上传人:{3}\r\n修改时间:{4}\r\n下载次数:{5}\r\n文件描述:{6}", ItemData.DataName, CommomHelper.ParseMB(ItemData.FileSize), ItemData.CreateTime, ItemData.UploadPeople, ItemData.LastModifyTime, ItemData.DownloadTimes, ItemData.DataDescription);
+                    }
+                }
             }
         }
 
@@ -244,7 +253,7 @@ namespace 商户资料管理系统
                 {
                     this.ToolTipText = string.Format("文件名称:{0}\r\n文件大小:{1}M\r\n上传时间:{2}\r\n上传人:{3}\r\n修改时间:{4}\r\n下载次数:{5}\r\n文件描述:{6}", uploadDTO.DataName, CommomHelper.ParseMB(uploadDTO.FileSize), uploadDTO.CreateTime, uploadDTO.UploadPeople, uploadDTO.LastModifyTime, uploadDTO.DownloadTimes, uploadDTO.DataDescription);
                     this.SubItems.Add(uploadDTO.DataName);
-                    this.SubItems.Add(uploadDTO.FileSize);
+                    this.SubItems.Add(CommomHelper.ParseMB(uploadDTO.FileSize) + "M");
                     this.SubItems.Add(uploadDTO.LastModifyTime.Value.ToString());
                     this.SubItems.Add(uploadDTO.UploadPeople);
                     this.ImageIndex = CommomHelper.GetImageIndex(filePath, uploadDTO.MetaDataId, lstImage);

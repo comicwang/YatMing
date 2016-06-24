@@ -4,6 +4,8 @@ using System.Runtime.InteropServices;
 using Microsoft.Win32;
 using System.Reflection;
 using System.Collections.Generic;
+using System.IO;
+using 商户资料管理系统.Properties;
 
 namespace 商户资料管理系统
 {
@@ -331,7 +333,10 @@ namespace 商户资料管理系统
             }
             catch (Exception)
             {
-                return new Icon(IconPath[0].Replace("\"", ""));
+                if (File.Exists(IconPath[0].Replace("\"", "")))
+                    return new Icon(IconPath[0].Replace("\"", ""));
+                else
+                    return Resources.file_default;
             }
         }
 
