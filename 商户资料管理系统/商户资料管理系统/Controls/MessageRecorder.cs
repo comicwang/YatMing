@@ -107,5 +107,10 @@ namespace 商户资料管理系统
         {
             InitializeRecorder(_merchartId);
         }
+
+        private void MessageRecorder_Paint(object sender, PaintEventArgs e)
+        {
+            DrawDataInfo(DateTime.Now);
+        }
     }
 }

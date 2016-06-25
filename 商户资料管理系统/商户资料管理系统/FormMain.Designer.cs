@@ -239,13 +239,14 @@
             this.tslUser});
             this.stsTimer.Location = new System.Drawing.Point(0, 577);
             this.stsTimer.Name = "stsTimer";
+            this.stsTimer.ShowItemToolTips = true;
             this.stsTimer.Size = new System.Drawing.Size(992, 23);
             this.stsTimer.TabIndex = 0;
             // 
             // tslTimer
             // 
             this.tslTimer.Name = "tslTimer";
-            this.tslTimer.Size = new System.Drawing.Size(912, 18);
+            this.tslTimer.Size = new System.Drawing.Size(881, 18);
             this.tslTimer.Spring = true;
             this.tslTimer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -326,7 +327,7 @@
             this.label1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.Location = new System.Drawing.Point(147, 262);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 14);
+            this.label1.Size = new System.Drawing.Size(54, 116);
             this.label1.TabIndex = 2;
             this.label1.Text = "加载中..";
             // 
@@ -784,7 +785,7 @@
             this.panel2.Controls.Add(this.grpPlatfrom);
             this.panel2.Controls.Add(this.grpPromotion);
             this.panel2.Controls.Add(this.grpDetail);
-            this.panel2.Location = new System.Drawing.Point(-261, -1);
+            this.panel2.Location = new System.Drawing.Point(-277, -1);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(600, 734);
             this.panel2.TabIndex = 0;

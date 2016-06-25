@@ -30,29 +30,53 @@
         {
             this.components = new System.ComponentModel.Container();
             this.mcMain = new System.Windows.Forms.MonthCalendar();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmRefreash = new System.Windows.Forms.ToolStripMenuItem();
             this.panelDateInfo = new System.Windows.Forms.Panel();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tsmAdd = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmRefreash = new System.Windows.Forms.ToolStripMenuItem();
-            this.pnlMain.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.pnlMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // mcMain
             // 
             this.mcMain.ContextMenuStrip = this.contextMenuStrip1;
             this.mcMain.Location = new System.Drawing.Point(0, 0);
+            this.mcMain.MaxSelectionCount = 1;
             this.mcMain.Name = "mcMain";
             this.mcMain.TabIndex = 0;
             this.mcMain.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateSelected);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmAdd,
+            this.tsmRefreash});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(117, 48);
+            // 
+            // tsmAdd
+            // 
+            this.tsmAdd.Name = "tsmAdd";
+            this.tsmAdd.Size = new System.Drawing.Size(116, 22);
+            this.tsmAdd.Text = "新增(&A)";
+            this.tsmAdd.Click += new System.EventHandler(this.tsmAdd_Click);
+            // 
+            // tsmRefreash
+            // 
+            this.tsmRefreash.Name = "tsmRefreash";
+            this.tsmRefreash.Size = new System.Drawing.Size(116, 22);
+            this.tsmRefreash.Text = "刷新(&R)";
+            this.tsmRefreash.Click += new System.EventHandler(this.tsmRefreash_Click);
             // 
             // panelDateInfo
             // 
             this.panelDateInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.panelDateInfo.BackColor = System.Drawing.Color.White;
             this.panelDateInfo.Location = new System.Drawing.Point(5, 179);
             this.panelDateInfo.Name = "panelDateInfo";
             this.panelDateInfo.Size = new System.Drawing.Size(215, 243);
@@ -92,39 +116,19 @@
             this.lblTitle.Text = "标题";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmAdd,
-            this.tsmRefreash});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 70);
-            // 
-            // tsmAdd
-            // 
-            this.tsmAdd.Name = "tsmAdd";
-            this.tsmAdd.Size = new System.Drawing.Size(152, 22);
-            this.tsmAdd.Text = "新增(&A)";
-            this.tsmAdd.Click += new System.EventHandler(this.tsmAdd_Click);
-            // 
-            // tsmRefreash
-            // 
-            this.tsmRefreash.Name = "tsmRefreash";
-            this.tsmRefreash.Size = new System.Drawing.Size(152, 22);
-            this.tsmRefreash.Text = "刷新(&R)";
-            this.tsmRefreash.Click += new System.EventHandler(this.tsmRefreash_Click);
-            // 
             // MessageRecorder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.panelDateInfo);
             this.Controls.Add(this.mcMain);
             this.Name = "MessageRecorder";
             this.Size = new System.Drawing.Size(712, 422);
-            this.pnlMain.ResumeLayout(false);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.MessageRecorder_Paint);
             this.contextMenuStrip1.ResumeLayout(false);
+            this.pnlMain.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

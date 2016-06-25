@@ -24,6 +24,7 @@ namespace 商户资料管理系统
             });
             _btn = btn;
             _skin = new Sunisoft.IrisSkin.SkinEngine();
+            _skin.Active = true;
             _skin.SkinAllForm = true;
             string configPath = Path.Combine(Application.StartupPath, "Data", _Path);
             string skinName = string.Empty;
@@ -51,10 +52,11 @@ namespace 商户资料管理系统
             _btn.Text = skinName;
         }
 
-        public static void ClearBind(this FormMain form, ToolStripDropDownButton btn)
+        public static void SetSkinEnable(this FormMain form, ToolStripDropDownButton btn,bool enable)
         {
-            btn.DropDownItems.Clear();
-            _skin.Dispose();
+            _skin.Active = enable;
+            btn.Enabled = enable;
+          //  _skin.Dispose();          
         }
 
         private static void btn_Click(object sender, EventArgs e)

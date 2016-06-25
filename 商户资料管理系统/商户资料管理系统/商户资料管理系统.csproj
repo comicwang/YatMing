@@ -78,6 +78,7 @@
     <Compile Include="Common\IconsExtention.cs" />
     <Compile Include="Common\IOHelper.cs" />
     <Compile Include="Common\NotifyHelper.cs" />
+    <Compile Include="Common\RegistryHelper.cs" />
     <Compile Include="Common\RichTextBoxPrintHelper.cs" />
     <Compile Include="Common\SetExToolTip.cs" />
     <Compile Include="Common\SkinHelper.cs" />
@@ -278,6 +279,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\UploadControl.resx">
       <DependentUpon>UploadControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormNotify.resx">
+      <DependentUpon>FormNotify.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormRecorder.resx">
       <DependentUpon>FormRecorder.cs</DependentUpon>

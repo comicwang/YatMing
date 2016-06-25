@@ -14,9 +14,10 @@ namespace 商户资料管理系统
         private static NotifyIcon _notify = null;
         private static bool _blink = false;
         private static bool _recivedMessage = false;
+        private static bool _autoRun = false;
         private static Timer _timer = null;
 
-        public static void BindNotify(this Form form,Timer timer)
+        public static void BindNotify(this Form form, Timer timer)
         {
             //设置图标闪烁
             _timer = timer;
@@ -34,6 +35,11 @@ namespace 商户资料管理系统
             _notify.MouseDoubleClick += notify_MouseDoubleClick;
             _notify.MouseClick += notify_MouseClick;
             ContextMenu menu = new ContextMenu();
+
+            MenuItem itemStart = new MenuItem();
+            itemStart.Text = "设置开机启动";
+            itemStart.Click += itemStart_Click;
+
             MenuItem itemShow = new MenuItem();
             itemShow.Text = "显示商户平台";
             itemShow.Click += itemShow_Click;
@@ -41,9 +47,17 @@ namespace 商户资料管理系统
             MenuItem itemExit = new MenuItem();
             itemExit.Text = "退出平台";
             itemExit.Click += itemExit_Click;
-            menu.MenuItems.AddRange(new MenuItem[] { itemShow, itemExit });
+            menu.MenuItems.AddRange(new MenuItem[] { itemStart, itemShow, itemExit });
             _notify.ContextMenu = menu;
             _notify.Visible = true;
+        }
+
+        private static void itemStart_Click(object sender, EventArgs e)
+        {
+            _autoRun = !_autoRun;
+             RegistryHelper.AutoRunWhenStrat(_autoRun);
+             MenuItem item = sender as MenuItem;
+             item.Text = _autoRun ? "取消开机启动" : "设置开机启动";
         }
 
         private static void main_OnCanBlinkChanged(object sender, OparateEventArgs e)

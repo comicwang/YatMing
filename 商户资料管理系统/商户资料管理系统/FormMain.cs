@@ -213,6 +213,7 @@ namespace 商户资料管理系统
 
             InitializeCombox();
             mapControl1.InitializeMap();
+
             OnCanOparateChanged += FormMain_OnCanOparateChanged;
             CallOparateHander(btnNew, true);
             CallOparateHander(btnEdit, false);
@@ -1258,14 +1259,13 @@ namespace 商户资料管理系统
             {
                 tsbOpenSkin.Image = Resources.on;
                 tsbOpenSkin.ToolTipText = "关闭皮肤";
-                this.BindSkin(tsbSkin);
             }
             else
             {
                 tsbOpenSkin.Image = Resources.off;
                 tsbOpenSkin.ToolTipText = "打开皮肤";
-                this.ClearBind(tsbSkin);
             }
+            this.SetSkinEnable(tsbSkin, _openSkin);
             this.Refresh();
         }
 
