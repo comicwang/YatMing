@@ -36,7 +36,10 @@ namespace 商户资料管理系统
             get { return _loginForm; }
             set { _loginForm = value; }
         }
-        private TEmployeeDTO _employee = null;
+
+        public TEmployeeDTO _employee = null;
+
+        public FormNotify _notifyForm = null;
 
         private DataManageControl _dataMangeControl = null;
         private MessageRecorder _recorderControl = null;
@@ -228,6 +231,9 @@ namespace 商户资料管理系统
                 tslUser.Image = _employee.EmployeeSex == "男" ? Resources.man : Resources.woman;
                 tslUser.Text = _employee.EmployeeName;
                 tslUser.SetTips(new FormEmploeeInfo(_employee));
+
+                _notifyForm = new FormNotify(_employee.EmployeeName);
+                _notifyForm.InitializeNotify();
             }
 
             label1.Visible = false;

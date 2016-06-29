@@ -103,7 +103,15 @@ namespace 商户资料管理系统
             //关闭主线程
             FormMain form = _form as FormMain;
             if (form != null)
+            {
                 form.LoginForm.Close();
+                try
+                {
+                    if (form._notifyForm != null && form._notifyForm._pushProxy != null)
+                        form._notifyForm._pushProxy.UnRegist(form._employee.EmployeeName);
+                }
+                catch { }
+            }
             Application.Exit();
         }
 
