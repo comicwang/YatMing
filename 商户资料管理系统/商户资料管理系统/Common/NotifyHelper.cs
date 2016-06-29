@@ -89,12 +89,9 @@ namespace 商户资料管理系统
 
         private static void itemShow_Click(object sender, EventArgs e)
         {
-            if (_form.Visible == false)
-            {
-                _form.Show();
-                _form.WindowState = FormWindowState.Maximized;
-                _form.Activate();//获得焦点
-            }
+            _form.Show();
+            _form.WindowState = FormWindowState.Maximized;
+            _form.Activate();//获得焦点
         }
 
         private static void itemExit_Click(object sender, EventArgs e)
