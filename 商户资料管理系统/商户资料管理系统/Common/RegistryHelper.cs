@@ -45,5 +45,58 @@ namespace 商户资料管理系统
         }
 
         #endregion
+
+        #region 新增系统文件右键菜单
+
+        public static void AddFileContextMenuItem(string itemName, string associatedProgramFullPath)
+        {
+            //创建项：shell 
+            RegistryKey shellKey = Registry.ClassesRoot.OpenSubKey(@"*\shell", true);
+            if (shellKey == null)
+            {
+                shellKey = Registry.ClassesRoot.CreateSubKey(@"*\shell");
+            }
+
+            //创建项：右键显示的菜单名称
+            RegistryKey rightCommondKey = shellKey.CreateSubKey(itemName);
+            RegistryKey associatedProgramKey = rightCommondKey.CreateSubKey("command");
+
+            //创建默认值：关联的程序
+            associatedProgramKey.SetValue(string.Empty, associatedProgramFullPath);
+
+            //刷新到磁盘并释放资源
+            associatedProgramKey.Close();
+            rightCommondKey.Close();
+            shellKey.Close();
+        }
+
+        #endregion
+
+        #region 新增文件夹右键菜单
+
+        public static void AddDirectoryContextMenuItem(string itemName, string associatedProgramFullPath)
+        {
+            //创建项：shell 
+            RegistryKey shellKey = Registry.ClassesRoot.OpenSubKey(@"directory\shell", true);
+            if (shellKey == null)
+            {
+                shellKey = Registry.ClassesRoot.CreateSubKey(@"*\shell");
+            }
+
+            //创建项：右键显示的菜单名称
+            RegistryKey rightCommondKey = shellKey.CreateSubKey(itemName);
+            RegistryKey associatedProgramKey = rightCommondKey.CreateSubKey("command");
+
+            //创建默认值：关联的程序
+            associatedProgramKey.SetValue("", associatedProgramFullPath);
+
+
+            //刷新到磁盘并释放资源
+            associatedProgramKey.Close();
+            rightCommondKey.Close();
+            shellKey.Close();
+        }
+
+        #endregion
     }
 }

@@ -522,6 +522,8 @@
     <None Include="Resources\exe.png" />
     <None Include="Resources\empty.png" />
     <None Include="Resources\file_default.ico" />
+    <None Include="Resources\folder_download.png" />
+    <None Include="Resources\folder_upload.png" />
     <Content Include="Resources\search.png" />
     <None Include="Resources\close.png" />
     <None Include="Resources\edit.png" />

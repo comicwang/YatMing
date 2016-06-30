@@ -24,6 +24,7 @@ namespace 商户资料管理系统
             });
             _btn = btn;
             _skin = new Sunisoft.IrisSkin.SkinEngine();
+            _skin.AddForm(form);
             _skin.Active = true;
             _skin.SkinAllForm = true;
             string configPath = Path.Combine(Application.StartupPath, "Data", _Path);

@@ -35,6 +35,7 @@
             this.tsbRefresh = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbUpload = new System.Windows.Forms.ToolStripButton();
+            this.tsbUploadForlder = new System.Windows.Forms.ToolStripButton();
             this.tsbDownload = new System.Windows.Forms.ToolStripButton();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
             this.tsbNewForlder = new System.Windows.Forms.ToolStripButton();
@@ -76,13 +77,14 @@
             this.tsbRefresh,
             this.toolStripSeparator1,
             this.tsbUpload,
+            this.tsbUploadForlder,
             this.tsbDownload,
             this.tsbDelete,
             this.tsbNewForlder,
             this.tsbMoveTo});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(688, 38);
+            this.toolStrip1.Size = new System.Drawing.Size(851, 38);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -131,6 +133,19 @@
             this.tsbUpload.Size = new System.Drawing.Size(67, 38);
             this.tsbUpload.Text = "上传";
             this.tsbUpload.Click += new System.EventHandler(this.tsbUpload_Click);
+            // 
+            // tsbUploadForlder
+            // 
+            this.tsbUploadForlder.Font = new System.Drawing.Font("微软雅黑", 10F);
+            this.tsbUploadForlder.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.tsbUploadForlder.Image = global::商户资料管理系统.Properties.Resources.folder_upload;
+            this.tsbUploadForlder.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbUploadForlder.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbUploadForlder.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.tsbUploadForlder.Name = "tsbUploadForlder";
+            this.tsbUploadForlder.Size = new System.Drawing.Size(118, 38);
+            this.tsbUploadForlder.Text = "上传文件夹";
+            this.tsbUploadForlder.Click += new System.EventHandler(this.tsbUploadForlder_Click);
             // 
             // tsbDownload
             // 
@@ -345,7 +360,7 @@
             this.LvDataContent.Location = new System.Drawing.Point(0, 38);
             this.LvDataContent.Name = "LvDataContent";
             this.LvDataContent.ShowItemToolTips = true;
-            this.LvDataContent.Size = new System.Drawing.Size(688, 331);
+            this.LvDataContent.Size = new System.Drawing.Size(851, 331);
             this.LvDataContent.SmallImageList = this.imageList1;
             this.LvDataContent.TabIndex = 2;
             this.LvDataContent.UseCompatibleStateImageBehavior = false;
@@ -391,7 +406,7 @@
             // searchTextBox1
             // 
             this.searchTextBox1.ForeColor = System.Drawing.Color.Gray;
-            this.searchTextBox1.Location = new System.Drawing.Point(411, 10);
+            this.searchTextBox1.Location = new System.Drawing.Point(695, 11);
             this.searchTextBox1.Name = "searchTextBox1";
             this.searchTextBox1.PresetText = "搜索商户文件";
             this.searchTextBox1.SearchImage = ((System.Drawing.Image)(resources.GetObject("searchTextBox1.SearchImage")));
@@ -408,7 +423,7 @@
             this.Controls.Add(this.searchTextBox1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "DataManageControl";
-            this.Size = new System.Drawing.Size(688, 369);
+            this.Size = new System.Drawing.Size(851, 369);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ctmContent.ResumeLayout(false);
@@ -452,5 +467,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmViewIcon;
         private System.Windows.Forms.ToolStripMenuItem tsmViewDetail;
         private System.Windows.Forms.ColumnHeader colHeadIcon;
+        private System.Windows.Forms.ToolStripButton tsbUploadForlder;
     }
 }

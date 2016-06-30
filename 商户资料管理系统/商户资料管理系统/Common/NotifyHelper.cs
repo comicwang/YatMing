@@ -31,7 +31,7 @@ namespace 商户资料管理系统
             }
             _notify = new NotifyIcon();
             _notify.Icon = Resources.main;
-            _notify.Text = "商户平台";
+            _notify.Text = "商户管理平台\r\n当前版本：" + Application.ProductVersion;
             _notify.MouseDoubleClick += notify_MouseDoubleClick;
             _notify.MouseClick += notify_MouseClick;
             ContextMenu menu = new ContextMenu();

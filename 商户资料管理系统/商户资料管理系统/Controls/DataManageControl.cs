@@ -438,6 +438,46 @@ namespace 商户资料管理系统
             }
         }
 
+        private void tsbUploadForlder_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            //dialog.RootFolder = Environment.SpecialFolder.MyComputer;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                string folderPath = dialog.SelectedPath;
+                string folderName = folderPath.Remove(0, folderPath.LastIndexOf("\\") + 1);
+                //新建文件夹
+                TDataInfoDTO dto = new TDataInfoDTO();
+                dto.BaseInfoId = _baseInfoId;
+                dto.CreateTime = DateTime.Now;
+                dto.DataName = folderName;
+                dto.UploadPeople = CommonData.LoginInfo.EmployeeName;
+                dto.IsForlder = true;
+                dto.DownloadTimes = 0;
+                dto.LastModifyTime = DateTime.Now;
+                dto.MetaDataId = Guid.NewGuid().ToString();
+                dto.ParentId = _currentId;
+                bool result = _client.TDataInfoAdd(dto);
+                if (result)
+                {
+                    CreateViewItem(dto, LvDataContent.Items.Count, false);
+                  //  IniliazeListView(dto.MetaDataId);
+                    //开始上传文件
+
+                    Array.ForEach(Directory.GetFiles(folderPath), t =>
+                    {
+                        ListViewItemEx ctr = new ListViewItemEx(_baseInfoId);
+                        ctr.Text = Path.GetFileName(t);
+                        string tempFileExtension = Path.GetExtension(t);
+                        LvDataContent.Items.Add(ctr);
+                        ctr.UploadFile(t, _currentId, imageList1);
+                    });
+                    //LvDataContent.Items[LvDataContent.Items.Count - 1].BeginEdit();
+                }
+
+            }
+        }
+
         private void tsmUpload_Click(object sender, EventArgs e)
         {
             tsbUpload_Click(sender, e);
@@ -636,6 +676,7 @@ namespace 商户资料管理系统
         }
 
         #endregion
+
     }
 
     #region Sort Class Ascending
