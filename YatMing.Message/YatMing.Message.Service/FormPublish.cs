@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,7 @@ namespace YatMing.Message.Service
     {
         private ServiceHost _host = null;
         private int _current = 0;
+        private bool _exit = false;
 
         public FormPublish()
         {
@@ -72,6 +74,65 @@ namespace YatMing.Message.Service
             {
                 ChannelManager.Instance.NotifyMutiMedia(new MediaDTO { MediaContent = Encoding.Default.GetBytes(rtbText.Rtf) });
             }
+        }
+
+        private void tsmAutoRun_Click(object sender, EventArgs e)
+        {
+            string path = Application.ExecutablePath;
+            string name = path.Substring(path.LastIndexOf(@"\") + 1);
+            try
+            {
+                RegistryKey regedit = Registry.LocalMachine;
+                RegistryKey Run = regedit.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
+                //if (Started)
+                //{
+                    try
+                    {
+                        //添加该启动项
+                        Run.SetValue(name, path);
+                        regedit.Close();
+                    }
+                    catch
+                    { }
+
+                //}
+                //else
+                //{
+                //    Run.DeleteValue(name);
+                //    //或者设为空即删除该启动项
+                //    // Run.SetValue(name, "");
+                //}
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void tsmShow_Click(object sender, EventArgs e)
+        {
+            this.Show();
+            this.Activate();
+        }
+
+        private void tsmExit_Click(object sender, EventArgs e)
+        {
+            _exit = true;
+            this.Close();
+            //Application.Exit();
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            MouseEventArgs arg = e as MouseEventArgs;
+            if (arg.Button == System.Windows.Forms.MouseButtons.Left)
+                tsmShow_Click(null, null);
+        }
+
+        private void FormPublish_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = !_exit;
         }
 
     }

@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPublish));
             this.txtText = new System.Windows.Forms.TextBox();
             this.btnSendText = new System.Windows.Forms.Button();
             this.rtbText = new System.Windows.Forms.RichTextBox();
@@ -37,6 +39,12 @@
             this.txtConsole = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lklblNum = new System.Windows.Forms.LinkLabel();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmShow = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmAutoRun = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtText
@@ -120,6 +128,44 @@
             this.lklblNum.TabStop = true;
             this.lklblNum.Text = "0";
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "消息服务";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmAutoRun,
+            this.tsmShow,
+            this.tsmExit});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 70);
+            // 
+            // tsmShow
+            // 
+            this.tsmShow.Name = "tsmShow";
+            this.tsmShow.Size = new System.Drawing.Size(124, 22);
+            this.tsmShow.Text = "显示";
+            this.tsmShow.Click += new System.EventHandler(this.tsmShow_Click);
+            // 
+            // tsmExit
+            // 
+            this.tsmExit.Name = "tsmExit";
+            this.tsmExit.Size = new System.Drawing.Size(124, 22);
+            this.tsmExit.Text = "退出";
+            this.tsmExit.Click += new System.EventHandler(this.tsmExit_Click);
+            // 
+            // tsmAutoRun
+            // 
+            this.tsmAutoRun.Name = "tsmAutoRun";
+            this.tsmAutoRun.Size = new System.Drawing.Size(124, 22);
+            this.tsmAutoRun.Text = "开机启动";
+            this.tsmAutoRun.Click += new System.EventHandler(this.tsmAutoRun_Click);
+            // 
             // FormPublish
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -134,9 +180,12 @@
             this.Controls.Add(this.btnSendMedia);
             this.Controls.Add(this.btnSendText);
             this.Controls.Add(this.txtText);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormPublish";
             this.Text = "FormPublish";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPublish_FormClosing);
             this.Load += new System.EventHandler(this.FormPublish_Load);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,6 +202,11 @@
         private System.Windows.Forms.TextBox txtConsole;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.LinkLabel lklblNum;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem tsmShow;
+        private System.Windows.Forms.ToolStripMenuItem tsmExit;
+        private System.Windows.Forms.ToolStripMenuItem tsmAutoRun;
     }
 }
 
