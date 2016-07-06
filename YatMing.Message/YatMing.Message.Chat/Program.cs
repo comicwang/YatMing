@@ -15,7 +15,9 @@ namespace YatMing.Message.Chat
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());
+            Random random = new Random();
+            int ran = random.Next(100, 1000);
+            Application.Run(new FormChatList("用户" + ran));
         }
     }
 }

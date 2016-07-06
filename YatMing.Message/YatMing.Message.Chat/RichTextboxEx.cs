@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Data;  
 using System.Text;  
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace RichTextBoxBackPicture
 {
@@ -46,24 +47,24 @@ namespace RichTextBoxBackPicture
         /// </summary>  
         private void InitializeComponent()
         {
-            this.alphaRichTextBox1 = new RichTextBoxBackPicture.AlphaRichTextBox();
+            this.RichTextBox = new RichTextBoxBackPicture.AlphaRichTextBox();
             this.SuspendLayout();
             //   
             // alphaRichTextBox1  
             //   
-            this.alphaRichTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.alphaRichTextBox1.Location = new System.Drawing.Point(0, 0);
+            this.RichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RichTextBox.Location = new System.Drawing.Point(0, 0);
            // this.alphaRichTextBox1.Name = "alphaRichTextBox1";
-            this.alphaRichTextBox1.Size = new System.Drawing.Size(150, 150);
-            this.alphaRichTextBox1.TabIndex = 0;
-            this.alphaRichTextBox1.Text = "";
-            this.alphaRichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.RichTextBox.Size = new System.Drawing.Size(150, 150);
+            this.RichTextBox.TabIndex = 0;
+            this.RichTextBox.Text = "";
+            this.RichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             //   
             // UserRichTexBox  
             //   
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.alphaRichTextBox1);
+            this.Controls.Add(this.RichTextBox);
             this.Name = "UserRichTexBox";
             this.ResumeLayout(false);
 
@@ -71,7 +72,7 @@ namespace RichTextBoxBackPicture
 
         #endregion
 
-        private AlphaRichTextBox alphaRichTextBox1;
+        public AlphaRichTextBox RichTextBox;
 
         protected override void OnLoad(EventArgs e)
         {
@@ -94,11 +95,11 @@ namespace RichTextBoxBackPicture
         {
             get
             {
-                return alphaRichTextBox1.Text;
+                return RichTextBox.Text;
             }
             set
             {
-                alphaRichTextBox1.Text = value;
+                RichTextBox.Text = value;
             }
         }
     }

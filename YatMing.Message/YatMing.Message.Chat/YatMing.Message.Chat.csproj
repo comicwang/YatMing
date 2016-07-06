@@ -41,6 +41,7 @@
       <HintPath>bin\Debug\LayeredSkin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -52,19 +53,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonHelp.cs" />
+    <Compile Include="FormChatList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChatList.Designer.cs">
+      <DependentUpon>FormChatList.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSkin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSkin.Designer.cs">
+      <DependentUpon>FormSkin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RichTextboxEx.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="WarningBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WarningBox.designer.cs">
+      <DependentUpon>WarningBox.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FormChatList.resx">
+      <DependentUpon>FormChatList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSkin.resx">
+      <DependentUpon>FormSkin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -76,6 +102,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="WarningBox.resx">
+      <DependentUpon>WarningBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -88,6 +118,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\d8ffa25210f6ab3bf7923ca55fb03b56.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hide.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\font.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\smile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Skin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\skinhover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\addImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\removeImage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -28,46 +28,79 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            System.Drawing.Imaging.ImageAttributes imageAttributes5 = new System.Drawing.Imaging.ImageAttributes();
+            System.Drawing.Imaging.ImageAttributes imageAttributes6 = new System.Drawing.Imaging.ImageAttributes();
             System.Drawing.Imaging.ImageAttributes imageAttributes1 = new System.Drawing.Imaging.ImageAttributes();
             System.Drawing.Imaging.ImageAttributes imageAttributes2 = new System.Drawing.Imaging.ImageAttributes();
             System.Drawing.Imaging.ImageAttributes imageAttributes3 = new System.Drawing.Imaging.ImageAttributes();
             System.Drawing.Imaging.ImageAttributes imageAttributes4 = new System.Drawing.Imaging.ImageAttributes();
+            System.Drawing.Imaging.ImageAttributes imageAttributes5 = new System.Drawing.Imaging.ImageAttributes();
             this.layeredPanel1 = new LayeredSkin.Controls.LayeredPanel();
+            this.lybtnSkin = new LayeredSkin.Controls.LayeredButton();
             this.lylblName = new LayeredSkin.Controls.LayeredLabel();
-            this.layeredPictureBox1 = new LayeredSkin.Controls.LayeredPictureBox();
-            this.layeredButton2 = new LayeredSkin.Controls.LayeredButton();
-            this.layeredButton1 = new LayeredSkin.Controls.LayeredButton();
+            this.lyPic = new LayeredSkin.Controls.LayeredPictureBox();
+            this.lybtnClose = new LayeredSkin.Controls.LayeredButton();
+            this.lybtnHide = new LayeredSkin.Controls.LayeredButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnSend = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnlMenu = new System.Windows.Forms.Panel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.aToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.userRichTexBox2 = new RichTextBoxBackPicture.UserRichTexBox();
-            this.userRichTexBox1 = new RichTextBoxBackPicture.UserRichTexBox();
+            this.menuWord = new System.Windows.Forms.MenuStrip();
+            this.tsmFont = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmFace = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmImage = new System.Windows.Forms.ToolStripMenuItem();
+            this.rtbSend = new RichTextBoxBackPicture.UserRichTexBox();
+            this.rtbHistory = new RichTextBoxBackPicture.UserRichTexBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.warningBox1 = new YatMing.Message.Chat.WarningBox();
             this.layeredPanel1.SuspendLayout();
             this.pnlMenu.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.menuWord.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // layeredPanel1
             // 
             this.layeredPanel1.BackColor = System.Drawing.Color.Transparent;
             this.layeredPanel1.Canvas = ((System.Drawing.Bitmap)(resources.GetObject("layeredPanel1.Canvas")));
+            this.layeredPanel1.Controls.Add(this.lybtnSkin);
             this.layeredPanel1.Controls.Add(this.lylblName);
-            this.layeredPanel1.Controls.Add(this.layeredPictureBox1);
-            this.layeredPanel1.Controls.Add(this.layeredButton2);
-            this.layeredPanel1.Controls.Add(this.layeredButton1);
+            this.layeredPanel1.Controls.Add(this.lyPic);
+            this.layeredPanel1.Controls.Add(this.lybtnClose);
+            this.layeredPanel1.Controls.Add(this.lybtnHide);
             this.layeredPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.layeredPanel1.ForeColor = System.Drawing.Color.Gray;
-            this.layeredPanel1.ImageAttribute = imageAttributes5;
+            this.layeredPanel1.ImageAttribute = imageAttributes6;
             this.layeredPanel1.Location = new System.Drawing.Point(0, 0);
             this.layeredPanel1.Name = "layeredPanel1";
-            this.layeredPanel1.Size = new System.Drawing.Size(450, 112);
+            this.layeredPanel1.Size = new System.Drawing.Size(511, 75);
             this.layeredPanel1.TabIndex = 0;
+            // 
+            // lybtnSkin
+            // 
+            this.lybtnSkin.AdaptImage = true;
+            this.lybtnSkin.BackColor = System.Drawing.Color.Transparent;
+            this.lybtnSkin.BaseColor = System.Drawing.Color.Wheat;
+            this.lybtnSkin.Canvas = ((System.Drawing.Bitmap)(resources.GetObject("lybtnSkin.Canvas")));
+            this.lybtnSkin.ControlState = LayeredSkin.Controls.ControlStates.Normal;
+            this.lybtnSkin.HaloColor = System.Drawing.Color.White;
+            this.lybtnSkin.HaloSize = 5;
+            this.lybtnSkin.HoverImage = global::YatMing.Message.Chat.Properties.Resources.skinhover;
+            this.lybtnSkin.ImageAttribute = imageAttributes1;
+            this.lybtnSkin.Location = new System.Drawing.Point(428, 3);
+            this.lybtnSkin.Name = "lybtnSkin";
+            this.lybtnSkin.NormalImage = global::YatMing.Message.Chat.Properties.Resources.Skin;
+            this.lybtnSkin.PressedImage = null;
+            this.lybtnSkin.Size = new System.Drawing.Size(24, 24);
+            this.lybtnSkin.TabIndex = 7;
+            this.lybtnSkin.TabStop = false;
+            this.lybtnSkin.TextLocationOffset = new System.Drawing.Point(0, 0);
+            this.lybtnSkin.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            this.lybtnSkin.TextShowMode = LayeredSkin.TextShowModes.Halo;
+            this.lybtnSkin.Click += new System.EventHandler(this.lybtnSkin_Click);
             // 
             // lylblName
             // 
@@ -75,185 +108,249 @@
             this.lylblName.Canvas = ((System.Drawing.Bitmap)(resources.GetObject("lylblName.Canvas")));
             this.lylblName.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lylblName.HaloSize = 5;
-            this.lylblName.ImageAttribute = imageAttributes1;
+            this.lylblName.ImageAttribute = imageAttributes2;
             this.lylblName.Location = new System.Drawing.Point(80, 4);
             this.lylblName.Name = "lylblName";
             this.lylblName.Size = new System.Drawing.Size(75, 23);
             this.lylblName.TabIndex = 6;
             this.lylblName.Text = "昵称";
             // 
-            // layeredPictureBox1
+            // lyPic
             // 
-            this.layeredPictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.layeredPictureBox1.Canvas = ((System.Drawing.Bitmap)(resources.GetObject("layeredPictureBox1.Canvas")));
-            this.layeredPictureBox1.Image = null;
-            this.layeredPictureBox1.ImageAttribute = imageAttributes2;
-            this.layeredPictureBox1.Images = null;
-            this.layeredPictureBox1.Interval = 100;
-            this.layeredPictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.layeredPictureBox1.MultiImageAnimation = false;
-            this.layeredPictureBox1.Name = "layeredPictureBox1";
-            this.layeredPictureBox1.Size = new System.Drawing.Size(70, 70);
-            this.layeredPictureBox1.TabIndex = 5;
-            this.layeredPictureBox1.Text = "layeredPictureBox1";
+            this.lyPic.BackColor = System.Drawing.Color.Transparent;
+            this.lyPic.Canvas = ((System.Drawing.Bitmap)(resources.GetObject("lyPic.Canvas")));
+            this.lyPic.Image = null;
+            this.lyPic.ImageAttribute = imageAttributes3;
+            this.lyPic.Images = null;
+            this.lyPic.Interval = 100;
+            this.lyPic.Location = new System.Drawing.Point(3, 3);
+            this.lyPic.MultiImageAnimation = false;
+            this.lyPic.Name = "lyPic";
+            this.lyPic.Size = new System.Drawing.Size(70, 70);
+            this.lyPic.TabIndex = 5;
+            this.lyPic.Text = "layeredPictureBox1";
             // 
-            // layeredButton2
+            // lybtnClose
             // 
-            this.layeredButton2.AdaptImage = true;
-            this.layeredButton2.BackColor = System.Drawing.Color.Transparent;
-            this.layeredButton2.BaseColor = System.Drawing.Color.Wheat;
-            this.layeredButton2.Canvas = ((System.Drawing.Bitmap)(resources.GetObject("layeredButton2.Canvas")));
-            this.layeredButton2.ControlState = LayeredSkin.Controls.ControlStates.Normal;
-            this.layeredButton2.HaloColor = System.Drawing.Color.White;
-            this.layeredButton2.HaloSize = 5;
-            this.layeredButton2.HoverImage = ((System.Drawing.Image)(resources.GetObject("layeredButton2.HoverImage")));
-            this.layeredButton2.ImageAttribute = imageAttributes3;
-            this.layeredButton2.Location = new System.Drawing.Point(425, 3);
-            this.layeredButton2.Name = "layeredButton2";
-            this.layeredButton2.NormalImage = ((System.Drawing.Image)(resources.GetObject("layeredButton2.NormalImage")));
-            this.layeredButton2.PressedImage = null;
-            this.layeredButton2.Size = new System.Drawing.Size(22, 22);
-            this.layeredButton2.TabIndex = 3;
-            this.layeredButton2.TabStop = false;
-            this.layeredButton2.TextLocationOffset = new System.Drawing.Point(0, 0);
-            this.layeredButton2.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            this.layeredButton2.TextShowMode = LayeredSkin.TextShowModes.Halo;
-            this.layeredButton2.Click += new System.EventHandler(this.layeredButton2_Click);
+            this.lybtnClose.AdaptImage = true;
+            this.lybtnClose.BackColor = System.Drawing.Color.Transparent;
+            this.lybtnClose.BaseColor = System.Drawing.Color.Wheat;
+            this.lybtnClose.Canvas = ((System.Drawing.Bitmap)(resources.GetObject("lybtnClose.Canvas")));
+            this.lybtnClose.ControlState = LayeredSkin.Controls.ControlStates.Normal;
+            this.lybtnClose.HaloColor = System.Drawing.Color.White;
+            this.lybtnClose.HaloSize = 5;
+            this.lybtnClose.HoverImage = ((System.Drawing.Image)(resources.GetObject("lybtnClose.HoverImage")));
+            this.lybtnClose.ImageAttribute = imageAttributes4;
+            this.lybtnClose.Location = new System.Drawing.Point(485, 4);
+            this.lybtnClose.Name = "lybtnClose";
+            this.lybtnClose.NormalImage = global::YatMing.Message.Chat.Properties.Resources.close;
+            this.lybtnClose.PressedImage = null;
+            this.lybtnClose.Size = new System.Drawing.Size(22, 22);
+            this.lybtnClose.TabIndex = 3;
+            this.lybtnClose.TabStop = false;
+            this.lybtnClose.TextLocationOffset = new System.Drawing.Point(0, 0);
+            this.lybtnClose.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            this.lybtnClose.TextShowMode = LayeredSkin.TextShowModes.Halo;
+            this.lybtnClose.Click += new System.EventHandler(this.layeredButton2_Click);
             // 
-            // layeredButton1
+            // lybtnHide
             // 
-            this.layeredButton1.AdaptImage = true;
-            this.layeredButton1.BackColor = System.Drawing.Color.Transparent;
-            this.layeredButton1.BaseColor = System.Drawing.Color.Wheat;
-            this.layeredButton1.Canvas = ((System.Drawing.Bitmap)(resources.GetObject("layeredButton1.Canvas")));
-            this.layeredButton1.ControlState = LayeredSkin.Controls.ControlStates.Normal;
-            this.layeredButton1.HaloColor = System.Drawing.Color.White;
-            this.layeredButton1.HaloSize = 5;
-            this.layeredButton1.HoverImage = ((System.Drawing.Image)(resources.GetObject("layeredButton1.HoverImage")));
-            this.layeredButton1.ImageAttribute = imageAttributes4;
-            this.layeredButton1.Location = new System.Drawing.Point(397, 3);
-            this.layeredButton1.Name = "layeredButton1";
-            this.layeredButton1.NormalImage = ((System.Drawing.Image)(resources.GetObject("layeredButton1.NormalImage")));
-            this.layeredButton1.PressedImage = null;
-            this.layeredButton1.Size = new System.Drawing.Size(22, 22);
-            this.layeredButton1.TabIndex = 4;
-            this.layeredButton1.TabStop = false;
-            this.layeredButton1.TextLocationOffset = new System.Drawing.Point(0, 0);
-            this.layeredButton1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            this.layeredButton1.TextShowMode = LayeredSkin.TextShowModes.Halo;
-            this.layeredButton1.Click += new System.EventHandler(this.layeredButton1_Click);
+            this.lybtnHide.AdaptImage = true;
+            this.lybtnHide.BackColor = System.Drawing.Color.Transparent;
+            this.lybtnHide.BaseColor = System.Drawing.Color.Wheat;
+            this.lybtnHide.Canvas = ((System.Drawing.Bitmap)(resources.GetObject("lybtnHide.Canvas")));
+            this.lybtnHide.ControlState = LayeredSkin.Controls.ControlStates.Normal;
+            this.lybtnHide.HaloColor = System.Drawing.Color.White;
+            this.lybtnHide.HaloSize = 5;
+            this.lybtnHide.HoverImage = ((System.Drawing.Image)(resources.GetObject("lybtnHide.HoverImage")));
+            this.lybtnHide.ImageAttribute = imageAttributes5;
+            this.lybtnHide.Location = new System.Drawing.Point(457, 4);
+            this.lybtnHide.Name = "lybtnHide";
+            this.lybtnHide.NormalImage = global::YatMing.Message.Chat.Properties.Resources.hide;
+            this.lybtnHide.PressedImage = null;
+            this.lybtnHide.Size = new System.Drawing.Size(22, 22);
+            this.lybtnHide.TabIndex = 4;
+            this.lybtnHide.TabStop = false;
+            this.lybtnHide.TextLocationOffset = new System.Drawing.Point(0, 0);
+            this.lybtnHide.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            this.lybtnHide.TextShowMode = LayeredSkin.TextShowModes.Halo;
+            this.lybtnHide.Click += new System.EventHandler(this.layeredButton1_Click);
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Silver;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 112);
+            this.panel1.ForeColor = System.Drawing.Color.Gray;
+            this.panel1.Location = new System.Drawing.Point(0, 75);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(450, 2);
+            this.panel1.Size = new System.Drawing.Size(511, 1);
             this.panel1.TabIndex = 1;
             // 
-            // button1
+            // btnClose
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(288, 573);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "关闭";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Location = new System.Drawing.Point(349, 520);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 4;
+            this.btnClose.Text = "关闭";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // button2
+            // btnSend
             // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(367, 573);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "发送";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSend.BackColor = System.Drawing.Color.Transparent;
+            this.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSend.Location = new System.Drawing.Point(428, 520);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(75, 23);
+            this.btnSend.TabIndex = 4;
+            this.btnSend.Text = "发送";
+            this.btnSend.UseVisualStyleBackColor = false;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Silver;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.ForeColor = System.Drawing.Color.Gray;
-            this.panel2.Location = new System.Drawing.Point(0, 477);
+            this.panel2.Location = new System.Drawing.Point(0, 380);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(450, 1);
+            this.panel2.Size = new System.Drawing.Size(511, 1);
             this.panel2.TabIndex = 7;
             // 
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.Transparent;
-            this.pnlMenu.Controls.Add(this.menuStrip1);
+            this.pnlMenu.Controls.Add(this.menuWord);
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlMenu.Location = new System.Drawing.Point(0, 478);
+            this.pnlMenu.Location = new System.Drawing.Point(0, 381);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(450, 26);
+            this.pnlMenu.Size = new System.Drawing.Size(511, 26);
             this.pnlMenu.TabIndex = 8;
             // 
-            // menuStrip1
+            // menuWord
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(450, 25);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuWord.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmFont,
+            this.tsmFace,
+            this.tsmImage});
+            this.menuWord.Location = new System.Drawing.Point(0, 0);
+            this.menuWord.Name = "menuWord";
+            this.menuWord.Size = new System.Drawing.Size(511, 24);
+            this.menuWord.TabIndex = 0;
+            this.menuWord.Text = "menuStrip1";
             // 
-            // aToolStripMenuItem
+            // tsmFont
             // 
-            this.aToolStripMenuItem.Name = "aToolStripMenuItem";
-            this.aToolStripMenuItem.Size = new System.Drawing.Size(28, 21);
-            this.aToolStripMenuItem.Text = "A";
+            this.tsmFont.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsmFont.Image = global::YatMing.Message.Chat.Properties.Resources.font;
+            this.tsmFont.Name = "tsmFont";
+            this.tsmFont.ShowShortcutKeys = false;
+            this.tsmFont.Size = new System.Drawing.Size(28, 20);
+            this.tsmFont.Text = "A";
+            this.tsmFont.ToolTipText = "设计文字字体";
             // 
-            // userRichTexBox2
+            // tsmFace
             // 
-            this.userRichTexBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.userRichTexBox2.Location = new System.Drawing.Point(0, 504);
-            this.userRichTexBox2.Name = "userRichTexBox2";
-            this.userRichTexBox2.Size = new System.Drawing.Size(450, 61);
-            this.userRichTexBox2.TabIndex = 6;
+            this.tsmFace.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsmFace.Image = global::YatMing.Message.Chat.Properties.Resources.smile;
+            this.tsmFace.Name = "tsmFace";
+            this.tsmFace.Size = new System.Drawing.Size(28, 20);
+            this.tsmFace.Text = "1";
+            this.tsmFace.ToolTipText = "表情";
             // 
-            // userRichTexBox1
+            // tsmImage
             // 
-            this.userRichTexBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.userRichTexBox1.Location = new System.Drawing.Point(0, 114);
-            this.userRichTexBox1.Name = "userRichTexBox1";
-            this.userRichTexBox1.Size = new System.Drawing.Size(450, 363);
-            this.userRichTexBox1.TabIndex = 5;
+            this.tsmImage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsmImage.Image = global::YatMing.Message.Chat.Properties.Resources.image;
+            this.tsmImage.Name = "tsmImage";
+            this.tsmImage.Size = new System.Drawing.Size(28, 20);
+            this.tsmImage.Text = "1";
+            this.tsmImage.ToolTipText = "插入图片";
+            this.tsmImage.Click += new System.EventHandler(this.tsmImage_Click);
+            // 
+            // rtbSend
+            // 
+            this.rtbSend.Dock = System.Windows.Forms.DockStyle.Top;
+            this.rtbSend.Location = new System.Drawing.Point(0, 407);
+            this.rtbSend.Name = "rtbSend";
+            this.rtbSend.Padding = new System.Windows.Forms.Padding(5);
+            this.rtbSend.Size = new System.Drawing.Size(511, 106);
+            this.rtbSend.TabIndex = 6;
+            // 
+            // rtbHistory
+            // 
+            this.rtbHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtbHistory.Location = new System.Drawing.Point(0, 31);
+            this.rtbHistory.Name = "rtbHistory";
+            this.rtbHistory.Padding = new System.Windows.Forms.Padding(5);
+            this.rtbHistory.Size = new System.Drawing.Size(511, 273);
+            this.rtbHistory.TabIndex = 5;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.rtbHistory);
+            this.panel3.Controls.Add(this.warningBox1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 76);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(511, 304);
+            this.panel3.TabIndex = 9;
+            // 
+            // warningBox1
+            // 
+            this.warningBox1.AutoCloseTime = 100;
+            this.warningBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.warningBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.warningBox1.FontColor = System.Drawing.SystemColors.ControlText;
+            this.warningBox1.Location = new System.Drawing.Point(0, 0);
+            this.warningBox1.Name = "warningBox1";
+            this.warningBox1.Size = new System.Drawing.Size(511, 31);
+            this.warningBox1.TabIndex = 6;
+            this.warningBox1.Visible = false;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::YatMing.Message.Chat.Properties.Resources.d8ffa25210f6ab3bf7923ca55fb03b56;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(450, 600);
-            this.Controls.Add(this.userRichTexBox2);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(511, 547);
+            this.Controls.Add(this.rtbSend);
             this.Controls.Add(this.pnlMenu);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.userRichTexBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.btnSend);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.layeredPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.menuWord;
             this.Name = "FormMain";
-            this.Opacity = 0.3D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Activated += new System.EventHandler(this.FormMain_Activated);
+            this.Deactivate += new System.EventHandler(this.FormMain_Deactivate);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.layeredPanel1.ResumeLayout(false);
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.menuWord.ResumeLayout(false);
+            this.menuWord.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -261,19 +358,25 @@
         #endregion
 
         private LayeredSkin.Controls.LayeredPanel layeredPanel1;
-        private System.Windows.Forms.Panel panel1;
-        private LayeredSkin.Controls.LayeredButton layeredButton2;
-        private LayeredSkin.Controls.LayeredButton layeredButton1;
+        private LayeredSkin.Controls.LayeredButton lybtnSkin;
         private LayeredSkin.Controls.LayeredLabel lylblName;
-        private LayeredSkin.Controls.LayeredPictureBox layeredPictureBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private RichTextBoxBackPicture.UserRichTexBox userRichTexBox1;
-        private RichTextBoxBackPicture.UserRichTexBox userRichTexBox2;
+        private LayeredSkin.Controls.LayeredPictureBox lyPic;
+        private LayeredSkin.Controls.LayeredButton lybtnClose;
+        private LayeredSkin.Controls.LayeredButton lybtnHide;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnSend;
+        private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel pnlMenu;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem aToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip menuWord;
+        private System.Windows.Forms.ToolStripMenuItem tsmFont;
+        private System.Windows.Forms.ToolStripMenuItem tsmFace;
+        private System.Windows.Forms.ToolStripMenuItem tsmImage;
+        private RichTextBoxBackPicture.UserRichTexBox rtbSend;
+        private RichTextBoxBackPicture.UserRichTexBox rtbHistory;
+        private System.Windows.Forms.Panel panel3;
+        private WarningBox warningBox1;
     }
 }
 
