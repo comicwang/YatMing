@@ -38,7 +38,7 @@
             this.lstFriend.ItemHeight = 12;
             this.lstFriend.Location = new System.Drawing.Point(0, 0);
             this.lstFriend.Name = "lstFriend";
-            this.lstFriend.Size = new System.Drawing.Size(241, 469);
+            this.lstFriend.Size = new System.Drawing.Size(617, 479);
             this.lstFriend.TabIndex = 0;
             this.lstFriend.DoubleClick += new System.EventHandler(this.lstFriend_DoubleClick);
             // 
@@ -46,7 +46,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(241, 469);
+            this.ClientSize = new System.Drawing.Size(617, 479);
             this.Controls.Add(this.lstFriend);
             this.Name = "FormChatList";
             this.Text = "FormChatList";

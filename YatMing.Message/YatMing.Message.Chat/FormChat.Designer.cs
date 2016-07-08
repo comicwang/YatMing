@@ -1,6 +1,6 @@
 ﻿namespace YatMing.Message.Chat
 {
-    partial class FormMain
+    partial class FormChat
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            System.Drawing.Imaging.ImageAttributes imageAttributes6 = new System.Drawing.Imaging.ImageAttributes();
-            System.Drawing.Imaging.ImageAttributes imageAttributes1 = new System.Drawing.Imaging.ImageAttributes();
-            System.Drawing.Imaging.ImageAttributes imageAttributes2 = new System.Drawing.Imaging.ImageAttributes();
-            System.Drawing.Imaging.ImageAttributes imageAttributes3 = new System.Drawing.Imaging.ImageAttributes();
-            System.Drawing.Imaging.ImageAttributes imageAttributes4 = new System.Drawing.Imaging.ImageAttributes();
-            System.Drawing.Imaging.ImageAttributes imageAttributes5 = new System.Drawing.Imaging.ImageAttributes();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormChat));
+            System.Drawing.Imaging.ImageAttributes imageAttributes18 = new System.Drawing.Imaging.ImageAttributes();
+            System.Drawing.Imaging.ImageAttributes imageAttributes13 = new System.Drawing.Imaging.ImageAttributes();
+            System.Drawing.Imaging.ImageAttributes imageAttributes14 = new System.Drawing.Imaging.ImageAttributes();
+            System.Drawing.Imaging.ImageAttributes imageAttributes15 = new System.Drawing.Imaging.ImageAttributes();
+            System.Drawing.Imaging.ImageAttributes imageAttributes16 = new System.Drawing.Imaging.ImageAttributes();
+            System.Drawing.Imaging.ImageAttributes imageAttributes17 = new System.Drawing.Imaging.ImageAttributes();
             this.layeredPanel1 = new LayeredSkin.Controls.LayeredPanel();
             this.lybtnSkin = new LayeredSkin.Controls.LayeredButton();
             this.lylblName = new LayeredSkin.Controls.LayeredLabel();
@@ -52,10 +52,11 @@
             this.tsmFont = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmFace = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmImage = new System.Windows.Forms.ToolStripMenuItem();
-            this.rtbSend = new RichTextBoxBackPicture.UserRichTexBox();
-            this.rtbHistory = new RichTextBoxBackPicture.UserRichTexBox();
+            this.tsmCutScreen = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.rtbHistory = new RichTextBoxBackPicture.UserRichTexBox();
             this.warningBox1 = new YatMing.Message.Chat.WarningBox();
+            this.rtbSend = new RichTextBoxBackPicture.UserRichTexBox();
             this.layeredPanel1.SuspendLayout();
             this.pnlMenu.SuspendLayout();
             this.menuWord.SuspendLayout();
@@ -73,7 +74,7 @@
             this.layeredPanel1.Controls.Add(this.lybtnHide);
             this.layeredPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.layeredPanel1.ForeColor = System.Drawing.Color.Gray;
-            this.layeredPanel1.ImageAttribute = imageAttributes6;
+            this.layeredPanel1.ImageAttribute = imageAttributes18;
             this.layeredPanel1.Location = new System.Drawing.Point(0, 0);
             this.layeredPanel1.Name = "layeredPanel1";
             this.layeredPanel1.Size = new System.Drawing.Size(511, 75);
@@ -89,7 +90,7 @@
             this.lybtnSkin.HaloColor = System.Drawing.Color.White;
             this.lybtnSkin.HaloSize = 5;
             this.lybtnSkin.HoverImage = global::YatMing.Message.Chat.Properties.Resources.skinhover;
-            this.lybtnSkin.ImageAttribute = imageAttributes1;
+            this.lybtnSkin.ImageAttribute = imageAttributes13;
             this.lybtnSkin.Location = new System.Drawing.Point(428, 3);
             this.lybtnSkin.Name = "lybtnSkin";
             this.lybtnSkin.NormalImage = global::YatMing.Message.Chat.Properties.Resources.Skin;
@@ -108,7 +109,7 @@
             this.lylblName.Canvas = ((System.Drawing.Bitmap)(resources.GetObject("lylblName.Canvas")));
             this.lylblName.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lylblName.HaloSize = 5;
-            this.lylblName.ImageAttribute = imageAttributes2;
+            this.lylblName.ImageAttribute = imageAttributes14;
             this.lylblName.Location = new System.Drawing.Point(80, 4);
             this.lylblName.Name = "lylblName";
             this.lylblName.Size = new System.Drawing.Size(75, 23);
@@ -120,7 +121,7 @@
             this.lyPic.BackColor = System.Drawing.Color.Transparent;
             this.lyPic.Canvas = ((System.Drawing.Bitmap)(resources.GetObject("lyPic.Canvas")));
             this.lyPic.Image = null;
-            this.lyPic.ImageAttribute = imageAttributes3;
+            this.lyPic.ImageAttribute = imageAttributes15;
             this.lyPic.Images = null;
             this.lyPic.Interval = 100;
             this.lyPic.Location = new System.Drawing.Point(3, 3);
@@ -140,7 +141,7 @@
             this.lybtnClose.HaloColor = System.Drawing.Color.White;
             this.lybtnClose.HaloSize = 5;
             this.lybtnClose.HoverImage = ((System.Drawing.Image)(resources.GetObject("lybtnClose.HoverImage")));
-            this.lybtnClose.ImageAttribute = imageAttributes4;
+            this.lybtnClose.ImageAttribute = imageAttributes16;
             this.lybtnClose.Location = new System.Drawing.Point(485, 4);
             this.lybtnClose.Name = "lybtnClose";
             this.lybtnClose.NormalImage = global::YatMing.Message.Chat.Properties.Resources.close;
@@ -163,7 +164,7 @@
             this.lybtnHide.HaloColor = System.Drawing.Color.White;
             this.lybtnHide.HaloSize = 5;
             this.lybtnHide.HoverImage = ((System.Drawing.Image)(resources.GetObject("lybtnHide.HoverImage")));
-            this.lybtnHide.ImageAttribute = imageAttributes5;
+            this.lybtnHide.ImageAttribute = imageAttributes17;
             this.lybtnHide.Location = new System.Drawing.Point(457, 4);
             this.lybtnHide.Name = "lybtnHide";
             this.lybtnHide.NormalImage = global::YatMing.Message.Chat.Properties.Resources.hide;
@@ -245,7 +246,8 @@
             this.menuWord.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmFont,
             this.tsmFace,
-            this.tsmImage});
+            this.tsmImage,
+            this.tsmCutScreen});
             this.menuWord.Location = new System.Drawing.Point(0, 0);
             this.menuWord.Name = "menuWord";
             this.menuWord.Size = new System.Drawing.Size(511, 24);
@@ -281,23 +283,16 @@
             this.tsmImage.ToolTipText = "插入图片";
             this.tsmImage.Click += new System.EventHandler(this.tsmImage_Click);
             // 
-            // rtbSend
+            // tsmCutScreen
             // 
-            this.rtbSend.Dock = System.Windows.Forms.DockStyle.Top;
-            this.rtbSend.Location = new System.Drawing.Point(0, 407);
-            this.rtbSend.Name = "rtbSend";
-            this.rtbSend.Padding = new System.Windows.Forms.Padding(5);
-            this.rtbSend.Size = new System.Drawing.Size(511, 106);
-            this.rtbSend.TabIndex = 6;
-            // 
-            // rtbHistory
-            // 
-            this.rtbHistory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtbHistory.Location = new System.Drawing.Point(0, 31);
-            this.rtbHistory.Name = "rtbHistory";
-            this.rtbHistory.Padding = new System.Windows.Forms.Padding(5);
-            this.rtbHistory.Size = new System.Drawing.Size(511, 273);
-            this.rtbHistory.TabIndex = 5;
+            this.tsmCutScreen.AutoToolTip = true;
+            this.tsmCutScreen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsmCutScreen.Image = global::YatMing.Message.Chat.Properties.Resources.cut;
+            this.tsmCutScreen.Name = "tsmCutScreen";
+            this.tsmCutScreen.Size = new System.Drawing.Size(28, 20);
+            this.tsmCutScreen.Text = "截屏";
+            this.tsmCutScreen.ToolTipText = "截屏";
+            this.tsmCutScreen.Click += new System.EventHandler(this.tsmCutScreen_Click);
             // 
             // panel3
             // 
@@ -308,6 +303,15 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(511, 304);
             this.panel3.TabIndex = 9;
+            // 
+            // rtbHistory
+            // 
+            this.rtbHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtbHistory.Location = new System.Drawing.Point(0, 31);
+            this.rtbHistory.Name = "rtbHistory";
+            this.rtbHistory.Padding = new System.Windows.Forms.Padding(5);
+            this.rtbHistory.Size = new System.Drawing.Size(511, 273);
+            this.rtbHistory.TabIndex = 5;
             // 
             // warningBox1
             // 
@@ -320,6 +324,15 @@
             this.warningBox1.Size = new System.Drawing.Size(511, 31);
             this.warningBox1.TabIndex = 6;
             this.warningBox1.Visible = false;
+            // 
+            // rtbSend
+            // 
+            this.rtbSend.Dock = System.Windows.Forms.DockStyle.Top;
+            this.rtbSend.Location = new System.Drawing.Point(0, 407);
+            this.rtbSend.Name = "rtbSend";
+            this.rtbSend.Padding = new System.Windows.Forms.Padding(5);
+            this.rtbSend.Size = new System.Drawing.Size(511, 106);
+            this.rtbSend.TabIndex = 6;
             // 
             // FormMain
             // 
@@ -377,6 +390,7 @@
         private RichTextBoxBackPicture.UserRichTexBox rtbHistory;
         private System.Windows.Forms.Panel panel3;
         private WarningBox warningBox1;
+        private System.Windows.Forms.ToolStripMenuItem tsmCutScreen;
     }
 }
 

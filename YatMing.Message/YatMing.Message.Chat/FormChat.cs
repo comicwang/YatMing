@@ -1,4 +1,5 @@
-﻿using LayeredSkin.Forms;
+﻿using _SCREEN_CAPTURE;
+using LayeredSkin.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,11 +17,12 @@ using System.Windows.Forms;
 
 namespace YatMing.Message.Chat
 {
-    public partial class FormMain : Form
+    public partial class FormChat : Form
     {
         private string _nickName = string.Empty;
         private string _chatName = string.Empty;
-        public FormMain(string nickName, string chatName)
+        private FrmCapture m_frmCapture;
+        public FormChat(string nickName, string chatName)
         {
             this.SetStyle(ControlStyles.AllPaintingInWmPaint |
                 ControlStyles.UserPaint |
@@ -29,6 +31,7 @@ namespace YatMing.Message.Chat
             _nickName = nickName;
             _chatName = chatName;
             lylblName.Text = _chatName;
+            RegisterHotKey(this.Handle, 102, KeyModifiers.Ctrl, Keys.A);
         }
 
         [DllImport("user32.dll", SetLastError = true)]
@@ -46,6 +49,10 @@ namespace YatMing.Message.Chat
                 if (m.WParam.ToInt32() == 101)
                 {
                     btnSend_Click(null, EventArgs.Empty);
+                }
+                else if (m.WParam.ToInt32() == 102)
+                {
+                    StartCapture(true);
                 }
             }
 
@@ -176,6 +183,8 @@ namespace YatMing.Message.Chat
 
             rtbHistory.RichTextBox.Select(rtbHistory.RichTextBox.Text.Length, 0);
             rtbHistory.RichTextBox.SelectedRtf = text;
+
+            rtbHistory.RichTextBox.ScrollToCaret();
         }
 
         private void btnSend_Click(object sender, EventArgs e)
@@ -224,6 +233,29 @@ namespace YatMing.Message.Chat
         public delegate void SendMessageHandle(object sender, EventSendMessage e);
 
         public event SendMessageHandle OnSendMessage;
+
+        //启动截图
+        private void StartCapture(bool bFromClip)
+        {
+            if (m_frmCapture == null || m_frmCapture.IsDisposed)
+            {
+                m_frmCapture = new FrmCapture();
+                m_frmCapture.OnFinished += m_frmCapture_OnFinished;
+            }
+            m_frmCapture.IsCaptureCursor = true;//checkBox_CaptureCursor.Checked;
+            m_frmCapture.IsFromClipBoard = bFromClip;
+            m_frmCapture.Show();
+        }
+
+        void m_frmCapture_OnFinished(object sender, EventArgs e)
+        {
+            rtbSend.RichTextBox.Paste();
+        }
+
+        private void tsmCutScreen_Click(object sender, EventArgs e)
+        {
+            StartCapture(false);
+        }
     }
 
     [Flags()]

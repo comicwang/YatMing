@@ -83,6 +83,16 @@ namespace YatMing.Message.Chat.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap cut {
+            get {
+                object obj = ResourceManager.GetObject("cut", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap d8ffa25210f6ab3bf7923ca55fb03b56 {
             get {
                 object obj = ResourceManager.GetObject("d8ffa25210f6ab3bf7923ca55fb03b56", resourceCulture);

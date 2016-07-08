@@ -21,7 +21,7 @@ namespace YatMing.Message.Chat
         private BinaryReader _br;
         private BinaryWriter _bw;
         private bool _isExit = false;
-        private Dictionary<string, FormMain> _lstChatForm = new Dictionary<string, FormMain>();
+        private Dictionary<string, FormChat> _lstChatForm = new Dictionary<string, FormChat>();
         private string _nickName = string.Empty;
 
         public FormChatList(string nickName)
@@ -56,6 +56,75 @@ namespace YatMing.Message.Chat
             SendMessage("Login," + _nickName);
         }
 
+
+        public string StartReadFile()
+        {
+            List<byte> total = new List<byte>();
+            byte[] buff = new byte[1024];
+            int len;
+            try
+            {
+                bool end = false;
+                while (!end && ((len = _br.Read(buff, 0, buff.Length)) != 0))
+                {
+                    if (len < buff.Length)
+                    {
+                        List<byte> temp = new List<byte>();
+                        for (int i = 0; i < len; i++)
+                        {
+                            temp.Add(buff[i]);
+                        }
+                        buff = temp.ToArray();
+                    }
+
+                    string endTest = Encoding.Default.GetString(buff);
+                    if (endTest.EndsWith("END"))
+                    {
+                        buff = Encoding.Default.GetBytes(endTest.Substring(0, endTest.Length - 3));
+                        end = true;
+                    }
+                    total.AddRange(buff);
+                }
+            }
+            catch
+            {
+
+            }
+            return Encoding.Default.GetString(total.ToArray());
+        }
+
+        public void StartSendFile(string message)
+        {
+            message += "END";
+            byte[] total = Encoding.Default.GetBytes(message);
+            _bw.Write(total);
+            //byte[] buff = new byte[1024];
+            //if (total.Length < 1024)
+            //{
+            //    bw.Write(total);               
+            //}
+            //else
+            //{
+            //    int len = 0;
+            //    while (total.Length - len > 0)
+            //    {
+            //        int temp = total.Length - len;
+            //        if (temp >= 1024)
+            //            temp = 1024;
+            //        buff = new byte[temp];
+            //        //按实际的字节总量发送信息
+            //        for (int i = 0; i < temp; i++)
+            //        {
+            //            buff[i] = total[len + i];
+            //        }
+            //        bw.Write(buff);
+            //    }
+            //}
+            // string test = Encoding.Default.GetString(total);
+            _bw.Flush();
+        }
+
+
         /// <summary>
         /// 处理服务器信息
         /// </summary>
@@ -69,7 +138,9 @@ namespace YatMing.Message.Chat
                 {
                     //从网络流中读出字符串
                     //此方法会自动判断字符串长度前缀，并根据长度前缀读出字符串
-                    receiveString = _br.ReadString();
+                    receiveString = StartReadFile();
+                    if (string.IsNullOrEmpty(receiveString))
+                        continue;
                 }
                 catch
                 {
@@ -89,7 +160,7 @@ namespace YatMing.Message.Chat
                     case "login":   //格式： login,用户名                    
                         actionDelegate = () =>
                            {
-                               FormMain form = new FormMain(_nickName, splitString[1]);
+                               FormChat form = new FormChat(_nickName, splitString[1]);
                                form.OnSendMessage += form_OnSendMessage;
                                _lstChatForm.Add(splitString[1], form);
                                lstFriend.Items.Add(splitString[1]);
@@ -99,7 +170,7 @@ namespace YatMing.Message.Chat
                     case "logout":  //格式： logout,用户名
                         actionDelegate = () =>
                            {
-                               FormMain form = _lstChatForm[splitString[1]];
+                               FormChat form = _lstChatForm[splitString[1]];
                                form.ShowTips("对方已经离线，可能无法立即回复");
                                _lstChatForm.Remove(splitString[1]);
                                lstFriend.Items.Remove(splitString[1]);
@@ -108,7 +179,7 @@ namespace YatMing.Message.Chat
                     case "talk":    //格式： talk,用户名,对话信息
                         actionDelegate = () =>
                            {
-                               FormMain form = _lstChatForm[splitString[1]];
+                               FormChat form = _lstChatForm[splitString[1]];
                                form.Show();
                                form.AppendRtf(splitString[2], splitString[1]);
                            };
@@ -136,8 +207,7 @@ namespace YatMing.Message.Chat
             try
             {
                 //将字符串写入网络流，此方法会自动附加字符串长度前缀
-                _bw.Write(message);
-                _bw.Flush();
+                StartSendFile(message);
             }
             catch
             {
@@ -166,7 +236,7 @@ namespace YatMing.Message.Chat
         private void lstFriend_DoubleClick(object sender, EventArgs e)
         {
            string chat= lstFriend.SelectedItem.ToString();
-           FormMain form = _lstChatForm[chat];
+           FormChat form = _lstChatForm[chat];
            form.Show();
         }
     }
