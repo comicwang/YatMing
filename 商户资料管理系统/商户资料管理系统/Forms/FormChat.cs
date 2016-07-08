@@ -183,12 +183,18 @@ namespace 商户资料管理系统
         private void FormMain_Load(object sender, EventArgs e)
         {
             rtbHistory.RichTextBox.ReadOnly = true;
-            //查询对方信息
-            TEmployeeDTO result = _client.TEmployeeQueryAll().Where(t => t.EmployeeName == _nickName).FirstOrDefault();
-            if (result != null && result.EntryImage != null && result.EntryImage.Length > 0)
+            try
             {
-                picImage.SetPicture(result.EntryImage);
-                this.ShowInTaskbar = true;
+                //查询对方信息
+                TEmployeeDTO result = _client.TEmployeeQueryAll().Where(t => t.EmployeeName == _nickName).FirstOrDefault();
+                if (result != null && result.EntryImage != null && result.EntryImage.Length > 0)
+                {
+                    picImage.SetPicture(result.EntryImage);
+                    this.ShowInTaskbar = true;
+                }
+            }
+            catch
+            {
             }
 
             //读取皮肤配置文件
@@ -249,11 +255,6 @@ namespace 商户资料管理系统
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            if(rtbSend.RichTextBox.Rtf==@"{\rtf1\ansi\ansicpg936\deff0\deflang1033\deflangfe2052{\fonttbl{\f0\fnil\fcharset134 \'cb\'ce\'cc\'e5;}}\viewkind4\uc1\pard\lang2052\f0\fs18\par}")
-            {
-                MessageBox.Show("输入的内容不能为空!");
-                return;
-            }
             //自己这边新增消息
             AppendRtf(rtbSend.RichTextBox.Rtf, _nickName);
             //发送消息
@@ -329,6 +330,29 @@ namespace 商户资料管理系统
         {
             ReleaseCapture();
             SendMessage(this.Handle, WM_SYSCOMMAND, SC_MOVE + HTCAPTION, 0);
+        }
+
+        //表情图
+
+        FormFace form = null;
+
+        private void tsmFace_Click(object sender, EventArgs e)
+        {
+            Point point = menuWord.PointToScreen(menuWord.Location);
+            if (form == null)
+            {
+                form = new FormFace();
+                form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;              
+                form.StartPosition = FormStartPosition.Manual;
+                form.AddFace += form_AddFace;
+            }
+            form.Location = new Point(point.X + 60, point.Y - form.Height);          
+            form.Show();
+        }
+
+        private void form_AddFace(string faceID)
+        {
+            rtbSend.RichTextBox.AddFile(IOHelper.ImageToBytes((Bitmap)Properties.Resources.ResourceManager.GetObject(faceID)));
         }
 
     }

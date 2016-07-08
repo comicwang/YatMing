@@ -269,6 +269,7 @@
             this.tsmFace.Size = new System.Drawing.Size(28, 20);
             this.tsmFace.Text = "1";
             this.tsmFace.ToolTipText = "表情";
+            this.tsmFace.Click += new System.EventHandler(this.tsmFace_Click);
             // 
             // tsmImage
             // 
