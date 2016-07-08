@@ -149,14 +149,11 @@ C:\Users\Administrator\Desktop\YatMing-master\商户资料管理系统\bin\Data\
 C:\Users\Administrator\Desktop\YatMing-master\商户资料管理系统\bin\商户资料管理系统.exe
 C:\Users\Administrator\Desktop\YatMing-master\商户资料管理系统\bin\商户资料管理系统.pdb
 C:\Users\Administrator\Desktop\YatMing-master\商户资料管理系统\商户资料管理系统\obj\Debug\商户资料管理系统.csprojResolveAssemblyReference.cache
-F:\FFOutput\YatMing\商户资料管理系统\bin\商户资料管理系统.exe.config
-F:\FFOutput\YatMing\商户资料管理系统\商户资料管理系统\obj\Debug\商户资料管理系统.exe
-F:\FFOutput\YatMing\商户资料管理系统\商户资料管理系统\obj\Debug\商户资料管理系统.pdb
 F:\FFOutput\YatMing\商户资料管理系统\bin\Data\AutoLoginData.xml
 F:\FFOutput\YatMing\商户资料管理系统\bin\Data\GoogleMap.html
+F:\FFOutput\YatMing\商户资料管理系统\bin\商户资料管理系统.exe.config
 F:\FFOutput\YatMing\商户资料管理系统\bin\商户资料管理系统.exe
 F:\FFOutput\YatMing\商户资料管理系统\bin\商户资料管理系统.pdb
-F:\FFOutput\YatMing\商户资料管理系统\商户资料管理系统\obj\Debug\商户资料管理系统.csprojResolveAssemblyReference.cache
 F:\FFOutput\YatMing\商户资料管理系统\商户资料管理系统\obj\Debug\商户资料管理系统.DataManageControl.resources
 F:\FFOutput\YatMing\商户资料管理系统\商户资料管理系统\obj\Debug\商户资料管理系统.UploadControl.resources
 F:\FFOutput\YatMing\商户资料管理系统\商户资料管理系统\obj\Debug\商户资料管理系统.ContextMenuForm.resources
@@ -181,3 +178,10 @@ F:\FFOutput\YatMing\商户资料管理系统\商户资料管理系统\obj\Debug\
 F:\FFOutput\YatMing\商户资料管理系统\商户资料管理系统\obj\Debug\商户资料管理系统.RichBoxControl.resources
 F:\FFOutput\YatMing\商户资料管理系统\商户资料管理系统\obj\Debug\商户资料管理系统.WarningBox.resources
 F:\FFOutput\YatMing\商户资料管理系统\商户资料管理系统\obj\Debug\商户资料管理系统.csproj.GenerateResource.Cache
+F:\FFOutput\YatMing\商户资料管理系统\商户资料管理系统\obj\Debug\商户资料管理系统.exe
+F:\FFOutput\YatMing\商户资料管理系统\商户资料管理系统\obj\Debug\商户资料管理系统.pdb
+F:\FFOutput\YatMing\商户资料管理系统\商户资料管理系统\obj\Debug\商户资料管理系统.MessageRecorder.resources
+F:\FFOutput\YatMing\商户资料管理系统\商户资料管理系统\obj\Debug\商户资料管理系统.FormRecorder.resources
+F:\FFOutput\YatMing\商户资料管理系统\商户资料管理系统\obj\Debug\商户资料管理系统.FormNotify.resources
+F:\FFOutput\YatMing\商户资料管理系统\商户资料管理系统\obj\Debug\商户资料管理系统.FormChat.resources
+F:\FFOutput\YatMing\商户资料管理系统\商户资料管理系统\obj\Debug\商户资料管理系统.FormSkin.resources

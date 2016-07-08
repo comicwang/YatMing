@@ -23,6 +23,9 @@ namespace 商户资料管理系统
         private Image yezi = null;
         private float angle = 10;
         private bool RotationDirection = true;//是否为顺时针
+        private static readonly string section = "Login";
+        private static readonly string account = "Account";
+        private static readonly string password = "Password";
         private FormMain main = null;
 
         public FormLogin()
@@ -34,6 +37,7 @@ namespace 商户资料管理系统
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
         private void FormLogin_Load(object sender, EventArgs e)
         {
             yezi = new Bitmap(90, 80);//先把叶子画在稍微大一点的画布上，这样叶子旋转的时候才不会被裁掉一部分
@@ -43,16 +47,28 @@ namespace 商户资料管理系统
             }
             timer1.Start();
             //读取账户信息
-            string result = AccountHelper.ReadAccount();
-            if (string.IsNullOrEmpty(result) == false)
+            string accountName = string.Empty;
+            if (SettingHelper.ValueExists(section, account))
             {
-                string[] temp = result.Split(',');
-                if (temp != null && temp.Length == 2)
-                {
-                    txtAccount.Text = temp[0];
-                    txtPassword.Text = temp[1];
-                }
+                accountName = SettingHelper.ReadString(section, account, string.Empty);
             }
+            else
+            {
+                accountName = "";
+                SettingHelper.WriteString(section, account, accountName);
+            }
+            string accountPsw = string.Empty;
+            if (SettingHelper.ValueExists(section, account))
+            {
+                accountPsw = SettingHelper.ReadString(section, password, string.Empty);
+            }
+            else
+            {
+                accountPsw = "";
+                SettingHelper.WriteString(section, password, accountPsw);
+            }
+            txtAccount.Text = accountName;
+            txtPassword.Text = accountPsw;
         }
 
         private void layeredButton2_Click(object sender, EventArgs e)
@@ -137,7 +153,15 @@ namespace 商户资料管理系统
                 }
                 //保存账号信息
                 if (cbRemind.Checked)
-                    AccountHelper.WriteAccount(txtAccount.Text, txtPassword.Text);
+                {
+                    SettingHelper.WriteString(section, account, txtAccount.Text);
+                    SettingHelper.WriteString(section, password, txtPassword.Text);
+                }
+                else
+                {
+                    SettingHelper.WriteString(section, account, string.Empty);
+                    SettingHelper.WriteString(section, password, string.Empty);
+                }
                 //检查版本更新
                 string version = Application.ProductVersion.ToString();
                 bool update = _client.TLoginCheckUpdate(version);

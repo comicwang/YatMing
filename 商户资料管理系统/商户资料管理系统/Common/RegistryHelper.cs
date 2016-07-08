@@ -11,6 +11,9 @@ namespace 商户资料管理系统
     {
         #region 设置开机是否启动
 
+        private static readonly string section = "Setting";
+        private static readonly string autoRun = "AutoRun";
+
         public static void AutoRunWhenStrat(bool Started)
         {
             string path = Application.ExecutablePath;
@@ -37,6 +40,7 @@ namespace 商户资料管理系统
                     //或者设为空即删除该启动项
                     // Run.SetValue(name, "");
                 }
+                SettingHelper.WriteBool(section, autoRun, Started);
             }
             catch
             {

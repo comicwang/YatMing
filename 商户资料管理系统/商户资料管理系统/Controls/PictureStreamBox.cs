@@ -14,6 +14,8 @@ namespace 商户资料管理系统
 {
     public partial class PictureStreamBox : PictureBox
     {
+        public event EventHandler OnChangedPicture;
+
         public PictureStreamBox()
         {
             InitializeComponent();
@@ -36,6 +38,8 @@ namespace 商户资料管理系统
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 this.Image = Image.FromFile(dialog.FileName);
+                if (OnChangedPicture != null)
+                    OnChangedPicture(this, EventArgs.Empty);
             }
         }
 

@@ -12,7 +12,7 @@ using 商户资料管理系统.YatServer;
 
 namespace 商户资料管理系统.Common
 {
-    public class CommomHelper
+    public static class CommomHelper
     {
         private static YatMingServiceClient _client = ServiceProvider.Clent;
 
@@ -236,6 +236,33 @@ namespace 商户资料管理系统.Common
                 }
             }
             return lstImg.Images.IndexOfKey(keyword);
+        }
+
+        public static void SetBackgroundImage(this Control control, Image img, Point point, Size formSize)
+        {
+            Image transImg = img.GetThumbnailImage(formSize.Width, formSize.Height, null, control.Handle);
+            Bitmap result = new Bitmap(control.Width, control.Height);
+            Graphics grp = Graphics.FromImage(result);
+            grp.DrawImage(transImg, new Rectangle(0, 0, control.Width, control.Height), new Rectangle(point.X, point.Y, control.Width, control.Height), GraphicsUnit.Pixel);
+            grp.Dispose();
+            control.BackgroundImage = result;
+        }
+
+        public static void SetBackgroundImage(this Panel control, Image img, Point point, Size formSize)
+        {
+            Image transImg = img.GetThumbnailImage(formSize.Width, formSize.Height, null, control.Handle);
+            Bitmap result = new Bitmap(control.Width, control.Height);
+            Graphics grp = Graphics.FromImage(result);
+            grp.DrawImage(transImg, new Rectangle(0, 0, control.Width, control.Height), new Rectangle(point.X, point.Y, control.Width, control.Height), GraphicsUnit.Pixel);
+            grp.Dispose();
+            control.BackgroundImage = result;
+        }
+
+        public static void InsertImage(this RichTextBox rictextBox, Image image)
+        {
+            Clipboard.SetImage(image);
+            rictextBox.Paste();
+            Clipboard.Clear();
         }
     }
 }

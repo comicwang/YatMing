@@ -47,14 +47,20 @@ namespace 商户资料管理系统
 
         public void InitializeNotify()
         {
-            //将回调类型的实例传递给通道
-            DuplexChannelFactory<IPushService> channel = new DuplexChannelFactory<IPushService>(new InstanceContext(this), "push");
-            _pushProxy = channel.CreateChannel();
-            _pushProxy.Regist(_id);
+            try
+            {
+                //将回调类型的实例传递给通道
+                DuplexChannelFactory<IPushService> channel = new DuplexChannelFactory<IPushService>(new InstanceContext(this), "push");
+                _pushProxy = channel.CreateChannel();
+                _pushProxy.Regist(_id);
 
-            Rectangle rct = Screen.AllScreens[0].WorkingArea;
-            this.Left = rct.Width - this.Width - 5;
-            this.Top = rct.Height;
+                Rectangle rct = Screen.AllScreens[0].WorkingArea;
+                this.Left = rct.Width - this.Width - 5;
+                this.Top = rct.Height;
+            }
+            catch
+            {
+            }
         }
 
         private void FormNotify_Load(object sender, EventArgs e)

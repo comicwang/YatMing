@@ -11,7 +11,9 @@ namespace 商户资料管理系统
 {
     public static class SkinHelper
     {
-        private static string _Path = "Skin.ini";
+       private static readonly  string section = "Skin";
+       private static readonly string Id = "FormSkin";
+       private static readonly string Open = "SkinOpen";
         private static SkinEngine _skin = null;
         private static ToolStripDropDownButton _btn = null;
         public static void BindSkin(this FormMain form, ToolStripDropDownButton btn)
@@ -25,18 +27,23 @@ namespace 商户资料管理系统
             _btn = btn;
             _skin = new Sunisoft.IrisSkin.SkinEngine();
             _skin.AddForm(form);
-            _skin.Active = true;
-            _skin.SkinAllForm = true;
-            string configPath = Path.Combine(Application.StartupPath, "Data", _Path);
-            string skinName = string.Empty;
-            if (File.Exists(configPath))
+            //读取配置文件，是否打开皮肤
+            bool isopen = true;
+            if (SettingHelper.ValueExists(section, Open))
             {
-                skinName = File.ReadAllText(configPath);
-                if (string.IsNullOrEmpty(skinName))
-                {
-                    skinName = "DeepCyan";
-                    File.WriteAllText(Path.Combine(Application.StartupPath, "Data", _Path), skinName);
-                }
+                isopen = SettingHelper.ReadBool(section, Open, true);
+            }
+            else
+            {
+                SettingHelper.WriteBool(section, Open, isopen);
+            }
+            _skin.Active = isopen;
+            _skin.SkinAllForm = false;
+           
+            string skinName = string.Empty;
+            if (SettingHelper.ValueExists(section, Id))
+            {
+                skinName = SettingHelper.ReadString(section, Id, string.Empty);
                 string skinFilePath = Path.Combine(Application.StartupPath, "Data/Skins", skinName + ".ssk");
                 if (File.Exists(skinFilePath))
                     _skin.SkinFile = skinFilePath;
@@ -46,25 +53,26 @@ namespace 商户资料管理系统
             else
             {
                 skinName = "DeepCyan";
+                SettingHelper.WriteString(section, Id, skinName);
                 string skinFilePath = Path.Combine(Application.StartupPath, "Data/Skins", skinName + ".ssk");
                 _skin.SkinFile = skinFilePath;
-                File.WriteAllText(Path.Combine(Application.StartupPath, "Data", _Path), skinName);
             }
             _btn.Text = skinName;
+            SetSkinEnable(form, btn, isopen);
         }
 
-        public static void SetSkinEnable(this FormMain form, ToolStripDropDownButton btn,bool enable)
+        public static void SetSkinEnable(this FormMain form, ToolStripDropDownButton btn, bool enable)
         {
             _skin.Active = enable;
             btn.Enabled = enable;
-          //  _skin.Dispose();          
+            SettingHelper.WriteBool(section, Open, enable);
         }
 
         private static void btn_Click(object sender, EventArgs e)
         {
             ToolStripItem item = sender as ToolStripItem;
             _skin.SkinFile = Path.Combine(Application.StartupPath, "Data/Skins", item.Text + ".ssk");
-            File.WriteAllText(Path.Combine(Application.StartupPath, "Data", _Path), item.Text);
+            SettingHelper.WriteString(section, Id, item.Text);
             _btn.Text = item.Text;
         }
     }

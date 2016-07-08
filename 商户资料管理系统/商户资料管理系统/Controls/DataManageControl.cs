@@ -461,7 +461,7 @@ namespace 商户资料管理系统
                 if (result)
                 {
                     CreateViewItem(dto, LvDataContent.Items.Count, false);
-                  //  IniliazeListView(dto.MetaDataId);
+                    IniliazeListView(dto.MetaDataId);
                     //开始上传文件
 
                     Array.ForEach(Directory.GetFiles(folderPath), t =>

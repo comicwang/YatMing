@@ -16,6 +16,9 @@ namespace 商户资料管理系统
         private static bool _recivedMessage = false;
         private static bool _autoRun = false;
         private static Timer _timer = null;
+        private static readonly string section = "Setting";
+        private static readonly string autoRun = "AutoRun";
+
 
         public static void BindNotify(this Form form, Timer timer)
         {
@@ -37,7 +40,16 @@ namespace 商户资料管理系统
             ContextMenu menu = new ContextMenu();
 
             MenuItem itemStart = new MenuItem();
-            itemStart.Text = "设置开机启动";
+            bool isAutoRun = true;
+            if (SettingHelper.ValueExists(section, autoRun))
+            {
+                isAutoRun = SettingHelper.ReadBool(section, autoRun, true);
+            }
+            else
+            {
+                SettingHelper.WriteBool(section, autoRun, isAutoRun);
+            }
+            itemStart.Text = isAutoRun ? "取消开机启动" : "设置开机启动";
             itemStart.Click += itemStart_Click;
 
             MenuItem itemShow = new MenuItem();
@@ -104,8 +116,9 @@ namespace 商户资料管理系统
                 form.LoginForm.Close();
                 try
                 {
+                    form.ExitChat();
                     if (form._notifyForm != null && form._notifyForm._pushProxy != null)
-                        form._notifyForm._pushProxy.UnRegist(form._employee.EmployeeName);
+                        form._notifyForm._pushProxy.UnRegist(form._employee.EmployeeName);                
                 }
                 catch { }
             }
