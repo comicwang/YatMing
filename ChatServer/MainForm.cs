@@ -106,6 +106,7 @@ namespace SyncChatServer
 
         }
 
+    
         /// <summary>
         /// 处理接收的客户端信息
         /// </summary>
@@ -120,7 +121,9 @@ namespace SyncChatServer
                 try
                 {
                     //从网络流中读出字符串，此方法会自动判断字符串长度前缀
-                    receiveString = user.br.ReadString();
+                    receiveString = user.StartReadFile();
+                    if (string.IsNullOrEmpty(receiveString))
+                        continue;
                 }
                 catch (Exception)
                 {
@@ -131,7 +134,7 @@ namespace SyncChatServer
                     }
                     break;
                 }
-                AddItemToListBox(string.Format("来自[{0}]：{1}",user.client.Client.RemoteEndPoint,receiveString));
+                AddItemToListBox(string.Format("来自[{0}]",user.client.Client.RemoteEndPoint));
                 string[] splitString = receiveString.Split(',');
                 switch(splitString[0])
                 {
@@ -145,7 +148,7 @@ namespace SyncChatServer
                         return;
                     case "Talk":
                         string talkString = receiveString.Substring(splitString[0].Length + splitString[1].Length + 2);
-                        AddItemToListBox(string.Format("{0}对{1}说：{2}",user.userName,splitString[1],talkString));
+                        AddItemToListBox(string.Format("{0}对{1}说",user.userName,splitString[1]));
                         SendToClient(user,"talk," + user.userName + "," + talkString);
                         foreach(User target in userList)
                         {
@@ -157,7 +160,7 @@ namespace SyncChatServer
                         }
                         break;
                     default:
-                        AddItemToListBox("什么意思啊：" + receiveString);
+                        AddItemToListBox("什么意思啊");
                         break;
                 }
             }
@@ -209,9 +212,8 @@ namespace SyncChatServer
             try
             {
                 //将字符串写入网络流，此方法会自动附加字符串长度前缀
-                user.bw.Write(message);
-                user.bw.Flush();
-                AddItemToListBox(string.Format("向[{0}]发送：{1}", user.userName, message));
+                user.StartSendFile(message);
+                AddItemToListBox(string.Format("向[{0}]发送", user.userName));
             }
             catch
             {
