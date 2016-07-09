@@ -227,7 +227,7 @@
             this.tsbBackColor.AutoSize = false;
             this.tsbBackColor.ButtonDisplayStyle = 商户资料管理系统.ToolStripColorPickerDisplayType.UnderLineAndImage;
             this.tsbBackColor.Color = System.Drawing.Color.Black;
-            this.tsbBackColor.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbBackColor.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.None;
             this.tsbBackColor.Image = global::商户资料管理系统.Properties.Resources.background;
             this.tsbBackColor.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbBackColor.Name = "tsbBackColor";
@@ -242,7 +242,7 @@
             this.tsbForeColor.AutoSize = false;
             this.tsbForeColor.ButtonDisplayStyle = 商户资料管理系统.ToolStripColorPickerDisplayType.UnderLineAndImage;
             this.tsbForeColor.Color = System.Drawing.Color.Black;
-            this.tsbForeColor.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbForeColor.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.None;
             this.tsbForeColor.Image = global::商户资料管理系统.Properties.Resources.forecolor;
             this.tsbForeColor.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbForeColor.Name = "tsbForeColor";

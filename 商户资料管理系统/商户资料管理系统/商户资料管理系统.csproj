@@ -97,6 +97,9 @@
     <Compile Include="Controls\DataManageControl.Designer.cs">
       <DependentUpon>DataManageControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FaceBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\ListviewEx.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -113,6 +116,12 @@
     </Compile>
     <Compile Include="Forms\FormChat.designer.cs">
       <DependentUpon>FormChat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormFace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormFace.Designer.cs">
+      <DependentUpon>FormFace.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormRecorder.cs">
       <SubType>Form</SubType>
@@ -303,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormChat.resx">
       <DependentUpon>FormChat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormFace.resx">
+      <DependentUpon>FormFace.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormNotify.resx">
       <DependentUpon>FormNotify.cs</DependentUpon>

@@ -183,7 +183,6 @@
             this.lstFriend = new System.Windows.Forms.ListBox();
             this.lklblNumber = new System.Windows.Forms.LinkLabel();
             this.label39 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
             this.pnlInfo = new System.Windows.Forms.Panel();
             this.picEmploee = new 商户资料管理系统.PictureStreamBox();
             this.lklblEmotion = new System.Windows.Forms.LinkLabel();
@@ -814,7 +813,7 @@
             this.panel2.Controls.Add(this.grpPlatfrom);
             this.panel2.Controls.Add(this.grpPromotion);
             this.panel2.Controls.Add(this.grpDetail);
-            this.panel2.Location = new System.Drawing.Point(-412, -1);
+            this.panel2.Location = new System.Drawing.Point(-421, -1);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(600, 734);
             this.panel2.TabIndex = 0;
@@ -1767,7 +1766,6 @@
             this.pnlChatList.Controls.Add(this.lstFriend);
             this.pnlChatList.Controls.Add(this.lklblNumber);
             this.pnlChatList.Controls.Add(this.label39);
-            this.pnlChatList.Controls.Add(this.label38);
             this.pnlChatList.Controls.Add(this.pnlInfo);
             this.pnlChatList.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlChatList.Location = new System.Drawing.Point(507, 0);
@@ -1782,16 +1780,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lstFriend.FormattingEnabled = true;
             this.lstFriend.ItemHeight = 12;
-            this.lstFriend.Location = new System.Drawing.Point(0, 163);
+            this.lstFriend.Location = new System.Drawing.Point(0, 139);
             this.lstFriend.Name = "lstFriend";
-            this.lstFriend.Size = new System.Drawing.Size(149, 388);
+            this.lstFriend.Size = new System.Drawing.Size(149, 412);
             this.lstFriend.TabIndex = 3;
             this.lstFriend.DoubleClick += new System.EventHandler(this.lstFriend_DoubleClick);
             // 
             // lklblNumber
             // 
             this.lklblNumber.AutoSize = true;
-            this.lklblNumber.Location = new System.Drawing.Point(67, 146);
+            this.lklblNumber.Location = new System.Drawing.Point(64, 123);
             this.lklblNumber.Name = "lklblNumber";
             this.lklblNumber.Size = new System.Drawing.Size(11, 12);
             this.lklblNumber.TabIndex = 2;
@@ -1801,20 +1799,11 @@
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(27, 146);
+            this.label39.Location = new System.Drawing.Point(5, 123);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(29, 12);
+            this.label39.Size = new System.Drawing.Size(53, 12);
             this.label39.TabIndex = 1;
-            this.label39.Text = "在线";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(7, 124);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(53, 12);
-            this.label38.TabIndex = 1;
-            this.label38.Text = "我的同事";
+            this.label39.Text = "当前在线";
             // 
             // pnlInfo
             // 
@@ -1862,26 +1851,23 @@
             // 
             // lklblSex
             // 
-            this.lklblSex.AutoSize = true;
             this.lklblSex.Location = new System.Drawing.Point(70, 34);
             this.lklblSex.Name = "lklblSex";
-            this.lklblSex.Size = new System.Drawing.Size(0, 12);
+            this.lklblSex.Size = new System.Drawing.Size(54, 12);
             this.lklblSex.TabIndex = 2;
             // 
             // lklblAge
             // 
-            this.lklblAge.AutoSize = true;
-            this.lklblAge.Location = new System.Drawing.Point(71, 54);
+            this.lklblAge.Location = new System.Drawing.Point(73, 50);
             this.lklblAge.Name = "lklblAge";
-            this.lklblAge.Size = new System.Drawing.Size(0, 12);
+            this.lklblAge.Size = new System.Drawing.Size(36, 12);
             this.lklblAge.TabIndex = 2;
             // 
             // lklblNickName
             // 
-            this.lklblNickName.AutoSize = true;
-            this.lklblNickName.Location = new System.Drawing.Point(70, 13);
+            this.lklblNickName.Location = new System.Drawing.Point(70, 9);
             this.lklblNickName.Name = "lklblNickName";
-            this.lklblNickName.Size = new System.Drawing.Size(0, 12);
+            this.lklblNickName.Size = new System.Drawing.Size(54, 12);
             this.lklblNickName.TabIndex = 1;
             // 
             // splitter1
@@ -2187,7 +2173,6 @@
         private System.Windows.Forms.ListBox lstFriend;
         private System.Windows.Forms.LinkLabel lklblNumber;
         private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.Label label38;
         private System.Windows.Forms.LinkLabel lklblEmotion;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.LinkLabel lklblSex;

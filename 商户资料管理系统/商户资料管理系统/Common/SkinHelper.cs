@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using 商户资料管理系统.Properties;
 
 
 namespace 商户资料管理系统
@@ -16,7 +17,7 @@ namespace 商户资料管理系统
        private static readonly string Open = "SkinOpen";
         private static SkinEngine _skin = null;
         private static ToolStripDropDownButton _btn = null;
-        public static void BindSkin(this FormMain form, ToolStripDropDownButton btn)
+        public static bool BindSkin(this FormMain form, ToolStripDropDownButton btn,ToolStripStatusLabel lbl)
         {
             //初始化所有皮肤
             string[] skinFiles = Directory.GetFiles(Path.Combine(Application.StartupPath, "Data/Skins"));
@@ -58,13 +59,24 @@ namespace 商户资料管理系统
                 _skin.SkinFile = skinFilePath;
             }
             _btn.Text = skinName;
-            SetSkinEnable(form, btn, isopen);
+            SetSkinEnable(form, btn, isopen,lbl);
+            return isopen;
         }
 
-        public static void SetSkinEnable(this FormMain form, ToolStripDropDownButton btn, bool enable)
+        public static void SetSkinEnable(this FormMain form, ToolStripDropDownButton btn, bool enable,ToolStripStatusLabel lbl)
         {
             _skin.Active = enable;
             btn.Enabled = enable;
+            if (enable)
+            {
+                lbl.Image = Resources.on;
+                lbl.ToolTipText = "关闭皮肤";
+            }
+            else
+            {
+                lbl.Image = Resources.off;
+                lbl.ToolTipText = "打开皮肤";
+            }
             SettingHelper.WriteBool(section, Open, enable);
         }
 

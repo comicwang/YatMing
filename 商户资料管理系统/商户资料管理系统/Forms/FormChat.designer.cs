@@ -52,16 +52,30 @@
             this.tsmFace = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmImage = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmCutScreen = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.rtbHistory = new 商户资料管理系统.UserRichTexBox();
+            this.pnlHistory = new System.Windows.Forms.Panel();
             this.warningBox1 = new 商户资料管理系统.WarningBox();
+            this.rtbHistory = new 商户资料管理系统.UserRichTexBox();
+            this.tsFont = new System.Windows.Forms.ToolStrip();
+            this.tsbFont = new 商户资料管理系统.ToolStripFontComboBox();
+            this.tsbSize = new 商户资料管理系统.ToolStripFontSizeComboBox();
+            this.tsmColor = new 商户资料管理系统.ToolStripColorPicker();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbBold = new System.Windows.Forms.ToolStripButton();
+            this.tsbItal = new System.Windows.Forms.ToolStripButton();
+            this.tsbUnderline = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbLeft = new System.Windows.Forms.ToolStripButton();
+            this.tsbCenter = new System.Windows.Forms.ToolStripButton();
+            this.tsbRight = new System.Windows.Forms.ToolStripButton();
+            this.tsbClear = new System.Windows.Forms.ToolStripButton();
             this.rtbSend = new 商户资料管理系统.UserRichTexBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.layeredPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picImage)).BeginInit();
             this.pnlMenu.SuspendLayout();
             this.menuWord.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.pnlHistory.SuspendLayout();
+            this.tsFont.SuspendLayout();
             this.SuspendLayout();
             // 
             // layeredPanel1
@@ -260,6 +274,7 @@
             this.tsmFont.Size = new System.Drawing.Size(28, 20);
             this.tsmFont.Text = "A";
             this.tsmFont.ToolTipText = "设计文字字体";
+            this.tsmFont.Click += new System.EventHandler(this.tsmFont_Click);
             // 
             // tsmFace
             // 
@@ -292,24 +307,16 @@
             this.tsmCutScreen.ToolTipText = "截屏";
             this.tsmCutScreen.Click += new System.EventHandler(this.tsmCutScreen_Click);
             // 
-            // panel3
+            // pnlHistory
             // 
-            this.panel3.Controls.Add(this.rtbHistory);
-            this.panel3.Controls.Add(this.warningBox1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 76);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(511, 304);
-            this.panel3.TabIndex = 9;
-            // 
-            // rtbHistory
-            // 
-            this.rtbHistory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtbHistory.Location = new System.Drawing.Point(0, 31);
-            this.rtbHistory.Name = "rtbHistory";
-            this.rtbHistory.Padding = new System.Windows.Forms.Padding(5);
-            this.rtbHistory.Size = new System.Drawing.Size(511, 273);
-            this.rtbHistory.TabIndex = 5;
+            this.pnlHistory.Controls.Add(this.warningBox1);
+            this.pnlHistory.Controls.Add(this.rtbHistory);
+            this.pnlHistory.Controls.Add(this.tsFont);
+            this.pnlHistory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHistory.Location = new System.Drawing.Point(0, 76);
+            this.pnlHistory.Name = "pnlHistory";
+            this.pnlHistory.Size = new System.Drawing.Size(511, 304);
+            this.pnlHistory.TabIndex = 9;
             // 
             // warningBox1
             // 
@@ -322,6 +329,170 @@
             this.warningBox1.Size = new System.Drawing.Size(511, 31);
             this.warningBox1.TabIndex = 6;
             this.warningBox1.Visible = false;
+            // 
+            // rtbHistory
+            // 
+            this.rtbHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtbHistory.Location = new System.Drawing.Point(0, 0);
+            this.rtbHistory.Name = "rtbHistory";
+            this.rtbHistory.Padding = new System.Windows.Forms.Padding(5);
+            this.rtbHistory.Size = new System.Drawing.Size(511, 304);
+            this.rtbHistory.TabIndex = 5;
+            // 
+            // tsFont
+            // 
+            this.tsFont.BackColor = System.Drawing.Color.Transparent;
+            this.tsFont.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tsFont.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbFont,
+            this.tsbSize,
+            this.tsmColor,
+            this.toolStripSeparator2,
+            this.tsbBold,
+            this.tsbItal,
+            this.tsbUnderline,
+            this.toolStripSeparator1,
+            this.tsbLeft,
+            this.tsbCenter,
+            this.tsbRight,
+            this.tsbClear});
+            this.tsFont.Location = new System.Drawing.Point(0, 278);
+            this.tsFont.Name = "tsFont";
+            this.tsFont.Size = new System.Drawing.Size(511, 26);
+            this.tsFont.TabIndex = 7;
+            this.tsFont.Text = "toolStrip1";
+            this.tsFont.Visible = false;
+            // 
+            // tsbFont
+            // 
+            this.tsbFont.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.tsbFont.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.tsbFont.InternalCall = false;
+            this.tsbFont.Name = "tsbFont";
+            this.tsbFont.SelectedFontItem = null;
+            this.tsbFont.SelectedFontNameItem = "";
+            this.tsbFont.Size = new System.Drawing.Size(75, 26);
+            this.tsbFont.Text = "宋体";
+            this.tsbFont.ToolTipText = "字体类型";
+            this.tsbFont.DropDown += new System.EventHandler(this.tsbFont_DropDown);
+            this.tsbFont.SelectedIndexChanged += new System.EventHandler(this.tsbFont_SelectedIndexChanged);
+            // 
+            // tsbSize
+            // 
+            this.tsbSize.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.tsbSize.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.tsbSize.AutoSize = false;
+            this.tsbSize.DropDownWidth = 50;
+            this.tsbSize.Name = "tsbSize";
+            this.tsbSize.Size = new System.Drawing.Size(50, 25);
+            this.tsbSize.Text = "12";
+            this.tsbSize.ToolTipText = "字号";
+            this.tsbSize.DropDown += new System.EventHandler(this.tsbSize_DropDown);
+            this.tsbSize.SelectedIndexChanged += new System.EventHandler(this.tsbSize_SelectedIndexChanged);
+            this.tsbSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tsbSize_KeyPress);
+            // 
+            // tsmColor
+            // 
+            this.tsmColor.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsmColor.AutoSize = false;
+            this.tsmColor.ButtonDisplayStyle = 商户资料管理系统.ToolStripColorPickerDisplayType.UnderLineAndImage;
+            this.tsmColor.Color = System.Drawing.Color.Black;
+            this.tsmColor.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.None;
+            this.tsmColor.Image = global::商户资料管理系统.Properties.Resources.forecolor;
+            this.tsmColor.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsmColor.Name = "tsmColor";
+            this.tsmColor.Size = new System.Drawing.Size(30, 23);
+            this.tsmColor.Text = "toolStripColorPicker2";
+            this.tsmColor.ToolTipText = "文字颜色";
+            this.tsmColor.SelectedColorChanged += new System.EventHandler(this.tsmColor_SelectedColorChanged);
+            this.tsmColor.ButtonClick += new System.EventHandler(this.tsmColor_ButtonClick);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 26);
+            // 
+            // tsbBold
+            // 
+            this.tsbBold.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbBold.Image = global::商户资料管理系统.Properties.Resources.Bold;
+            this.tsbBold.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbBold.Name = "tsbBold";
+            this.tsbBold.Size = new System.Drawing.Size(23, 23);
+            this.tsbBold.Text = "toolStripButton1";
+            this.tsbBold.ToolTipText = "加粗";
+            this.tsbBold.Click += new System.EventHandler(this.tsbBold_Click);
+            // 
+            // tsbItal
+            // 
+            this.tsbItal.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbItal.Image = global::商户资料管理系统.Properties.Resources.Italic;
+            this.tsbItal.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbItal.Name = "tsbItal";
+            this.tsbItal.Size = new System.Drawing.Size(23, 23);
+            this.tsbItal.Text = "toolStripButton2";
+            this.tsbItal.ToolTipText = "斜体";
+            this.tsbItal.Click += new System.EventHandler(this.tsbItal_Click);
+            // 
+            // tsbUnderline
+            // 
+            this.tsbUnderline.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbUnderline.Image = global::商户资料管理系统.Properties.Resources.Underline;
+            this.tsbUnderline.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbUnderline.Name = "tsbUnderline";
+            this.tsbUnderline.Size = new System.Drawing.Size(23, 23);
+            this.tsbUnderline.Text = "toolStripButton3";
+            this.tsbUnderline.ToolTipText = "下划线";
+            this.tsbUnderline.Click += new System.EventHandler(this.tsbUnderline_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 26);
+            // 
+            // tsbLeft
+            // 
+            this.tsbLeft.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbLeft.Image = global::商户资料管理系统.Properties.Resources.JustifyLeft;
+            this.tsbLeft.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbLeft.Name = "tsbLeft";
+            this.tsbLeft.Size = new System.Drawing.Size(23, 23);
+            this.tsbLeft.Text = "toolStripButton4";
+            this.tsbLeft.ToolTipText = "文字居左";
+            this.tsbLeft.Click += new System.EventHandler(this.tsbLeft_Click);
+            // 
+            // tsbCenter
+            // 
+            this.tsbCenter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbCenter.Image = global::商户资料管理系统.Properties.Resources.JustifyCenter;
+            this.tsbCenter.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbCenter.Name = "tsbCenter";
+            this.tsbCenter.Size = new System.Drawing.Size(23, 23);
+            this.tsbCenter.Text = "toolStripButton5";
+            this.tsbCenter.ToolTipText = "文字居中";
+            this.tsbCenter.Click += new System.EventHandler(this.tsbCenter_Click);
+            // 
+            // tsbRight
+            // 
+            this.tsbRight.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbRight.Image = global::商户资料管理系统.Properties.Resources.JustifyRight;
+            this.tsbRight.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRight.Name = "tsbRight";
+            this.tsbRight.Size = new System.Drawing.Size(23, 23);
+            this.tsbRight.Text = "toolStripButton6";
+            this.tsbRight.ToolTipText = "文字居右";
+            this.tsbRight.Click += new System.EventHandler(this.tsbRight_Click);
+            // 
+            // tsbClear
+            // 
+            this.tsbClear.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbClear.Image = global::商户资料管理系统.Properties.Resources.clear;
+            this.tsbClear.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbClear.Name = "tsbClear";
+            this.tsbClear.Size = new System.Drawing.Size(23, 23);
+            this.tsbClear.Text = "toolStripButton1";
+            this.tsbClear.ToolTipText = "清除格式";
+            this.tsbClear.Click += new System.EventHandler(this.tsbClear_Click);
             // 
             // rtbSend
             // 
@@ -347,7 +518,7 @@
             this.Controls.Add(this.rtbSend);
             this.Controls.Add(this.pnlMenu);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.pnlHistory);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.panel1);
@@ -367,7 +538,10 @@
             this.pnlMenu.PerformLayout();
             this.menuWord.ResumeLayout(false);
             this.menuWord.PerformLayout();
-            this.panel3.ResumeLayout(false);
+            this.pnlHistory.ResumeLayout(false);
+            this.pnlHistory.PerformLayout();
+            this.tsFont.ResumeLayout(false);
+            this.tsFont.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -391,11 +565,24 @@
         private System.Windows.Forms.ToolStripMenuItem tsmImage;
         private UserRichTexBox rtbSend;
         private UserRichTexBox rtbHistory;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel pnlHistory;
         private WarningBox warningBox1;
         private System.Windows.Forms.ToolStripMenuItem tsmCutScreen;
         private PictureStreamBox picImage;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStrip tsFont;
+        private ToolStripFontComboBox tsbFont;
+        private ToolStripFontSizeComboBox tsbSize;
+        private ToolStripColorPicker tsmColor;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton tsbBold;
+        private System.Windows.Forms.ToolStripButton tsbItal;
+        private System.Windows.Forms.ToolStripButton tsbUnderline;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton tsbLeft;
+        private System.Windows.Forms.ToolStripButton tsbCenter;
+        private System.Windows.Forms.ToolStripButton tsbRight;
+        private System.Windows.Forms.ToolStripButton tsbClear;
     }
 }
 

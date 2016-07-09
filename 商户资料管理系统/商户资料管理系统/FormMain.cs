@@ -58,7 +58,7 @@ namespace 商户资料管理系统
         {
             _loginForm = loginForm;
             this.BindNotify(tmBlink);
-            this.BindSkin(tsbSkin);
+            _openSkin = this.BindSkin(tsbSkin, tsbOpenSkin);
 
             _dataMangeControl = new DataManageControl();
             _dataMangeControl.Dock = DockStyle.Fill;
@@ -238,8 +238,9 @@ namespace 商户资料管理系统
 
                 _notifyForm = new FormNotify(_employee.EmployeeName);
                 _notifyForm.InitializeNotify();
-
                 InitiliazeChat();
+
+
             }
 
             label1.Visible = false;
@@ -1211,6 +1212,16 @@ namespace 商户资料管理系统
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
+            //if (this.InvokeRequired)
+            //{
+            //    Action hide = delegate { this.Hide(); };
+
+            //    this.Invoke(hide);
+            //}
+            //else
+            //{
+            //    this.Hide();
+            //}
             this.Hide();
             e.Cancel = true;
         }
@@ -1376,7 +1387,8 @@ namespace 商户资料管理系统
                             FormChat form = _lstChatForm[splitString[1]];
                             form.Show();
                             form.FlashWindow();
-                            form.AppendRtf(splitString[2], splitString[1]);
+                            string talkString = receiveString.Substring(splitString[0].Length + splitString[1].Length + 2);
+                            form.AppendRtf(talkString, splitString[1]);
                         };
                         break;
                     default:
@@ -1480,17 +1492,7 @@ namespace 商户资料管理系统
         private void tsbOpenSkin_Click(object sender, EventArgs e)
         {
             _openSkin = !_openSkin;
-            if (_openSkin)
-            {
-                tsbOpenSkin.Image = Resources.on;
-                tsbOpenSkin.ToolTipText = "关闭皮肤";
-            }
-            else
-            {
-                tsbOpenSkin.Image = Resources.off;
-                tsbOpenSkin.ToolTipText = "打开皮肤";
-            }
-            this.SetSkinEnable(tsbSkin, _openSkin);
+            this.SetSkinEnable(tsbSkin, _openSkin,tsbOpenSkin);
             this.Refresh();
         }
 

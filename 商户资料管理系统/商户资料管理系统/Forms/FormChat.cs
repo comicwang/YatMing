@@ -38,6 +38,7 @@ namespace 商户资料管理系统
             _nickName = nickName;
             _chatName = chatName;
             lylblName.Text = _chatName;
+            rtbSend.RichTextBox.SelectionFont = Default_Font;
             RegisterHotKey(this.Handle, 102, KeyModifiers.Ctrl, Keys.A);
         }
 
@@ -186,7 +187,7 @@ namespace 商户资料管理系统
             try
             {
                 //查询对方信息
-                TEmployeeDTO result = _client.TEmployeeQueryAll().Where(t => t.EmployeeName == _nickName).FirstOrDefault();
+                TEmployeeDTO result = _client.TEmployeeQueryAll().Where(t => t.EmployeeName == _chatName).FirstOrDefault();
                 if (result != null && result.EntryImage != null && result.EntryImage.Length > 0)
                 {
                     picImage.SetPicture(result.EntryImage);
@@ -217,7 +218,7 @@ namespace 商户资料管理系统
         {
             this.BackgroundImage = ChangeAlpha(image, 60);
             menuWord.SetBackgroundImage(this.BackgroundImage, panel2.Location, this.Size);
-            rtbHistory.SetBackgroundImage(this.BackgroundImage, panel3.Location, this.Size);
+            rtbHistory.SetBackgroundImage(this.BackgroundImage, pnlHistory.Location, this.Size);
             rtbSend.SetBackGroundImage(this.BackgroundImage, rtbSend.Location, this.Size);
             Color midColor = GetMiddleColor(image);
             btnClose.BackColor = midColor;
@@ -333,7 +334,6 @@ namespace 商户资料管理系统
         }
 
         //表情图
-
         FormFace form = null;
 
         private void tsmFace_Click(object sender, EventArgs e)
@@ -342,17 +342,156 @@ namespace 商户资料管理系统
             if (form == null)
             {
                 form = new FormFace();
-                form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;              
+                form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
                 form.StartPosition = FormStartPosition.Manual;
                 form.AddFace += form_AddFace;
             }
-            form.Location = new Point(point.X + 60, point.Y - form.Height);          
+            form.Location = new Point(point.X + 60, point.Y - form.Height + 20);
             form.Show();
         }
 
         private void form_AddFace(string faceID)
         {
             rtbSend.RichTextBox.AddFile(IOHelper.ImageToBytes((Bitmap)Properties.Resources.ResourceManager.GetObject(faceID)));
+        }
+
+        //字体
+        private static readonly Font Default_Font = new Font("宋体", 12);
+
+        private Font oldFont = null;
+        private Font newFont = null;
+
+        private void tsbBold_Click(object sender, EventArgs e)
+        {
+            oldFont = this.rtbSend.RichTextBox.SelectionFont;
+            if (oldFont.Bold)
+                newFont = new Font(oldFont, oldFont.Style & ~FontStyle.Bold);
+            else
+                newFont = new Font(oldFont, oldFont.Style | FontStyle.Bold);
+            tsbBold.Checked = !oldFont.Bold;
+            this.rtbSend.RichTextBox.SelectionFont = newFont;
+            this.rtbSend.RichTextBox.Focus();
+        }
+
+        private void tsbItal_Click(object sender, EventArgs e)
+        {
+            oldFont = this.rtbSend.RichTextBox.SelectionFont;
+            if (oldFont.Italic)
+                newFont = new Font(oldFont, oldFont.Style & ~FontStyle.Italic);
+            else
+                newFont = new Font(oldFont, oldFont.Style | FontStyle.Italic);
+            tsbItal.Checked = !oldFont.Italic;
+            this.rtbSend.RichTextBox.SelectionFont = newFont;
+            this.rtbSend.RichTextBox.Focus();
+        }
+
+        private void tsbUnderline_Click(object sender, EventArgs e)
+        {
+            oldFont = this.rtbSend.RichTextBox.SelectionFont;
+            if (oldFont.Underline)
+                newFont = new Font(oldFont, oldFont.Style & ~FontStyle.Underline);
+            else
+                newFont = new Font(oldFont, oldFont.Style | FontStyle.Underline);
+            tsbUnderline.Checked = !oldFont.Underline;
+            this.rtbSend.RichTextBox.SelectionFont = newFont;
+            this.rtbSend.RichTextBox.Focus();
+        }
+
+        private void tsbLeft_Click(object sender, EventArgs e)
+        {
+            if (this.rtbSend.RichTextBox.SelectionAlignment == HorizontalAlignment.Left)
+                this.rtbSend.RichTextBox.SelectionAlignment = HorizontalAlignment.Center;
+            else
+                this.rtbSend.RichTextBox.SelectionAlignment = HorizontalAlignment.Left;
+            this.rtbSend.RichTextBox.Focus();
+        }
+
+        private void tsbCenter_Click(object sender, EventArgs e)
+        {
+            if (this.rtbSend.RichTextBox.SelectionAlignment == HorizontalAlignment.Center)
+                this.rtbSend.RichTextBox.SelectionAlignment = HorizontalAlignment.Left;
+            else
+                this.rtbSend.RichTextBox.SelectionAlignment = HorizontalAlignment.Center;
+            this.rtbSend.RichTextBox.Focus();
+        }
+
+        private void tsbRight_Click(object sender, EventArgs e)
+        {
+            if (this.rtbSend.RichTextBox.SelectionAlignment == HorizontalAlignment.Right)
+                this.rtbSend.RichTextBox.SelectionAlignment = HorizontalAlignment.Left;
+            else
+                this.rtbSend.RichTextBox.SelectionAlignment = HorizontalAlignment.Right;
+            this.rtbSend.RichTextBox.Focus();
+        }
+
+        private void tsbFont_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(tsbSize.Text))
+                return;
+            rtbSend.RichTextBox.SelectionFont = new Font(tsbFont.Text, GeneralUtil.ParseInt(tsbSize.Text));
+            rtbSend.RichTextBox.Focus();
+        }
+
+        private void tsbFont_DropDown(object sender, EventArgs e)
+        {
+            tsbFont.LoadFontFamilies();
+        }
+
+        private void tsbSize_DropDown(object sender, EventArgs e)
+        {
+            if (tsbSize.Items.Count == 0)
+                this.tsbSize.Items.AddRange(new object[] {
+            "8",
+            "10",
+            "12",
+            "14",
+            "18",
+            "24",
+            "36"});
+        }
+
+        private void tsbSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            rtbSend.RichTextBox.SelectionFont = new Font(tsbFont.Text, GeneralUtil.ParseInt(tsbSize.Text));
+            rtbSend.RichTextBox.Focus();
+        }
+
+        private void tsbSize_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsNumber(e.KeyChar))
+            {
+                e.Handled = true;
+                if (e.KeyChar <= '7' && e.KeyChar > '0')
+                    tsbSize.SelectedIndex = GeneralUtil.ParseInt(e.KeyChar) - 1;
+            }
+            else if (!Char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tsmColor_ButtonClick(object sender, EventArgs e)
+        {
+            rtbSend.RichTextBox.SelectionColor = tsmColor.Color;
+        }
+
+        private void tsmColor_SelectedColorChanged(object sender, EventArgs e)
+        {
+            rtbSend.RichTextBox.SelectionColor = tsmColor.Color;
+        }
+
+        private void tsmFont_Click(object sender, EventArgs e)
+        {
+            tsFont.Visible = !tsFont.Visible;
+            //pnlHistory.Height = tsbFont.Visible ? pnlHistory.Height - 26 : pnlHistory.Height + 26;
+        }
+
+        private void tsbClear_Click(object sender, EventArgs e)
+        {
+            tsbSize.Text = "12";
+            tsbFont.Text = "宋体";
+            rtbSend.RichTextBox.SelectionFont = Default_Font;
+            rtbSend.RichTextBox.SelectionColor = DefaultForeColor;
         }
 
     }
