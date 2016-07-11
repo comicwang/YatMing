@@ -100,6 +100,18 @@
     <Compile Include="Controls\FaceBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\FriendInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\FriendInfo.Designer.cs">
+      <DependentUpon>FriendInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FriendInfoLst.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\FriendInfoLst.Designer.cs">
+      <DependentUpon>FriendInfoLst.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ListviewEx.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -306,6 +318,12 @@
     </Compile>
     <EmbeddedResource Include="Controls\DataManageControl.resx">
       <DependentUpon>DataManageControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FriendInfo.resx">
+      <DependentUpon>FriendInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FriendInfoLst.resx">
+      <DependentUpon>FriendInfoLst.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\UploadControl.resx">
       <DependentUpon>UploadControl.cs</DependentUpon>
