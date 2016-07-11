@@ -180,9 +180,13 @@
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.warningBox1 = new 商户资料管理系统.WarningBox();
             this.pnlChatList = new System.Windows.Forms.Panel();
+            this.pnlFriend = new System.Windows.Forms.Panel();
             this.lstFriend = new System.Windows.Forms.ListBox();
             this.lklblNumber = new System.Windows.Forms.LinkLabel();
             this.label39 = new System.Windows.Forms.Label();
+            this.pnlChatState = new System.Windows.Forms.Panel();
+            this.lblState = new System.Windows.Forms.Label();
+            this.lklblRefreash = new System.Windows.Forms.LinkLabel();
             this.pnlInfo = new System.Windows.Forms.Panel();
             this.picEmploee = new 商户资料管理系统.PictureStreamBox();
             this.lklblEmotion = new System.Windows.Forms.LinkLabel();
@@ -241,6 +245,8 @@
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.pnlChatList.SuspendLayout();
+            this.pnlFriend.SuspendLayout();
+            this.pnlChatState.SuspendLayout();
             this.pnlInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picEmploee)).BeginInit();
             this.contextMenuStrip3.SuspendLayout();
@@ -315,7 +321,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.pnlAll);
             this.splitContainer1.Panel2.Controls.Add(this.pnlChatList);
             this.splitContainer1.Panel2.Controls.Add(this.splitter1);
-            this.splitContainer1.Size = new System.Drawing.Size(992, 563);
+            this.splitContainer1.Size = new System.Drawing.Size(992, 600);
             this.splitContainer1.SplitterDistance = 330;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -344,7 +350,7 @@
             this.label1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.Location = new System.Drawing.Point(147, 262);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 102);
+            this.label1.Size = new System.Drawing.Size(54, 139);
             this.label1.TabIndex = 2;
             this.label1.Text = "加载中..";
             // 
@@ -355,7 +361,7 @@
             this.listBox1.ItemHeight = 12;
             this.listBox1.Location = new System.Drawing.Point(0, 25);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(330, 538);
+            this.listBox1.Size = new System.Drawing.Size(330, 575);
             this.listBox1.TabIndex = 4;
             this.listBox1.Visible = false;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
@@ -371,7 +377,7 @@
             this.treeView1.SelectedImageIndex = 0;
             this.treeView1.ShowLines = false;
             this.treeView1.ShowNodeToolTips = true;
-            this.treeView1.Size = new System.Drawing.Size(330, 538);
+            this.treeView1.Size = new System.Drawing.Size(330, 575);
             this.treeView1.TabIndex = 1;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
@@ -525,7 +531,7 @@
             this.pnlAll.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlAll.Location = new System.Drawing.Point(3, 0);
             this.pnlAll.Name = "pnlAll";
-            this.pnlAll.Size = new System.Drawing.Size(504, 563);
+            this.pnlAll.Size = new System.Drawing.Size(504, 600);
             this.pnlAll.TabIndex = 1;
             // 
             // pnlWait
@@ -534,7 +540,7 @@
             this.pnlWait.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlWait.Location = new System.Drawing.Point(0, 40);
             this.pnlWait.Name = "pnlWait";
-            this.pnlWait.Size = new System.Drawing.Size(504, 523);
+            this.pnlWait.Size = new System.Drawing.Size(504, 560);
             this.pnlWait.TabIndex = 6;
             this.pnlWait.Visible = false;
             this.pnlWait.SizeChanged += new System.EventHandler(this.pnlWait_SizeChanged);
@@ -564,7 +570,7 @@
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(504, 523);
+            this.tabControl1.Size = new System.Drawing.Size(504, 560);
             this.tabControl1.TabIndex = 2;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -576,7 +582,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 49);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(496, 470);
+            this.tabPage1.Size = new System.Drawing.Size(496, 507);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "商户基本信息";
             this.tabPage1.SizeChanged += new System.EventHandler(this.tabPage1_SizeChanged);
@@ -789,7 +795,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 49);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(496, 470);
+            this.tabPage2.Size = new System.Drawing.Size(496, 507);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "商户详细信息";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -804,7 +810,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(490, 464);
+            this.panel1.Size = new System.Drawing.Size(490, 501);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -813,7 +819,7 @@
             this.panel2.Controls.Add(this.grpPlatfrom);
             this.panel2.Controls.Add(this.grpPromotion);
             this.panel2.Controls.Add(this.grpDetail);
-            this.panel2.Location = new System.Drawing.Point(-421, -1);
+            this.panel2.Location = new System.Drawing.Point(-448, -1);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(600, 734);
             this.panel2.TabIndex = 0;
@@ -1064,7 +1070,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 49);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(496, 470);
+            this.tabPage3.Size = new System.Drawing.Size(496, 507);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "开店资料信息";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1077,7 +1083,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(490, 464);
+            this.panel4.Size = new System.Drawing.Size(490, 501);
             this.panel4.TabIndex = 0;
             this.panel4.SizeChanged += new System.EventHandler(this.panel4_SizeChanged);
             // 
@@ -1713,7 +1719,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 49);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(496, 470);
+            this.tabPage4.Size = new System.Drawing.Size(496, 507);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "文章推送信息";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1723,7 +1729,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 49);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(496, 470);
+            this.tabPage5.Size = new System.Drawing.Size(496, 507);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "服务信息";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1733,7 +1739,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 49);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(496, 470);
+            this.tabPage6.Size = new System.Drawing.Size(496, 507);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "费用信息";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1744,7 +1750,7 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 49);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(496, 470);
+            this.tabPage7.Size = new System.Drawing.Size(496, 507);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "资料文件";
             // 
@@ -1763,15 +1769,25 @@
             // pnlChatList
             // 
             this.pnlChatList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlChatList.Controls.Add(this.lstFriend);
-            this.pnlChatList.Controls.Add(this.lklblNumber);
-            this.pnlChatList.Controls.Add(this.label39);
+            this.pnlChatList.Controls.Add(this.pnlFriend);
+            this.pnlChatList.Controls.Add(this.pnlChatState);
             this.pnlChatList.Controls.Add(this.pnlInfo);
             this.pnlChatList.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlChatList.Location = new System.Drawing.Point(507, 0);
             this.pnlChatList.Name = "pnlChatList";
-            this.pnlChatList.Size = new System.Drawing.Size(151, 563);
+            this.pnlChatList.Size = new System.Drawing.Size(151, 600);
             this.pnlChatList.TabIndex = 2;
+            // 
+            // pnlFriend
+            // 
+            this.pnlFriend.Controls.Add(this.lstFriend);
+            this.pnlFriend.Controls.Add(this.lklblNumber);
+            this.pnlFriend.Controls.Add(this.label39);
+            this.pnlFriend.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlFriend.Location = new System.Drawing.Point(0, 143);
+            this.pnlFriend.Name = "pnlFriend";
+            this.pnlFriend.Size = new System.Drawing.Size(149, 455);
+            this.pnlFriend.TabIndex = 7;
             // 
             // lstFriend
             // 
@@ -1780,16 +1796,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lstFriend.FormattingEnabled = true;
             this.lstFriend.ItemHeight = 12;
-            this.lstFriend.Location = new System.Drawing.Point(0, 139);
+            this.lstFriend.Location = new System.Drawing.Point(3, 24);
             this.lstFriend.Name = "lstFriend";
-            this.lstFriend.Size = new System.Drawing.Size(149, 412);
+            this.lstFriend.Size = new System.Drawing.Size(149, 568);
             this.lstFriend.TabIndex = 3;
             this.lstFriend.DoubleClick += new System.EventHandler(this.lstFriend_DoubleClick);
             // 
             // lklblNumber
             // 
             this.lklblNumber.AutoSize = true;
-            this.lklblNumber.Location = new System.Drawing.Point(64, 123);
+            this.lklblNumber.Location = new System.Drawing.Point(63, 4);
             this.lklblNumber.Name = "lklblNumber";
             this.lklblNumber.Size = new System.Drawing.Size(11, 12);
             this.lklblNumber.TabIndex = 2;
@@ -1799,11 +1815,41 @@
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(5, 123);
+            this.label39.Location = new System.Drawing.Point(4, 4);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(53, 12);
             this.label39.TabIndex = 1;
             this.label39.Text = "当前在线";
+            // 
+            // pnlChatState
+            // 
+            this.pnlChatState.Controls.Add(this.lblState);
+            this.pnlChatState.Controls.Add(this.lklblRefreash);
+            this.pnlChatState.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlChatState.Location = new System.Drawing.Point(0, 118);
+            this.pnlChatState.Name = "pnlChatState";
+            this.pnlChatState.Size = new System.Drawing.Size(149, 25);
+            this.pnlChatState.TabIndex = 6;
+            // 
+            // lblState
+            // 
+            this.lblState.AutoSize = true;
+            this.lblState.Location = new System.Drawing.Point(4, 6);
+            this.lblState.Name = "lblState";
+            this.lblState.Size = new System.Drawing.Size(113, 12);
+            this.lblState.TabIndex = 5;
+            this.lblState.Text = "正在尝试链接服务器";
+            // 
+            // lklblRefreash
+            // 
+            this.lklblRefreash.AutoSize = true;
+            this.lklblRefreash.Location = new System.Drawing.Point(115, 6);
+            this.lklblRefreash.Name = "lklblRefreash";
+            this.lklblRefreash.Size = new System.Drawing.Size(29, 12);
+            this.lklblRefreash.TabIndex = 4;
+            this.lklblRefreash.TabStop = true;
+            this.lklblRefreash.Text = "刷新";
+            this.lklblRefreash.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklblState_LinkClicked);
             // 
             // pnlInfo
             // 
@@ -1874,7 +1920,7 @@
             // 
             this.splitter1.Location = new System.Drawing.Point(0, 0);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 563);
+            this.splitter1.Size = new System.Drawing.Size(3, 600);
             this.splitter1.TabIndex = 0;
             this.splitter1.TabStop = false;
             // 
@@ -1933,8 +1979,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(992, 600);
-            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.stsTimer);
+            this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
             this.Text = "商户管理系统（内部版）";
@@ -1995,7 +2041,10 @@
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.pnlChatList.ResumeLayout(false);
-            this.pnlChatList.PerformLayout();
+            this.pnlFriend.ResumeLayout(false);
+            this.pnlFriend.PerformLayout();
+            this.pnlChatState.ResumeLayout(false);
+            this.pnlChatState.PerformLayout();
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picEmploee)).EndInit();
@@ -2179,6 +2228,10 @@
         private System.Windows.Forms.LinkLabel lklblAge;
         private System.Windows.Forms.LinkLabel lklblNickName;
         private PictureStreamBox picEmploee;
+        private System.Windows.Forms.LinkLabel lklblRefreash;
+        private System.Windows.Forms.Label lblState;
+        private System.Windows.Forms.Panel pnlFriend;
+        private System.Windows.Forms.Panel pnlChatState;
     }
 }
 

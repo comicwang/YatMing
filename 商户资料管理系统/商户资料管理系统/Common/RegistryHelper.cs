@@ -50,6 +50,65 @@ namespace 商户资料管理系统
 
         #endregion
 
+        private static readonly string ieEmulation = "IeEmulation";
+
+        private static readonly string isSetEmulation = "IsOpenEnulation";
+
+        public static void SetWebbrowserEmulation(int ie,bool set)
+        {
+            string path = Application.ExecutablePath;
+            string name = path.Substring(path.LastIndexOf(@"\") + 1);
+            try
+            {
+                RegistryKey regedit = Registry.LocalMachine;
+                RegistryKey Run = regedit.CreateSubKey("Software\\Microsoft\\Internet Explorer\\Main\\FeatureControl\\FEATURE_BROWSER_EMULATION");
+                if (set)
+                {
+                    Run.SetValue(name, ie);
+                    regedit.Close();
+                }
+                else
+                {
+                    Run.DeleteValue(name);
+                }
+                SettingHelper.WriteBool(section, isSetEmulation, set);
+                SettingHelper.WriteInteger(section, ieEmulation, ie);
+            }
+            catch
+            {
+
+            }
+        }
+
+        public static void InitilizeWebbrowser()
+        {
+            //读取配置文件，是否打开IE内核设置
+            bool isopen = true;
+            if (SettingHelper.ValueExists(section, isSetEmulation))
+            {
+                isopen = SettingHelper.ReadBool(section, isSetEmulation, true);
+            }
+            else
+            {
+                SettingHelper.WriteBool(section, isSetEmulation, isopen);
+            }
+
+            int ie = 9999;
+            if (SettingHelper.ValueExists(section, ieEmulation))
+            {
+                ie = SettingHelper.ReadInteger(section, ieEmulation, 0);
+            }
+            else
+            {
+                SettingHelper.WriteInteger(section, ieEmulation, ie);
+            }
+
+            if (isopen)
+            {
+                SetWebbrowserEmulation(ie, isopen);
+            }
+        }
+
         #region 新增系统文件右键菜单
 
         public static void AddFileContextMenuItem(string itemName, string associatedProgramFullPath)
@@ -102,5 +161,6 @@ namespace 商户资料管理系统
         }
 
         #endregion
+
     }
 }

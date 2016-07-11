@@ -240,8 +240,6 @@ namespace 商户资料管理系统
 
         //支持GIF
 
-
-
         /// <summary>
         /// 重绘
         /// </summary>

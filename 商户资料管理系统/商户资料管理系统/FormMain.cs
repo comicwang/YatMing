@@ -239,9 +239,9 @@ namespace 商户资料管理系统
                 _notifyForm = new FormNotify(_employee.EmployeeName);
                 _notifyForm.InitializeNotify();
                 InitiliazeChat();
-
-
             }
+            //设置IE内核
+            RegistryHelper.InitilizeWebbrowser();
 
             label1.Visible = false;
         }
@@ -1286,45 +1286,47 @@ namespace 商户资料管理系统
 
         public string StartReadFile()
         {
-            List<byte> total = new List<byte>();
-            byte[] buff = new byte[102400];
-            int len;
-            try
-            {
-                bool end = false;
-                while (!end && ((len = _br.Read(buff, 0, buff.Length)) != 0))
-                {
-                    if (len < buff.Length)
-                    {
-                        List<byte> temp = new List<byte>();
-                        for (int i = 0; i < len; i++)
-                        {
-                            temp.Add(buff[i]);
-                        }
-                        buff = temp.ToArray();
-                    }
+            //List<byte> total = new List<byte>();
+            //byte[] buff = new byte[102400];
+            //int len;
+            //try
+            //{
+            //    bool end = false;
+            //    while (!end && ((len = _br.Read(buff, 0, buff.Length)) != 0))
+            //    {
+            //        if (len < buff.Length)
+            //        {
+            //            List<byte> temp = new List<byte>();
+            //            for (int i = 0; i < len; i++)
+            //            {
+            //                temp.Add(buff[i]);
+            //            }
+            //            buff = temp.ToArray();
+            //        }
 
-                    string endTest = Encoding.Default.GetString(buff);
-                    if (endTest.EndsWith("END"))
-                    {
-                        buff = Encoding.Default.GetBytes(endTest.Substring(0, endTest.Length - 3));
-                        end = true;
-                    }
-                    total.AddRange(buff);
-                }
-            }
-            catch
-            {
+            //        string endTest = Encoding.Default.GetString(buff);
+            //        if (endTest.EndsWith("END"))
+            //        {
+            //            buff = Encoding.Default.GetBytes(endTest.Substring(0, endTest.Length - 3));
+            //            end = true;
+            //        }
+            //        total.AddRange(buff);
+            //    }
+            //}
+            //catch
+            //{
 
-            }
-            return Encoding.Default.GetString(total.ToArray());
+            //}
+           // return Encoding.Default.GetString(total.ToArray());
+            return _br.ReadString();
         }
 
         public void StartSendFile(string message)
         {
-            message += "END";
-            byte[] total = Encoding.Default.GetBytes(message);
-            _bw.Write(total);
+            //message += "END";
+            //byte[] total = Encoding.Default.GetBytes(message);
+            //_bw.Write(total);
+            _bw.Write(message);
             _bw.Flush();
         }
 
@@ -1451,16 +1453,20 @@ namespace 商户资料管理系统
             picEmploee.OnChangedPicture += picEmploee_OnChangedPicture;
 
             //登录到服务器
+            lblState.Text = "正在尝试链接服务器.";
             try
             {
                 _tcpClient = new TcpClient();
                 _tcpClient.Connect(IPAddress.Parse(ConfigurationManager.AppSettings["Ip"]), int.Parse(ConfigurationManager.AppSettings["Port"]));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("链接服务器失败：" + ex.Message);
+                lblState.Text = "链接到服务器失败！";
+                pnlChatState.Visible = true;
                 return;
             }
+            lblState.Text = "链接到服务器成功！";
+            pnlChatState.Visible = false;
             //获取网络流
             NetworkStream networkStream = _tcpClient.GetStream();
             //将网络流作为二进制读写对象
@@ -1482,6 +1488,8 @@ namespace 商户资料管理系统
 
         private void lstFriend_DoubleClick(object sender, EventArgs e)
         {
+            if (lstFriend.SelectedItem == null)
+                return;
             string chat = lstFriend.SelectedItem.ToString();
             FormChat form = _lstChatForm[chat];
             form.Show();
@@ -1498,6 +1506,11 @@ namespace 商户资料管理系统
 
         private void tslUser_Click(object sender, EventArgs e)
         {
+        }
+
+        private void lklblState_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            InitiliazeChat();
         }
 
         //#region 文件上传

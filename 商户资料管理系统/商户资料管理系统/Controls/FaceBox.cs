@@ -27,7 +27,6 @@ namespace 商户资料管理系统
                 ControlStyles.UserPaint, true);
             this.UpdateStyles();
             this.DoubleBuffered = true;
-
             this.faceID = FaceID;
         }
 
@@ -42,14 +41,12 @@ namespace 商户资料管理系统
                 this.Size = new Size(30, 30);
         }
 
-        int faceID;
+        public int faceID;
 
         protected override void OnPaint(PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-
             e.Graphics.DrawImage((Image)Properties.Resources.ResourceManager.GetObject("Face_" + this.faceID), 3, 3, 24, 24);
-
             if (this.mouseOn)
                 e.Graphics.DrawRectangle(Pens.SteelBlue, 0, 0, this.Width - 1, this.Height - 1);
         }

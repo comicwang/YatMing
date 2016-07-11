@@ -250,7 +250,6 @@ namespace 商户资料管理系统
 
             rtbHistory.RichTextBox.Select(rtbHistory.RichTextBox.Text.Length, 0);
             rtbHistory.RichTextBox.SelectedRtf = text;
-
             rtbHistory.RichTextBox.ScrollToCaret();
         }
 
