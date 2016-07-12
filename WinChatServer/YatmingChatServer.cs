@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
+using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
+using System.ServiceProcess;
+using System.Text;
 using System.Threading;
-using System.IO;
 
-namespace SyncChatServer
+namespace WinChatServer
 {
-    public partial class MainForm : Form
+    public partial class YatmingChatServer : ServiceBase
     {
         /// <summary>
         /// 保存连接的所有用户
@@ -36,36 +35,14 @@ namespace SyncChatServer
         /// </summary>
         bool isNormalExit = false;
 
-        public MainForm()
+        public YatmingChatServer()
         {
             InitializeComponent();
-            lst_State.HorizontalScrollbar = true;
-            btn_Stop.Enabled = false;
-            SetServerIPAndPort();
+            ServerIP = "192.168.0.144";
+            port = 8888;
         }
 
-        /// <summary>
-        /// 根据当前程序目录的文本文件‘ServerIPAndPort.txt’内容来设定IP和端口
-        /// 格式：127.0.0.1:8885
-        /// </summary>
-        private void SetServerIPAndPort()
-        {
-            FileStream fs = new FileStream("ServerIPAndPort.txt", FileMode.Open);
-            StreamReader sr = new StreamReader(fs);
-            string IPAndPort = sr.ReadLine();
-            ServerIP = IPAndPort.Split(':')[0]; //设定IP
-            port = int.Parse(IPAndPort.Split(':')[1]); //设定端口
-            sr.Close();
-            fs.Close();
-        }
-
-
-        /// <summary>
-        /// 开始监听
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btn_Start_Click(object sender, EventArgs e)
+        protected override void OnStart(string[] args)
         {
             myListener = new TcpListener(IPAddress.Parse(ServerIP), port);
             myListener.Start();
@@ -73,8 +50,18 @@ namespace SyncChatServer
             //创建一个线程监客户端连接请求
             Thread myThread = new Thread(ListenClientConnect);
             myThread.Start();
-            btn_Start.Enabled = false;
-            btn_Stop.Enabled = true;
+        }
+
+        protected override void OnStop()
+        {
+            AddItemToListBox("开始停止服务，并依次使用户退出！");
+            isNormalExit = true;
+            for (int i = userList.Count - 1; i >= 0; i--)
+            {
+                RemoveUser(userList[i]);
+            }
+            //通过停止监听让 myListener.AcceptTcpClient() 产生异常退出监听线程
+            myListener.Stop();
         }
 
         /// <summary>
@@ -106,7 +93,7 @@ namespace SyncChatServer
 
         }
 
-    
+
         /// <summary>
         /// 处理接收的客户端信息
         /// </summary>
@@ -134,30 +121,33 @@ namespace SyncChatServer
                     }
                     break;
                 }
-                AddItemToListBox(string.Format("来自[{0}]",user.client.Client.RemoteEndPoint));
+                AddItemToListBox(string.Format("来自[{0}]", user.client.Client.RemoteEndPoint));
                 string[] splitString = receiveString.Split(',');
-                switch(splitString[0])
+                switch (splitString[0])
                 {
                     case "Login":
                         user.userName = splitString[1];
-                        SendToAllClient(user,receiveString);
+                        SendToAllClient(user, receiveString);
                         break;
                     case "Logout":
-                        SendToAllClient(user,receiveString);
+                        SendToAllClient(user, receiveString);
                         RemoveUser(user);
                         return;
                     case "Talk":
                         string talkString = receiveString.Substring(splitString[0].Length + splitString[1].Length + 2);
-                        AddItemToListBox(string.Format("{0}对{1}说",user.userName,splitString[1]));
-                        SendToClient(user,"talk," + user.userName + "," + talkString);
-                        foreach(User target in userList)
+                        AddItemToListBox(string.Format("{0}对{1}说", user.userName, splitString[1]));
+                        SendToClient(user, "talk," + user.userName + "," + talkString);
+                        foreach (User target in userList)
                         {
-                            if(target.userName == splitString[1] && user.userName != splitString[1])
+                            if (target.userName == splitString[1] && user.userName != splitString[1])
                             {
-                                SendToClient(target,"talk," + user.userName + "," + talkString);
+                                SendToClient(target, "talk," + user.userName + "," + talkString);
                                 break;
                             }
                         }
+                        break;
+                    case "change":
+                        SendToAllClient(user, receiveString);
                         break;
                     default:
                         AddItemToListBox("什么意思啊");
@@ -190,7 +180,17 @@ namespace SyncChatServer
                     }
                 }
             }
-            else if(command == "logout")
+            else if (command == "logout")
+            {
+                for (int i = 0; i < userList.Count; i++)
+                {
+                    if (userList[i].userName != user.userName)
+                    {
+                        SendToClient(userList[i], message);
+                    }
+                }
+            }
+            else if (command == "change")
             {
                 for (int i = 0; i < userList.Count; i++)
                 {
@@ -217,7 +217,7 @@ namespace SyncChatServer
             }
             catch
             {
-                AddItemToListBox(string.Format("向[{0}]发送信息失败",user.userName));
+                AddItemToListBox(string.Format("向[{0}]发送信息失败", user.userName));
             }
         }
 
@@ -229,7 +229,7 @@ namespace SyncChatServer
         {
             userList.Remove(user);
             user.Close();
-            AddItemToListBox(string.Format("当前连接用户数：{0}",userList.Count));
+            AddItemToListBox(string.Format("当前连接用户数：{0}", userList.Count));
         }
 
         private delegate void AddItemToListBoxDelegate(string str);
@@ -239,48 +239,7 @@ namespace SyncChatServer
         /// <param name="str">要追加的信息</param>
         private void AddItemToListBox(string str)
         {
-            //if (lst_State.InvokeRequired)
-            //{
-            //    AddItemToListBoxDelegate d = AddItemToListBox;
-            //    lst_State.Invoke(d, str);
-            //}
-            //else
-            //{
-            //    lst_State.Items.Add(str);
-            //    lst_State.SelectedIndex = lst_State.Items.Count - 1;
-            //    lst_State.ClearSelected();
-            //}
             LogHelper.WriteLog(this.GetType(), str);
-        }
-
-        /// <summary>
-        /// 停止监听
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btn_Stop_Click(object sender, EventArgs e)
-        {
-            AddItemToListBox("开始停止服务，并依次使用户退出！");
-            isNormalExit = true;
-            for (int i = userList.Count - 1; i >= 0; i--)
-            {
-                RemoveUser(userList[i]);
-            }
-            //通过停止监听让 myListener.AcceptTcpClient() 产生异常退出监听线程
-            myListener.Stop();
-            btn_Start.Enabled = true;
-            btn_Stop.Enabled = false;
-        }
-
-        /// <summary>
-        /// 关闭窗口时触发的事件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (myListener != null)
-                btn_Stop.PerformClick();    //引发 btn_Stop 的Click事件
         }
     }
 }
