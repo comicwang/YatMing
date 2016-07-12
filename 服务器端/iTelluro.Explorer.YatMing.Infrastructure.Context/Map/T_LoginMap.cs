@@ -24,6 +24,7 @@ namespace iTelluro.Explorer.YatMing.Infrastructure.Context.Map
             Property(x => x.LoginPsw).HasColumnName("LoginPsw").IsRequired().IsUnicode(false).HasMaxLength(20);
             Property(x => x.Role).HasColumnName("Role").IsRequired().IsUnicode(false).HasMaxLength(20);
             Property(x => x.EmployeeId).HasColumnName("EmployeeId").IsRequired().IsFixedLength().IsUnicode(false).HasMaxLength(36);
+            Property(x => x.State).HasColumnName("State").IsOptional();
             HasRequired(a => a.TEmployee).WithMany(b => b.TLogins).HasForeignKey(c => c.EmployeeId).WillCascadeOnDelete(true); // FK_T_Login_T_Employee
 
         }

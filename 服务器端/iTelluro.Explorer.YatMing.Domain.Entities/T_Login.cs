@@ -13,6 +13,7 @@ namespace iTelluro.Explorer.YatMing.Domain.Entities
         public string LoginPsw { get; set; } // LoginPsw
         public string Role { get; set; } // Role
         public string EmployeeId { get; set; } // EmployeeId
+        public int State { get; set; }
         public virtual T_Employee TEmployee { get; set; } // FK_T_Login_T_Employee
 
     }

@@ -20,5 +20,7 @@ namespace iTelluro.Explorer.YatMing.Application.DTO
         public string Role { get; set; }
         [DataMember]
         public string EmployeeId { get; set; }
+        [DataMember]
+        public int State { get; set; }
     }
 }

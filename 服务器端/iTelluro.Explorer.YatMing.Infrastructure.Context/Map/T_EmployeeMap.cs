@@ -27,6 +27,7 @@ namespace iTelluro.Explorer.YatMing.Infrastructure.Context.Map
             Property(x => x.EntryData).HasColumnName("EntryData").IsRequired();
             Property(x => x.IdCard).HasColumnName("IdCard").IsOptional().IsUnicode(false).HasMaxLength(18);
             Property(x => x.EntryImage).HasColumnName("EntryImage").IsOptional().HasMaxLength(2147483647);
+            Property(x => x.Emotion).HasColumnName("Emotion").IsOptional().IsUnicode(false).HasMaxLength(300);
         }
     }
 }

@@ -101,7 +101,7 @@ namespace iTelluro.Explorer.YatMing.Application
         {
             try
             {
-                var entity = _repository.GetByKey(guid);
+                var entity = _repository.EntityNoTracking.Where(t => t.EmployeeId == guid).FirstOrDefault();
                 return entity.ProjectedAs<TLoginDTO>();
             }
             catch (Exception ex)

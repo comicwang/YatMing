@@ -16,6 +16,7 @@ namespace iTelluro.Explorer.YatMing.Domain.Entities
         public DateTime EntryData { get; set; } // EntryData
         public string IdCard { get; set; } // IdCard EntryImage
         public byte[] EntryImage { get; set; } // EntryImage
+        public string Emotion { get; set; }
         public virtual ICollection<T_Check> TChecks { get; set; } // T_Check.FK_T_Check_T_Employee
         public virtual ICollection<T_Login> TLogins { get; set; } // T_Login.FK_T_Login_T_Employee
         public T_Employee()

@@ -26,5 +26,7 @@ namespace iTelluro.Explorer.YatMing.Application.DTO
         public string IdCard { get; set; }
         [DataMember]
         public byte[] EntryImage { get; set; }
+        [DataMember]
+        public string Emotion { get; set; }
     }
 }
