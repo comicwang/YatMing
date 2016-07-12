@@ -402,6 +402,9 @@ namespace 商户资料管理系统.YatServer {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmotionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int EmployeeAgeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -432,6 +435,19 @@ namespace 商户资料管理系统.YatServer {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Emotion {
+            get {
+                return this.EmotionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmotionField, value) != true)) {
+                    this.EmotionField = value;
+                    this.RaisePropertyChanged("Emotion");
+                }
             }
         }
         
@@ -574,6 +590,9 @@ namespace 商户资料管理系统.YatServer {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RoleField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int StateField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -645,6 +664,19 @@ namespace 商户资料管理系统.YatServer {
                 if ((object.ReferenceEquals(this.RoleField, value) != true)) {
                     this.RoleField = value;
                     this.RaisePropertyChanged("Role");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int State {
+            get {
+                return this.StateField;
+            }
+            set {
+                if ((this.StateField.Equals(value) != true)) {
+                    this.StateField = value;
+                    this.RaisePropertyChanged("State");
                 }
             }
         }

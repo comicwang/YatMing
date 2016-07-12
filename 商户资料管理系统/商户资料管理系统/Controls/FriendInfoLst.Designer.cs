@@ -1,4 +1,4 @@
-﻿namespace 商户资料管理系统.Controls
+﻿namespace 商户资料管理系统
 {
     partial class FriendInfoLst
     {

@@ -232,10 +232,7 @@ namespace 商户资料管理系统
             if (_employee != null)
             {
                 CommonData.LoginInfo = _employee;
-                tslUser.Image = _employee.EmployeeSex == "男" ? Resources.man : Resources.woman;
-                tslUser.Text = _employee.EmployeeName;
-                tslUser.SetTips(new FormEmploeeInfo(_employee));
-
+   
                 _notifyForm = new FormNotify(_employee.EmployeeName);
                 _notifyForm.InitializeNotify();
                 InitiliazeChat();
@@ -1212,17 +1209,16 @@ namespace 商户资料管理系统
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //if (this.InvokeRequired)
-            //{
-            //    Action hide = delegate { this.Hide(); };
+            if (this.InvokeRequired)
+            {
+                Action hide = delegate { this.Hide(); };
 
-            //    this.Invoke(hide);
-            //}
-            //else
-            //{
-            //    this.Hide();
-            //}
-            this.Hide();
+                this.Invoke(hide);
+            }
+            else
+            {
+                this.Hide();
+            }
             e.Cancel = true;
         }
 
@@ -1368,8 +1364,8 @@ namespace 商户资料管理系统
                             FormChat form = new FormChat(_nickName, splitString[1]);
                             form.OnSendMessage += form_OnSendMessage;
                             _lstChatForm.Add(splitString[1], form);
-                            lstFriend.Items.Add(splitString[1]);
-                            lklblNumber.Text = lstFriend.Items.Count.ToString();
+                            LstFriend.Friends[splitString[1]].SetState(true);
+                            lklblNumber.Text = LstFriend.OnlineCount.ToString();
                         };
 
                         break;
@@ -1379,8 +1375,8 @@ namespace 商户资料管理系统
                             FormChat form = _lstChatForm[splitString[1]];
                             form.ShowTips("对方已经离线，可能无法立即回复");
                             _lstChatForm.Remove(splitString[1]);
-                            lstFriend.Items.Remove(splitString[1]);
-                            lklblNumber.Text = lstFriend.Items.Count.ToString();
+                            LstFriend.Friends[splitString[1]].SetState(false);
+                            lklblNumber.Text = LstFriend.OnlineCount.ToString();
                         };
                         break;
                     case "talk":    //格式： talk,用户名,对话信息
@@ -1448,6 +1444,7 @@ namespace 商户资料管理系统
             lklblNickName.Text = _nickName;
             lklblAge.Text = _employee.EmployeeAge.ToString();
             lklblSex.Text = _employee.EmployeeSex;
+            lklblEmotion.Text = _employee.Emotion == null ? "暂未设置心情" : _employee.Emotion;
             if (_employee.EntryImage != null && _employee.EntryImage.Length > 0)
                 picEmploee.Image = IOHelper.BytesToImage(_employee.EntryImage);
             picEmploee.OnChangedPicture += picEmploee_OnChangedPicture;
@@ -1467,6 +1464,8 @@ namespace 商户资料管理系统
             }
             lblState.Text = "链接到服务器成功！";
             pnlChatState.Visible = false;
+            LstFriend.InitializeFriends(_employee.EmployeeName);
+            LstFriend.OnSelected += LstFriend_OnSelected;
             //获取网络流
             NetworkStream networkStream = _tcpClient.GetStream();
             //将网络流作为二进制读写对象
@@ -1479,20 +1478,28 @@ namespace 商户资料管理系统
             SendMessage("Login," + _nickName);
         }
 
+        private void LstFriend_OnSelected(object sender, EventArgs e)
+        {
+            FriendInfo selected = sender as FriendInfo;
+            if (selected == null)
+                return;
+            string chat = selected.ChatName;
+            if (chat == _employee.EmployeeName)
+                return;
+            if (_lstChatForm.ContainsKey(chat) == false)
+            {
+                MessageBox.Show("对方暂时不在线!");
+                return;
+            }
+            FormChat form = _lstChatForm[chat];          
+            form.Show();
+        }
+
         private void picEmploee_OnChangedPicture(object sender, EventArgs e)
         {
             //更换头像
             _employee.EntryImage = picEmploee.GetPictureStream();
             bool result = _client.TEmployeeUpdate(_employee);
-        }
-
-        private void lstFriend_DoubleClick(object sender, EventArgs e)
-        {
-            if (lstFriend.SelectedItem == null)
-                return;
-            string chat = lstFriend.SelectedItem.ToString();
-            FormChat form = _lstChatForm[chat];
-            form.Show();
         }
 
         #endregion
@@ -1504,13 +1511,29 @@ namespace 商户资料管理系统
             this.Refresh();
         }
 
-        private void tslUser_Click(object sender, EventArgs e)
-        {
-        }
-
         private void lklblState_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             InitiliazeChat();
+        }
+
+        private void txtEmotion_Leave(object sender, EventArgs e)
+        {
+            _employee.Emotion = txtEmotion.Text;
+            bool result = _client.TEmployeeUpdate(_employee);
+            if (result)
+            {
+                lklblEmotion.Visible = true;
+                txtEmotion.Visible = false;
+                lklblEmotion.Text = txtEmotion.Text;
+
+            }
+
+        }
+
+        private void lklblEmotion_Click(object sender, EventArgs e)
+        {
+            lklblEmotion.Visible = false;
+            txtEmotion.Visible = true;
         }
 
         //#region 文件上传

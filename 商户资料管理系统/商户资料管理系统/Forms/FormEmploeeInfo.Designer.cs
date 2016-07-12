@@ -168,8 +168,9 @@
             // pictureStreamBox1
             // 
             this.pictureStreamBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureStreamBox1.Image")));
-            this.pictureStreamBox1.Location = new System.Drawing.Point(228, 9);
+            this.pictureStreamBox1.Location = new System.Drawing.Point(193, 6);
             this.pictureStreamBox1.Name = "pictureStreamBox1";
+            this.pictureStreamBox1.ReadOnly = false;
             this.pictureStreamBox1.Size = new System.Drawing.Size(120, 120);
             this.pictureStreamBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureStreamBox1.TabIndex = 2;
@@ -180,7 +181,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MistyRose;
-            this.ClientSize = new System.Drawing.Size(360, 210);
+            this.ClientSize = new System.Drawing.Size(326, 168);
             this.ControlBox = false;
             this.Controls.Add(this.pictureStreamBox1);
             this.Controls.Add(this.lblSex);

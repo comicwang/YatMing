@@ -264,5 +264,15 @@ namespace 商户资料管理系统.Common
             rictextBox.Paste();
             Clipboard.Clear();
         }
+
+        public static FriendState ParseState(int state)
+        {
+            if (state == -1)
+                return FriendState.OutLine;
+            else if (state == 0)
+                return FriendState.Online;
+            else
+                return FriendState.Undefined;
+        }
     }
 }

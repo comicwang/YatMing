@@ -54,6 +54,7 @@
   <xs:element name="ArrayOfTTrainDTO" nillable="true" type="tns:ArrayOfTTrainDTO" />
   <xs:complexType name="TEmployeeDTO">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Emotion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="EmployeeAge" type="xs:int" />
       <xs:element minOccurs="0" name="EmployeeId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="EmployeeName" nillable="true" type="xs:string" />
@@ -78,6 +79,7 @@
       <xs:element minOccurs="0" name="LoginName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="LoginPsw" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Role" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="State" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="TLoginDTO" nillable="true" type="tns:TLoginDTO" />

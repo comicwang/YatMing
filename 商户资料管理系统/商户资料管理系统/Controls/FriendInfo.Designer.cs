@@ -1,4 +1,4 @@
-﻿namespace 商户资料管理系统.Controls
+﻿namespace 商户资料管理系统
 {
     partial class FriendInfo
     {
@@ -31,15 +31,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FriendInfo));
             this.lblName = new System.Windows.Forms.Label();
             this.picImage = new 商户资料管理系统.PictureStreamBox();
-            this.lblTime = new System.Windows.Forms.Label();
-            this.lblMessage = new System.Windows.Forms.Label();
+            this.lblEmotion = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picImage)).BeginInit();
             this.SuspendLayout();
             // 
             // lblName
             // 
+            this.lblName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(97, 13);
+            this.lblName.Location = new System.Drawing.Point(44, 16);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(41, 12);
             this.lblName.TabIndex = 1;
@@ -48,45 +50,40 @@
             // picImage
             // 
             this.picImage.Image = ((System.Drawing.Image)(resources.GetObject("picImage.Image")));
-            this.picImage.Location = new System.Drawing.Point(9, 11);
+            this.picImage.Location = new System.Drawing.Point(7, 6);
             this.picImage.Name = "picImage";
-            this.picImage.Size = new System.Drawing.Size(80, 80);
-            this.picImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picImage.ReadOnly = false;
+            this.picImage.Size = new System.Drawing.Size(30, 30);
+            this.picImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picImage.TabIndex = 2;
             this.picImage.TabStop = false;
             // 
-            // lblTime
+            // lblEmotion
             // 
-            this.lblTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTime.AutoSize = true;
-            this.lblTime.Location = new System.Drawing.Point(215, 12);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(41, 12);
-            this.lblTime.TabIndex = 3;
-            this.lblTime.Text = "label1";
-            // 
-            // lblMessage
-            // 
-            this.lblMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblEmotion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblMessage.Location = new System.Drawing.Point(96, 65);
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(165, 23);
-            this.lblMessage.TabIndex = 4;
-            this.lblMessage.Text = "label1";
-            this.lblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblEmotion.AutoSize = true;
+            this.lblEmotion.ForeColor = System.Drawing.Color.Gray;
+            this.lblEmotion.Location = new System.Drawing.Point(102, 16);
+            this.lblEmotion.Name = "lblEmotion";
+            this.lblEmotion.Size = new System.Drawing.Size(41, 12);
+            this.lblEmotion.TabIndex = 1;
+            this.lblEmotion.Text = "label1";
             // 
             // FriendInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lblMessage);
-            this.Controls.Add(this.lblTime);
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.picImage);
+            this.Controls.Add(this.lblEmotion);
             this.Controls.Add(this.lblName);
             this.Name = "FriendInfo";
-            this.Size = new System.Drawing.Size(264, 100);
+            this.Size = new System.Drawing.Size(197, 40);
+            this.Click += new System.EventHandler(this.FriendInfo_Click);
+            this.MouseEnter += new System.EventHandler(this.FriendInfo_MouseEnter);
+            this.MouseLeave += new System.EventHandler(this.FriendInfo_MouseLeave);
             ((System.ComponentModel.ISupportInitialize)(this.picImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -97,7 +94,6 @@
 
         private System.Windows.Forms.Label lblName;
         private PictureStreamBox picImage;
-        private System.Windows.Forms.Label lblTime;
-        private System.Windows.Forms.Label lblMessage;
+        private System.Windows.Forms.Label lblEmotion;
     }
 }

@@ -10,7 +10,7 @@ namespace 商户资料管理系统
     public static class SetExToolTip
     {
         static Form _tipForm = null;
-
+       
         public static void SetTips(this ToolStripLabel control, Form tipForm)
         {
             Control ctl = control.GetCurrentParent().TopLevelControl;

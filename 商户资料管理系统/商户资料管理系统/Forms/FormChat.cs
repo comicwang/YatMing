@@ -183,6 +183,7 @@ namespace 商户资料管理系统
 
         private void FormMain_Load(object sender, EventArgs e)
         {
+            picImage.ReadOnly = true;
             rtbHistory.RichTextBox.ReadOnly = true;
             try
             {

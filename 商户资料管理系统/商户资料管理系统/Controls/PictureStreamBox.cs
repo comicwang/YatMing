@@ -16,15 +16,36 @@ namespace 商户资料管理系统
     public partial class PictureStreamBox : PictureBox
     {
         public event EventHandler OnChangedPicture;
+        ToolTip tip = new ToolTip();
 
         public PictureStreamBox()
         {
             InitializeComponent();
-            this.SizeMode = PictureBoxSizeMode.StretchImage;
-            ToolTip tip = new ToolTip();
+            this.SizeMode = PictureBoxSizeMode.StretchImage;          
             this.Image = Resources._default;
             tip.SetToolTip(this, "双击选择图片");
             this.DoubleClick += PictureStreamBox_Click;
+        }
+
+        private bool _readOnly = false;
+
+        public bool ReadOnly
+        {
+            get 
+            { 
+                return _readOnly;
+            }
+            set
+            { 
+                _readOnly = value;
+                if (value)
+                    tip.Dispose();
+                else
+                {
+                    tip = new ToolTip();
+                    tip.SetToolTip(this, "双击选择图片");
+                }
+            }
         }
 
         protected override void OnPaint(PaintEventArgs pe)

@@ -34,7 +34,6 @@
             this.tslTimer = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsbOpenSkin = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsbSkin = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tslUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.searchTextBox1 = new 商户资料管理系统.SearchTextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -181,13 +180,14 @@
             this.warningBox1 = new 商户资料管理系统.WarningBox();
             this.pnlChatList = new System.Windows.Forms.Panel();
             this.pnlFriend = new System.Windows.Forms.Panel();
-            this.lstFriend = new System.Windows.Forms.ListBox();
+            this.LstFriend = new 商户资料管理系统.FriendInfoLst();
             this.lklblNumber = new System.Windows.Forms.LinkLabel();
             this.label39 = new System.Windows.Forms.Label();
             this.pnlChatState = new System.Windows.Forms.Panel();
             this.lblState = new System.Windows.Forms.Label();
             this.lklblRefreash = new System.Windows.Forms.LinkLabel();
             this.pnlInfo = new System.Windows.Forms.Panel();
+            this.txtEmotion = new System.Windows.Forms.TextBox();
             this.picEmploee = new 商户资料管理系统.PictureStreamBox();
             this.lklblEmotion = new System.Windows.Forms.LinkLabel();
             this.label37 = new System.Windows.Forms.Label();
@@ -257,8 +257,7 @@
             this.stsTimer.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tslTimer,
             this.tsbOpenSkin,
-            this.tsbSkin,
-            this.tslUser});
+            this.tsbSkin});
             this.stsTimer.Location = new System.Drawing.Point(0, 563);
             this.stsTimer.Name = "stsTimer";
             this.stsTimer.ShowItemToolTips = true;
@@ -268,7 +267,7 @@
             // tslTimer
             // 
             this.tslTimer.Name = "tslTimer";
-            this.tslTimer.Size = new System.Drawing.Size(896, 32);
+            this.tslTimer.Size = new System.Drawing.Size(865, 32);
             this.tslTimer.Spring = true;
             this.tslTimer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -294,13 +293,6 @@
             this.tsbSkin.Size = new System.Drawing.Size(49, 35);
             this.tsbSkin.Text = "Vista";
             this.tsbSkin.ToolTipText = "更换皮肤";
-            // 
-            // tslUser
-            // 
-            this.tslUser.IsLink = true;
-            this.tslUser.Name = "tslUser";
-            this.tslUser.Size = new System.Drawing.Size(0, 32);
-            this.tslUser.Click += new System.EventHandler(this.tslUser_Click);
             // 
             // splitContainer1
             // 
@@ -531,7 +523,7 @@
             this.pnlAll.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlAll.Location = new System.Drawing.Point(3, 0);
             this.pnlAll.Name = "pnlAll";
-            this.pnlAll.Size = new System.Drawing.Size(504, 600);
+            this.pnlAll.Size = new System.Drawing.Size(466, 600);
             this.pnlAll.TabIndex = 1;
             // 
             // pnlWait
@@ -540,7 +532,7 @@
             this.pnlWait.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlWait.Location = new System.Drawing.Point(0, 40);
             this.pnlWait.Name = "pnlWait";
-            this.pnlWait.Size = new System.Drawing.Size(504, 560);
+            this.pnlWait.Size = new System.Drawing.Size(466, 560);
             this.pnlWait.TabIndex = 6;
             this.pnlWait.Visible = false;
             this.pnlWait.SizeChanged += new System.EventHandler(this.pnlWait_SizeChanged);
@@ -570,7 +562,7 @@
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(504, 560);
+            this.tabControl1.Size = new System.Drawing.Size(466, 560);
             this.tabControl1.TabIndex = 2;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -582,7 +574,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 49);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(496, 507);
+            this.tabPage1.Size = new System.Drawing.Size(458, 507);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "商户基本信息";
             this.tabPage1.SizeChanged += new System.EventHandler(this.tabPage1_SizeChanged);
@@ -609,7 +601,7 @@
             this.panel10.Controls.Add(this.label3);
             this.panel10.Controls.Add(this.txtMName);
             this.panel10.Controls.Add(this.label10);
-            this.panel10.Location = new System.Drawing.Point(-54, 2);
+            this.panel10.Location = new System.Drawing.Point(-73, 2);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(600, 531);
             this.panel10.TabIndex = 10;
@@ -620,6 +612,7 @@
             this.pictureStreamBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureStreamBox1.Image")));
             this.pictureStreamBox1.Location = new System.Drawing.Point(439, 10);
             this.pictureStreamBox1.Name = "pictureStreamBox1";
+            this.pictureStreamBox1.ReadOnly = false;
             this.pictureStreamBox1.Size = new System.Drawing.Size(100, 100);
             this.pictureStreamBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureStreamBox1.TabIndex = 31;
@@ -795,7 +788,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 49);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(496, 507);
+            this.tabPage2.Size = new System.Drawing.Size(458, 507);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "商户详细信息";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -810,7 +803,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(490, 501);
+            this.panel1.Size = new System.Drawing.Size(452, 501);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -819,7 +812,7 @@
             this.panel2.Controls.Add(this.grpPlatfrom);
             this.panel2.Controls.Add(this.grpPromotion);
             this.panel2.Controls.Add(this.grpDetail);
-            this.panel2.Location = new System.Drawing.Point(-448, -1);
+            this.panel2.Location = new System.Drawing.Point(-503, -1);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(600, 734);
             this.panel2.TabIndex = 0;
@@ -1070,7 +1063,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 49);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(496, 507);
+            this.tabPage3.Size = new System.Drawing.Size(458, 507);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "开店资料信息";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1083,7 +1076,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(490, 501);
+            this.panel4.Size = new System.Drawing.Size(452, 501);
             this.panel4.TabIndex = 0;
             this.panel4.SizeChanged += new System.EventHandler(this.panel4_SizeChanged);
             // 
@@ -1719,7 +1712,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 49);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(496, 507);
+            this.tabPage4.Size = new System.Drawing.Size(458, 507);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "文章推送信息";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1729,7 +1722,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 49);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(496, 507);
+            this.tabPage5.Size = new System.Drawing.Size(458, 507);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "服务信息";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1739,7 +1732,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 49);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(496, 507);
+            this.tabPage6.Size = new System.Drawing.Size(458, 507);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "费用信息";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1750,7 +1743,7 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 49);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(496, 507);
+            this.tabPage7.Size = new System.Drawing.Size(458, 507);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "资料文件";
             // 
@@ -1762,7 +1755,7 @@
             this.warningBox1.FontColor = System.Drawing.SystemColors.ControlText;
             this.warningBox1.Location = new System.Drawing.Point(0, 0);
             this.warningBox1.Name = "warningBox1";
-            this.warningBox1.Size = new System.Drawing.Size(504, 40);
+            this.warningBox1.Size = new System.Drawing.Size(466, 40);
             this.warningBox1.TabIndex = 1;
             this.warningBox1.Visible = false;
             // 
@@ -1773,34 +1766,33 @@
             this.pnlChatList.Controls.Add(this.pnlChatState);
             this.pnlChatList.Controls.Add(this.pnlInfo);
             this.pnlChatList.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlChatList.Location = new System.Drawing.Point(507, 0);
+            this.pnlChatList.Location = new System.Drawing.Point(469, 0);
             this.pnlChatList.Name = "pnlChatList";
-            this.pnlChatList.Size = new System.Drawing.Size(151, 600);
+            this.pnlChatList.Size = new System.Drawing.Size(189, 600);
             this.pnlChatList.TabIndex = 2;
             // 
             // pnlFriend
             // 
-            this.pnlFriend.Controls.Add(this.lstFriend);
+            this.pnlFriend.Controls.Add(this.LstFriend);
             this.pnlFriend.Controls.Add(this.lklblNumber);
             this.pnlFriend.Controls.Add(this.label39);
             this.pnlFriend.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlFriend.Location = new System.Drawing.Point(0, 143);
             this.pnlFriend.Name = "pnlFriend";
-            this.pnlFriend.Size = new System.Drawing.Size(149, 455);
+            this.pnlFriend.Size = new System.Drawing.Size(187, 455);
             this.pnlFriend.TabIndex = 7;
             // 
-            // lstFriend
+            // LstFriend
             // 
-            this.lstFriend.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.LstFriend.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lstFriend.FormattingEnabled = true;
-            this.lstFriend.ItemHeight = 12;
-            this.lstFriend.Location = new System.Drawing.Point(3, 24);
-            this.lstFriend.Name = "lstFriend";
-            this.lstFriend.Size = new System.Drawing.Size(149, 568);
-            this.lstFriend.TabIndex = 3;
-            this.lstFriend.DoubleClick += new System.EventHandler(this.lstFriend_DoubleClick);
+            this.LstFriend.Location = new System.Drawing.Point(1, 20);
+            this.LstFriend.Name = "LstFriend";
+            this.LstFriend.OnlineCount = 0;
+            this.LstFriend.SelectedInfo = null;
+            this.LstFriend.Size = new System.Drawing.Size(187, 398);
+            this.LstFriend.TabIndex = 3;
             // 
             // lklblNumber
             // 
@@ -1828,7 +1820,7 @@
             this.pnlChatState.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlChatState.Location = new System.Drawing.Point(0, 118);
             this.pnlChatState.Name = "pnlChatState";
-            this.pnlChatState.Size = new System.Drawing.Size(149, 25);
+            this.pnlChatState.Size = new System.Drawing.Size(187, 25);
             this.pnlChatState.TabIndex = 6;
             // 
             // lblState
@@ -1854,6 +1846,7 @@
             // pnlInfo
             // 
             this.pnlInfo.BackColor = System.Drawing.Color.MintCream;
+            this.pnlInfo.Controls.Add(this.txtEmotion);
             this.pnlInfo.Controls.Add(this.picEmploee);
             this.pnlInfo.Controls.Add(this.lklblEmotion);
             this.pnlInfo.Controls.Add(this.label37);
@@ -1863,14 +1856,24 @@
             this.pnlInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlInfo.Location = new System.Drawing.Point(0, 0);
             this.pnlInfo.Name = "pnlInfo";
-            this.pnlInfo.Size = new System.Drawing.Size(149, 118);
+            this.pnlInfo.Size = new System.Drawing.Size(187, 118);
             this.pnlInfo.TabIndex = 0;
+            // 
+            // txtEmotion
+            // 
+            this.txtEmotion.Location = new System.Drawing.Point(7, 90);
+            this.txtEmotion.Name = "txtEmotion";
+            this.txtEmotion.Size = new System.Drawing.Size(175, 21);
+            this.txtEmotion.TabIndex = 7;
+            this.txtEmotion.Visible = false;
+            this.txtEmotion.Leave += new System.EventHandler(this.txtEmotion_Leave);
             // 
             // picEmploee
             // 
             this.picEmploee.Image = ((System.Drawing.Image)(resources.GetObject("picEmploee.Image")));
             this.picEmploee.Location = new System.Drawing.Point(6, 5);
             this.picEmploee.Name = "picEmploee";
+            this.picEmploee.ReadOnly = false;
             this.picEmploee.Size = new System.Drawing.Size(60, 60);
             this.picEmploee.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picEmploee.TabIndex = 6;
@@ -1885,6 +1888,7 @@
             this.lklblEmotion.TabIndex = 5;
             this.lklblEmotion.TabStop = true;
             this.lklblEmotion.Text = "暂未设置";
+            this.lklblEmotion.Click += new System.EventHandler(this.lklblEmotion_Click);
             // 
             // label37
             // 
@@ -2204,7 +2208,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsbAddDataInfo;
         private System.Windows.Forms.ToolStripStatusLabel tslTimer;
         private System.Windows.Forms.Timer tmTime;
-        private System.Windows.Forms.ToolStripStatusLabel tslUser;
         private System.ComponentModel.BackgroundWorker backgroundWorker4;
         private System.ComponentModel.BackgroundWorker backgroundWorker5;
         private System.Windows.Forms.ToolStripMenuItem tsbSearchData;
@@ -2219,7 +2222,6 @@
         private System.Windows.Forms.Panel pnlAll;
         private System.Windows.Forms.Panel pnlChatList;
         private System.Windows.Forms.Panel pnlInfo;
-        private System.Windows.Forms.ListBox lstFriend;
         private System.Windows.Forms.LinkLabel lklblNumber;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.LinkLabel lklblEmotion;
@@ -2232,6 +2234,8 @@
         private System.Windows.Forms.Label lblState;
         private System.Windows.Forms.Panel pnlFriend;
         private System.Windows.Forms.Panel pnlChatState;
+        private FriendInfoLst LstFriend;
+        private System.Windows.Forms.TextBox txtEmotion;
     }
 }
 
