@@ -192,7 +192,7 @@ namespace 商户资料管理系统
                 if (result != null && result.EntryImage != null && result.EntryImage.Length > 0)
                 {
                     picImage.SetPicture(result.EntryImage);
-                    this.ShowInTaskbar = true;
+                    lylblEmotion.Text = result.Emotion;
                 }
             }
             catch

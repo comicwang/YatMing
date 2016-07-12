@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FriendInfo));
             this.lblName = new System.Windows.Forms.Label();
-            this.picImage = new 商户资料管理系统.PictureStreamBox();
             this.lblEmotion = new System.Windows.Forms.Label();
+            this.picImage = new 商户资料管理系统.PictureStreamBox();
             ((System.ComponentModel.ISupportInitialize)(this.picImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,17 +46,6 @@
             this.lblName.TabIndex = 1;
             this.lblName.Text = "label1";
             // 
-            // picImage
-            // 
-            this.picImage.Image = ((System.Drawing.Image)(resources.GetObject("picImage.Image")));
-            this.picImage.Location = new System.Drawing.Point(7, 6);
-            this.picImage.Name = "picImage";
-            this.picImage.ReadOnly = false;
-            this.picImage.Size = new System.Drawing.Size(30, 30);
-            this.picImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picImage.TabIndex = 2;
-            this.picImage.TabStop = false;
-            // 
             // lblEmotion
             // 
             this.lblEmotion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -70,6 +58,17 @@
             this.lblEmotion.Size = new System.Drawing.Size(41, 12);
             this.lblEmotion.TabIndex = 1;
             this.lblEmotion.Text = "label1";
+            // 
+            // picImage
+            // 
+            this.picImage.Image = global::商户资料管理系统.Properties.Resources.defaultIcon;
+            this.picImage.Location = new System.Drawing.Point(7, 6);
+            this.picImage.Name = "picImage";
+            this.picImage.ReadOnly = false;
+            this.picImage.Size = new System.Drawing.Size(30, 30);
+            this.picImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picImage.TabIndex = 2;
+            this.picImage.TabStop = false;
             // 
             // FriendInfo
             // 

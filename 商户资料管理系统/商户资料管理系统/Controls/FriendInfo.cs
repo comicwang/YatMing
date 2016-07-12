@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using 商户资料管理系统.YatServer;
+using 商户资料管理系统.Common;
 
 namespace 商户资料管理系统
 {
@@ -14,13 +15,27 @@ namespace 商户资料管理系统
     {
         private ToolTip tip = new ToolTip();
 
+        private YatMingServiceClient _client;
+
         public FriendInfo()
         {
             InitializeComponent();
             picImage.ReadOnly = true;
+            lblName.MouseEnter += FriendInfo_MouseEnter;
+            lblName.MouseLeave += FriendInfo_MouseLeave;
+            lblName.Click += FriendInfo_Click; 
+            lblEmotion.MouseEnter += FriendInfo_MouseEnter;
+            lblEmotion.MouseLeave += FriendInfo_MouseLeave;
+            lblEmotion.Click += FriendInfo_Click;
+            picImage.MouseEnter += FriendInfo_MouseEnter;
+            picImage.MouseLeave += FriendInfo_MouseLeave;
+            picImage.Click += FriendInfo_Click;
+            _client = ServiceProvider.Clent;
         }
 
         private FormEmploeeInfo _tipForm = null;
+
+        private string _Id = string.Empty;
 
         private byte[] OrginImage;
 
@@ -37,6 +52,7 @@ namespace 商户资料管理系统
                 Order = data.Order;
                 ChatName = data.Name;
                 _tipForm = new FormEmploeeInfo(data.Data);
+                _Id = data.Data.EmployeeId;
                 if (data.Image != null && data.Image.Length > 0)
                 {
                     OrginImage = data.Image;
@@ -64,6 +80,23 @@ namespace 商户资料管理系统
             _tipForm.Location = new Point(point.X - _tipForm.Width, point.Y + picImage.Location.Y);
             picImage.MouseHover += control_MouseHover;
             picImage.MouseLeave += control_MouseLeave;
+        }
+
+        public void RefreashData(TEmployeeDTO dto)
+        {
+            lblName.Text = dto.EmployeeName;
+            lblEmotion.Text = dto.Emotion;
+            tip.SetToolTip(lblEmotion, dto.Emotion); //心情
+            _tipForm = new FormEmploeeInfo(dto);  //资料
+            OrginImage = dto.EntryImage; 
+            picImage.SetPicture(OrginImage); //图标
+            SetLocation();
+        }
+
+        public void RefreashData()
+        {
+            TEmployeeDTO dto = _client.TEmployeeQueryById(_Id);
+            RefreashData(dto);
         }
 
         void control_MouseLeave(object sender, EventArgs e)
@@ -100,28 +133,27 @@ namespace 商户资料管理系统
                 ChangedState(onLine, EventArgs.Empty);
         }
 
-        public void SetImage(Image img)
-        {
-            this.picImage.Image = img;
-            OrginImage = picImage.GetPictureStream();
-        }
-
         private void FriendInfo_MouseEnter(object sender, EventArgs e)
         {
-            this.BackColor = Color.FromArgb(251, 239, 191);
+            if (!Selected)
+                this.BackColor = Color.FromArgb(252, 240, 193);
         }
 
         private void FriendInfo_MouseLeave(object sender, EventArgs e)
         {
-            this.BackColor = Color.Transparent;
+            if (!Selected)
+                this.BackColor = Color.Transparent;
         }
 
         private void FriendInfo_Click(object sender, EventArgs e)
         {
+            if (Selected)
+                return;
             this.Height = 60;
             picImage.Width = 50;
             picImage.Height = 50;
             lblName.Location = new Point(lblName.Location.X + 20, lblName.Location.Y);
+            this.BackColor = Color.FromArgb(253, 236, 170);
         }
 
         public void ClearClick()
@@ -131,6 +163,7 @@ namespace 商户资料管理系统
             picImage.Height = 30;
             lblName.Location = new Point(lblName.Location.X - 20, lblName.Location.Y);
             Selected = false;
+            this.BackColor = Color.Transparent;
         }
 
         public bool Selected { get;set; }

@@ -55,6 +55,8 @@ namespace 商户资料管理系统
 
         private void PictureStreamBox_Click(object sender, EventArgs e)
         {
+            if (ReadOnly)
+                return;
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "图片文件|*.png;*.jpg;*.bmp";
             if (dialog.ShowDialog() == DialogResult.OK)

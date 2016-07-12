@@ -1389,6 +1389,12 @@ namespace 商户资料管理系统
                             form.AppendRtf(talkString, splitString[1]);
                         };
                         break;
+                    case "change":
+                        actionDelegate = () =>
+                        {
+                            LstFriend.Friends[splitString[1]].RefreashData();
+                        };
+                        break;
                     default:
                         break;
                 }
@@ -1500,16 +1506,13 @@ namespace 商户资料管理系统
             //更换头像
             _employee.EntryImage = picEmploee.GetPictureStream();
             bool result = _client.TEmployeeUpdate(_employee);
+            if (result)
+            {
+                LstFriend.Friends[_employee.EmployeeName].RefreashData(_employee);
+                SendMessage("change," + _employee.EmployeeName);
+            }
         }
 
-        #endregion
-
-        private void tsbOpenSkin_Click(object sender, EventArgs e)
-        {
-            _openSkin = !_openSkin;
-            this.SetSkinEnable(tsbSkin, _openSkin,tsbOpenSkin);
-            this.Refresh();
-        }
 
         private void lklblState_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -1525,15 +1528,25 @@ namespace 商户资料管理系统
                 lklblEmotion.Visible = true;
                 txtEmotion.Visible = false;
                 lklblEmotion.Text = txtEmotion.Text;
-
+                //通知其他UI改变
+                LstFriend.Friends[_employee.EmployeeName].RefreashData(_employee);  //本地状态改变
+                SendMessage("change," + _employee.EmployeeName);  //其他客户端状态改变
             }
-
         }
 
         private void lklblEmotion_Click(object sender, EventArgs e)
         {
             lklblEmotion.Visible = false;
             txtEmotion.Visible = true;
+        }
+
+        #endregion
+
+        private void tsbOpenSkin_Click(object sender, EventArgs e)
+        {
+            _openSkin = !_openSkin;
+            this.SetSkinEnable(tsbSkin, _openSkin,tsbOpenSkin);
+            this.Refresh();
         }
 
         //#region 文件上传

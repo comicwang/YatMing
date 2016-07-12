@@ -588,6 +588,7 @@
     <None Include="Resources\hide.png" />
     <None Include="Resources\image.png" />
     <None Include="Resources\cutScreen.png" />
+    <None Include="Resources\defaultIcon.jpg" />
     <Content Include="Resources\search.png" />
     <None Include="Resources\edit.png" />
   </ItemGroup>

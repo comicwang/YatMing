@@ -30,11 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormChat));
-            System.Drawing.Imaging.ImageAttributes imageAttributes5 = new System.Drawing.Imaging.ImageAttributes();
+            System.Drawing.Imaging.ImageAttributes imageAttributes6 = new System.Drawing.Imaging.ImageAttributes();
             System.Drawing.Imaging.ImageAttributes imageAttributes1 = new System.Drawing.Imaging.ImageAttributes();
-            System.Drawing.Imaging.ImageAttributes imageAttributes2 = new System.Drawing.Imaging.ImageAttributes();
             System.Drawing.Imaging.ImageAttributes imageAttributes3 = new System.Drawing.Imaging.ImageAttributes();
             System.Drawing.Imaging.ImageAttributes imageAttributes4 = new System.Drawing.Imaging.ImageAttributes();
+            System.Drawing.Imaging.ImageAttributes imageAttributes5 = new System.Drawing.Imaging.ImageAttributes();
+            System.Drawing.Imaging.ImageAttributes imageAttributes2 = new System.Drawing.Imaging.ImageAttributes();
             this.layeredPanel1 = new LayeredSkin.Controls.LayeredPanel();
             this.picImage = new 商户资料管理系统.PictureStreamBox();
             this.lybtnSkin = new LayeredSkin.Controls.LayeredButton();
@@ -70,6 +71,7 @@
             this.tsbClear = new System.Windows.Forms.ToolStripButton();
             this.rtbSend = new 商户资料管理系统.UserRichTexBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lylblEmotion = new LayeredSkin.Controls.LayeredLabel();
             this.layeredPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picImage)).BeginInit();
             this.pnlMenu.SuspendLayout();
@@ -84,12 +86,13 @@
             this.layeredPanel1.Canvas = ((System.Drawing.Bitmap)(resources.GetObject("layeredPanel1.Canvas")));
             this.layeredPanel1.Controls.Add(this.picImage);
             this.layeredPanel1.Controls.Add(this.lybtnSkin);
+            this.layeredPanel1.Controls.Add(this.lylblEmotion);
             this.layeredPanel1.Controls.Add(this.lylblName);
             this.layeredPanel1.Controls.Add(this.lybtnClose);
             this.layeredPanel1.Controls.Add(this.lybtnHide);
             this.layeredPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.layeredPanel1.ForeColor = System.Drawing.Color.Gray;
-            this.layeredPanel1.ImageAttribute = imageAttributes5;
+            this.layeredPanel1.ImageAttribute = imageAttributes6;
             this.layeredPanel1.Location = new System.Drawing.Point(0, 0);
             this.layeredPanel1.Name = "layeredPanel1";
             this.layeredPanel1.Size = new System.Drawing.Size(511, 75);
@@ -101,6 +104,7 @@
             this.picImage.Image = ((System.Drawing.Image)(resources.GetObject("picImage.Image")));
             this.picImage.Location = new System.Drawing.Point(1, 3);
             this.picImage.Name = "picImage";
+            this.picImage.ReadOnly = false;
             this.picImage.Size = new System.Drawing.Size(70, 70);
             this.picImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picImage.TabIndex = 8;
@@ -135,7 +139,7 @@
             this.lylblName.Canvas = ((System.Drawing.Bitmap)(resources.GetObject("lylblName.Canvas")));
             this.lylblName.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lylblName.HaloSize = 5;
-            this.lylblName.ImageAttribute = imageAttributes2;
+            this.lylblName.ImageAttribute = imageAttributes3;
             this.lylblName.Location = new System.Drawing.Point(80, 4);
             this.lylblName.Name = "lylblName";
             this.lylblName.Size = new System.Drawing.Size(75, 23);
@@ -152,7 +156,7 @@
             this.lybtnClose.HaloColor = System.Drawing.Color.White;
             this.lybtnClose.HaloSize = 5;
             this.lybtnClose.HoverImage = ((System.Drawing.Image)(resources.GetObject("lybtnClose.HoverImage")));
-            this.lybtnClose.ImageAttribute = imageAttributes3;
+            this.lybtnClose.ImageAttribute = imageAttributes4;
             this.lybtnClose.Location = new System.Drawing.Point(485, 4);
             this.lybtnClose.Name = "lybtnClose";
             this.lybtnClose.NormalImage = global::商户资料管理系统.Properties.Resources.close;
@@ -175,7 +179,7 @@
             this.lybtnHide.HaloColor = System.Drawing.Color.White;
             this.lybtnHide.HaloSize = 5;
             this.lybtnHide.HoverImage = ((System.Drawing.Image)(resources.GetObject("lybtnHide.HoverImage")));
-            this.lybtnHide.ImageAttribute = imageAttributes4;
+            this.lybtnHide.ImageAttribute = imageAttributes5;
             this.lybtnHide.Location = new System.Drawing.Point(457, 4);
             this.lybtnHide.Name = "lybtnHide";
             this.lybtnHide.NormalImage = global::商户资料管理系统.Properties.Resources.hide;
@@ -508,6 +512,19 @@
             this.timer1.Interval = 300;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // lylblEmotion
+            // 
+            this.lylblEmotion.BackColor = System.Drawing.Color.Transparent;
+            this.lylblEmotion.Canvas = ((System.Drawing.Bitmap)(resources.GetObject("lylblEmotion.Canvas")));
+            this.lylblEmotion.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lylblEmotion.HaloSize = 5;
+            this.lylblEmotion.ImageAttribute = imageAttributes2;
+            this.lylblEmotion.Location = new System.Drawing.Point(79, 39);
+            this.lylblEmotion.Name = "lylblEmotion";
+            this.lylblEmotion.Size = new System.Drawing.Size(75, 23);
+            this.lylblEmotion.TabIndex = 6;
+            this.lylblEmotion.Text = "昵称";
+            // 
             // FormChat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -583,6 +600,7 @@
         private System.Windows.Forms.ToolStripButton tsbCenter;
         private System.Windows.Forms.ToolStripButton tsbRight;
         private System.Windows.Forms.ToolStripButton tsbClear;
+        private LayeredSkin.Controls.LayeredLabel lylblEmotion;
     }
 }
 

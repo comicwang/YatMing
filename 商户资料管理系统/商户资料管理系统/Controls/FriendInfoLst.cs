@@ -35,11 +35,6 @@ namespace 商户资料管理系统
                 data.Data = t;
                 TLoginDTO login = _client.TLoginQueryById(t.EmployeeId);
                 data.State = CommomHelper.ParseState(login.State);
-                //if (data.State == FriendState.Online)
-                //{
-                //    //发送消息
-                //    OnlineCount++;
-                //}
                 data.Order = login.State;
                 if (t.EmployeeName == myNickName)
                 {
@@ -78,17 +73,17 @@ namespace 商户资料管理系统
 
         private void info_Click(object sender, EventArgs e)
         {
-            foreach (KeyValuePair<string,FriendInfo> item in Friends)
+            FriendInfo info = sender as FriendInfo;
+            info.Selected = true;
+            SelectedInfo = info;
+            foreach (KeyValuePair<string, FriendInfo> item in Friends)
             {
-                if (item.Value.Selected)
+                if (item.Value.Selected && item.Value != info)
                 {
                     item.Value.ClearClick();
                     break;
                 }
             }
-            FriendInfo info = sender as FriendInfo;
-            info.Selected = true;
-            SelectedInfo = info;
         }
 
         public void OrderList()
